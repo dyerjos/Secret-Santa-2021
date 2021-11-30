@@ -1,0 +1,340 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://character_creator/CharacterCreation.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+font_data = ExtResource( 1 )
+
+[node name="CharacterCreation" type="ColorRect"]
+margin_right = 400.0
+margin_bottom = 240.0
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1, 0.998372 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 74.0
+margin_top = 16.0
+margin_right = 326.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Create Your Character"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_top = 60.0
+margin_right = 400.0
+margin_bottom = 200.0
+rect_scale = Vector2( 1, 1.00336 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Class" type="ScrollContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Class"]
+margin_right = 380.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 380, 0 )
+
+[node name="Row1" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_right = 380.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Barbarian" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+margin_right = 90.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row1/Barbarian"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="BarbarianBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row1/Barbarian"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Barbarian"
+
+[node name="Bard" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+margin_left = 94.0
+margin_right = 184.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row1/Bard"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="BardBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row1/Bard"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Bard"
+
+[node name="Cleric" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+margin_left = 188.0
+margin_right = 278.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row1/Cleric"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="ClericBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row1/Cleric"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Cleric"
+
+[node name="Druid" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+margin_left = 282.0
+margin_right = 372.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row1/Druid"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="DruidBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row1/Druid"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Druid"
+
+[node name="Row2" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_top = 108.0
+margin_right = 380.0
+margin_bottom = 212.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fighter" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row2"]
+margin_right = 90.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row2/Fighter"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="FighterBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row2/Fighter"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Fighter"
+
+[node name="Immolator" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row2"]
+margin_left = 94.0
+margin_right = 184.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row2/Immolator"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="ImmolatorBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row2/Immolator"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Immolator"
+
+[node name="Paladin" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row2"]
+margin_left = 188.0
+margin_right = 278.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row2/Paladin"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="PaladinBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row2/Paladin"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Paladin"
+
+[node name="Ranger" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row2"]
+margin_left = 282.0
+margin_right = 372.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row2/Ranger"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="RangerBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row2/Ranger"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Ranger"
+
+[node name="Row3" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_top = 216.0
+margin_right = 380.0
+margin_bottom = 320.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Thief" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row3"]
+margin_right = 90.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row3/Thief"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="ThiefBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row3/Thief"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Thief"
+
+[node name="Wizard" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row3"]
+margin_left = 94.0
+margin_right = 184.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row3/Wizard"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="WizardBtn" type="Button" parent="TabContainer/Class/VBoxContainer/Row3/Wizard"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Wizard"
+
+[node name="Unknown1" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row3"]
+margin_left = 188.0
+margin_right = 278.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row3/Unknown1"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Unknown1Btn" type="Button" parent="TabContainer/Class/VBoxContainer/Row3/Unknown1"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "????"
+
+[node name="Unknown2" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row3"]
+margin_left = 282.0
+margin_right = 372.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row3/Unknown2"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Unknown2Btn" type="Button" parent="TabContainer/Class/VBoxContainer/Row3/Unknown2"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "????"
+
+[node name="Race" type="HBoxContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Barbarian/BarbarianBtn" to="." method="_on_BarbarianBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Bard/BardBtn" to="." method="_on_BardBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Cleric/ClericBtn" to="." method="_on_ClericBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Druid/DruidBtn" to="." method="_on_DruidBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row2/Fighter/FighterBtn" to="." method="_on_FighterBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row2/Immolator/ImmolatorBtn" to="." method="_on_ImmolatorBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row2/Paladin/PaladinBtn" to="." method="_on_PaladinBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row2/Ranger/RangerBtn" to="." method="_on_RangerBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row3/Thief/ThiefBtn" to="." method="_on_ThiefBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row3/Wizard/WizardBtn" to="." method="_on_WizardBtn_pressed"]
