@@ -1,0 +1,150 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+font_data = ExtResource( 2 )
+
+[node name="RacePicker" type="ColorRect"]
+margin_right = 400.0
+margin_bottom = 240.0
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1, 0.998372 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 63.0
+margin_top = 16.0
+margin_right = 337.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Step 2: Choose Your Race"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_top = 60.0
+margin_right = 400.0
+margin_bottom = 180.0
+rect_scale = Vector2( 1, 1.00336 )
+tabs_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Class" type="ScrollContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Class"]
+margin_right = 380.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 380, 0 )
+
+[node name="Row1" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_right = 380.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Race1" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+margin_right = 90.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row1/Race1"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Race1" type="Button" parent="TabContainer/Class/VBoxContainer/Row1/Race1"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Barbarian"
+
+[node name="Race2" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+margin_left = 94.0
+margin_right = 184.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row1/Race2"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Race2" type="Button" parent="TabContainer/Class/VBoxContainer/Row1/Race2"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Bard"
+
+[node name="Race3" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+margin_left = 188.0
+margin_right = 278.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row1/Race3"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Race3" type="Button" parent="TabContainer/Class/VBoxContainer/Row1/Race3"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Cleric"
+
+[node name="Race4" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+margin_left = 282.0
+margin_right = 372.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row1/Race4"]
+margin_right = 90.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Race4" type="Button" parent="TabContainer/Class/VBoxContainer/Row1/Race4"]
+margin_top = 84.0
+margin_right = 90.0
+margin_bottom = 104.0
+text = "Druid"
+
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race1/Race1" to="." method="_on_BarbarianBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race2/Race2" to="." method="_on_BardBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race3/Race3" to="." method="_on_ClericBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race4/Race4" to="." method="_on_DruidBtn_pressed"]

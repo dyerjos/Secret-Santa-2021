@@ -1,0 +1,165 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://character_creator/LookPicker.gd" type="Script" id=1]
+[ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+font_data = ExtResource( 2 )
+
+[node name="LookPicker" type="ColorRect"]
+margin_right = 400.0
+margin_bottom = 240.0
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1, 0.998372 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 58.0
+margin_top = 16.0
+margin_right = 342.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Step 3: Choose Your Looks"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_left = 30.0
+margin_top = 60.0
+margin_right = 370.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 340, 160 )
+rect_scale = Vector2( 1, 1.00211 )
+tabs_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Class" type="ScrollContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 250, 0 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Class"]
+margin_right = 330.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 330, 140 )
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_right = 330.0
+margin_bottom = 24.0
+
+[node name="BodyField" type="LineEdit" parent="TabContainer/Class/VBoxContainer/CenterContainer"]
+margin_left = 35.0
+margin_right = 295.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 260, 0 )
+rect_clip_content = true
+max_length = 15
+selecting_enabled = false
+placeholder_text = "Adjective for Body (stout, skinny, fluffy)"
+
+[node name="CenterContainer4" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_top = 28.0
+margin_right = 330.0
+margin_bottom = 52.0
+
+[node name="EyesField" type="LineEdit" parent="TabContainer/Class/VBoxContainer/CenterContainer4"]
+margin_left = 35.0
+margin_right = 295.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 260, 0 )
+rect_clip_content = true
+max_length = 15
+selecting_enabled = false
+placeholder_text = "Adjective for Eyes (blue, wild, haunted)"
+
+[node name="CenterContainer5" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_top = 56.0
+margin_right = 330.0
+margin_bottom = 80.0
+
+[node name="DecorationField" type="LineEdit" parent="TabContainer/Class/VBoxContainer/CenterContainer5"]
+margin_left = 35.0
+margin_right = 295.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 260, 0 )
+rect_clip_content = true
+max_length = 15
+selecting_enabled = false
+placeholder_text = "Adjective for Decoration (tattooed, etc)"
+
+[node name="CenterContainer6" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_top = 84.0
+margin_right = 330.0
+margin_bottom = 108.0
+
+[node name="ClothesField" type="LineEdit" parent="TabContainer/Class/VBoxContainer/CenterContainer6"]
+margin_left = 35.0
+margin_right = 295.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 260, 0 )
+rect_clip_content = true
+max_length = 15
+selecting_enabled = false
+placeholder_text = "Adjective for Clothes (scrappy, classy)"
+
+[node name="CenterContainer2" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+visible = false
+margin_top = 112.0
+margin_right = 330.0
+margin_bottom = 126.0
+
+[node name="DescriptionLabel" type="Label" parent="TabContainer/Class/VBoxContainer/CenterContainer2"]
+margin_left = 129.0
+margin_right = 200.0
+margin_bottom = 14.0
+text = "sdfadsfasdf"
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_top = 112.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer3"]
+margin_left = 103.0
+margin_right = 227.0
+margin_bottom = 20.0
+
+[node name="DoneBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Done"
+
+[node name="ResetBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Reset"
+
+[connection signal="text_changed" from="TabContainer/Class/VBoxContainer/CenterContainer/BodyField" to="." method="_on_BodyField_text_changed"]
+[connection signal="text_changed" from="TabContainer/Class/VBoxContainer/CenterContainer4/EyesField" to="." method="_on_EyesField_text_changed"]
+[connection signal="text_changed" from="TabContainer/Class/VBoxContainer/CenterContainer5/DecorationField" to="." method="_on_DecorationField_text_changed"]
+[connection signal="text_changed" from="TabContainer/Class/VBoxContainer/CenterContainer6/ClothesField" to="." method="_on_ClothesField_text_changed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]

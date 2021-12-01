@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://character_creator/NamePicker.gd" type="Script" id=1]
+[ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+font_data = ExtResource( 2 )
+
+[node name="NamePicker" type="ColorRect"]
+margin_right = 400.0
+margin_bottom = 240.0
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1, 0.998372 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 63.0
+margin_top = 16.0
+margin_right = 337.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Step 3: Choose Your Name"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_left = 60.0
+margin_top = 60.0
+margin_right = 320.0
+margin_bottom = 150.0
+rect_scale = Vector2( 1, 1.00211 )
+tabs_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Class" type="ScrollContainer" parent="TabContainer"]
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = 254.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 250, 0 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Class"]
+margin_right = 250.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_right = 250.0
+margin_bottom = 24.0
+
+[node name="NameField" type="LineEdit" parent="TabContainer/Class/VBoxContainer/CenterContainer"]
+margin_left = 45.0
+margin_right = 205.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 160, 0 )
+rect_clip_content = true
+max_length = 15
+selecting_enabled = false
+placeholder_text = "What is your name?"
+
+[node name="CenterContainer2" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_top = 28.0
+margin_right = 250.0
+margin_bottom = 42.0
+
+[node name="NameLabel" type="Label" parent="TabContainer/Class/VBoxContainer/CenterContainer2"]
+margin_left = 125.0
+margin_right = 125.0
+margin_bottom = 14.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+margin_top = 46.0
+margin_right = 250.0
+margin_bottom = 66.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer3"]
+margin_left = 63.0
+margin_right = 187.0
+margin_bottom = 20.0
+
+[node name="YesBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Yes"
+
+[node name="ResetBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Reset"
+
+[connection signal="text_changed" from="TabContainer/Class/VBoxContainer/CenterContainer/NameField" to="." method="_on_NameField_text_changed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer/YesBtn" to="." method="_on_YesBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]

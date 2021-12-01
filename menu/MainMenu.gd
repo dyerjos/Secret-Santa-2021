@@ -2,7 +2,7 @@ extends ColorRect
 
 
 func _on_Play_pressed():
-	Scene.change("CharacterCreation")
+	Scene.change("ClassPicker")
 
 
 func _on_Exit_pressed():
