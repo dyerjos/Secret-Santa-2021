@@ -15,7 +15,8 @@ var scenes := {
 	"WizardRaces": "res://character_creator/races/WizardRaces.tscn",
 	"ImmolatorRaces": "res://character_creator/races/ImmolatorRaces.tscn",
 	"NamePicker": "res://character_creator/NamePicker.tscn",
-	"LookPicker": "res://character_creator/LookPicker.tscn"
+	"LookPicker": "res://character_creator/LookPicker.tscn",
+	"StatsPicker": "res://character_creator/StatsPicker.tscn"
 }
 
 

@@ -23,7 +23,7 @@ func _on_ClothesField_text_changed(new_text):
 
 
 func _on_DoneBtn_pressed():
-	print("going to next scene now")
+	Scene.change("StatsPicker")
 
 
 func _on_ResetBtn_pressed():
