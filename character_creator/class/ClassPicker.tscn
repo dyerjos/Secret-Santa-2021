@@ -26,12 +26,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 61.0
+margin_left = 104.0
 margin_top = 16.0
-margin_right = 339.0
+margin_right = 296.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 1 )
-text = "Step 1: Choose Your Class"
+text = "Choose Your Class"
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_top = 60.0
@@ -56,11 +56,11 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Class"]
-margin_right = 380.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 380, 0 )
+margin_right = 188.0
+margin_bottom = 104.0
 
 [node name="Row1" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer"]
+visible = false
 margin_right = 380.0
 margin_bottom = 104.0
 __meta__ = {
@@ -147,9 +147,9 @@ margin_bottom = 104.0
 text = "Druid"
 
 [node name="Row2" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer"]
-margin_top = 108.0
+visible = false
 margin_right = 380.0
-margin_bottom = 212.0
+margin_bottom = 104.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -234,14 +234,14 @@ margin_bottom = 104.0
 text = "Ranger"
 
 [node name="Row3" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer"]
-margin_top = 216.0
-margin_right = 380.0
-margin_bottom = 320.0
+margin_right = 188.0
+margin_bottom = 104.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Thief" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row3"]
+visible = false
 margin_right = 90.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 90, 0 )
@@ -261,8 +261,7 @@ margin_bottom = 104.0
 text = "Thief"
 
 [node name="Wizard" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row3"]
-margin_left = 94.0
-margin_right = 184.0
+margin_right = 90.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 90, 0 )
 __meta__ = {
@@ -281,8 +280,8 @@ margin_bottom = 104.0
 text = "Wizard"
 
 [node name="Unknown1" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row3"]
-margin_left = 188.0
-margin_right = 278.0
+margin_left = 94.0
+margin_right = 188.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 90, 0 )
 __meta__ = {
@@ -290,19 +289,21 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="TabContainer/Class/VBoxContainer/Row3/Unknown1"]
-margin_right = 90.0
+margin_right = 94.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
 
 [node name="Unknown1Btn" type="Button" parent="TabContainer/Class/VBoxContainer/Row3/Unknown1"]
 margin_top = 84.0
-margin_right = 90.0
+margin_right = 94.0
 margin_bottom = 104.0
-text = "????"
+disabled = true
+text = "coming soon"
 
 [node name="Unknown2" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row3"]
-margin_left = 282.0
-margin_right = 372.0
+visible = false
+margin_left = 188.0
+margin_right = 278.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 90, 0 )
 __meta__ = {

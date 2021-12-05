@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://character_creator/races/WizardRaces.gd" type="Script" id=1]
 [ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
@@ -11,6 +12,7 @@ font_data = ExtResource( 2 )
 margin_right = 400.0
 margin_bottom = 240.0
 color = Color( 0.133333, 0.137255, 0.137255, 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,12 +26,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 63.0
+margin_left = 106.0
 margin_top = 16.0
-margin_right = 337.0
+margin_right = 294.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 1 )
-text = "Step 2: Choose Your Race"
+text = "Choose Your Race"
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_top = 60.0
@@ -82,7 +84,7 @@ rect_min_size = Vector2( 0, 80 )
 margin_top = 84.0
 margin_right = 90.0
 margin_bottom = 104.0
-text = "Barbarian"
+text = "Elf"
 
 [node name="Race2" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
 margin_left = 94.0
@@ -102,9 +104,10 @@ rect_min_size = Vector2( 0, 80 )
 margin_top = 84.0
 margin_right = 90.0
 margin_bottom = 104.0
-text = "Bard"
+text = "Human"
 
 [node name="Race3" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
+visible = false
 margin_left = 188.0
 margin_right = 278.0
 margin_bottom = 104.0
@@ -125,8 +128,9 @@ margin_bottom = 104.0
 text = "Cleric"
 
 [node name="Race4" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/Row1"]
-margin_left = 282.0
-margin_right = 372.0
+visible = false
+margin_left = 188.0
+margin_right = 278.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 90, 0 )
 __meta__ = {
@@ -144,7 +148,5 @@ margin_right = 90.0
 margin_bottom = 104.0
 text = "Druid"
 
-[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race1/Race1" to="." method="_on_BarbarianBtn_pressed"]
-[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race2/Race2" to="." method="_on_BardBtn_pressed"]
-[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race3/Race3" to="." method="_on_ClericBtn_pressed"]
-[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race4/Race4" to="." method="_on_DruidBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race1/Race1" to="." method="_on_Race1_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/Row1/Race2/Race2" to="." method="_on_Race2_pressed"]
