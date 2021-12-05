@@ -200,9 +200,9 @@ margin_bottom = 20.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
-margin_top = 145.0
+margin_top = 144.0
 margin_right = 330.0
-margin_bottom = 165.0
+margin_bottom = 164.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer3"]
 margin_left = 103.0
@@ -221,3 +221,12 @@ margin_right = 124.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 60, 0 )
 text = "Reset"
+
+[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/StrOptBtn" to="." method="_on_StrOptBtn_item_selected"]
+[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2/DexOptBtn" to="." method="_on_DexOptBtn_item_selected"]
+[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3/ConOptBtn" to="." method="_on_ConOptBtn_item_selected"]
+[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4/IntOptBtn" to="." method="_on_IntOptBtn_item_selected"]
+[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5/WisOptBtn" to="." method="_on_WisOptBtn_item_selected"]
+[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6/ChaOptBtn" to="." method="_on_ChaOptBtn_item_selected"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
