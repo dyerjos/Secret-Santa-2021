@@ -28,6 +28,8 @@ config/icon="res://icon.png"
 
 Scene="*res://global/Scene.gd"
 CharacterSheet="*res://global/CharacterSheet.gd"
+WizardSpells="*res://global/WizardSpells.gd"
+SaveSystem="*res://global/SaveSystem.gd"
 
 [display]
 

@@ -92,7 +92,6 @@ margin_left = 182.0
 margin_right = 232.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 50, 0 )
-selected = 0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer"]
 margin_top = 24.0

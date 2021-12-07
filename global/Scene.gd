@@ -27,4 +27,5 @@ func change(scene_name: String):
 		print("cannot change to scene %s" % scene_name)
 		return
 # warning-ignore:return_value_discarded
+	CharacterSheet.current_scene = scenes[scene_name]
 	get_tree().change_scene(scenes[scene_name])

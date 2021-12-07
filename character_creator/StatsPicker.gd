@@ -24,6 +24,7 @@ func _process(delta):
 
 func _on_DoneBtn_pressed():
 	Scene.change("ClassMovesPicker")
+	SaveSystem.save_and_encrypt_config()
 
 func _on_ResetBtn_pressed():
 	clear_stats()
