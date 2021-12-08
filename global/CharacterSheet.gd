@@ -18,7 +18,7 @@ export var player_wis = ""
 export var player_cha = ""
 
 
-func big_dict():
+func save_dict():
 	return {
 		"current_scene" : current_scene,
 		"player_class" : player_class,
