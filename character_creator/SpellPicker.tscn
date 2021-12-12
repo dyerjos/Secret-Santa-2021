@@ -26,12 +26,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 102.0
+margin_left = 96.0
 margin_top = 16.0
-margin_right = 298.0
+margin_right = 304.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 1 )
-text = "Choose Your Spells"
+text = "Choose Three Spells"
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_left = 25.0
@@ -459,3 +459,5 @@ text = "Reset"
 [connection signal="pressed" from="TabContainer/Class/Column/Row8/SpellPanel/SpellBtn5" to="." method="_on_SpellBtn5_pressed"]
 [connection signal="pressed" from="TabContainer/Class/Column/Row9/SpellPanel/SpellBtn6" to="." method="_on_SpellBtn6_pressed"]
 [connection signal="pressed" from="TabContainer/Class/Column/Row10/SpellPanel/SpellBtn7" to="." method="_on_SpellBtn7_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]

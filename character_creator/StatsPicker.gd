@@ -24,9 +24,19 @@ func _process(delta):
 
 func _on_DoneBtn_pressed():
 	Scene.change("ClassMovesPicker")
-	# SaveSystem.save_and_encrypt_config()
-	SaveSystem.save_and_encrypt_game()
-
+	
+func _on_HelpBtn_pressed():
+	if CharacterSheet.player_class == "wizard":
+		CharacterSheet.player_str = 8
+		CharacterSheet.player_dex = 9  
+		CharacterSheet.player_con = 15  
+		CharacterSheet.player_int = 16  
+		CharacterSheet.player_wis = 12  
+		CharacterSheet.player_cha = 13
+		Scene.change("ClassMovesPicker")
+	else:
+		print("This class needs work for this button")
+	
 func _on_ResetBtn_pressed():
 	clear_stats()
 	populate_stats()
@@ -77,12 +87,7 @@ func remove_item_at_index(index):
 	WisOptBtn.remove_item(index)
 	ChaOptBtn.remove_item(index)
 
-func done_checker(): # proceed to next scene so player doesn't have to think
-	stats_set_count += 1
-	if stats_set_count == 6:
-		print("done")
-		#TODO: not working?
-		
+	
 func done_btn_checker():
 	if CharacterSheet.player_str == "" or CharacterSheet.player_dex == "" or CharacterSheet.player_con == "" or CharacterSheet.player_int == "" or CharacterSheet.player_wis == "" or CharacterSheet.player_cha == "":
 		return
@@ -93,34 +98,34 @@ func _on_StrOptBtn_item_selected(index):
 	CharacterSheet.player_str = StrOptBtn.get_item_text(index)
 	remove_item_at_index(index)
 	StrOptBtn.disabled = true
-	done_checker()
+
 
 func _on_DexOptBtn_item_selected(index):
 	CharacterSheet.player_dex = DexOptBtn.get_item_text(index)
 	remove_item_at_index(index)
 	DexOptBtn.disabled = true
-	done_checker()
+
 
 func _on_ConOptBtn_item_selected(index):
 	CharacterSheet.player_con = ConOptBtn.get_item_text(index)
 	remove_item_at_index(index)
 	ConOptBtn.disabled = true
-	done_checker()
+
 
 func _on_IntOptBtn_item_selected(index):
 	CharacterSheet.player_int = IntOptBtn.get_item_text(index)
 	remove_item_at_index(index)
 	IntOptBtn.disabled = true
-	done_checker()
+
 
 func _on_WisOptBtn_item_selected(index):
 	CharacterSheet.player_wis = WisOptBtn.get_item_text(index)
 	remove_item_at_index(index)
 	WisOptBtn.disabled = true
-	done_checker()
+
 
 func _on_ChaOptBtn_item_selected(index):
 	CharacterSheet.player_cha = ChaOptBtn.get_item_text(index)
 	remove_item_at_index(index)
 	ChaOptBtn.disabled = true
-	done_checker()
+
