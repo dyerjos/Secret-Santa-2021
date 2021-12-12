@@ -1,6 +1,5 @@
 extends Node
 
-export var current_scene = "MainMenu"
 
 export var player_class = ""
 export var player_race = ""
@@ -16,7 +15,9 @@ export var player_con = ""
 export var player_int = ""
 export var player_wis = ""
 export var player_cha = ""
+export var player_level_one_spells = []
 
+var current_scene = "res://menu/MainMenu.tscn"
 
 func save_dict():
 	return {
@@ -34,9 +35,11 @@ func save_dict():
 		"player_int" : player_int,
 		"player_wis" : player_wis,
 		"player_cha" : player_cha,
+		"player_level_one_spells" : player_level_one_spells,
 	}
 
 func load(dict):
+	current_scene = dict["current_scene"]
 	player_class = dict["player_class"]
 	player_race = dict["player_race"]
 	player_name = dict["player_name"]
@@ -50,3 +53,4 @@ func load(dict):
 	player_int = dict["player_int"]
 	player_wis = dict["player_wis"]
 	player_cha = dict["player_cha"]
+	player_level_one_spells = dict["player_level_one_spells"]

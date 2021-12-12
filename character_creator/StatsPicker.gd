@@ -81,6 +81,7 @@ func done_checker(): # proceed to next scene so player doesn't have to think
 	stats_set_count += 1
 	if stats_set_count == 6:
 		print("done")
+		#TODO: not working?
 		
 func done_btn_checker():
 	if CharacterSheet.player_str == "" or CharacterSheet.player_dex == "" or CharacterSheet.player_con == "" or CharacterSheet.player_int == "" or CharacterSheet.player_wis == "" or CharacterSheet.player_cha == "":

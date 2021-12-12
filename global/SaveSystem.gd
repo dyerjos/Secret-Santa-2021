@@ -83,7 +83,7 @@ func prep_persistant_nodes(master_save_list):
 	return master_save_list
 
 func load_persistant_nodes(master_save_list):
-	print("load persistant nodes") # load_persistant_nodes()
+	print("TODO: load persistant nodes") # load_persistant_nodes()
 
 func prep_globals(master_save_list):
 	master_save_list.append(CharacterSheet.save_dict())
@@ -93,9 +93,8 @@ func prep_globals(master_save_list):
 	return master_save_list
 
 func load_globals(master_save_list):
-	print(master_save_list)
 	for dict in master_save_list:
-		print(dict)
-		if dict["player_name"]:
+		print("loading %s" % dict)
+		if "player_name" in dict:
 			CharacterSheet.load(dict)
-	print("load globals")
+	print("loaded globals")

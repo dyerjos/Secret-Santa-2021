@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://character_creator/SpellPicker.gd" type="Script" id=1]
 [ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
@@ -11,6 +12,7 @@ font_data = ExtResource( 2 )
 margin_right = 400.0
 margin_bottom = 240.0
 color = Color( 0.133333, 0.137255, 0.137255, 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,175 +58,404 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Class"]
-visible = false
+[node name="Column" type="VBoxContainer" parent="TabContainer/Class"]
 margin_right = 330.0
-margin_bottom = 164.0
+margin_bottom = 1418.0
 rect_min_size = Vector2( 330, 140 )
 
-[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
+[node name="Row" type="HBoxContainer" parent="TabContainer/Class/Column"]
 margin_right = 330.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 330, 120 )
+margin_bottom = 149.0
+rect_min_size = Vector2( 0, 100 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer"]
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row"]
 margin_right = 330.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 330, 120 )
+margin_bottom = 149.0
+rect_min_size = Vector2( 330, 0 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer"]
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row/SpellPanel"]
 margin_right = 330.0
-margin_bottom = 20.0
+margin_bottom = 14.0
+text = "Cantrip: Light"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 117.0
+text = "An item you touch glows with arcane light, about as bright as a torch. It gives off no heat or sound and requires no fuel, but it is otherwise like a mundane torch. You have complete control of the color of the flame. The spell lasts as long as it is in your presence."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Class/Column/Row/SpellPanel"]
+margin_top = 121.0
+margin_right = 330.0
+margin_bottom = 141.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row/SpellPanel"]
+margin_top = 145.0
+margin_right = 330.0
+margin_bottom = 149.0
+
+[node name="Row2" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 153.0
+margin_right = 330.0
+margin_bottom = 353.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row2"]
+margin_right = 330.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row2/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Unseen Servant"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row2/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 168.0
+text = "You conjure a simple invisible construct that can do nothing but carry items. It has Load 3 and carries anything you hand to it. It cannot pick up items on its own and can only carry those you give to it. Items carried by an unseen servant appear to float in the air a few paces behind you. An unseen servant that takes damage or leaves your presence is immediately dispelled, dropping any items it carried."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Class/Column/Row2/SpellPanel"]
+margin_top = 172.0
+margin_right = 330.0
+margin_bottom = 192.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row2/SpellPanel"]
+margin_top = 196.0
+margin_right = 330.0
+margin_bottom = 200.0
+
+[node name="Row3" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 357.0
+margin_right = 330.0
+margin_bottom = 557.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row3"]
+margin_right = 330.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row3/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Prestidigitation"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row3/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 168.0
+text = "You perform minor tricks of true magic. If you touch an item as part of the casting you can make cosmetic changes to it: clean it, soil it, cool it, warm it, flavor it, or change its color. If you cast the spell without touching an item you can instead create minor illusions no bigger than yourself. Prestidigitation illusions are crude and clearly illusions -- they won’t fool anyone, but they might entertain them."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Class/Column/Row3/SpellPanel"]
+margin_top = 172.0
+margin_right = 330.0
+margin_bottom = 192.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row3/SpellPanel"]
+margin_top = 196.0
+margin_right = 330.0
+margin_bottom = 200.0
+
+[node name="Row4" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 561.0
+margin_right = 330.0
+margin_bottom = 676.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row4"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row4/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Contact Spirits"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row4/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Name the spirit you wish to contact. You pull that creature through the planes, just close enough to speak to you. It is bound to answer any one question you ask to the best of its ability."
+autowrap = true
+
+[node name="SpellBtn1" type="Button" parent="TabContainer/Class/Column/Row4/SpellPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this spell in my spellbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row4/SpellPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row5" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 680.0
+margin_right = 330.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row5"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row5/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Detect Magic"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row5/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "One of your senses is briefly attuned to magic. You will know what is magical nearby."
+autowrap = true
+
+[node name="SpellBtn2" type="Button" parent="TabContainer/Class/Column/Row5/SpellPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this spell in my spellbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row5/SpellPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row6" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 784.0
+margin_right = 330.0
+margin_bottom = 884.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row6"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row6/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Magic Missile"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row6/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "Projectiles of pure magic spring from your fingers dealing damage to one target."
+autowrap = true
+
+[node name="SpellBtn3" type="Button" parent="TabContainer/Class/Column/Row6/SpellPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this spell in my spellbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row6/SpellPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row7" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 888.0
+margin_right = 330.0
+margin_bottom = 1003.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row7"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row7/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Charm Person"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row7/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "The person (not beast or monster) you touch while casting this spell counts you as a friend until they take damage or you prove otherwise.
+"
+autowrap = true
+
+[node name="SpellBtn4" type="Button" parent="TabContainer/Class/Column/Row7/SpellPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this spell in my spellbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row7/SpellPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row8" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 1007.0
+margin_right = 330.0
+margin_bottom = 1139.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row8"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row8/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Invisibility"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row8/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "Touch an ally: nobody can see them. They are invisible! The spell persists until the target attacks or you dismiss the effect. While the spell is ongoing you can’t
+cast a spell."
+autowrap = true
+
+[node name="SpellBtn5" type="Button" parent="TabContainer/Class/Column/Row8/SpellPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this spell in my spellbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row8/SpellPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row9" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 1143.0
+margin_right = 330.0
+margin_bottom = 1275.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row9"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row9/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Telepathy"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row9/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "You form a telepathic bond with a single person you touch, enabling you to converse with that person through your thoughts. You can only have one telepathic bond
+at a time."
+autowrap = true
+
+[node name="SpellBtn6" type="Button" parent="TabContainer/Class/Column/Row9/SpellPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this spell in my spellbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row9/SpellPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row10" type="HBoxContainer" parent="TabContainer/Class/Column"]
+margin_top = 1279.0
+margin_right = 330.0
+margin_bottom = 1394.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row10"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row10/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Alarm"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row10/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Walk a wide circle as you cast this spell. Until you prepare spells again your magic will alert you if a creature crosses that circle. Even if you are asleep, the spell will shake you from your slumber."
+autowrap = true
+
+[node name="SpellBtn7" type="Button" parent="TabContainer/Class/Column/Row10/SpellPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this spell in my spellbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row10/SpellPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/Column"]
+margin_top = 1398.0
+margin_right = 330.0
+margin_bottom = 1418.0
 rect_min_size = Vector2( 0, 20 )
-alignment = 1
 
-[node name="StrengthLabel" type="Label" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 98.0
-margin_top = 3.0
-margin_right = 178.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 80, 0 )
-text = "Strength"
-
-[node name="StrOptBtn" type="OptionButton" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 182.0
-margin_right = 232.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 50, 0 )
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 330.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 0, 20 )
-alignment = 1
-
-[node name="DexterityLabel" type="Label" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 98.0
-margin_top = 3.0
-margin_right = 178.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 80, 0 )
-text = "Dexterity"
-
-[node name="DexOptBtn" type="OptionButton" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 182.0
-margin_right = 232.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 50, 0 )
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_top = 48.0
-margin_right = 330.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 0, 20 )
-alignment = 1
-
-[node name="ConLabel" type="Label" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 98.0
-margin_top = 3.0
-margin_right = 178.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 80, 0 )
-text = "Constitution"
-
-[node name="ConOptBtn" type="OptionButton" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 182.0
-margin_right = 232.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 50, 0 )
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_top = 72.0
-margin_right = 330.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 0, 20 )
-alignment = 1
-
-[node name="IntelLabel" type="Label" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4"]
-margin_left = 98.0
-margin_top = 3.0
-margin_right = 178.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 80, 0 )
-text = "Intelligence"
-
-[node name="IntOptBtn" type="OptionButton" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4"]
-margin_left = 182.0
-margin_right = 232.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 50, 0 )
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_top = 96.0
-margin_right = 330.0
-margin_bottom = 116.0
-rect_min_size = Vector2( 0, 20 )
-alignment = 1
-
-[node name="WisdomLabel" type="Label" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5"]
-margin_left = 98.0
-margin_top = 3.0
-margin_right = 178.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 80, 0 )
-text = "Wisdom"
-
-[node name="WisOptBtn" type="OptionButton" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5"]
-margin_left = 182.0
-margin_right = 232.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 50, 0 )
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_top = 120.0
-margin_right = 330.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 0, 20 )
-alignment = 1
-
-[node name="CharismaLabel" type="Label" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6"]
-margin_left = 98.0
-margin_top = 3.0
-margin_right = 178.0
-margin_bottom = 17.0
-rect_min_size = Vector2( 80, 0 )
-text = "Charisma"
-
-[node name="ChaOptBtn" type="OptionButton" parent="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6"]
-margin_left = 182.0
-margin_right = 232.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 50, 0 )
-
-[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/VBoxContainer"]
-margin_top = 144.0
-margin_right = 330.0
-margin_bottom = 164.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer3"]
-margin_left = 103.0
-margin_right = 227.0
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/Column/CenterContainer3"]
+margin_left = 76.0
+margin_right = 253.0
 margin_bottom = 20.0
 
-[node name="DoneBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
-margin_right = 60.0
+[node name="DoneBtn" type="Button" parent="TabContainer/Class/Column/CenterContainer3/HBoxContainer"]
+margin_right = 113.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 60, 0 )
-text = "Done"
+text = "Close spellbook"
 
-[node name="ResetBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
-margin_left = 64.0
-margin_right = 124.0
+[node name="ResetBtn" type="Button" parent="TabContainer/Class/Column/CenterContainer3/HBoxContainer"]
+margin_left = 117.0
+margin_right = 177.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 60, 0 )
 text = "Reset"
 
-[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/StrOptBtn" to="." method="_on_StrOptBtn_item_selected"]
-[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer2/DexOptBtn" to="." method="_on_DexOptBtn_item_selected"]
-[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer3/ConOptBtn" to="." method="_on_ConOptBtn_item_selected"]
-[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer4/IntOptBtn" to="." method="_on_IntOptBtn_item_selected"]
-[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer5/WisOptBtn" to="." method="_on_WisOptBtn_item_selected"]
-[connection signal="item_selected" from="TabContainer/Class/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer6/ChaOptBtn" to="." method="_on_ChaOptBtn_item_selected"]
-[connection signal="pressed" from="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
-[connection signal="pressed" from="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/Row4/SpellPanel/SpellBtn1" to="." method="_on_SpellBtn1_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/Row5/SpellPanel/SpellBtn2" to="." method="_on_SpellBtn2_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/Row6/SpellPanel/SpellBtn3" to="." method="_on_SpellBtn3_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/Row7/SpellPanel/SpellBtn4" to="." method="_on_SpellBtn4_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/Row8/SpellPanel/SpellBtn5" to="." method="_on_SpellBtn5_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/Row9/SpellPanel/SpellBtn6" to="." method="_on_SpellBtn6_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/Row10/SpellPanel/SpellBtn7" to="." method="_on_SpellBtn7_pressed"]
