@@ -8,7 +8,12 @@ onready var SpellBtn4 = $TabContainer/Class/Column/Row7/SpellPanel/SpellBtn4
 onready var SpellBtn5 = $TabContainer/Class/Column/Row8/SpellPanel/SpellBtn5
 onready var SpellBtn6 = $TabContainer/Class/Column/Row9/SpellPanel/SpellBtn6
 onready var SpellBtn7 = $TabContainer/Class/Column/Row10/SpellPanel/SpellBtn7 
+onready var SpellBtn8 = $TabContainer/Class/Column/Row11/SpellPanel/SpellBtn8
 
+onready var CureLightWoundsRow = $TabContainer/Class/Column/Row11
+
+func _ready():
+	assign_cantrips_and_race()
 
 func _process(delta):
 	done_btn_checker()
@@ -28,6 +33,7 @@ func renable_all_buttons():
 	SpellBtn5.disabled = false
 	SpellBtn6.disabled = false
 	SpellBtn7.disabled = false
+	SpellBtn8.disabled = false
 	
 func disable_all_buttons():
 	SpellBtn1.disabled = true
@@ -37,7 +43,24 @@ func disable_all_buttons():
 	SpellBtn5.disabled = true
 	SpellBtn6.disabled = true
 	SpellBtn7.disabled = true
+	SpellBtn8.disabled = true
 
+func assign_cantrips_and_race():
+	var wizard_cantrips = ["Light", "Unseen Servant", "Prestidigitation"]
+	CharacterSheet.known_cantrips = []
+	if CharacterSheet.player_class == "wizard":
+		CharacterSheet.known_cantrips.append_array(wizard_cantrips)
+		if CharacterSheet.player_race == "elf":
+			CharacterSheet.known_cantrips.append("Detect Magic")
+			SpellBtn2.disabled = true
+			SpellBtn2.text = "As an Elf, you always have this prepared!"
+			CureLightWoundsRow.visible = false
+		if CharacterSheet.player_race == "human":
+			CureLightWoundsRow.visible = true
+		#! Godot 3.4 is adding cantrips to spell array. 
+		#! Godot 3.4 also makes clear() clear cantrip array as well...
+		CharacterSheet.player_level_one_spells = []
+			
 
 func _on_SpellBtn1_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
@@ -74,11 +97,18 @@ func _on_SpellBtn7_pressed():
 		CharacterSheet.player_level_one_spells.append("Alarm")
 		SpellBtn7.disabled = true
 
+func _on_SpellBtn8_pressed():
+	if CharacterSheet.player_level_one_spells.size() < 3:
+		CharacterSheet.player_level_one_spells.append("Cure Light Wounds")
+		SpellBtn8.disabled = true
+
 
 func _on_DoneBtn_pressed():
 	print("going to next scene")
+	print("Testing modifier: con %s" % CharacterSheet.stat_to_modifier(CharacterSheet.player_con))
 
 
 func _on_ResetBtn_pressed():
-	CharacterSheet.player_level_one_spells.clear()
+	assign_cantrips_and_race()
 	renable_all_buttons()
+

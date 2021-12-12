@@ -40,4 +40,5 @@ func _on_ThiefBtn_pressed():
 
 func _on_WizardBtn_pressed():
 	CharacterSheet.player_class = "wizard"
+	CharacterSheet.class_base_hitpoints = 4
 	Scene.change("WizardRaces")

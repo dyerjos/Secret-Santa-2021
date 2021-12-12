@@ -60,7 +60,7 @@ __meta__ = {
 
 [node name="Column" type="VBoxContainer" parent="TabContainer/Class"]
 margin_right = 330.0
-margin_bottom = 1418.0
+margin_bottom = 1522.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="Row" type="HBoxContainer" parent="TabContainer/Class/Column"]
@@ -428,10 +428,46 @@ margin_top = 111.0
 margin_right = 330.0
 margin_bottom = 115.0
 
-[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/Column"]
+[node name="Row11" type="HBoxContainer" parent="TabContainer/Class/Column"]
 margin_top = 1398.0
 margin_right = 330.0
-margin_bottom = 1418.0
+margin_bottom = 1498.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row11"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row11/SpellPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cleric Spell: Cure Light Wounds"
+align = 1
+autowrap = true
+
+[node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row11/SpellPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "At your touch wounds scab and bones cease to ache. Heal an ally you touch of some damage."
+autowrap = true
+
+[node name="SpellBtn8" type="Button" parent="TabContainer/Class/Column/Row11/SpellPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this spell in my spellbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row11/SpellPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/Column"]
+margin_top = 1502.0
+margin_right = 330.0
+margin_bottom = 1522.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/Column/CenterContainer3"]
@@ -459,5 +495,6 @@ text = "Reset"
 [connection signal="pressed" from="TabContainer/Class/Column/Row8/SpellPanel/SpellBtn5" to="." method="_on_SpellBtn5_pressed"]
 [connection signal="pressed" from="TabContainer/Class/Column/Row9/SpellPanel/SpellBtn6" to="." method="_on_SpellBtn6_pressed"]
 [connection signal="pressed" from="TabContainer/Class/Column/Row10/SpellPanel/SpellBtn7" to="." method="_on_SpellBtn7_pressed"]
+[connection signal="pressed" from="TabContainer/Class/Column/Row11/SpellPanel/SpellBtn8" to="." method="_on_SpellBtn8_pressed"]
 [connection signal="pressed" from="TabContainer/Class/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
 [connection signal="pressed" from="TabContainer/Class/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]

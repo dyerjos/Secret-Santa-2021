@@ -23,7 +23,7 @@ func _process(delta):
 	done_btn_checker()
 
 func _on_DoneBtn_pressed():
-	Scene.change("ClassMovesPicker")
+	set_player_hitpoints_and_next_scene()
 	
 func _on_HelpBtn_pressed():
 	if CharacterSheet.player_class == "wizard":
@@ -33,7 +33,7 @@ func _on_HelpBtn_pressed():
 		CharacterSheet.player_int = 16  
 		CharacterSheet.player_wis = 12  
 		CharacterSheet.player_cha = 13
-		Scene.change("ClassMovesPicker")
+		set_player_hitpoints_and_next_scene()
 	else:
 		print("This class needs work for this button")
 	
@@ -86,7 +86,12 @@ func remove_item_at_index(index):
 	IntOptBtn.remove_item(index)
 	WisOptBtn.remove_item(index)
 	ChaOptBtn.remove_item(index)
-
+	
+func set_player_hitpoints_and_next_scene():
+	CharacterSheet.player_hitpoints = CharacterSheet.player_con + CharacterSheet.class_base_hitpoints
+	#! done_btn_checker() errors if we don't jump to next scene
+	assert(typeof(CharacterSheet.player_hitpoints) == 2) #* TYPE_INT = 2
+	Scene.change("ClassMovesPicker")
 	
 func done_btn_checker():
 	if CharacterSheet.player_str == "" or CharacterSheet.player_dex == "" or CharacterSheet.player_con == "" or CharacterSheet.player_int == "" or CharacterSheet.player_wis == "" or CharacterSheet.player_cha == "":
