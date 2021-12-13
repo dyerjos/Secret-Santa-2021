@@ -1,0 +1,1872 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://character_creator/GearPicker.gd" type="Script" id=1]
+[ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+font_data = ExtResource( 2 )
+
+[node name="GearPicker" type="ColorRect"]
+margin_right = 400.0
+margin_bottom = 240.0
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 400.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1, 0.998372 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 106.0
+margin_top = 16.0
+margin_right = 294.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Choose Your Gear"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+margin_left = 25.0
+margin_top = 50.0
+margin_right = 375.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 340, 180 )
+rect_scale = Vector2( 1, 1.00211 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Standard" type="ScrollContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 250, 0 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column" type="VBoxContainer" parent="TabContainer/Standard"]
+margin_right = 330.0
+margin_bottom = 236.0
+rect_min_size = Vector2( 330, 140 )
+
+[node name="Row" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Spellbook"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "You have mastered several spells and inscribed them in your spellbook."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Standard/Column/Row/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+disabled = true
+text = "You always have this item"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row2" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 236.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row2"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row2/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "5 x Dungeon Rations"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row2/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "Distances are measured in rations. A ration is the amount of supplies used up in a day. Journeys take more rations when they are long or when travel is slow. You start off with 5 rations. More can be purchased in towns."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Standard/Column/Row2/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row2/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row3" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 357.0
+margin_right = 330.0
+margin_bottom = 557.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row3"]
+margin_right = 330.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row3/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Prestidigitation"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row3/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 168.0
+text = "You perform minor tricks of true magic. If you touch an item as part of the casting you can make cosmetic changes to it: clean it, soil it, cool it, warm it, flavor it, or change its color. If you cast the Gear without touching an item you can instead create minor illusions no bigger than yourself. Prestidigitation illusions are crude and clearly illusions -- they won’t fool anyone, but they might entertain them."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Standard/Column/Row3/GearPanel"]
+margin_top = 172.0
+margin_right = 330.0
+margin_bottom = 192.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row3/GearPanel"]
+margin_top = 196.0
+margin_right = 330.0
+margin_bottom = 200.0
+
+[node name="Row4" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 561.0
+margin_right = 330.0
+margin_bottom = 676.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row4"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row4/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Contact Spirits"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row4/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Name the spirit you wish to contact. You pull that creature through the planes, just close enough to speak to you. It is bound to answer any one question you ask to the best of its ability."
+autowrap = true
+
+[node name="GearBtn1" type="Button" parent="TabContainer/Standard/Column/Row4/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row4/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row5" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 680.0
+margin_right = 330.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row5"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row5/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Detect Magic"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row5/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "One of your senses is briefly attuned to magic. You will know what is magical nearby."
+autowrap = true
+
+[node name="GearBtn2" type="Button" parent="TabContainer/Standard/Column/Row5/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row5/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row6" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 784.0
+margin_right = 330.0
+margin_bottom = 884.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row6"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row6/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Magic Missile"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row6/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "Projectiles of pure magic spring from your fingers dealing damage to one target."
+autowrap = true
+
+[node name="GearBtn3" type="Button" parent="TabContainer/Standard/Column/Row6/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row6/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row7" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 888.0
+margin_right = 330.0
+margin_bottom = 1003.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row7"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row7/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Charm Person"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row7/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "The person (not beast or monster) you touch while casting this Gear counts you as a friend until they take damage or you prove otherwise.
+"
+autowrap = true
+
+[node name="GearBtn4" type="Button" parent="TabContainer/Standard/Column/Row7/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row7/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row8" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 1007.0
+margin_right = 330.0
+margin_bottom = 1139.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row8"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row8/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Invisibility"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row8/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "Touch an ally: nobody can see them. They are invisible! The Gear persists until the target attacks or you dismiss the effect. While the Gear is ongoing you can’t
+cast a Gear."
+autowrap = true
+
+[node name="GearBtn5" type="Button" parent="TabContainer/Standard/Column/Row8/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row8/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row9" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 1143.0
+margin_right = 330.0
+margin_bottom = 1275.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row9"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row9/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Telepathy"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row9/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "You form a telepathic bond with a single person you touch, enabling you to converse with that person through your thoughts. You can only have one telepathic bond
+at a time."
+autowrap = true
+
+[node name="GearBtn6" type="Button" parent="TabContainer/Standard/Column/Row9/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row9/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row10" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 1279.0
+margin_right = 330.0
+margin_bottom = 1394.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row10"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row10/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Alarm"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row10/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Walk a wide circle as you cast this Gear. Until you prepare Gears again your magic will alert you if a creature crosses that circle. Even if you are asleep, the Gear will shake you from your slumber."
+autowrap = true
+
+[node name="GearBtn7" type="Button" parent="TabContainer/Standard/Column/Row10/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row10/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row11" type="HBoxContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 1398.0
+margin_right = 330.0
+margin_bottom = 1498.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Standard/Column/Row11"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Standard/Column/Row11/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cleric Gear: Cure Light Wounds"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Standard/Column/Row11/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "At your touch wounds scab and bones cease to ache. Heal an ally you touch of some damage."
+autowrap = true
+
+[node name="GearBtn8" type="Button" parent="TabContainer/Standard/Column/Row11/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Standard/Column/Row11/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Standard/Column"]
+visible = false
+margin_top = 1502.0
+margin_right = 330.0
+margin_bottom = 1522.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Standard/Column/CenterContainer3"]
+margin_left = 77.0
+margin_right = 253.0
+margin_bottom = 20.0
+
+[node name="DoneBtn" type="Button" parent="TabContainer/Standard/Column/CenterContainer3/HBoxContainer"]
+margin_right = 113.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Close Gearbook"
+
+[node name="ResetBtn" type="Button" parent="TabContainer/Standard/Column/CenterContainer3/HBoxContainer"]
+margin_left = 117.0
+margin_right = 177.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Reset"
+
+[node name="Defense" type="ScrollContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 250, 0 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column" type="VBoxContainer" parent="TabContainer/Defense"]
+margin_right = 330.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 330, 140 )
+
+[node name="Row" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+margin_right = 330.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row"]
+margin_right = 330.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Choose One:"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row/GearPanel"]
+visible = false
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 117.0
+text = "An item you touch glows with arcane light, about as bright as a torch. It gives off no heat or sound and requires no fuel, but it is otherwise like a mundane torch. You have complete control of the color of the flame. The Gear lasts as long as it is in your presence."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Defense/Column/Row/GearPanel"]
+visible = false
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 38.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 22.0
+
+[node name="Row2" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+margin_top = 26.0
+margin_right = 330.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row2"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row2/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Leather Armor"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row2/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "Leather Armor will provide a little armor to help protect you on your travels"
+autowrap = true
+
+[node name="GearBtn9" type="Button" parent="TabContainer/Defense/Column/Row2/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Equip this item"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row2/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row3" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+margin_top = 130.0
+margin_right = 330.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row3"]
+margin_right = 330.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row3/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Bag of Books & 3x healing potions"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row3/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 168.0
+text = "Your bag of books could contain  just the right book for the subject you’re needing information on. Consult a book, the book can not be used again, and you get advantage on your attempt to get facts on a matter (Spout Lore move)
+
+When you drink an entire healing potion, heal yourself of some damage or remove one debility (like a status effect)."
+autowrap = true
+
+[node name="GearBtn10" type="Button" parent="TabContainer/Defense/Column/Row3/GearPanel"]
+margin_top = 172.0
+margin_right = 330.0
+margin_bottom = 192.0
+text = "Add these items to your inventory"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row3/GearPanel"]
+margin_top = 196.0
+margin_right = 330.0
+margin_bottom = 200.0
+
+[node name="Row4" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 561.0
+margin_right = 330.0
+margin_bottom = 676.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row4"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row4/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Contact Spirits"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row4/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Name the spirit you wish to contact. You pull that creature through the planes, just close enough to speak to you. It is bound to answer any one question you ask to the best of its ability."
+autowrap = true
+
+[node name="GearBtn1" type="Button" parent="TabContainer/Defense/Column/Row4/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row4/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row5" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 680.0
+margin_right = 330.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row5"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row5/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Detect Magic"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row5/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "One of your senses is briefly attuned to magic. You will know what is magical nearby."
+autowrap = true
+
+[node name="GearBtn2" type="Button" parent="TabContainer/Defense/Column/Row5/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row5/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row6" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 784.0
+margin_right = 330.0
+margin_bottom = 884.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row6"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row6/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Magic Missile"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row6/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "Projectiles of pure magic spring from your fingers dealing damage to one target."
+autowrap = true
+
+[node name="GearBtn3" type="Button" parent="TabContainer/Defense/Column/Row6/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row6/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row7" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 888.0
+margin_right = 330.0
+margin_bottom = 1003.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row7"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row7/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Charm Person"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row7/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "The person (not beast or monster) you touch while casting this Gear counts you as a friend until they take damage or you prove otherwise.
+"
+autowrap = true
+
+[node name="GearBtn4" type="Button" parent="TabContainer/Defense/Column/Row7/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row7/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row8" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 1007.0
+margin_right = 330.0
+margin_bottom = 1139.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row8"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row8/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Invisibility"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row8/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "Touch an ally: nobody can see them. They are invisible! The Gear persists until the target attacks or you dismiss the effect. While the Gear is ongoing you can’t
+cast a Gear."
+autowrap = true
+
+[node name="GearBtn5" type="Button" parent="TabContainer/Defense/Column/Row8/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row8/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row9" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 1143.0
+margin_right = 330.0
+margin_bottom = 1275.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row9"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row9/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Telepathy"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row9/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "You form a telepathic bond with a single person you touch, enabling you to converse with that person through your thoughts. You can only have one telepathic bond
+at a time."
+autowrap = true
+
+[node name="GearBtn6" type="Button" parent="TabContainer/Defense/Column/Row9/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row9/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row10" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 1279.0
+margin_right = 330.0
+margin_bottom = 1394.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row10"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row10/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Alarm"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row10/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Walk a wide circle as you cast this Gear. Until you prepare Gears again your magic will alert you if a creature crosses that circle. Even if you are asleep, the Gear will shake you from your slumber."
+autowrap = true
+
+[node name="GearBtn7" type="Button" parent="TabContainer/Defense/Column/Row10/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row10/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row11" type="HBoxContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 1398.0
+margin_right = 330.0
+margin_bottom = 1498.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Defense/Column/Row11"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Defense/Column/Row11/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cleric Gear: Cure Light Wounds"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Defense/Column/Row11/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "At your touch wounds scab and bones cease to ache. Heal an ally you touch of some damage."
+autowrap = true
+
+[node name="GearBtn8" type="Button" parent="TabContainer/Defense/Column/Row11/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Defense/Column/Row11/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Defense/Column"]
+visible = false
+margin_top = 1502.0
+margin_right = 330.0
+margin_bottom = 1522.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Defense/Column/CenterContainer3"]
+margin_left = 77.0
+margin_right = 253.0
+margin_bottom = 20.0
+
+[node name="DoneBtn" type="Button" parent="TabContainer/Defense/Column/CenterContainer3/HBoxContainer"]
+margin_right = 113.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Close Gearbook"
+
+[node name="ResetBtn" type="Button" parent="TabContainer/Defense/Column/CenterContainer3/HBoxContainer"]
+margin_left = 117.0
+margin_right = 177.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Reset"
+
+[node name="Weapon" type="ScrollContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 250, 0 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column" type="VBoxContainer" parent="TabContainer/Weapon"]
+margin_right = 330.0
+margin_bottom = 353.0
+rect_min_size = Vector2( 330, 140 )
+
+[node name="Row" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+margin_right = 330.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row"]
+margin_right = 330.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Light"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 117.0
+text = "An item you touch glows with arcane light, about as bright as a torch. It gives off no heat or sound and requires no fuel, but it is otherwise like a mundane torch. You have complete control of the color of the flame. The Gear lasts as long as it is in your presence."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Weapon/Column/Row/GearPanel"]
+margin_top = 121.0
+margin_right = 330.0
+margin_bottom = 141.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row/GearPanel"]
+margin_top = 145.0
+margin_right = 330.0
+margin_bottom = 149.0
+
+[node name="Row2" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+margin_top = 153.0
+margin_right = 330.0
+margin_bottom = 353.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row2"]
+margin_right = 330.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Unseen Servant"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 168.0
+text = "You conjure a simple invisible construct that can do nothing but carry items. It has Load 3 and carries anything you hand to it. It cannot pick up items on its own and can only carry those you give to it. Items carried by an unseen servant appear to float in the air a few paces behind you. An unseen servant that takes damage or leaves your presence is immediately diGeared, dropping any items it carried."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
+margin_top = 172.0
+margin_right = 330.0
+margin_bottom = 192.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
+margin_top = 196.0
+margin_right = 330.0
+margin_bottom = 200.0
+
+[node name="Row3" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 357.0
+margin_right = 330.0
+margin_bottom = 557.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row3"]
+margin_right = 330.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Prestidigitation"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 168.0
+text = "You perform minor tricks of true magic. If you touch an item as part of the casting you can make cosmetic changes to it: clean it, soil it, cool it, warm it, flavor it, or change its color. If you cast the Gear without touching an item you can instead create minor illusions no bigger than yourself. Prestidigitation illusions are crude and clearly illusions -- they won’t fool anyone, but they might entertain them."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
+margin_top = 172.0
+margin_right = 330.0
+margin_bottom = 192.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
+margin_top = 196.0
+margin_right = 330.0
+margin_bottom = 200.0
+
+[node name="Row4" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 561.0
+margin_right = 330.0
+margin_bottom = 676.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row4"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row4/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Contact Spirits"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row4/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Name the spirit you wish to contact. You pull that creature through the planes, just close enough to speak to you. It is bound to answer any one question you ask to the best of its ability."
+autowrap = true
+
+[node name="GearBtn1" type="Button" parent="TabContainer/Weapon/Column/Row4/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row4/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row5" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 680.0
+margin_right = 330.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row5"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row5/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Detect Magic"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row5/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "One of your senses is briefly attuned to magic. You will know what is magical nearby."
+autowrap = true
+
+[node name="GearBtn2" type="Button" parent="TabContainer/Weapon/Column/Row5/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row5/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row6" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 784.0
+margin_right = 330.0
+margin_bottom = 884.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row6"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row6/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Magic Missile"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row6/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "Projectiles of pure magic spring from your fingers dealing damage to one target."
+autowrap = true
+
+[node name="GearBtn3" type="Button" parent="TabContainer/Weapon/Column/Row6/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row6/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row7" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 888.0
+margin_right = 330.0
+margin_bottom = 1003.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row7"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row7/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Charm Person"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row7/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "The person (not beast or monster) you touch while casting this Gear counts you as a friend until they take damage or you prove otherwise.
+"
+autowrap = true
+
+[node name="GearBtn4" type="Button" parent="TabContainer/Weapon/Column/Row7/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row7/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row8" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 1007.0
+margin_right = 330.0
+margin_bottom = 1139.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row8"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row8/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Invisibility"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row8/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "Touch an ally: nobody can see them. They are invisible! The Gear persists until the target attacks or you dismiss the effect. While the Gear is ongoing you can’t
+cast a Gear."
+autowrap = true
+
+[node name="GearBtn5" type="Button" parent="TabContainer/Weapon/Column/Row8/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row8/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row9" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 1143.0
+margin_right = 330.0
+margin_bottom = 1275.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row9"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row9/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Telepathy"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row9/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "You form a telepathic bond with a single person you touch, enabling you to converse with that person through your thoughts. You can only have one telepathic bond
+at a time."
+autowrap = true
+
+[node name="GearBtn6" type="Button" parent="TabContainer/Weapon/Column/Row9/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row9/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row10" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 1279.0
+margin_right = 330.0
+margin_bottom = 1394.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row10"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row10/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Alarm"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row10/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Walk a wide circle as you cast this Gear. Until you prepare Gears again your magic will alert you if a creature crosses that circle. Even if you are asleep, the Gear will shake you from your slumber."
+autowrap = true
+
+[node name="GearBtn7" type="Button" parent="TabContainer/Weapon/Column/Row10/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row10/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row11" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 1398.0
+margin_right = 330.0
+margin_bottom = 1498.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row11"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row11/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cleric Gear: Cure Light Wounds"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row11/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "At your touch wounds scab and bones cease to ache. Heal an ally you touch of some damage."
+autowrap = true
+
+[node name="GearBtn8" type="Button" parent="TabContainer/Weapon/Column/Row11/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row11/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Weapon/Column"]
+visible = false
+margin_top = 1502.0
+margin_right = 330.0
+margin_bottom = 1522.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Weapon/Column/CenterContainer3"]
+margin_left = 77.0
+margin_right = 253.0
+margin_bottom = 20.0
+
+[node name="DoneBtn" type="Button" parent="TabContainer/Weapon/Column/CenterContainer3/HBoxContainer"]
+margin_right = 113.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Close Gearbook"
+
+[node name="ResetBtn" type="Button" parent="TabContainer/Weapon/Column/CenterContainer3/HBoxContainer"]
+margin_left = 117.0
+margin_right = 177.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Reset"
+
+[node name="Misc" type="ScrollContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 250, 0 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column" type="VBoxContainer" parent="TabContainer/Misc"]
+margin_right = 330.0
+margin_bottom = 353.0
+rect_min_size = Vector2( 330, 140 )
+
+[node name="Row" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+margin_right = 330.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row"]
+margin_right = 330.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Light"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 117.0
+text = "An item you touch glows with arcane light, about as bright as a torch. It gives off no heat or sound and requires no fuel, but it is otherwise like a mundane torch. You have complete control of the color of the flame. The Gear lasts as long as it is in your presence."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Misc/Column/Row/GearPanel"]
+margin_top = 121.0
+margin_right = 330.0
+margin_bottom = 141.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row/GearPanel"]
+margin_top = 145.0
+margin_right = 330.0
+margin_bottom = 149.0
+
+[node name="Row2" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+margin_top = 153.0
+margin_right = 330.0
+margin_bottom = 353.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row2"]
+margin_right = 330.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row2/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Unseen Servant"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row2/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 168.0
+text = "You conjure a simple invisible construct that can do nothing but carry items. It has Load 3 and carries anything you hand to it. It cannot pick up items on its own and can only carry those you give to it. Items carried by an unseen servant appear to float in the air a few paces behind you. An unseen servant that takes damage or leaves your presence is immediately diGeared, dropping any items it carried."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Misc/Column/Row2/GearPanel"]
+margin_top = 172.0
+margin_right = 330.0
+margin_bottom = 192.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row2/GearPanel"]
+margin_top = 196.0
+margin_right = 330.0
+margin_bottom = 200.0
+
+[node name="Row3" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 357.0
+margin_right = 330.0
+margin_bottom = 557.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row3"]
+margin_right = 330.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row3/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cantrip: Prestidigitation"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row3/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 168.0
+text = "You perform minor tricks of true magic. If you touch an item as part of the casting you can make cosmetic changes to it: clean it, soil it, cool it, warm it, flavor it, or change its color. If you cast the Gear without touching an item you can instead create minor illusions no bigger than yourself. Prestidigitation illusions are crude and clearly illusions -- they won’t fool anyone, but they might entertain them."
+autowrap = true
+
+[node name="SelectBtn" type="Button" parent="TabContainer/Misc/Column/Row3/GearPanel"]
+margin_top = 172.0
+margin_right = 330.0
+margin_bottom = 192.0
+disabled = true
+text = "You always have this prepared"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row3/GearPanel"]
+margin_top = 196.0
+margin_right = 330.0
+margin_bottom = 200.0
+
+[node name="Row4" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 561.0
+margin_right = 330.0
+margin_bottom = 676.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row4"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row4/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Contact Spirits"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row4/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Name the spirit you wish to contact. You pull that creature through the planes, just close enough to speak to you. It is bound to answer any one question you ask to the best of its ability."
+autowrap = true
+
+[node name="GearBtn1" type="Button" parent="TabContainer/Misc/Column/Row4/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row4/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row5" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 680.0
+margin_right = 330.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row5"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row5/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Detect Magic"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row5/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "One of your senses is briefly attuned to magic. You will know what is magical nearby."
+autowrap = true
+
+[node name="GearBtn2" type="Button" parent="TabContainer/Misc/Column/Row5/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row5/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row6" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 784.0
+margin_right = 330.0
+margin_bottom = 884.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row6"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row6/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Magic Missile"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row6/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "Projectiles of pure magic spring from your fingers dealing damage to one target."
+autowrap = true
+
+[node name="GearBtn3" type="Button" parent="TabContainer/Misc/Column/Row6/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row6/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="Row7" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 888.0
+margin_right = 330.0
+margin_bottom = 1003.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row7"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row7/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Charm Person"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row7/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "The person (not beast or monster) you touch while casting this Gear counts you as a friend until they take damage or you prove otherwise.
+"
+autowrap = true
+
+[node name="GearBtn4" type="Button" parent="TabContainer/Misc/Column/Row7/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row7/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row8" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 1007.0
+margin_right = 330.0
+margin_bottom = 1139.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row8"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row8/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Invisibility"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row8/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "Touch an ally: nobody can see them. They are invisible! The Gear persists until the target attacks or you dismiss the effect. While the Gear is ongoing you can’t
+cast a Gear."
+autowrap = true
+
+[node name="GearBtn5" type="Button" parent="TabContainer/Misc/Column/Row8/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row8/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row9" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 1143.0
+margin_right = 330.0
+margin_bottom = 1275.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row9"]
+margin_right = 330.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row9/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Telepathy"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row9/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 100.0
+text = "You form a telepathic bond with a single person you touch, enabling you to converse with that person through your thoughts. You can only have one telepathic bond
+at a time."
+autowrap = true
+
+[node name="GearBtn6" type="Button" parent="TabContainer/Misc/Column/Row9/GearPanel"]
+margin_top = 104.0
+margin_right = 330.0
+margin_bottom = 124.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row9/GearPanel"]
+margin_top = 128.0
+margin_right = 330.0
+margin_bottom = 132.0
+
+[node name="Row10" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 1279.0
+margin_right = 330.0
+margin_bottom = 1394.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row10"]
+margin_right = 330.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row10/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Alarm"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row10/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 83.0
+text = "Walk a wide circle as you cast this Gear. Until you prepare Gears again your magic will alert you if a creature crosses that circle. Even if you are asleep, the Gear will shake you from your slumber."
+autowrap = true
+
+[node name="GearBtn7" type="Button" parent="TabContainer/Misc/Column/Row10/GearPanel"]
+margin_top = 87.0
+margin_right = 330.0
+margin_bottom = 107.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row10/GearPanel"]
+margin_top = 111.0
+margin_right = 330.0
+margin_bottom = 115.0
+
+[node name="Row11" type="HBoxContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 1398.0
+margin_right = 330.0
+margin_bottom = 1498.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row11"]
+margin_right = 330.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 330, 0 )
+
+[node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row11/GearPanel"]
+margin_right = 330.0
+margin_bottom = 14.0
+text = "Cleric Gear: Cure Light Wounds"
+align = 1
+autowrap = true
+
+[node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row11/GearPanel"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 49.0
+text = "At your touch wounds scab and bones cease to ache. Heal an ally you touch of some damage."
+autowrap = true
+
+[node name="GearBtn8" type="Button" parent="TabContainer/Misc/Column/Row11/GearPanel"]
+margin_top = 53.0
+margin_right = 330.0
+margin_bottom = 73.0
+text = "Inscribe this Gear in my Gearbook"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row11/GearPanel"]
+margin_top = 77.0
+margin_right = 330.0
+margin_bottom = 81.0
+
+[node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Misc/Column"]
+visible = false
+margin_top = 1502.0
+margin_right = 330.0
+margin_bottom = 1522.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Misc/Column/CenterContainer3"]
+margin_left = 77.0
+margin_right = 253.0
+margin_bottom = 20.0
+
+[node name="DoneBtn" type="Button" parent="TabContainer/Misc/Column/CenterContainer3/HBoxContainer"]
+margin_right = 113.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Close Gearbook"
+
+[node name="ResetBtn" type="Button" parent="TabContainer/Misc/Column/CenterContainer3/HBoxContainer"]
+margin_left = 117.0
+margin_right = 177.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+text = "Reset"
+
+[connection signal="pressed" from="TabContainer/Standard/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Standard/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Defense/Column/Row2/GearPanel/GearBtn9" to="." method="_on_GearBtn9_pressed"]
+[connection signal="pressed" from="TabContainer/Defense/Column/Row3/GearPanel/GearBtn10" to="." method="_on_GearBtn10_pressed"]
+[connection signal="pressed" from="TabContainer/Defense/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Defense/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Weapon/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Weapon/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Misc/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Misc/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]

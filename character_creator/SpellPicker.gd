@@ -104,8 +104,8 @@ func _on_SpellBtn8_pressed():
 
 
 func _on_DoneBtn_pressed():
-	print("going to next scene")
-	print("Testing modifier: con %s" % CharacterSheet.stat_to_modifier(CharacterSheet.player_con))
+	print("going to gear scene")
+
 
 
 func _on_ResetBtn_pressed():
