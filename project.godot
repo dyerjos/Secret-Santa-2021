@@ -30,6 +30,8 @@ Scene="*res://global/Scene.gd"
 CharacterSheet="*res://global/CharacterSheet.gd"
 WizardSpells="*res://global/WizardSpells.gd"
 SaveSystem="*res://global/SaveSystem.gd"
+Items="*res://global/Items.gd"
+ClericSpells="*res://global/ClericSpells.gd"
 
 [display]
 

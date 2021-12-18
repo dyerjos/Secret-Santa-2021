@@ -45,11 +45,10 @@ __meta__ = {
 }
 
 [node name="Standard" type="ScrollContainer" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 24.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_min_size = Vector2( 250, 0 )
@@ -499,10 +498,11 @@ rect_min_size = Vector2( 60, 0 )
 text = "Reset"
 
 [node name="Defense" type="ScrollContainer" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 24.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_min_size = Vector2( 250, 0 )
@@ -957,7 +957,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 24.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_min_size = Vector2( 250, 0 )
@@ -968,27 +968,28 @@ __meta__ = {
 
 [node name="Column" type="VBoxContainer" parent="TabContainer/Weapon"]
 margin_right = 330.0
-margin_bottom = 353.0
+margin_bottom = 140.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="Row" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
 margin_right = 330.0
-margin_bottom = 149.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 22 )
 
 [node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row"]
 margin_right = 330.0
-margin_bottom = 149.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row/GearPanel"]
 margin_right = 330.0
 margin_bottom = 14.0
-text = "Cantrip: Light"
+text = "Choose One:"
 align = 1
 autowrap = true
 
 [node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row/GearPanel"]
+visible = false
 margin_top = 18.0
 margin_right = 330.0
 margin_bottom = 117.0
@@ -996,91 +997,92 @@ text = "An item you touch glows with arcane light, about as bright as a torch. I
 autowrap = true
 
 [node name="SelectBtn" type="Button" parent="TabContainer/Weapon/Column/Row/GearPanel"]
+visible = false
 margin_top = 121.0
 margin_right = 330.0
 margin_bottom = 141.0
 disabled = true
-text = "You always have this prepared"
+text = "E"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row/GearPanel"]
-margin_top = 145.0
+margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 149.0
+margin_bottom = 22.0
 
 [node name="Row2" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
-margin_top = 153.0
+margin_top = 26.0
 margin_right = 330.0
-margin_bottom = 353.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 34 )
 
 [node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row2"]
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
 margin_right = 330.0
 margin_bottom = 14.0
-text = "Cantrip: Unseen Servant"
+text = "Dagger"
 align = 1
 autowrap = true
 
 [node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
+visible = false
 margin_top = 18.0
 margin_right = 330.0
 margin_bottom = 168.0
 text = "You conjure a simple invisible construct that can do nothing but carry items. It has Load 3 and carries anything you hand to it. It cannot pick up items on its own and can only carry those you give to it. Items carried by an unseen servant appear to float in the air a few paces behind you. An unseen servant that takes damage or leaves your presence is immediately diGeared, dropping any items it carried."
 autowrap = true
 
-[node name="SelectBtn" type="Button" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
-margin_top = 172.0
+[node name="DaggerBtn" type="Button" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
+margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 192.0
-disabled = true
-text = "You always have this prepared"
+margin_bottom = 38.0
+text = "Equip this item"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row2/GearPanel"]
-margin_top = 196.0
+margin_top = 42.0
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 46.0
 
 [node name="Row3" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
-visible = false
-margin_top = 357.0
+margin_top = 76.0
 margin_right = 330.0
-margin_bottom = 557.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 114.0
+rect_min_size = Vector2( 0, 34 )
 
 [node name="GearPanel" type="VBoxContainer" parent="TabContainer/Weapon/Column/Row3"]
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 38.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="GearTitle" type="Label" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
 margin_right = 330.0
 margin_bottom = 14.0
-text = "Cantrip: Prestidigitation"
+text = "Staff"
 align = 1
 autowrap = true
 
 [node name="GearDescription" type="Label" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
+visible = false
 margin_top = 18.0
 margin_right = 330.0
 margin_bottom = 168.0
 text = "You perform minor tricks of true magic. If you touch an item as part of the casting you can make cosmetic changes to it: clean it, soil it, cool it, warm it, flavor it, or change its color. If you cast the Gear without touching an item you can instead create minor illusions no bigger than yourself. Prestidigitation illusions are crude and clearly illusions -- they won’t fool anyone, but they might entertain them."
 autowrap = true
 
-[node name="SelectBtn" type="Button" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
-margin_top = 172.0
+[node name="StaffBtn" type="Button" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
+margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 192.0
-disabled = true
-text = "You always have this prepared"
+margin_bottom = 38.0
+text = "Equip this item"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Weapon/Column/Row3/GearPanel"]
-margin_top = 196.0
+visible = false
+margin_top = 42.0
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 46.0
 
 [node name="Row4" type="HBoxContainer" parent="TabContainer/Weapon/Column"]
 visible = false
@@ -1411,7 +1413,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 24.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_min_size = Vector2( 250, 0 )
@@ -1422,27 +1424,28 @@ __meta__ = {
 
 [node name="Column" type="VBoxContainer" parent="TabContainer/Misc"]
 margin_right = 330.0
-margin_bottom = 353.0
+margin_bottom = 140.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="Row" type="HBoxContainer" parent="TabContainer/Misc/Column"]
 margin_right = 330.0
-margin_bottom = 149.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 20 )
 
 [node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row"]
 margin_right = 330.0
-margin_bottom = 149.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row/GearPanel"]
 margin_right = 330.0
 margin_bottom = 14.0
-text = "Cantrip: Light"
+text = "Choose One:"
 align = 1
 autowrap = true
 
 [node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row/GearPanel"]
+visible = false
 margin_top = 18.0
 margin_right = 330.0
 margin_bottom = 117.0
@@ -1450,91 +1453,90 @@ text = "An item you touch glows with arcane light, about as bright as a torch. I
 autowrap = true
 
 [node name="SelectBtn" type="Button" parent="TabContainer/Misc/Column/Row/GearPanel"]
-margin_top = 121.0
+visible = false
+margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 141.0
+margin_bottom = 38.0
 disabled = true
 text = "You always have this prepared"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row/GearPanel"]
-margin_top = 145.0
+margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 149.0
+margin_bottom = 22.0
 
 [node name="Row2" type="HBoxContainer" parent="TabContainer/Misc/Column"]
-margin_top = 153.0
+margin_top = 26.0
 margin_right = 330.0
-margin_bottom = 353.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 34 )
 
 [node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row2"]
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row2/GearPanel"]
 margin_right = 330.0
 margin_bottom = 14.0
-text = "Cantrip: Unseen Servant"
+text = "Healing Potion"
 align = 1
 autowrap = true
 
 [node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row2/GearPanel"]
+visible = false
 margin_top = 18.0
 margin_right = 330.0
 margin_bottom = 168.0
 text = "You conjure a simple invisible construct that can do nothing but carry items. It has Load 3 and carries anything you hand to it. It cannot pick up items on its own and can only carry those you give to it. Items carried by an unseen servant appear to float in the air a few paces behind you. An unseen servant that takes damage or leaves your presence is immediately diGeared, dropping any items it carried."
 autowrap = true
 
-[node name="SelectBtn" type="Button" parent="TabContainer/Misc/Column/Row2/GearPanel"]
-margin_top = 172.0
+[node name="HealBtn" type="Button" parent="TabContainer/Misc/Column/Row2/GearPanel"]
+margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 192.0
-disabled = true
-text = "You always have this prepared"
+margin_bottom = 38.0
+text = "Add this to inventory"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row2/GearPanel"]
-margin_top = 196.0
+margin_top = 42.0
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 46.0
 
 [node name="Row3" type="HBoxContainer" parent="TabContainer/Misc/Column"]
-visible = false
-margin_top = 357.0
+margin_top = 76.0
 margin_right = 330.0
-margin_bottom = 557.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 34 )
 
 [node name="GearPanel" type="VBoxContainer" parent="TabContainer/Misc/Column/Row3"]
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="GearTitle" type="Label" parent="TabContainer/Misc/Column/Row3/GearPanel"]
 margin_right = 330.0
 margin_bottom = 14.0
-text = "Cantrip: Prestidigitation"
+text = "3 Antitoxin"
 align = 1
 autowrap = true
 
 [node name="GearDescription" type="Label" parent="TabContainer/Misc/Column/Row3/GearPanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 168.0
-text = "You perform minor tricks of true magic. If you touch an item as part of the casting you can make cosmetic changes to it: clean it, soil it, cool it, warm it, flavor it, or change its color. If you cast the Gear without touching an item you can instead create minor illusions no bigger than yourself. Prestidigitation illusions are crude and clearly illusions -- they won’t fool anyone, but they might entertain them."
+margin_bottom = 32.0
+text = "Antitoxin can cure one poison afffecting you"
 autowrap = true
 
-[node name="SelectBtn" type="Button" parent="TabContainer/Misc/Column/Row3/GearPanel"]
-margin_top = 172.0
+[node name="AntiBtn" type="Button" parent="TabContainer/Misc/Column/Row3/GearPanel"]
+margin_top = 36.0
 margin_right = 330.0
-margin_bottom = 192.0
-disabled = true
-text = "You always have this prepared"
+margin_bottom = 56.0
+text = "Add these to inventory"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Misc/Column/Row3/GearPanel"]
-margin_top = 196.0
+margin_top = 60.0
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 64.0
 
 [node name="Row4" type="HBoxContainer" parent="TabContainer/Misc/Column"]
 visible = false
@@ -1866,7 +1868,11 @@ text = "Reset"
 [connection signal="pressed" from="TabContainer/Defense/Column/Row3/GearPanel/GearBtn10" to="." method="_on_GearBtn10_pressed"]
 [connection signal="pressed" from="TabContainer/Defense/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
 [connection signal="pressed" from="TabContainer/Defense/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Weapon/Column/Row2/GearPanel/DaggerBtn" to="." method="_on_DaggerBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Weapon/Column/Row3/GearPanel/StaffBtn" to="." method="_on_StaffBtn_pressed"]
 [connection signal="pressed" from="TabContainer/Weapon/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
 [connection signal="pressed" from="TabContainer/Weapon/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Misc/Column/Row2/GearPanel/HealBtn" to="." method="_on_HealBtn_pressed"]
+[connection signal="pressed" from="TabContainer/Misc/Column/Row3/GearPanel/AntiBtn" to="." method="_on_AntiBtn_pressed"]
 [connection signal="pressed" from="TabContainer/Misc/Column/CenterContainer3/HBoxContainer/DoneBtn" to="." method="_on_DoneBtn_pressed"]
 [connection signal="pressed" from="TabContainer/Misc/Column/CenterContainer3/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]

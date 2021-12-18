@@ -19,6 +19,7 @@ export var player_cha = ""
 
 export var player_level_one_spells = []
 export var known_cantrips = []
+export var player_moves = []
 
 export var player_hitpoints = ""
 export var class_base_hitpoints = ""
@@ -35,7 +36,7 @@ export var player_coins = 0
 
 export var player_max_load = 0
 export var player_current_load = 0
-
+export var player_inventory = []
 
 var current_scene = "res://menu/MainMenu.tscn"
 
@@ -66,6 +67,7 @@ func save_dict():
 		"player_circumstantial_armor" : player_circumstantial_armor,
 		"class_base_damage" : class_base_damage,
 		"player_coins" : player_coins,
+		"player_inventory" : player_inventory,
 	}
 
 func load(dict):
@@ -93,6 +95,7 @@ func load(dict):
 	player_circumstantial_armor = dict["player_circumstantial_armor"]
 	class_base_damage = dict["class_base_damage"]
 	player_coins = dict["player_coins"]
+	player_inventory = dict["player_inventory"]
 
 func stat_to_modifier(stat):
 	assert(stat >= 1)

@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Test.gd" type="Script" id=1]
+[ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="Test" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.133333, 0.137255, 0.137255, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 360.0
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 320.0
+margin_bottom = 169.0
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 41.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer2"]
+margin_left = 122.0
+margin_right = 197.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "Test"
+
+[node name="Space" type="Control" parent="MarginContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 320.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 59.0
+margin_right = 320.0
+margin_bottom = 169.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 129.0
+margin_right = 191.0
+margin_bottom = 110.0
+
+[node name="TestBtn1" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_right = 62.0
+margin_bottom = 34.0
+custom_colors/font_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "btn1"
+
+[node name="TestBtn2" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 38.0
+margin_right = 62.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "btn2"
+
+[node name="TestBtn3" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 62.0
+margin_bottom = 110.0
+custom_colors/font_color = Color( 0.941176, 0.964706, 0.941176, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "btn3"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/TestBtn1" to="." method="_on_TestBtn1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/TestBtn2" to="." method="_on_TestBtn2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/TestBtn3" to="." method="_on_TestBtn3_pressed"]

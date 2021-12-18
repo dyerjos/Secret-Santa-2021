@@ -12,6 +12,8 @@ onready var SpellBtn8 = $TabContainer/Class/Column/Row11/SpellPanel/SpellBtn8
 
 onready var CureLightWoundsRow = $TabContainer/Class/Column/Row11
 
+#TODO: setup spells.gd global script with all spells and use those here instead of strings
+
 func _ready():
 	assign_cantrips_and_race()
 
