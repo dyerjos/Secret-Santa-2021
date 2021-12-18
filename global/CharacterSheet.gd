@@ -17,14 +17,13 @@ export var player_int = ""
 export var player_wis = ""
 export var player_cha = ""
 
-export var player_level_one_spells = []
-export var known_cantrips = []
-export var player_moves = []
-
 export var player_hitpoints = ""
 export var class_base_hitpoints = ""
 
 export var class_base_damage = ""
+export var move_damage_bonus = "" #* what class has this?
+export var weapon_damage_bonus = ""
+export var effect_damage_bonus = ""
 
 export var player_level = 1
 export var player_exp = 0
@@ -36,9 +35,16 @@ export var player_coins = 0
 
 export var player_max_load = 0
 export var player_current_load = 0
-export var player_inventory = []
+
+
 
 var current_scene = "res://menu/MainMenu.tscn"
+var player_inventory = []
+var player_level_one_spells = []
+var known_cantrips = []
+var player_moves = []
+
+
 
 
 func save_dict():
@@ -68,6 +74,9 @@ func save_dict():
 		"class_base_damage" : class_base_damage,
 		"player_coins" : player_coins,
 		"player_inventory" : player_inventory,
+		"move_damage_bonus" : move_damage_bonus,
+		"weapon_damage_bonus" : weapon_damage_bonus,
+		"effect_damage_bonus" : effect_damage_bonus,
 	}
 
 func load(dict):
@@ -96,7 +105,11 @@ func load(dict):
 	class_base_damage = dict["class_base_damage"]
 	player_coins = dict["player_coins"]
 	player_inventory = dict["player_inventory"]
+	move_damage_bonus = dict["move_damage_bonus"]
+	weapon_damage_bonus = dict["weapon_damage_bonus"]
+	effect_damage_bonus = dict["effect_damage_bonus"]
 
+#TODO: moving this to utilities.gd. delete this later?
 func stat_to_modifier(stat):
 	assert(stat >= 1)
 	assert(stat <= 18)

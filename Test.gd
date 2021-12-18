@@ -2,7 +2,7 @@ extends ColorRect
 
 
 func _on_TestBtn1_pressed():
-	WizardSpells.contact_spirits["execute"].call_func()
+	Moves.hack_and_slash["execute"].call_func()
 
 
 func _on_TestBtn2_pressed():

@@ -32,6 +32,8 @@ WizardSpells="*res://global/WizardSpells.gd"
 SaveSystem="*res://global/SaveSystem.gd"
 Items="*res://global/Items.gd"
 ClericSpells="*res://global/ClericSpells.gd"
+Moves="*res://global/Moves.gd"
+Utilities="*res://global/Utilities.gd"
 
 [display]
 

@@ -9,6 +9,7 @@ onready var StaffBtn = $TabContainer/Weapon/Column/Row3/GearPanel/StaffBtn
 onready var HealBtn = $TabContainer/Misc/Column/Row2/GearPanel/HealBtn
 onready var AntiBtn = $TabContainer/Misc/Column/Row3/GearPanel/AntiBtn
 
+#* Note: we duplicate dictionaries so that they no longer are a reference to the global scripts. This way we can freely adjust their values such as 
 
 # defense tab
 func _on_GearBtn9_pressed(): # leather armor
@@ -50,7 +51,7 @@ func _on_AntiBtn_pressed():
 # helper functions
 func add_to_inventory(item, count=1):
 	for i in range(count):
-		CharacterSheet.player_inventory.append(Items.get(item))
+		CharacterSheet.player_inventory.append(Items.get(item).duplicate(true))
 	choices_counter += 1
 	if choices_counter == 3:
 		Scene.change("Test")

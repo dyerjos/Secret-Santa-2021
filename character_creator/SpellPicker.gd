@@ -12,8 +12,6 @@ onready var SpellBtn8 = $TabContainer/Class/Column/Row11/SpellPanel/SpellBtn8
 
 onready var CureLightWoundsRow = $TabContainer/Class/Column/Row11
 
-#TODO: setup spells.gd global script with all spells and use those here instead of strings
-
 func _ready():
 	assign_cantrips_and_race()
 
@@ -48,65 +46,64 @@ func disable_all_buttons():
 	SpellBtn8.disabled = true
 
 func assign_cantrips_and_race():
-	var wizard_cantrips = ["Light", "Unseen Servant", "Prestidigitation"]
 	CharacterSheet.known_cantrips = []
 	if CharacterSheet.player_class == "wizard":
-		CharacterSheet.known_cantrips.append_array(wizard_cantrips)
+		CharacterSheet.known_cantrips.append_array(WizardSpells.wizard_cantrips)
 		if CharacterSheet.player_race == "elf":
-			CharacterSheet.known_cantrips.append("Detect Magic")
+			CharacterSheet.known_cantrips.append(WizardSpells.detect_magic)
 			SpellBtn2.disabled = true
 			SpellBtn2.text = "As an Elf, you always have this prepared!"
 			CureLightWoundsRow.visible = false
+			assert(CharacterSheet.player_level_one_spells.size() == 0) # (detect Godot export array bug)
 		if CharacterSheet.player_race == "human":
 			CureLightWoundsRow.visible = true
-		#! Godot 3.4 is adding cantrips to spell array. 
-		#! Godot 3.4 also makes clear() clear cantrip array as well...
-		CharacterSheet.player_level_one_spells = []
-			
+	
 
 func _on_SpellBtn1_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
-		CharacterSheet.player_level_one_spells.append("Contact Spirits")
+		CharacterSheet.player_level_one_spells.append(WizardSpells.contact_spirits)
 		SpellBtn1.disabled = true
+		assert(CharacterSheet.player_inventory.size() == 0)
 
 func _on_SpellBtn2_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
-		CharacterSheet.player_level_one_spells.append("Detect Magic")
+		CharacterSheet.player_level_one_spells.append(WizardSpells.detect_magic)
 		SpellBtn2.disabled = true
+
 
 func _on_SpellBtn3_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
-		CharacterSheet.player_level_one_spells.append("Magic Missile")
+		CharacterSheet.player_level_one_spells.append(WizardSpells.magic_missile)
 		SpellBtn3.disabled = true
 
 func _on_SpellBtn4_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
-		CharacterSheet.player_level_one_spells.append("Charm Person")
+		CharacterSheet.player_level_one_spells.append(WizardSpells.charm_person)
 		SpellBtn4.disabled = true
 
 func _on_SpellBtn5_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
-		CharacterSheet.player_level_one_spells.append("Invisibility")
+		CharacterSheet.player_level_one_spells.append(WizardSpells.invisibility)
 		SpellBtn5.disabled = true
 
 func _on_SpellBtn6_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
-		CharacterSheet.player_level_one_spells.append("Telepathy")
+		CharacterSheet.player_level_one_spells.append(WizardSpells.telepathy)
 		SpellBtn6.disabled = true
 
 func _on_SpellBtn7_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
-		CharacterSheet.player_level_one_spells.append("Alarm")
+		CharacterSheet.player_level_one_spells.append(WizardSpells.alarm)
 		SpellBtn7.disabled = true
 
 func _on_SpellBtn8_pressed():
 	if CharacterSheet.player_level_one_spells.size() < 3:
-		CharacterSheet.player_level_one_spells.append("Cure Light Wounds")
+		CharacterSheet.player_level_one_spells.append(ClericSpells.cure_light_wounds)
 		SpellBtn8.disabled = true
 
 
 func _on_DoneBtn_pressed():
-	print("going to gear scene")
+	Scene.change("GearPicker")
 
 
 

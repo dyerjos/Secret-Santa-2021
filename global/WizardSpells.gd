@@ -57,13 +57,78 @@ var detect_magic = {
 	"execute" : funcref(self, "detect_magic")
 }
 
-func detect_magic():
+func  magic_missile():
 	print("spell called!")
-var detect_magic = {
-	"name" : "detect magic",
+var  magic_missile = {
+	"name" : "magic missile",
 	"level" : 1,
-	"description" : "One of your senses is briefly attuned to magic. The GM will tell you what here is magical.",
-	"school" : "divination",
+	"description" : "Projectiles of pure magic spring from your fingers. Deal 2d4 damage to one target.",
+	"school" : "evocation",
 	"ongoing" : false,
-	"execute" : funcref(self, "detect_magic")
+	"execute" : funcref(self, " magic_missile")
 }
+
+func  charm_person():
+	print("spell called!")
+var  charm_person = {
+	"name" : "charm person",
+	"level" : 1,
+	"description" : "The person (not beast or monster) you touch while casting this spell counts you as a friend until they take damage or you prove otherwise.",
+	"school" : "enchantment",
+	"ongoing" : true,
+	"execute" : funcref(self, " charm_person")
+}
+
+func  invisibility():
+	print("spell called!")
+var  invisibility = {
+	"name" : "invisibility",
+	"level" : 1,
+	"description" : "Touch an ally: nobody can see them. They’re invisible! The spell persists until the target attacks or you dismiss the effect. While the spell is ongoing you can not cast a spell.",
+	"school" : "illusion",
+	"ongoing" : true,
+	"execute" : funcref(self, " invisibility")
+}
+
+func  telepathy():
+	print("spell called!")
+var  telepathy = {
+	"name" : "telepathy",
+	"level" : 1,
+	"description" : "You form a telepathic bond with a single person you touch, enabling you to converse with that person through your thoughts. You can only have one telepathic bond at a time.",
+	"school" : "divination",
+	"ongoing" : true,
+	"execute" : funcref(self, " telepathy")
+}
+
+func  alarm():
+	print("spell called!")
+var  alarm = {
+	"name" : "alarm",
+	"level" : 1,
+	"description" : "Walk a wide circle as you cast this spell. Until you prepare spells again your magic will alert you if a creature crosses that circle. Even if you are asleep, the spell will shake you from your slumber.",
+	"school" : "",
+	"ongoing" : false,
+	"execute" : funcref(self, " alarm")
+}
+
+var wizard_cantrips = [
+	light,
+	unseen_servant,
+	prestidigitation,
+]
+
+var wizard_level_one_spells = [
+	contact_spirits,
+	detect_magic,
+	magic_missile,
+	charm_person,
+	invisibility,
+	telepathy,
+	alarm,
+]
+
+#TODO: var wizard_level_third_spells = []
+#TODO: var wizard_level_fifth_spells = []
+#TODO: var wizard_level_seventh_spells = []
+#TODO: var wizard_level_ninth_spells = []
