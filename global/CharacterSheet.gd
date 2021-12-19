@@ -38,6 +38,7 @@ export var player_coins = 0
 export var player_max_load = 0
 export var player_current_load = 0
 
+export var player_in_danger = false
 
 
 var current_scene = "res://menu/MainMenu.tscn"
@@ -80,6 +81,7 @@ func save_dict():
 		"weapon_damage_bonus" : weapon_damage_bonus,
 		"player_move_armor" : player_move_armor,
 		"player_stunpoints" : player_stunpoints,
+		"player_in_danger" : player_in_danger
 	}
 
 func load(dict):
@@ -113,10 +115,11 @@ func load(dict):
 	effect_damage_bonus = dict["effect_damage_bonus"]
 	player_move_armor = dict["player_move_armor"]
 	player_stunpoints = dict["player_stunpoints"]
+	player_in_danger = dict["player_in_danger"]
 	
 
-func damage_bonuses():
-	return move_damage_bonus + effect_damage_bonus
+func damage_bonuses(ability_modifier=0):
+	return move_damage_bonus + effect_damage_bonus + ability_modifier
 
 func total_armor():
 	return player_circumstantial_armor + player_equipped_armor + player_move_armor

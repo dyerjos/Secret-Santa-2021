@@ -1,6 +1,6 @@
 extends Node
 
-
+#TODO: wizard spell methods
 func light():
 	print("spell called!")
 var light = {
