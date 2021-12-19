@@ -84,6 +84,7 @@ func prep_persistant_nodes(master_save_list):
 
 func load_persistant_nodes(master_save_list):
 	print("TODO: load persistant nodes") # load_persistant_nodes()
+	print(master_save_list)
 
 func prep_globals(master_save_list):
 	master_save_list.append(CharacterSheet.save_dict())

@@ -77,7 +77,7 @@ var hack_and_slash = {
 #TODO: have player choose what will happen if their volley does partially fail (opt=1, opt=2, opt=3)
 func volley_fn(target, player_weapon_used, fail_opt):
 	print("volley")
-	stat_for_attack = CharacterSheet.player_dex
+	var stat_for_attack = CharacterSheet.player_dex
 	var roll_result = Utilities.roll_dice_for_success(stat_for_attack)
 	match roll_result:
 		"critical":
@@ -150,7 +150,7 @@ var defend = {
 }
 
 #TODO: only implement this when bonds are implemented
-func aid_or_interfere_fn():
+func aid_or_interfere_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
 		"critical":
@@ -244,15 +244,16 @@ var last_breath = {
 	"type" : "special",
 	"description" : "When you are dying you catch a glimpse of what lies beyond the Black Gates of Death's Kingdom",
 	"execute" : funcref(self, "last_breath_fn")
+	}
 
 func encumbrance_fn():
 	var max_load = CharacterSheet.max_load()
-	var load = CharacterSheet.current_load()
-	var overloaded = load + 2
-	if load <= max_load:
+	var _load = CharacterSheet.current_load()
+	var overloaded = _load + 2
+	if _load <= max_load:
 		CharacterSheet.ongoing_encumberance_moves_modifier = 0
 		CharacterSheet.inventory_locked = false
-	elif load <= overloaded:
+	elif _load <= overloaded:
 		print("player takes -1 ongoing until burden is lightened")
 		CharacterSheet.ongoing_encumberance_moves_modifier = -1
 		CharacterSheet.inventory_locked = true
@@ -266,10 +267,11 @@ var encumbrance = {
 	"type" : "special",
 	"description" : "When you make a move while carrying weight",
 	"execute" : funcref(self, "encumbrance_fn")
-
+	}
+	
 func make_camp_fn(location):
 	if location["is_dangerous"]: #TODO: add "is_dangerous" field to locations
-		safe = is_camp_safe()
+		var safe = is_camp_safe()
 		if not safe:
 			take_watch_fn(location)
 			CharacterSheet.failed_camp = true
@@ -284,6 +286,7 @@ var make_camp = {
 	"type" : "special",
 	"description" : "When you settle in to rest consume a ration. If you are somewhere dangerous decide the watch order as well.",
 	"execute" : funcref(self, "make_camp_fn")
+	}
 
 func take_watch_fn(location):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_wis)
@@ -302,6 +305,7 @@ var take_watch = {
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "take_watch_fn")
+	}
 
 # TODO: FUTURE
 # func carouse_fn():
@@ -319,7 +323,7 @@ var take_watch = {
 # 	"description" : "When you you have leverage on a GM character and manipulate them",
 # 	"execute" : funcref(self, "carouse_fn")
 
-func undertake_perilous_journey_fn():
+func undertake_perilous_journey_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
 		"critical":
@@ -333,9 +337,10 @@ var undertake_perilous_journey = {
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "undertake_perilous_journey_fn")
+	}
 
 func supply_fn():
-	rations = CharacterSheet.player_inventory["dungeon_rations"]
+	var rations = CharacterSheet.player_inventory["dungeon_rations"]
 	rations.uses = 5
 
 	#TODO: FUTURE
@@ -352,6 +357,7 @@ var supply = {
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "supply_fn")
+	}
 
 func recover_fn(days=0):
 	if days >= 3:
@@ -361,15 +367,16 @@ func recover_fn(days=0):
 	elif days >= 1:
 		CharacterSheet.player_hitpoints = CharacterSheet.max_hitpoints()
 	else:
-		half_health = CharacterSheet.max_hitpoints() / 2
+		var half_health = CharacterSheet.max_hitpoints() / 2
 		CharacterSheet.player_hitpoints = clamp((CharacterSheet.player_hitpoints + half_health), 0, CharacterSheet.max_hitpoints())
 var recover = {
 	"name" : "recover",
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "recover_fn")
+	}
 
-func recruit_fn():
+func recruit_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
 		"critical":
@@ -383,8 +390,9 @@ var recruit = {
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "recruit_fn")
-
-func outstanding_warrants_fn():
+	}
+	
+func outstanding_warrants_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
 		"critical":
@@ -398,8 +406,9 @@ var outstanding_warrants = {
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "outstanding_warrants_fn")
+	}
 
-func bolster_fn():
+func bolster_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
 		"critical":
@@ -413,9 +422,10 @@ var bolster = {
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "bolster_fn")
+	}
 
 func level_up_fn():
-	exp_for_next_level = CharacterSheet.player_level + 7
+	var exp_for_next_level = CharacterSheet.player_level + 7
 	if CharacterSheet.player_exp >= exp_for_next_level:
 		CharacterSheet.player_exp -= exp_for_next_level
 		CharacterSheet.player_level += 1
@@ -425,14 +435,14 @@ func level_up_fn():
 		print("choose a stat and increase it by 1")
 		#TODO: stat increase screen needed (could be as simple as a button for each stat and you click one)
 		#TODO: if player_con increases, make sure to increase current hp by the increase in hp
-
 var level_up = {
 	"name" : "level up",
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "level_up_fn")
+	}
 
-func end_of_session_fn():
+func end_of_session_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
 		"critical":
@@ -440,12 +450,13 @@ func end_of_session_fn():
 		"partial":
 			pass
 		"fail":
-			passÍ
+			pass
 var end_of_session = {
 	"name" : "end of session",
 	"type" : "special",
 	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "end_of_session_fn")
+	}
 
 #* Wizard basic moves
 
@@ -465,6 +476,7 @@ var cast_spell = {
 	"type" : "wizard_common",
 	"description" : "Release a spell you have prepared",
 	"execute" : funcref(self, "cast_spell_fn")
+	}
 
 func prepare_spells_fn():
 	CharacterSheet.ongoing_spell_modifier = 0
@@ -476,6 +488,7 @@ var prepare_spells = {
 	"type" : "special",
 	"description" : "Release a spell you have prepared",
 	"execute" : funcref(self, "prepare_spells_fn")
+	}
 
 
 func add_to_spellbook_fn():
@@ -485,10 +498,11 @@ var add_to_spellbook = {
 	"type" : "special",
 	"description" : "Release a spell you have prepared",
 	"execute" : funcref(self, "add_to_spellbook_fn")
+	}
 
 func spell_defense_fn():
 	if CharacterSheet.ongoing_spell:
-		level = CharacterSheet.ongoing_spell["level"]
+		var level = CharacterSheet.ongoing_spell["level"]
 		CharacterSheet.ongoing_spell = {}
 		return level
 	else:
@@ -498,9 +512,10 @@ var spell_defense = {
 	"type" : "special",
 	"description" : "Release a spell you have prepared",
 	"execute" : funcref(self, "spell_defense_fn")
+	}
 
 
-func ritual_fn():
+func ritual_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
 		"critical":
@@ -514,6 +529,7 @@ var ritual = {
 	"type" : "special",
 	"description" : "Release a spell you have prepared",
 	"execute" : funcref(self, "ritual_fn")
+	}
 
 
 
@@ -567,21 +583,21 @@ func damage_to_npc(number, base_damage, target, stat_for_attack, player_weapon_u
 	process_damage_to_npc(damage, target, player_weapon_used)
 
 func consume_rations(distance=null, trailblazer_bonus=0):
-	rations = CharacterSheet.player_inventory["dungeon_rations"]
+	var rations = CharacterSheet.player_inventory["dungeon_rations"]
 	if rations["uses"] == 0 or rations == null:
 		CharacterSheet.ongoing_rations_moves_modifier = -1
 		print("tell player they are hungry and they need to go to nearest town")
 		return
-	if no distance:
+	if distance == null:
 		rations.uses -= 1
 	else:
 		rations.uses -= distance - trailblazer_bonus
 
 func is_camp_safe():
-	if CharacterSheet.failed_camp = true:
+	if CharacterSheet.failed_camp == true:
 		CharacterSheet.failed_camp = false
 		return true
-	result = Utilities.roll_dice_for_success(CharacterSheet.player_str)
+	var result = Utilities.roll_dice_for_success(CharacterSheet.player_str)
 	match result:
 		"success":
 			print("no monsters")
@@ -603,10 +619,10 @@ func setup_random_monster_encounter(location, watch_bonus, players_attack_first)
 
 func generate_monsters(location):
 	#TODO: location needs "monster_setting" field
-	potential_enemeies = Enemies.location["monster_setting"].duplicate(deep=true).shuffle()
-	enemy_type = potential_enemeies.pop_back()
-	organization = enemy_type["organization"]
-	number_of_enemies = 0
+	var potential_enemeies = Enemies.location["monster_setting"].duplicate(true).shuffle()
+	var enemy_type = potential_enemeies.pop_back()
+	var organization = enemy_type["organization"]
+	var number_of_enemies = 0
 	match organization:
 		"group":
 			print("2-5 of them")
@@ -619,4 +635,4 @@ func generate_monsters(location):
 			number_of_enemies = 1
 	assert(number_of_enemies > 0)
 	for enemy in number_of_enemies:
-		CharacterSheet.battle_targets.append(enemy_type.duplicate(deep=true))
+		CharacterSheet.battle_targets.append(enemy_type.duplicate(true))

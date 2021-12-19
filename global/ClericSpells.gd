@@ -2,7 +2,7 @@ extends Node
 
 
 #TODO: cleric spell func
-func  cure_light_wounds():
+func  cure_light_wounds_fn():
 	print("spell called!")
 var  cure_light_wounds = {
 	"name" : "cure light wounds",
@@ -10,5 +10,5 @@ var  cure_light_wounds = {
 	"description" : "At your touch wounds scab and bones cease to ache. Heal an ally you touch of 1d8 damage.",
 	"school" : "",
 	"ongoing" : false,
-	"execute" : funcref(self, " cure_light_wounds")
+	"execute" : funcref(self, " cure_light_wounds_fn")
 }

@@ -1,7 +1,8 @@
 extends Node
 
 func light_fn():
-	print("spell called!")
+	CharacterSheet.has_a_light = true
+	#TODO: when to turn this off
 var light = {
 	"name" : "light",
 	"level" : 0,

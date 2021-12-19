@@ -47,6 +47,8 @@ export var player_hold = 0
 export var inventory_locked = false
 export var player_in_battle = false
 
+export var has_a_light = false
+
 var ongoing_spell = {}
 
 
@@ -57,7 +59,6 @@ var known_cantrips = []
 var player_moves = []
 var battle_targets = []
 var player_debilities = []
-
 
 
 
@@ -103,11 +104,10 @@ func save_dict():
 		"battle_targets" : battle_targets,
 		"player_debilities" : player_debilities,
 		"ongoing_spell" : ongoing_spell,
-
-
+		"has_a_light" : has_a_light,
 	}
 
-	
+
 func load(dict):
 	current_scene = dict["current_scene"]
 	player_class = dict["player_class"]
@@ -150,6 +150,7 @@ func load(dict):
 	battle_targets = dict["battle_targets"]
 	player_debilities = dict["player_debilities"]
 	ongoing_spell = dict["ongoing_spell"]
+	has_a_light = dict["has_a_light"]
 
 
 
@@ -162,12 +163,12 @@ func total_armor():
 func max_load():
 	return player_base_load_limit + Utilities.stat_to_modifier(player_str)
 
-func current_load()
-	load = 0
+func current_load():
+	var _load = 0
 	for item in player_inventory:
 		assert(item["weight" != null])
-		load += item["weight"]
-	return load
+		_load += item["weight"]
+	return _load
 
 func ongoing_moves_modifier():
 	return ongoing_encumberance_moves_modifier + ongoing_rations_moves_modifier + ongoing_watch_bonus
