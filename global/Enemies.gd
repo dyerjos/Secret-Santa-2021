@@ -1,5 +1,17 @@
 extends Node
 
+#TODO: order monsters by biome
+var cavern = [
+	ankheg,
+]
+var swamp = []
+var undead = []
+var woods = []
+var hordes = []
+var experiments = []
+var underdark = []
+var planar = []
+
 #TODO: add "needs_reloaded" field
 var ankheg = {
 	"name" : "ankheg",

@@ -7,8 +7,8 @@ func roll_dice_for_success(stat=null):
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	var dice_result = random.randi_range(2, 12)
-	var modifier = stat_to_modifier(stat)
-	var result_after_modifier = dice_result + modifier
+	var modifier = stat_to_modifier(stat) #returns 0 if stat is null or ""
+	var result_after_modifier = dice_result + modifier + CharacterSheet.ongoing_moves_modifier()
 	print("result after modifier: %s" % result_after_modifier)
 	if result_after_modifier >= 10:
 		return "success"

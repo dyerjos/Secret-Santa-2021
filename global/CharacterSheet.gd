@@ -26,6 +26,11 @@ export var move_damage_bonus = 0 #* what class has this?
 export var weapon_damage_bonus = 0
 export var effect_damage_bonus = 0
 
+export var ongoing_spell_modifier = 0
+export var ongoing_encumberance_moves_modifier = 0
+export var ongoing_rations_moves_modifier = 0
+export var ongoing_watch_bonus = 0
+
 export var player_level = 1
 export var player_exp = 0
 
@@ -35,10 +40,14 @@ export var player_move_armor = 0 #* some class moves provide armor
 
 export var player_coins = 0
 
-export var player_max_load = 0
-export var player_current_load = 0
+export var player_base_load_limit = 7 #TODO: hardcoded wizard stat
 
 export var player_in_danger = false
+export var player_hold = 0
+export var inventory_locked = false
+export var player_in_battle = false
+
+var ongoing_spell = {}
 
 
 var current_scene = "res://menu/MainMenu.tscn"
@@ -46,6 +55,8 @@ var player_inventory = []
 var player_level_one_spells = []
 var known_cantrips = []
 var player_moves = []
+var battle_targets = []
+var player_debilities = []
 
 
 
@@ -81,9 +92,22 @@ func save_dict():
 		"weapon_damage_bonus" : weapon_damage_bonus,
 		"player_move_armor" : player_move_armor,
 		"player_stunpoints" : player_stunpoints,
-		"player_in_danger" : player_in_danger
+		"player_in_danger" : player_in_danger,
+		"player_hold" : player_hold,
+		"ongoing_spell_modifier" : ongoing_spell_modifier,
+		"inventory_locked" : inventory_locked,
+		"ongoing_encumberance_moves_modifier" : ongoing_encumberance_moves_modifier,
+		"ongoing_rations_moves_modifier" : ongoing_rations_moves_modifier,
+		"ongoing_watch_bonus" : ongoing_watch_bonus,
+		"player_in_battle" : player_in_battle,
+		"battle_targets" : battle_targets,
+		"player_debilities" : player_debilities,
+		"ongoing_spell" : ongoing_spell,
+
+
 	}
 
+	
 func load(dict):
 	current_scene = dict["current_scene"]
 	player_class = dict["player_class"]
@@ -116,10 +140,37 @@ func load(dict):
 	player_move_armor = dict["player_move_armor"]
 	player_stunpoints = dict["player_stunpoints"]
 	player_in_danger = dict["player_in_danger"]
-	
+	player_hold = dict["player_hold"]
+	ongoing_spell_modifier = dict["ongoing_spell_modifier"]
+	inventory_locked = dict["inventory_locked"]
+	ongoing_encumberance_moves_modifier = dict["ongoing_encumberance_moves_modifier"]
+	ongoing_rations_moves_modifier = dict["ongoing_rations_moves_modifier"]
+	ongoing_watch_bonus = dict["ongoing_watch_bonus"]
+	player_in_battle = dict["player_in_battle"]
+	battle_targets = dict["battle_targets"]
+	player_debilities = dict["player_debilities"]
+	ongoing_spell = dict["ongoing_spell"]
+
+
 
 func damage_bonuses(ability_modifier=0):
 	return move_damage_bonus + effect_damage_bonus + ability_modifier
 
 func total_armor():
 	return player_circumstantial_armor + player_equipped_armor + player_move_armor
+
+func max_load():
+	return player_base_load_limit + Utilities.stat_to_modifier(player_str)
+
+func current_load()
+	load = 0
+	for item in player_inventory:
+		assert(item["weight" != null])
+		load += item["weight"]
+	return load
+
+func ongoing_moves_modifier():
+	return ongoing_encumberance_moves_modifier + ongoing_rations_moves_modifier + ongoing_watch_bonus
+
+func max_hitpoints():
+	return player_con + class_base_hitpoints
