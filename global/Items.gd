@@ -1,7 +1,7 @@
 extends Node
 
 
-
+#TODO: add attack_tags, range_tags, etc
 var spellbook = {
 	"name" : "spellbook",
 	"tags" : [],
@@ -42,6 +42,7 @@ var healing_potion = {
 
 var dagger = {
 	"name" : "dagger",
+	"weapon_tags": [], #TODO: do more like this
 	"tags" : ["hand"],
 	"coin" : 2,
 	"weight": 1,

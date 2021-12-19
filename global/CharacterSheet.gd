@@ -19,17 +19,19 @@ export var player_cha = ""
 
 export var player_hitpoints = ""
 export var class_base_hitpoints = ""
+export var player_stunpoints = 0
 
-export var class_base_damage = ""
-export var move_damage_bonus = "" #* what class has this?
-export var weapon_damage_bonus = ""
-export var effect_damage_bonus = ""
+export var class_base_damage = 0
+export var move_damage_bonus = 0 #* what class has this?
+export var weapon_damage_bonus = 0
+export var effect_damage_bonus = 0
 
 export var player_level = 1
 export var player_exp = 0
 
 export var player_equipped_armor = 0 #* shields, body armor, etc
 export var player_circumstantial_armor = 0 #* if hiding behind cover
+export var player_move_armor = 0 #* some class moves provide armor
 
 export var player_coins = 0
 
@@ -76,7 +78,8 @@ func save_dict():
 		"player_inventory" : player_inventory,
 		"move_damage_bonus" : move_damage_bonus,
 		"weapon_damage_bonus" : weapon_damage_bonus,
-		"effect_damage_bonus" : effect_damage_bonus,
+		"player_move_armor" : player_move_armor,
+		"player_stunpoints" : player_stunpoints,
 	}
 
 func load(dict):
@@ -108,25 +111,12 @@ func load(dict):
 	move_damage_bonus = dict["move_damage_bonus"]
 	weapon_damage_bonus = dict["weapon_damage_bonus"]
 	effect_damage_bonus = dict["effect_damage_bonus"]
+	player_move_armor = dict["player_move_armor"]
+	player_stunpoints = dict["player_stunpoints"]
+	
 
-#TODO: moving this to utilities.gd. delete this later?
-func stat_to_modifier(stat):
-	assert(stat >= 1)
-	assert(stat <= 18)
-	if stat >= 1 and stat <= 3:
-		return -3
-	elif stat == 4 or stat == 5:
-		return -2
-	elif stat >= 6 and stat <=8:
-		return -1
-	elif stat >= 9 and stat <= 12:
-		return 0
-	elif stat >= 13 and stat <= 15:
-		return 1
-	elif stat >= 16 and stat <= 17:
-		return 1
-	elif stat == 18:
-		return 3
-	else:
-		print("stat shouldn't be %s" % stat)
-		
+func damage_bonuses():
+	return move_damage_bonus + effect_damage_bonus
+
+func total_armor():
+	return player_circumstantial_armor + player_equipped_armor + player_move_armor

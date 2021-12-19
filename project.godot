@@ -34,6 +34,7 @@ Items="*res://global/Items.gd"
 ClericSpells="*res://global/ClericSpells.gd"
 Moves="*res://global/Moves.gd"
 Utilities="*res://global/Utilities.gd"
+Enemies="*res://global/Enemies.gd"
 
 [display]
 
