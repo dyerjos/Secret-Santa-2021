@@ -1,5 +1,29 @@
 extends Node
 
+
+var wizard_cantrips = [
+	light,
+	unseen_servant,
+	prestidigitation,
+]
+
+var wizard_level_one_spells = [
+#	contact_spirits,
+	detect_magic,
+	magic_missile,
+	charm_person,
+	invisibility,
+	telepathy,
+	alarm,
+]
+
+#TODO: var wizard_level_third_spells = []
+#TODO: var wizard_level_fifth_spells = []
+#TODO: var wizard_level_seventh_spells = []
+#TODO: var wizard_level_ninth_spells = []
+
+
+
 func light_fn():
 	CharacterSheet.has_a_light = true
 	#TODO: when to turn this off
@@ -13,7 +37,10 @@ var light = {
 }
 
 func unseen_servant_fn():
-	print("spell called")
+	print("unseen servant called")
+	#TODO: setup unseen servant as a destructable npc that holds inventory for you
+	CharacterSheet.player_inventory.append(Items.get("unseen_servant").duplicate(true)) #* this is a shortcut
+	CharacterSheet.has_unseen_servant = true
 var unseen_servant = {
 	"name" : "unseen servant",
 	"level" : 0,
@@ -23,8 +50,11 @@ var unseen_servant = {
 	"execute" : funcref(self, "unseen_servant_fn")
 }
 
-func prestidigitation_fn():
-	print("spell called")
+func prestidigitation_fn(targets):
+	print("perform crude illusion to entertain")
+	#TODO: give npc's a funcref called "saw_magic_trick" or "was_entertained". this spell calls that to illicit a dialogue response?
+	for target in targets:
+		target["saw_magic_trick"].call_func()
 var prestidigitation = {
 	"name" : "prestidigitation",
 	"level" : 0,
@@ -37,6 +67,7 @@ var prestidigitation = {
 
 func contact_spirits_fn():
 	print("contact spirits called")
+	#TODO: this would require a lot more dialogue and would not be polished enough to be useful yet
 var contact_spirits = {
 	"name" : "contact spirits",
 	"level" : 1,
@@ -48,6 +79,17 @@ var contact_spirits = {
 
 func detect_magic_fn():
 	print("spell called")
+	#TODO: give items an "is_magical" field
+	#TODO: give locations an "is_magical" field
+	#TODO: give locations an "items" array
+	if CharacterSheet.current_location["is_magical"]:
+		print("This location is magical")
+	for item in CharacterSheet.player_inventory:
+		if item["is_magical"]:
+			print("you sense that the item['name'] is magical!")
+	for item in  CharacterSheet.current_location["items"]:
+		if item["is_magical"]:
+			print("you found an item in the room that is magical! item['name'] ")
 var detect_magic = {
 	"name" : "detect magic",
 	"level" : 1,
@@ -57,8 +99,11 @@ var detect_magic = {
 	"execute" : funcref(self, "detect_magic_fn")
 }
 
-func  magic_missile_fn():
+func  magic_missile_fn(target):
 	print("spell called")
+	var damage_amount = Utilities.roll_dice_for_total(2, 4)
+	#TODO: figure out how spell would deal damage using process_damage()
+	target["hp"] -= damage_amount 
 var  magic_missile = {
 	"name" : "magic missile",
 	"level" : 1,
@@ -112,23 +157,4 @@ var  alarm = {
 	"execute" : funcref(self, " alarm_fn")
 }
 
-var wizard_cantrips = [
-	light,
-	unseen_servant,
-	prestidigitation,
-]
 
-var wizard_level_one_spells = [
-	contact_spirits,
-	detect_magic,
-	magic_missile,
-	charm_person,
-	invisibility,
-	telepathy,
-	alarm,
-]
-
-#TODO: var wizard_level_third_spells = []
-#TODO: var wizard_level_fifth_spells = []
-#TODO: var wizard_level_seventh_spells = []
-#TODO: var wizard_level_ninth_spells = []

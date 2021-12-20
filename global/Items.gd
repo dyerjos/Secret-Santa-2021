@@ -61,3 +61,11 @@ var antitoxin = {
 	"coin" : 10,
 	"weight": 0,
 }
+
+#TODO: make unseen servant an npc instead of an item in the future
+var unseen_servant = {
+	"name" : "unseen servant",
+	"tags" : [],
+	"coin" : null,
+	"weight": -3,
+}

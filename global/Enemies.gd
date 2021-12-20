@@ -25,6 +25,7 @@ var ankheg = {
 	"monster_tags" : [],
 	"range_tags" : ["close", "reach"],
 	"hp" : 10,
+	"max_hp": 10,
 	"stun_points": 0,
 	"armor" : 3,
 	"special_qualities" : "borrowing",

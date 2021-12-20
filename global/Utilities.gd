@@ -22,14 +22,19 @@ func roll_dice_for_total(number_of_dice, sides_of_dice):
 	random.randomize()
 	var dice_total = 0
 	for i in range(number_of_dice):
-		dice_total += random.randi_range(number_of_dice, sides_of_dice)
+		dice_total += random.randi_range(1, sides_of_dice)
 		print("dice rolled: %s" % dice_total)
 	print("dice total: %s" % dice_total)
 	return dice_total
-	
+
+func random_number_in_range(min, max):
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	return random.randi_range(min, max)
 		
-func stat_to_modifier(stat):
-	if stat == null or stat == "":
+func stat_to_modifier(stat=null):
+	print("stat: %s" % stat)
+	if stat == null:
 		return 0
 	assert(stat >= 1)
 	assert(stat <= 18)

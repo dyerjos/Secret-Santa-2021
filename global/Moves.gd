@@ -479,8 +479,9 @@ var cast_spell = {
 	}
 
 func prepare_spells_fn():
+	print("ongoing spell modifier back to 0")
 	CharacterSheet.ongoing_spell_modifier = 0
-	# CharacterSheet.player_level_one_spells.clear() #! don't clear spells if there is no time to make spell picker scene
+	# CharacterSheet.prepared_spells.clear() #! don't clear spells if there is no time to make spell picker scene
 	print("prepares spells in your spellbook")
 	#TODO: need UI for choosing spells again
 var prepare_spells = {
@@ -626,10 +627,10 @@ func generate_monsters(location):
 	match organization:
 		"group":
 			print("2-5 of them")
-			number_of_enemies = Utilities.roll_dice_for_total(2, 5)
+			number_of_enemies = Utilities.random_number_in_range(2, 5)
 		"horde":
 			print("over 5 of them")
-			number_of_enemies = Utilities.roll_dice_for_total(6, 10)
+			number_of_enemies = Utilities.random_number_in_range(6, 10)
 		"solitary":
 			print("only 1")
 			number_of_enemies = 1

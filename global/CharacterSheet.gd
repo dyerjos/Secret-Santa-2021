@@ -48,13 +48,15 @@ export var inventory_locked = false
 export var player_in_battle = false
 
 export var has_a_light = false
+export var has_unseen_servant = false
 
 var ongoing_spell = {}
 
 
 var current_scene = "res://menu/MainMenu.tscn"
 var player_inventory = []
-var player_level_one_spells = []
+var spells_in_spellbook = []
+var prepared_spells = []
 var known_cantrips = []
 var player_moves = []
 var battle_targets = []
@@ -80,7 +82,7 @@ func save_dict():
 		"player_cha" : player_cha,
 		"class_base_hitpoints" : class_base_hitpoints,
 		"player_hitpoints" : player_hitpoints,
-		"player_level_one_spells" : player_level_one_spells,
+		"spells_in_spellbook" : spells_in_spellbook,
 		"known_cantrips" : known_cantrips,
 		"player_level" : player_level,
 		"player_exp" : player_exp,
@@ -105,6 +107,8 @@ func save_dict():
 		"player_debilities" : player_debilities,
 		"ongoing_spell" : ongoing_spell,
 		"has_a_light" : has_a_light,
+		"prepared_spells" : prepared_spells,
+		"has_unseen_servant" : has_unseen_servant,
 	}
 
 
@@ -125,7 +129,7 @@ func load(dict):
 	player_cha = dict["player_cha"]
 	class_base_hitpoints = dict["class_base_hitpoints"]
 	player_hitpoints = dict["player_hitpoints"]
-	player_level_one_spells = dict["player_level_one_spells"]
+	spells_in_spellbook = dict["spells_in_spellbook"]
 	known_cantrips = dict["known_cantrips"]
 	player_level = dict["player_level"]
 	player_exp = dict["player_exp"]
@@ -151,7 +155,8 @@ func load(dict):
 	player_debilities = dict["player_debilities"]
 	ongoing_spell = dict["ongoing_spell"]
 	has_a_light = dict["has_a_light"]
-
+	prepared_spells = dict["prepared_spells"]
+	has_unseen_servant = dict["has_unseen_servant"]
 
 
 func damage_bonuses(ability_modifier=0):

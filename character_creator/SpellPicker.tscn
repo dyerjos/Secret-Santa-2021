@@ -60,7 +60,7 @@ __meta__ = {
 
 [node name="Column" type="VBoxContainer" parent="TabContainer/Class"]
 margin_right = 330.0
-margin_bottom = 1522.0
+margin_bottom = 1403.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="Row" type="HBoxContainer" parent="TabContainer/Class/Column"]
@@ -174,6 +174,7 @@ margin_right = 330.0
 margin_bottom = 200.0
 
 [node name="Row4" type="HBoxContainer" parent="TabContainer/Class/Column"]
+visible = false
 margin_top = 561.0
 margin_right = 330.0
 margin_bottom = 676.0
@@ -210,9 +211,9 @@ margin_right = 330.0
 margin_bottom = 115.0
 
 [node name="Row5" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 680.0
+margin_top = 561.0
 margin_right = 330.0
-margin_bottom = 780.0
+margin_bottom = 661.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row5"]
@@ -246,9 +247,9 @@ margin_right = 330.0
 margin_bottom = 81.0
 
 [node name="Row6" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 784.0
+margin_top = 665.0
 margin_right = 330.0
-margin_bottom = 884.0
+margin_bottom = 765.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row6"]
@@ -282,9 +283,9 @@ margin_right = 330.0
 margin_bottom = 81.0
 
 [node name="Row7" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 888.0
+margin_top = 769.0
 margin_right = 330.0
-margin_bottom = 1003.0
+margin_bottom = 884.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row7"]
@@ -319,9 +320,9 @@ margin_right = 330.0
 margin_bottom = 115.0
 
 [node name="Row8" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 1007.0
+margin_top = 888.0
 margin_right = 330.0
-margin_bottom = 1139.0
+margin_bottom = 1020.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row8"]
@@ -356,9 +357,9 @@ margin_right = 330.0
 margin_bottom = 132.0
 
 [node name="Row9" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 1143.0
+margin_top = 1024.0
 margin_right = 330.0
-margin_bottom = 1275.0
+margin_bottom = 1156.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row9"]
@@ -393,9 +394,9 @@ margin_right = 330.0
 margin_bottom = 132.0
 
 [node name="Row10" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 1279.0
+margin_top = 1160.0
 margin_right = 330.0
-margin_bottom = 1394.0
+margin_bottom = 1275.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row10"]
@@ -429,9 +430,9 @@ margin_right = 330.0
 margin_bottom = 115.0
 
 [node name="Row11" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 1398.0
+margin_top = 1279.0
 margin_right = 330.0
-margin_bottom = 1498.0
+margin_bottom = 1379.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row11"]
@@ -465,9 +466,9 @@ margin_right = 330.0
 margin_bottom = 81.0
 
 [node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/Column"]
-margin_top = 1502.0
+margin_top = 1383.0
 margin_right = 330.0
-margin_bottom = 1522.0
+margin_bottom = 1403.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/Column/CenterContainer3"]
