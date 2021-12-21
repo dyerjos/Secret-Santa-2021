@@ -293,13 +293,13 @@ func take_watch_fn(location):
 	match roll_result:
 		"critical":
 			print("you’re able to wake the camp and prepare a response, everyone in the camp takes +1 forward")
-			setup_random_monster_encounter(location, 1, true)
+			Enemies.setup_random_monster_encounter(location, 1, true)
 		"partial":
 			print("no time to prepare and now battle")
-			setup_random_monster_encounter(location, 0 , true )
+			Enemies.setup_random_monster_encounter(location, 0 , true )
 		"fail":
 			print("battle and monster gets first attack")
-			setup_random_monster_encounter(location, 0, false)
+			Enemies.setup_random_monster_encounter(location, 0, false)
 var take_watch = {
 	"name" : "take watch",
 	"type" : "special",
@@ -582,6 +582,7 @@ func damage_to_player(targets):
 func damage_to_npc(number, base_damage, target, stat_for_attack, player_weapon_used):
 	var damage = Utilities.deal_damage(number, base_damage, target["armor"], CharacterSheet.damage_bonuses(Utilities.stat_to_modifier(stat_for_attack)), player_weapon_used["weapon_tags"])
 	process_damage_to_npc(damage, target, player_weapon_used)
+	
 
 func consume_rations(distance=null, trailblazer_bonus=0):
 	var rations = CharacterSheet.player_inventory["dungeon_rations"]
@@ -609,31 +610,4 @@ func is_camp_safe():
 		"fail":
 			return false
 
-func setup_random_monster_encounter(location, watch_bonus, players_attack_first):
-	CharacterSheet.ongoing_watch_bonus = watch_bonus
-	print("generating monsters from location")
-	generate_monsters(location)
-	print("player now in battle")
-	CharacterSheet.player_in_battle = true
-	#TODO: UI changes for battle
-	print("trigger UI changes for battle here")
 
-func generate_monsters(location):
-	#TODO: location needs "monster_setting" field
-	var potential_enemeies = Enemies.location["monster_setting"].duplicate(true).shuffle()
-	var enemy_type = potential_enemeies.pop_back()
-	var organization = enemy_type["organization"]
-	var number_of_enemies = 0
-	match organization:
-		"group":
-			print("2-5 of them")
-			number_of_enemies = Utilities.random_number_in_range(2, 5)
-		"horde":
-			print("over 5 of them")
-			number_of_enemies = Utilities.random_number_in_range(6, 10)
-		"solitary":
-			print("only 1")
-			number_of_enemies = 1
-	assert(number_of_enemies > 0)
-	for enemy in number_of_enemies:
-		CharacterSheet.battle_targets.append(enemy_type.duplicate(true))

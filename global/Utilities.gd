@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	randomize()
+	randomize() #TODO: is this needed?
 
 func roll_dice_for_success(stat=null):
 	var random = RandomNumberGenerator.new()
@@ -27,10 +27,10 @@ func roll_dice_for_total(number_of_dice, sides_of_dice):
 	print("dice total: %s" % dice_total)
 	return dice_total
 
-func random_number_in_range(min, max):
+func random_number_in_range(lowest, highest):
 	var random = RandomNumberGenerator.new()
 	random.randomize()
-	return random.randi_range(min, max)
+	return random.randi_range(lowest, highest)
 		
 func stat_to_modifier(stat=null):
 	print("stat: %s" % stat)
@@ -55,7 +55,7 @@ func stat_to_modifier(stat=null):
 	else:
 		print("stat shouldn't be %s" % stat)
 
-func deal_damage(number, base_damage, target_armor, damage_bonuses, weapon_tags):
+func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tags=[]):
 	var tag_damage_bonus = 0
 	var forceful = false
 	var stun = false

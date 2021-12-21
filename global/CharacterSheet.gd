@@ -49,6 +49,7 @@ export var player_in_battle = false
 
 export var has_a_light = false
 export var has_unseen_servant = false
+export var has_set_alarm = false
 
 var ongoing_spell = {}
 
@@ -61,6 +62,7 @@ var known_cantrips = []
 var player_moves = []
 var battle_targets = []
 var player_debilities = []
+var telepathic_bonds = []
 
 
 
@@ -93,6 +95,7 @@ func save_dict():
 		"player_inventory" : player_inventory,
 		"move_damage_bonus" : move_damage_bonus,
 		"weapon_damage_bonus" : weapon_damage_bonus,
+		"effect_damage_bonus" : effect_damage_bonus,
 		"player_move_armor" : player_move_armor,
 		"player_stunpoints" : player_stunpoints,
 		"player_in_danger" : player_in_danger,
@@ -109,6 +112,8 @@ func save_dict():
 		"has_a_light" : has_a_light,
 		"prepared_spells" : prepared_spells,
 		"has_unseen_servant" : has_unseen_servant,
+		"telepathic_bonds" : telepathic_bonds,
+		"has_set_alarm" : has_set_alarm,
 	}
 
 
@@ -157,7 +162,12 @@ func load(dict):
 	has_a_light = dict["has_a_light"]
 	prepared_spells = dict["prepared_spells"]
 	has_unseen_servant = dict["has_unseen_servant"]
-
+	telepathic_bonds = dict["telepathic_bonds"]
+	has_set_alarm = dict["has_set_alarm"]
+		
+		
+		
+	
 
 func damage_bonuses(ability_modifier=0):
 	return move_damage_bonus + effect_damage_bonus + ability_modifier

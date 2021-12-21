@@ -21,6 +21,7 @@ var scenes := {
 	"SpellPicker": "res://character_creator/SpellPicker.tscn",
 	"GearPicker": "res://character_creator/GearPicker.tscn",
 	"Test": "res://Test.tscn",
+	"Gameplay": "res://Gameplay.tscn",
 }
 
 

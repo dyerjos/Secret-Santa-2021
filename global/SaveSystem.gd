@@ -9,7 +9,8 @@ var save_path = "user://savegame.save"
 # dict of relevant variables.
 func save_and_encrypt_game():
 	var save_game = File.new()
-	save_game.open(save_path, File.WRITE) # or open_encrypted_with_pass(save_path,file.w,PA$$word99!)
+#	save_game.open(save_path, File.WRITE) #! non-encrypteed way
+	save_game.open_encrypted_with_pass(save_path, File.WRITE, "PA$$word99!")
 	var master_save_list = []
 	prep_persistant_nodes(master_save_list)
 	prep_globals(master_save_list)
@@ -21,7 +22,8 @@ func save_and_encrypt_game():
 func load_and_unencrypt_game():
 	var save_game = File.new()
 	if save_game.file_exists(save_path):
-		save_game.open(save_path, File.READ)
+#		save_game.open(save_path, File.READ) #! non-encrypteed way
+		save_game.open_encrypted_with_pass(save_path, File.READ, "PA$$word99!")
 		var master_save_list = save_game.get_var(true)
 		save_game.close()
 		load_persistant_nodes(master_save_list)
@@ -68,34 +70,26 @@ func prep_persistant_nodes(master_save_list):
 		if node.filename.empty():
 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
 			continue
-
 		# Check the node has a save function.
 		if !node.has_method("save"):
 			print("persistent node '%s' is missing a save() function, skipped" % node.name)
 			continue
-
 		# Call the node's save function.
 		var node_dict = node.call("save")
-#		assert(typeof(node_dict) == TYPE_DICTIONARY)
-
 		# save_game.store_line(to_json(node_data)) #* official docs method
 		master_save_list.append(node_dict)
 	return master_save_list
 
 func load_persistant_nodes(master_save_list):
 	print("TODO: load persistant nodes") # load_persistant_nodes()
-	print(master_save_list)
 
 func prep_globals(master_save_list):
 	master_save_list.append(CharacterSheet.save_dict())
-#	assert(typeof(CharacterSheet.save_dict) == TYPE_DICTIONARY)
-
-	print("TODO: save any other autoloaded scripts here")
+	#TODO: save any other autoloaded scripts here
 	return master_save_list
 
 func load_globals(master_save_list):
 	for dict in master_save_list:
-		print("loading %s" % dict)
 		if "player_name" in dict:
 			CharacterSheet.load(dict)
 	print("loaded globals")

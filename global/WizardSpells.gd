@@ -101,9 +101,9 @@ var detect_magic = {
 
 func  magic_missile_fn(target):
 	print("spell called")
-	var damage_amount = Utilities.roll_dice_for_total(2, 4)
-	#TODO: figure out how spell would deal damage using process_damage()
-	target["hp"] -= damage_amount 
+	var damage = Utilities.deal_damage(2, 4, target["armor"], 0, [])
+	Moves.process_damage_to_npc(damage, target, {})
+
 var  magic_missile = {
 	"name" : "magic missile",
 	"level" : 1,
@@ -113,8 +113,10 @@ var  magic_missile = {
 	"execute" : funcref(self, " magic_missile_fn")
 }
 
-func  charm_person_fn():
+func  charm_person_fn(target):
 	print("spell called")
+	#TODO: target must be touched
+	target["is_charmed"] = true #TODO: add is_charmed field to target
 var  charm_person = {
 	"name" : "charm person",
 	"level" : 1,
@@ -124,8 +126,10 @@ var  charm_person = {
 	"execute" : funcref(self, " charm_person_fn")
 }
 
-func  invisibility_fn():
+func  invisibility_fn(target):
 	print("spell called")
+	#TODO: target must be touched
+	target["is_invisible"] = true #TODO: add is_invisible field to target
 var  invisibility = {
 	"name" : "invisibility",
 	"level" : 1,
@@ -135,8 +139,10 @@ var  invisibility = {
 	"execute" : funcref(self, " invisibility_fn")
 }
 
-func  telepathy_fn():
+func  telepathy_fn(target):
 	print("spell called")
+	CharacterSheet.telepathic_bonds.append(target.duplicate(true))
+	target["telepathic_bond_with_player"] = true #TODO: add this new field to npc's
 var  telepathy = {
 	"name" : "telepathy",
 	"level" : 1,
@@ -146,8 +152,10 @@ var  telepathy = {
 	"execute" : funcref(self, " telepathy_fn")
 }
 
-func  alarm_fn():
+func  alarm_fn(location):
 	print("spell called")
+	location["has_alarm_set"] = true
+	CharacterSheet.has_set_alarm = true
 var  alarm = {
 	"name" : "alarm",
 	"level" : 1,
