@@ -118,11 +118,10 @@ func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tag
 			"net_damage": net_damage, "stun": stun, "forceful" : forceful, "messy": messy, "needs_reloaded": needs_reloaded
 		}
 
-#func deal_best_damage(number_of_dice, sides_of_dice):
-#	var random = RandomNumberGenerator.new()
-#	random.randomize()
-#	var rolls = [] 
-#	for i in range(number_of_dice):
-#		rolls.append(random.randi_range(number_of_dice, sides_of_dice)
-#		print("dice rolled: %s" % dice_total)
-		
+func best_dice(number_of_dice, sides_of_dice):
+	var roll1 = Utilities.roll_dice_for_total(number_of_dice, sides_of_dice)
+	var roll2 = Utilities.roll_dice_for_total(number_of_dice, sides_of_dice)
+	if roll1 > roll2:
+		return roll1
+	else: 
+		return roll2	

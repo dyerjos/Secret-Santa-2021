@@ -268,8 +268,8 @@ var encumbrance = {
 	}
 	
 func make_camp_fn(location):
-	if location["is_dangerous"]: #TODO: add "is_dangerous" field to locations
-		var safe = is_camp_safe()
+	if location["monsters"] != null:
+		var safe = camp_safe_check()
 		if not safe:
 			take_watch_fn(location)
 			CharacterSheet.failed_camp = true
@@ -594,7 +594,7 @@ func consume_rations(distance=null, trailblazer_bonus=0):
 	else:
 		rations.uses -= distance - trailblazer_bonus
 
-func is_camp_safe():
+func camp_safe_check():
 	if CharacterSheet.failed_camp == true:
 		CharacterSheet.failed_camp = false
 		return true
