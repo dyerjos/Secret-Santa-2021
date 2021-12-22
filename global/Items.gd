@@ -42,7 +42,7 @@ var healing_potion = {
 
 var dagger = {
 	"name" : "dagger",
-	"weapon_tags": [], #TODO: do more like this
+	"weapon_tags": [],
 	"tags" : ["hand"],
 	"coin" : 2,
 	"weight": 1,

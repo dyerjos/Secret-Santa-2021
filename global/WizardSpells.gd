@@ -155,6 +155,7 @@ var  telepathy = {
 func  alarm_fn(location):
 	print("spell called")
 	location["has_alarm_set"] = true
+	#TODO: add "has_alarm_set" field to locations
 	CharacterSheet.has_set_alarm = true
 var  alarm = {
 	"name" : "alarm",

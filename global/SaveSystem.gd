@@ -1,13 +1,15 @@
 extends Node
 
+export var game_loaded = false
 var save_path = "user://savegame.save"
-
 
 #* ------------File methods -----------------------------------------
 
-# Go through everything in the persist category and ask them to return a
-# dict of relevant variables.
+
 func save_and_encrypt_game():
+	if game_loaded == true:
+		print("game was recently loaded so skipping save")
+		return
 	var save_game = File.new()
 #	save_game.open(save_path, File.WRITE) #! non-encrypteed way
 	save_game.open_encrypted_with_pass(save_path, File.WRITE, "PA$$word99!")
@@ -28,6 +30,7 @@ func load_and_unencrypt_game():
 		save_game.close()
 		load_persistant_nodes(master_save_list)
 		load_globals(master_save_list)
+		game_loaded = true
 	else:
 		print("error: save file not found!")
 
@@ -36,32 +39,27 @@ func load_and_unencrypt_game():
 func save_and_encrypt_config():
 	# Create new ConfigFile object.
 	var config = ConfigFile.new()
-	
 	config.set_value("core", "CharacterSheet", CharacterSheet.big_dict())
-
 	#* Store some values (section, key, value )
 #	config.set_value("Player1", "current_scene", "LookPicker")
 #	config.set_value("Player1", "player_class", "barbarian")
 #	config.set_value("Player1", "player_race", "elf")
 #	config.set_value("Player2", "player_name", "V3geta") #* example of 2nd section
 #
-
 	# Save it to a file (overwrite if already exists).
 	config.save_encrypted_pass("user://character_sheets.cfg", "PA$$word99!")
 	
 func load_and_unencrypt_config():
 	var config = ConfigFile.new()
-
 	var err = config.load_encrypted_pass("user://character_sheets.cfg", "PA$$word99!")
 	if err != OK:
+		print("error: %s" % err)
 		return
-
 	for section in config.get_sections():
 		# example of loading individual values
 		CharacterSheet.current_scene = config.get_value(section, "current_scene")
 		CharacterSheet.player_race = config.get_value(section, "player_race")
 		CharacterSheet.player_class = config.get_value(section, "player_class")
-		
 
 func prep_persistant_nodes(master_save_list):
 	var save_nodes = get_tree().get_nodes_in_group("Persist")

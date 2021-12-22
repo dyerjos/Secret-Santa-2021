@@ -20,7 +20,6 @@ var scenes := {
 	"ClassMovesPicker": "res://character_creator/ClassMovesPicker.tscn",
 	"SpellPicker": "res://character_creator/SpellPicker.tscn",
 	"GearPicker": "res://character_creator/GearPicker.tscn",
-	"Test": "res://Test.tscn",
 	"Gameplay": "res://Gameplay.tscn",
 }
 

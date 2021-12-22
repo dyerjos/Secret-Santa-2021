@@ -4,8 +4,8 @@ extends Node
 var common_moves = [
 	hack_and_slash,
 	volley,
-	defy_danger,
-	defend,
+	defy_danger, #TODO: implement later
+	# defend,
 	# aid_or_interfere, #TODO: implement once bonds are setup
 	spout_lore,
 	discern_realities,
@@ -133,7 +133,6 @@ var defy_danger = {
 func defend_fn():
 	#TODO: implement defense mechanics (when npc or player being attacked, defense can be triggered and hold can be spent) (spend_hold() method? or call this stand_in_defense())
 	#TODO: add "is_defended" field to npc's, player, items, and locations
-	#TODO: add global script for locations
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_con)
 	match roll_result:
 		"critical":
@@ -149,7 +148,6 @@ var defend = {
 	"execute" : funcref(self, "defend_fn")
 }
 
-#TODO: only implement this when bonds are implemented
 func aid_or_interfere_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
@@ -307,21 +305,22 @@ var take_watch = {
 	"execute" : funcref(self, "take_watch_fn")
 	}
 
-# TODO: FUTURE
-# func carouse_fn():
-# 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
-# 	match roll_result:
-# 		"critical":
-# 			pass
-# 		"partial":
-# 			pass
-# 		"fail":
-# 			pass
-# var carouse = {
-# 	"name" : "carouse",
-# 	"type" : "special",
-# 	"description" : "When you you have leverage on a GM character and manipulate them",
-# 	"execute" : funcref(self, "carouse_fn")
+#TODO: implement carouse
+#func carouse_fn():
+#	var roll_result = Utilities.roll_dice_for_success(stat_choice)
+#	match roll_result:
+#		"critical":
+#			pass
+#		"partial":
+#			pass
+#		"fail":
+#			pass
+var carouse = {
+	"name" : "carouse",
+	"type" : "special",
+	"description" : "When you you have leverage on a GM character and manipulate them",
+	"execute" : funcref(self, "carouse_fn")
+	}
 
 func undertake_perilous_journey_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)

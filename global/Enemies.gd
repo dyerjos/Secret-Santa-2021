@@ -1,6 +1,5 @@
 extends Node
 
-#TODO: order monsters by biome
 var cavern = [
 	ankheg,
 ]
@@ -35,21 +34,24 @@ var ankheg = {
 
 
 func setup_random_monster_encounter(location, watch_bonus, players_attack_first):
-	#TODO: move this to location or enemy script
 	CharacterSheet.ongoing_watch_bonus = watch_bonus
 	print("generating monsters from location")
 	generate_monsters(location)
 	print("player now in battle")
 	CharacterSheet.player_in_battle = true
-	#TODO: UI changes for battle
 	print("trigger UI changes for battle here")
 
 
 func generate_monsters(location):
 	#TODO: location needs "monster_setting" field
-	var potential_enemeies = location["monster_setting"].duplicate(true).shuffle()
-	#TODO: fix line 50
-	var enemy_type = potential_enemeies.pop_back()
+	var potential_enemies = []
+	assert(location != null)
+	if location["monster_setting"]:
+		var monster_setting = location["monster_setting"]
+		assert(Enemies.monster_setting != null)
+		potential_enemies = Enemies.monster_setting.duplicate(true).shuffle()
+		assert(potential_enemies.size() > 0)
+	var enemy_type = potential_enemies.pop_back()
 	var organization = enemy_type["organization"]
 	var number_of_enemies = 0
 	match organization:
