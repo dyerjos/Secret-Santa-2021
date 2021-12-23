@@ -47,6 +47,7 @@ __meta__ = {
 }
 
 [node name="Main" type="ScrollContainer" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -122,7 +123,6 @@ margin_bottom = 140.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="Tests" type="ScrollContainer" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -176,4 +176,9 @@ margin_right = 390.0
 margin_bottom = 148.0
 custom_colors/font_color = Color( 0.941176, 0.964706, 0.941176, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "btn3"
+text = "generate_treasure()"
+
+[connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn1" to="." method="_on_TestBtn1_pressed"]
+[connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn2" to="." method="_on_TestBtn2_pressed"]
+[connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn3" to="." method="_on_TestBtn3_pressed"]
+[connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn4" to="." method="_on_TestBtn4_pressed"]

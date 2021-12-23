@@ -1,15 +1,5 @@
 extends Node
 
-var cavern = [
-	ankheg,
-]
-var swamp = []
-var undead = []
-var woods = []
-var hordes = []
-var experiments = []
-var underdark = []
-var planar = []
 
 #TODO: add "needs_reloaded" field
 var ankheg = {
@@ -43,13 +33,21 @@ func setup_random_monster_encounter(location, watch_bonus, players_attack_first)
 
 
 func generate_monsters(location):
-	#TODO: location needs "monster_setting" field
-	var potential_enemies = []
 	assert(location != null)
 	if location["monsters"] != null:
-		potential_enemies = location["monsters"].shuffle()
-		assert(potential_enemies.size() > 0)
-		var enemy_type = potential_enemies.pop_back()
+		var potential_enemies = location["monsters"]
+		print("potential enemies %s" % potential_enemies)
+		var duplicated = potential_enemies.duplicate(true) 
+		print("potential dupe %s" % duplicated)
+		var enemy_type = null
+		if duplicated.size() > 1:
+			var shuffled = duplicated.shuffle()
+			print("shuff dupe %s" % shuffled)
+			assert(shuffled.size() > 0)
+			enemy_type = shuffled.pop_back()
+		else:
+			enemy_type = duplicated[0] #converts to dict
+			assert(typeof(enemy_type) != 19) #19 is array
 		var organization = enemy_type["organization"]
 		var number_of_enemies = 0
 		match organization:
@@ -65,15 +63,19 @@ func generate_monsters(location):
 		assert(number_of_enemies > 0)
 		for enemy in number_of_enemies:
 			CharacterSheet.battle_targets.append(enemy_type.duplicate(true))
+		print("monsters added to battle_targets array")
+		print("now setup way to choose target for attack")
+		assert(CharacterSheet.battle_targets.size() > 0)
 	else:
 		print("this location has no monsters")
+		assert(CharacterSheet.battle_targets.size() == 0)
 
 func generate_treasure(target):
 	var modifier = 0
 	modifier += target["attack_modifier"]
 	var best_of_two = false
 	var roll = 0
-	for tag in monster_tags:
+	for tag in target["monster_tags"]:
 		match tag:
 			"hoarder": 
 				best_of_two = true
@@ -81,10 +83,13 @@ func generate_treasure(target):
 				var rations = CharacterSheet.player_inventory["dungeon_rations"]
 				rations.uses += 2
 			"magical":
+				print("player finds a magical item")
 				#TODO: player finds a magical item
 			"divine" :
+				print("player finds a holy item")
 				#TODO: player finds a holy item
 			"planar" :
+				print("player finds a planar item")
 				#TODO: player finds a planar item
 			"lord_over_others":
 				modifier += Utilities.roll_dice_for_total(1, 4)
@@ -95,13 +100,14 @@ func generate_treasure(target):
 	else:
 		roll = Utilities.roll_dice_for_total(target["attack_number"], target["attack_base_damage"])
 	var treasure_rating = roll + modifier
-	roll_again = false
+	var roll_again = false
 	match treasure_rating:
 		1: 
 			# A few coins, 2d8 or so
 			return Utilities.roll_dice_for_total(2, 8)
 		2: 
 			# An item useful to the current situation
+			print("An item useful to the current situation")
 		3: 
 			# Several coins, about 4d10
 			return Utilities.roll_dice_for_total(4, 10)
@@ -112,8 +118,10 @@ func generate_treasure(target):
 
 		5:
 			# Some minor magical trinket
+			print("Some minor magical trinket")
 		6:
 			# Useful information (in the form of clues, notes, etc.)
+			print("Useful information (in the form of clues, notes, etc.)")
 		7:
 			# A bag of coins, 1d4×100 or thereabouts. 1 weight per 100.
 			return Utilities.roll_dice_for_total(1, 400)
@@ -126,6 +134,7 @@ func generate_treasure(target):
 			return Utilities.roll_dice_for_total(3, 600)
 		10:
 			# A magical item or magical effect
+			print("A magical item or magical effect")
 		11:
 			# Many bags of coins for a total of 2d4×100 or so
 			return Utilities.roll_dice_for_total(2, 400)
@@ -154,3 +163,13 @@ func generate_treasure(target):
 		roll_again = false
 		#TODO: finish this. break out treaure rating to new function to clean this up
 
+var cavern = [
+	ankheg,
+]
+var swamp = []
+var undead = []
+var woods = []
+var hordes = []
+var experiments = []
+var underdark = []
+var planar = []
