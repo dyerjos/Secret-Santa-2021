@@ -53,8 +53,10 @@ export var has_set_alarm = false
 
 var ongoing_spell = {}
 
-
+var current_location = {}
 var current_scene = "res://menu/MainMenu.tscn"
+
+var missing_items = []
 var player_inventory = []
 var spells_in_spellbook = []
 var prepared_spells = []
@@ -114,6 +116,10 @@ func save_dict():
 		"has_unseen_servant" : has_unseen_servant,
 		"telepathic_bonds" : telepathic_bonds,
 		"has_set_alarm" : has_set_alarm,
+		"player_moves" : player_moves,
+		"missing_items" : missing_items,
+		"current_location" : current_location,
+		"player_base_load_limit" : player_base_load_limit,
 	}
 
 
@@ -164,10 +170,12 @@ func load(dict):
 	has_unseen_servant = dict["has_unseen_servant"]
 	telepathic_bonds = dict["telepathic_bonds"]
 	has_set_alarm = dict["has_set_alarm"]
-		
-		
-		
-	
+	player_moves = dict["player_moves"]
+	missing_items = dict["missing_items"]
+	current_location = dict["current_location"]
+	player_base_load_limit = dict["player_base_load_limit"]
+
+
 
 func damage_bonuses(ability_modifier=0):
 	return move_damage_bonus + effect_damage_bonus + ability_modifier

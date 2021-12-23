@@ -10,8 +10,14 @@ var A1_S1_cave = { #* Act 1 Scene 1
 	"has_alarm_set" : false, #* a wizard can set an alarm spell up in a minor-location to warn of danger
 	"items" : [],
 	"is_magical" : false, #* detect_magic spell can reveal if the location is magical
+	"useful_information": null,
 	# "hp" : 100 # TODO: should have system to translate location hp to dialogue and consequences. Does building collapse? only buildings have hp?
 	# "child_locations" : [ #TODO: could add child-locations which are places that make up the parent location. 
 	#     entrance, second_level, lowest_level
 	# ]
 }
+
+
+func change_location(new_location):
+	print("now in %s" % new_location["name"])
+	CharacterSheet.current_location = new_location.duplicate(true)
