@@ -46,7 +46,8 @@ export var player_in_danger = false
 export var player_hold = 0
 export var inventory_locked = false
 export var player_in_battle = false
-export var game_mode = "character creation"
+export var player_in_town = false
+export var game_context = "character creation"
 export var active_weapon = {} 
 
 export var has_a_light = false
@@ -63,7 +64,7 @@ var player_inventory = []
 var spells_in_spellbook = []
 var prepared_spells = []
 var known_cantrips = []
-var player_moves = []
+var available_moves = []
 var battle_targets = []
 var player_debilities = []
 var telepathic_bonds = []
@@ -119,14 +120,15 @@ func save_dict():
 		"has_unseen_servant" : has_unseen_servant,
 		"telepathic_bonds" : telepathic_bonds,
 		"has_set_alarm" : has_set_alarm,
-		"player_moves" : player_moves,
+		"available_moves" : available_moves,
 		"missing_items" : missing_items,
 		"current_location" : current_location,
 		"player_base_load_limit" : player_base_load_limit,
-		"game_mode" : game_mode,
+		"game_context" : game_context,
 		"active_weapon" : active_weapon,
 		"has_leverage_on" : has_leverage_on,
-		
+		"player_in_town" : player_in_town,
+
 	}
 
 	
@@ -177,13 +179,14 @@ func load(dict):
 	has_unseen_servant = dict["has_unseen_servant"]
 	telepathic_bonds = dict["telepathic_bonds"]
 	has_set_alarm = dict["has_set_alarm"]
-	player_moves = dict["player_moves"]
+	available_moves = dict["available_moves"]
 	missing_items = dict["missing_items"]
 	current_location = dict["current_location"]
 	player_base_load_limit = dict["player_base_load_limit"]
-	game_mode = dict["game_mode"]
+	game_context = dict["game_context"]
 	active_weapon = dict["active_weapon"]
 	has_leverage_on = dict["has_leverage_on"]
+	player_in_town = dict["player_in_town"]
 
 	
 

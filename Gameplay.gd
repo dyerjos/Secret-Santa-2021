@@ -6,11 +6,12 @@ onready var move_list = $TabContainer/Main/VBoxContainer/MoveRow/MoveList
 onready var target_list = $TabContainer/Main/VBoxContainer/MoveRow/TargetList
 
 func _ready():
-	if not CharacterSheet.debug_mode:
+	if CharacterSheet.debug_mode == false:
 		SaveSystem.save_and_encrypt_game()
 	else:
 		CharacterSheet.current_location = Locations.starter_city
 		CharacterSheet.player_in_battle = true
+		CharacterSheet.player_in_town = false
 	populate_move_list()
 	populate_target_list()
 
@@ -19,16 +20,7 @@ func _process(delta):
 	inventory_label.text = JSON.print(CharacterSheet.player_inventory)
 	
 func populate_move_list():
-	var game_mode = CharacterSheet.game_mode
-	var move_list = []
-	match game_mode:
-		"in_battle": 
-			move_list = Moves.battle_moves
-		"in_town":
-			move_list = Moves.town_moves
-		"traveling":
-			move_list = Moves.all_moves
-			
+	CharacterSheet.available_moves = Moves.get_valid_moves()
 	
 func populate_target_list():
 	pass

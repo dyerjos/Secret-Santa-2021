@@ -462,7 +462,7 @@ var prepare_spells = {
 func add_to_spellbook_fn():
 	print("add one additional spell to your spellbook")
 var add_to_spellbook = {
-	"name" : "cast spell",
+	"name" : "add to spellbook",
 	"type" : "special",
 	"description" : "Release a spell you have prepared",
 	"execute" : funcref(self, "add_to_spellbook_fn")
@@ -476,7 +476,7 @@ func spell_defense_fn():
 	else:
 		return 0
 var spell_defense = {
-	"name" : "cast spell",
+	"name" : "spell defense",
 	"type" : "special",
 	"description" : "Release a spell you have prepared",
 	"execute" : funcref(self, "spell_defense_fn")
@@ -493,7 +493,7 @@ func ritual_fn(stat_choice):
 		"fail":
 			pass
 var ritual = {
-	"name" : "cast spell",
+	"name" : "ritual",
 	"type" : "special",
 	"description" : "Release a spell you have prepared",
 	"execute" : funcref(self, "ritual_fn")
@@ -614,7 +614,7 @@ var wizard_common_moves = [
 #* --------organized moves by game mode ----------
 
 var battle_moves = []
-var all_moves = []
+var all_moves = common_moves + special_moves + wizard_common_moves
 var town_moves = []
 
 #* OR
@@ -624,74 +624,79 @@ func moves_for_gamemode():
 	var move_list = []
 	match game_mode:
 		"in_battle": 
-			move_list = Moves.battle_moves
+			move_list = battle_moves
 		"in_town":
-			move_list = Moves.town_moves
+			move_list = town_moves
 		"traveling":
-			move_list = Moves.all_moves
+			move_list = all_moves
 
-func valid_moves():
+func get_valid_moves():
 	var valid_moves = []
-	var move_list = all_moves.duplicate(true)
+	var move_list = all_moves
+	print("move_list size: %s" % move_list.size())
 	for move in move_list:
-		match move:
-			#----common----
-			"hack_and_slash":
-				if active_weapon["range_tags"].has("close"):
-					move_list.append(move)
+		match move["name"]:
+			# ----common----
+			"hack and slash":
+				if CharacterSheet.active_weapon.has("range_tags") and CharacterSheet.active_weapon["range_tags"].has("close") == true:
+					valid_moves.append(move)
 			"volley":
-				if active_weapon["range_tags"].has("close") == false:
-					move_list.append(move)
-			"defy_danger":
+				if CharacterSheet.active_weapon.has("range_tags") and CharacterSheet.active_weapon["range_tags"].has("close") == false:
+					valid_moves.append(move)
+			"defy danger":
 				if CharacterSheet.player_in_danger:
-					move_list.append(move)
+					valid_moves.append(move)
 			"defend":
 				pass #TODO: implement later
-			"aid_or_interfere":
+			"aid or interfere":
 				pass #TODO: implement once bonds are setup
-			"spout_lore":
-				move_list.append(move)
-			"discern_realities":
+			"spout lore":
+				valid_moves.append(move)
+			"discern realities":
 				if CharacterSheet.player_in_battle == false:
-					move_list.append(move)
+					valid_moves.append(move)
 			"parley":
 				if CharacterSheet.has_leverage_on != null:
-					move_list.append(move)
+					valid_moves.append(move)
 			#----special----
 			"last_breath":
 				pass
 			"encumbrance":
 				pass
-			"make_camp":
+			"make camp":
 				pass
-			"take_watch":
+			"take watch":
 				pass
 			"carouse":
 				pass #TODO: implement later
-			"undertake_perilous_journey":
+			"undertake perilous journey":
 				pass #TODO: implement later
 			"supply":
-				pass
+				if CharacterSheet.player_in_battle == false and CharacterSheet.player_in_town == true:
+					valid_moves.append(move)
 			"recover":
 				pass
 			"recruit":
 				pass #TODO: implement later
-			"outstanding_warrants":
+			"outstanding warrants":
 				pass #TODO: implement later
 			"bolster":
 				pass #TODO: implement later
-			"level_up":
+			"level up":
 				pass
-			"end_of_session":
+			"end of session":
 				pass #TODO: implement later
 			#----wizard common----
-			"cast_spell":
+			"cast spell":
+				valid_moves.append(move)
+			"prepare spells":
+				if CharacterSheet.player_in_battle == false:
+					valid_moves.append(move)
+			"add to spellbook":
 				pass
-			"prepare_spells":
-				pass
-			"add_to_spellbook":
-				pass
-			"spell_defense":
+			"spell defense":
 				pass
 			"ritual":
 				pass #TODO: implement later
+	print("moves: %s" % valid_moves.size())
+	return valid_moves
