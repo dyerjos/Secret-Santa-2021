@@ -41,13 +41,10 @@ func generate_monsters(location):
 	assert(location != null)
 	if location["monsters"] != null:
 		var potential_enemies = location["monsters"]
-		print("potential enemies %s" % potential_enemies)
 		var duplicated = potential_enemies.duplicate(true) 
-		print("potential dupe %s" % duplicated)
 		var enemy_type = null
 		if duplicated.size() > 1:
 			var shuffled = duplicated.shuffle()
-			print("shuff dupe %s" % shuffled)
 			assert(shuffled.size() > 0)
 			enemy_type = shuffled.pop_back()
 		else:
@@ -57,19 +54,14 @@ func generate_monsters(location):
 		var number_of_enemies = 0
 		match organization:
 			"group":
-				print("2-5 of them")
 				number_of_enemies = Utilities.random_number_in_range(2, 5)
 			"horde":
-				print("over 5 of them")
 				number_of_enemies = Utilities.random_number_in_range(6, 10)
 			"solitary":
-				print("only 1")
 				number_of_enemies = 1
 		assert(number_of_enemies > 0)
 		for enemy in number_of_enemies:
 			CharacterSheet.battle_targets.append(enemy_type.duplicate(true))
-		print("monsters added to battle_targets array")
-		print("now setup way to choose target for attack")
 		assert(CharacterSheet.battle_targets.size() > 0)
 	else:
 		print("this location has no monsters")

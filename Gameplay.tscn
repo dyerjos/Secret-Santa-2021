@@ -233,6 +233,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="item_selected" from="TabContainer/Main/MoveCommand/MoveOption" to="." method="_on_MoveOption_item_selected"]
+[connection signal="item_selected" from="TabContainer/Main/MoveCommand/Weapon" to="." method="_on_Weapon_item_selected"]
+[connection signal="item_selected" from="TabContainer/Main/MoveCommand/Target" to="." method="_on_Target_item_selected"]
 [connection signal="pressed" from="TabContainer/Main/MoveCommand/SubmitBtn" to="." method="_on_SubmitBtn_pressed"]
 [connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn1" to="." method="_on_TestBtn1_pressed"]
 [connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn2" to="." method="_on_TestBtn2_pressed"]
