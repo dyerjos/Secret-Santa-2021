@@ -59,25 +59,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/Main"]
-columns = 7
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Main"]
+margin_right = 28.0
+margin_bottom = 20.0
 
-[node name="Panel" type="Panel" parent="TabContainer/Main/GridContainer"]
-visible = false
-margin_right = 100.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 50 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MoveRow" type="HBoxContainer" parent="TabContainer/Main/VBoxContainer"]
+margin_right = 28.0
+margin_bottom = 20.0
 
-[node name="Label" type="Label" parent="TabContainer/Main/GridContainer/Panel"]
-margin_right = 103.0
-margin_bottom = 14.0
-text = "monsters_name"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Panel" type="Panel" parent="TabContainer/Main/VBoxContainer/MoveRow"]
+margin_bottom = 20.0
+
+[node name="MoveList" type="ItemList" parent="TabContainer/Main/VBoxContainer/MoveRow"]
+margin_left = 4.0
+margin_right = 24.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+
+[node name="TargetList" type="ItemList" parent="TabContainer/Main/VBoxContainer/MoveRow"]
+margin_left = 28.0
+margin_right = 28.0
+margin_bottom = 20.0
 
 [node name="Player" type="ScrollContainer" parent="TabContainer"]
 visible = false

@@ -1,40 +1,7 @@
 extends Node
 
 
-var common_moves = [
-	hack_and_slash,
-	volley,
-	defy_danger, #TODO: implement later
-	# defend,
-	# aid_or_interfere, #TODO: implement once bonds are setup
-	spout_lore,
-	discern_realities,
-	parley,
-]
 
-var special_moves = [
-	last_breath,
-	encumbrance,
-	make_camp,
-	take_watch,
-	# carouse, #TODO: implement later
-	# undertake_perilous_journey, #TODO: implement later
-	supply,
-	recover,
-	# recruit, #TODO: implement later
-	# outstanding_warrants, #TODO: implement later
-	# bolster, #TODO: implement later
-	level_up,
-	# end_of_session, #TODO: implement later
-]
-
-var wizard_common_moves = [
-	cast_spell,
-	prepare_spells,
-	add_to_spellbook,
-	spell_defense,
-	# ritual, #TODO: implement later
-]
 
 #* ------COMMON MOVES------------------------------------------------
 
@@ -204,7 +171,6 @@ var discern_realities = {
 }
 
 func parley_fn(target):
-	#TODO: must have leverage to use this (maybe setup a leveraged field on npc's?)
 	#NOTE: you don't have to actually keep your promise (maybe have an honor or reputation field for player :D )
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
 	match roll_result:
@@ -610,4 +576,122 @@ func camp_safe_check():
 		"fail":
 			return false
 
+var common_moves = [
+	hack_and_slash,
+	volley,
+	defy_danger, 
+	# defend, #TODO: implement later
+	# aid_or_interfere, #TODO: implement once bonds are setup
+	spout_lore,
+	discern_realities,
+	parley,
+]
 
+var special_moves = [
+	last_breath,
+	encumbrance,
+	make_camp,
+	take_watch,
+	# carouse, #TODO: implement later
+	# undertake_perilous_journey, #TODO: implement later
+	supply,
+	recover,
+	# recruit, #TODO: implement later
+	# outstanding_warrants, #TODO: implement later
+	# bolster, #TODO: implement later
+	level_up,
+	# end_of_session, #TODO: implement later
+]
+
+var wizard_common_moves = [
+	cast_spell,
+	prepare_spells,
+	add_to_spellbook,
+	spell_defense,
+	# ritual, #TODO: implement later
+]
+
+#* --------organized moves by game mode ----------
+
+var battle_moves = []
+var all_moves = []
+var town_moves = []
+
+#* OR
+
+func moves_for_gamemode():
+	var game_mode = CharacterSheet.game_mode
+	var move_list = []
+	match game_mode:
+		"in_battle": 
+			move_list = Moves.battle_moves
+		"in_town":
+			move_list = Moves.town_moves
+		"traveling":
+			move_list = Moves.all_moves
+
+func valid_moves():
+	var valid_moves = []
+	var move_list = all_moves.duplicate(true)
+	for move in move_list:
+		match move:
+			#----common----
+			"hack_and_slash":
+				if active_weapon["range_tags"].has("close"):
+					move_list.append(move)
+			"volley":
+				if active_weapon["range_tags"].has("close") == false:
+					move_list.append(move)
+			"defy_danger":
+				if CharacterSheet.player_in_danger:
+					move_list.append(move)
+			"defend":
+				pass #TODO: implement later
+			"aid_or_interfere":
+				pass #TODO: implement once bonds are setup
+			"spout_lore":
+				move_list.append(move)
+			"discern_realities":
+				if CharacterSheet.player_in_battle == false:
+					move_list.append(move)
+			"parley":
+				if CharacterSheet.has_leverage_on != null:
+					move_list.append(move)
+			#----special----
+			"last_breath":
+				pass
+			"encumbrance":
+				pass
+			"make_camp":
+				pass
+			"take_watch":
+				pass
+			"carouse":
+				pass #TODO: implement later
+			"undertake_perilous_journey":
+				pass #TODO: implement later
+			"supply":
+				pass
+			"recover":
+				pass
+			"recruit":
+				pass #TODO: implement later
+			"outstanding_warrants":
+				pass #TODO: implement later
+			"bolster":
+				pass #TODO: implement later
+			"level_up":
+				pass
+			"end_of_session":
+				pass #TODO: implement later
+			#----wizard common----
+			"cast_spell":
+				pass
+			"prepare_spells":
+				pass
+			"add_to_spellbook":
+				pass
+			"spell_defense":
+				pass
+			"ritual":
+				pass #TODO: implement later

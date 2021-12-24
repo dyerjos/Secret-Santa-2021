@@ -46,6 +46,8 @@ export var player_in_danger = false
 export var player_hold = 0
 export var inventory_locked = false
 export var player_in_battle = false
+export var game_mode = "character creation"
+export var active_weapon = {} 
 
 export var has_a_light = false
 export var has_unseen_servant = false
@@ -65,6 +67,7 @@ var player_moves = []
 var battle_targets = []
 var player_debilities = []
 var telepathic_bonds = []
+var has_leverage_on = []
 
 
 
@@ -120,9 +123,13 @@ func save_dict():
 		"missing_items" : missing_items,
 		"current_location" : current_location,
 		"player_base_load_limit" : player_base_load_limit,
+		"game_mode" : game_mode,
+		"active_weapon" : active_weapon,
+		"has_leverage_on" : has_leverage_on,
+		
 	}
 
-
+	
 func load(dict):
 	current_scene = dict["current_scene"]
 	player_class = dict["player_class"]
@@ -174,8 +181,11 @@ func load(dict):
 	missing_items = dict["missing_items"]
 	current_location = dict["current_location"]
 	player_base_load_limit = dict["player_base_load_limit"]
+	game_mode = dict["game_mode"]
+	active_weapon = dict["active_weapon"]
+	has_leverage_on = dict["has_leverage_on"]
 
-
+	
 
 func damage_bonuses(ability_modifier=0):
 	return move_damage_bonus + effect_damage_bonus + ability_modifier
