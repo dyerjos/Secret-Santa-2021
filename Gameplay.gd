@@ -1,9 +1,17 @@
 extends ColorRect
 
+onready var location_label = $TabContainer/Location/Column/LocationLabel
+onready var inventory_label = $TabContainer/Inventory/Column/InventoryLabel
 
 func _ready():
-	SaveSystem.save_and_encrypt_game()
+	if not CharacterSheet.debug_mode:
+		SaveSystem.save_and_encrypt_game()
+	else:
+		CharacterSheet.current_location = Locations.starter_city
 
+func _process(delta):
+	location_label.text = JSON.print(CharacterSheet.current_location)
+	inventory_label.text = JSON.print(CharacterSheet.player_inventory)
 
 func _on_TestBtn1_pressed(): #monster enounter
 	print("hi")
