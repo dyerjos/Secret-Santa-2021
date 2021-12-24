@@ -29,13 +29,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 149.0
+[node name="ContextLabel" type="Label" parent="CenterContainer"]
+margin_left = 128.0
 margin_top = 2.0
-margin_right = 251.0
+margin_right = 272.0
 margin_bottom = 30.0
 custom_fonts/font = SubResource( 1 )
-text = "In Battle"
+text = "Context Title"
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_top = 33.0
@@ -59,27 +59,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Main"]
-margin_right = 28.0
+[node name="MoveCommand" type="HBoxContainer" parent="TabContainer/Main"]
+margin_right = 306.0
 margin_bottom = 20.0
 
-[node name="MoveRow" type="HBoxContainer" parent="TabContainer/Main/VBoxContainer"]
-margin_right = 28.0
+[node name="MoveOption" type="OptionButton" parent="TabContainer/Main/MoveCommand"]
+margin_right = 65.0
 margin_bottom = 20.0
+text = "move"
 
-[node name="Panel" type="Panel" parent="TabContainer/Main/VBoxContainer/MoveRow"]
-margin_bottom = 20.0
+[node name="Using" type="Label" parent="TabContainer/Main/MoveCommand"]
+margin_left = 69.0
+margin_top = 3.0
+margin_right = 103.0
+margin_bottom = 17.0
+text = "using"
 
-[node name="MoveList" type="ItemList" parent="TabContainer/Main/VBoxContainer/MoveRow"]
-margin_left = 4.0
-margin_right = 24.0
+[node name="Weapon" type="OptionButton" parent="TabContainer/Main/MoveCommand"]
+margin_left = 107.0
+margin_right = 185.0
 margin_bottom = 20.0
-rect_min_size = Vector2( 20, 20 )
+text = "weapon"
 
-[node name="TargetList" type="ItemList" parent="TabContainer/Main/VBoxContainer/MoveRow"]
-margin_left = 28.0
-margin_right = 28.0
+[node name="Against" type="Label" parent="TabContainer/Main/MoveCommand"]
+margin_left = 189.0
+margin_top = 3.0
+margin_right = 205.0
+margin_bottom = 17.0
+text = "on"
+
+[node name="Target" type="OptionButton" parent="TabContainer/Main/MoveCommand"]
+margin_left = 209.0
+margin_right = 275.0
 margin_bottom = 20.0
+text = "target"
+
+[node name="SubmitBtn" type="Button" parent="TabContainer/Main/MoveCommand"]
+margin_left = 279.0
+margin_right = 306.0
+margin_bottom = 20.0
+text = "ok"
 
 [node name="Player" type="ScrollContainer" parent="TabContainer"]
 visible = false
@@ -120,6 +139,7 @@ margin_bottom = 140.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="InventoryLabel" type="Label" parent="TabContainer/Inventory/Column"]
+visible = false
 margin_right = 330.0
 margin_bottom = 14.0
 
@@ -143,6 +163,7 @@ margin_bottom = 140.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="LocationLabel" type="Label" parent="TabContainer/Location/Column"]
+visible = false
 margin_right = 330.0
 margin_bottom = 14.0
 autowrap = true
@@ -212,6 +233,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="TabContainer/Main/MoveCommand/SubmitBtn" to="." method="_on_SubmitBtn_pressed"]
 [connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn1" to="." method="_on_TestBtn1_pressed"]
 [connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn2" to="." method="_on_TestBtn2_pressed"]
 [connection signal="pressed" from="TabContainer/Tests/GridContainer/HBoxContainer/Column/TestBtn3" to="." method="_on_TestBtn3_pressed"]

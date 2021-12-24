@@ -638,11 +638,9 @@ func get_valid_moves():
 		match move["name"]:
 			# ----common----
 			"hack and slash":
-				if CharacterSheet.active_weapon.has("range_tags") and CharacterSheet.active_weapon["range_tags"].has("close") == true:
-					valid_moves.append(move)
+				valid_moves.append(move)
 			"volley":
-				if CharacterSheet.active_weapon.has("range_tags") and CharacterSheet.active_weapon["range_tags"].has("close") == false:
-					valid_moves.append(move)
+				valid_moves.append(move)
 			"defy danger":
 				if CharacterSheet.player_in_danger:
 					valid_moves.append(move)
@@ -656,8 +654,7 @@ func get_valid_moves():
 				if CharacterSheet.player_in_battle == false:
 					valid_moves.append(move)
 			"parley":
-				if CharacterSheet.has_leverage_on != null:
-					valid_moves.append(move)
+				valid_moves.append(move)
 			#----special----
 			"last_breath":
 				pass

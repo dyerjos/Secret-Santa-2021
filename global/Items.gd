@@ -1,7 +1,7 @@
 extends Node
 
 
-#TODO: add attack_tags, range_tags, is_magical, general_tags, armor_tags, needs_reloaded,
+#TODO: add attack_tags, range_tags, is_magical, general_tags, armor_tags, needs_reloaded, is_weapon
 var spellbook = {
 	"name" : "spellbook",
 	"tags" : [],
@@ -43,6 +43,7 @@ var healing_potion = {
 var dagger = {
 	"name" : "dagger",
 	"weapon_tags": [],
+	"is_weapon": true,
 	"tags" : ["hand"],
 	"coin" : 2,
 	"weight": 1,
@@ -51,6 +52,7 @@ var dagger = {
 var staff = {
 	"name" : "staff",
 	"tags" : ["close", "two_handed"],
+	"is_weapon": true,
 	"coin" : 1,
 	"weight": 1,
 }

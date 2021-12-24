@@ -18,6 +18,9 @@ func _ready():
 	populate_stats()
 	assert(StrOptBtn.get_item_count() == 7)
 	DoneBtn.disabled = true # incase I accidentally change this in editor
+	CharacterSheet.player_in_battle = false
+	CharacterSheet.player_in_town = true
+
 
 func _process(delta):
 	done_btn_checker()
