@@ -40,6 +40,7 @@ var wizard_common_moves = [
 
 #NOTE: deal_damage(number, base_damage, target_armor, damage_bonuses, attack_tag)
 func hack_and_slash_fn(targets, reckless=false, player_weapon_used=null):
+	assert(player_weapon_used["needs_reloaded"] == false)
 	#TODO: test- what happens when player_weapon_used is null?
 	print("calling move!")
 	var stat_for_attack = ""
@@ -52,7 +53,7 @@ func hack_and_slash_fn(targets, reckless=false, player_weapon_used=null):
 		"critical":
 			for target in targets:
 				print("target: %s" % target)
-				damage_to_npc(2, 6, target, stat_for_attack, player_weapon_used)
+				damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 				if reckless:
 					print("reckless also")
 					damage_to_npc(1, 6, target, stat_for_attack, player_weapon_used)
@@ -60,7 +61,7 @@ func hack_and_slash_fn(targets, reckless=false, player_weapon_used=null):
 				damage_to_player(targets)
 		"partial":
 			for target in targets:
-				damage_to_npc(2, 6, target, stat_for_attack, player_weapon_used)
+				damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 			damage_to_player(targets)
 		"fail":
 			CharacterSheet.player_exp += 1
@@ -82,19 +83,19 @@ func volley_fn(target, player_weapon_used, fail_opt):
 	match roll_result:
 		"critical":
 			print("target: %s" % target)
-			damage_to_npc(2, 6, target, stat_for_attack, player_weapon_used)
+			damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 		"partial":
 			match fail_opt:
 				1:
 					CharacterSheet.player_in_danger = true
-					damage_to_npc(2, 6, target, stat_for_attack, player_weapon_used)
+					damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 				2:
-					damage_to_npc(1, 6, target, stat_for_attack, player_weapon_used)
+					damage_to_npc(1, (CharacterSheet.class_base_damage - 6), target, stat_for_attack, player_weapon_used)
 				3:
 					player_weapon_used["ammo_count"] -= 1
 					#TODO: add "ammo_count" to weapons that need ammo
 					#TODO: test - make sure ammo count goes down
-					damage_to_npc(2, 6, target, stat_for_attack, player_weapon_used)
+					damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 		"fail":
 			CharacterSheet.player_exp += 1
 			print("GM says what happens")
@@ -465,8 +466,8 @@ func cast_spell_fn(spell):
 		"critical":
 			spell["execute"].call_func()
 		"partial":
-			Moves.hack_and_slash["execute"].call_func()
 			#TODO: player chooses to draw unwelcome attention, take -1 ongoing to spells, or for spell to be forgotten
+			spell["execute"].call_func()
 			CharacterSheet.ongoing_spell_modifier = -1
 		"fail":
 			CharacterSheet.ongoing_spell_modifier = -1
@@ -480,6 +481,7 @@ var cast_spell = {
 func prepare_spells_fn():
 	print("ongoing spell modifier back to 0")
 	CharacterSheet.ongoing_spell_modifier = 0
+	CharacterSheet.has_a_light = false
 	# CharacterSheet.prepared_spells.clear() #! don't clear spells if there is no time to make spell picker scene
 	print("prepares spells in your spellbook")
 	#TODO: need UI for choosing spells again
@@ -565,8 +567,7 @@ func process_damage_to_player(damage) -> void:
 		#TODO: damage is done to person, item, or location (make global location script with fields like hp, description)
 	if damage["forceful"] == true:
 		print("chance to knock down or knock target back")
-#	if damage["needs_reloaded"] == true:
-#		player_weapon_used["needs_reloaded"] = true
+
 
 func damage_to_player(targets):
 	var best_damage = 0

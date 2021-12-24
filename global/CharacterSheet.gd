@@ -21,7 +21,7 @@ export var player_hitpoints = ""
 export var class_base_hitpoints = ""
 export var player_stunpoints = 0
 
-export var class_base_damage = 0
+export var class_base_damage = 4 #TODO: hardcoded wizard stat - have character creation set this in future
 export var move_damage_bonus = 0 #* what class has this?
 export var weapon_damage_bonus = 0
 export var effect_damage_bonus = 0
@@ -40,7 +40,7 @@ export var player_move_armor = 0 #* some class moves provide armor
 
 export var player_coins = 0
 
-export var player_base_load_limit = 7 #TODO: hardcoded wizard stat
+export var player_base_load_limit = 7 #TODO: hardcoded wizard stat - have character creation set this in future
 
 export var player_in_danger = false
 export var player_hold = 0

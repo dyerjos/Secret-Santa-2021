@@ -6,6 +6,7 @@ func  cure_light_wounds_fn(target):
 	print("now healing")
 	#TODO: must touch to heal
 	var heal_amount = Utilities.roll_dice_for_total(1, 8)
+	print("heal amount %s" % heal_amount)
 	if target["hp"]:
 		print("healing an npc or monster")
 		target["hp"] = clamp((target["hp"] + heal_amount), 0, target["max_hp"])

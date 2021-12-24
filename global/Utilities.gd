@@ -18,13 +18,14 @@ func roll_dice_for_success(stat=null):
 		return "fail"
 
 func roll_dice_for_total(number_of_dice, sides_of_dice):
-	var random = RandomNumberGenerator.new()
+	var random = RandomNumberGenerator.new() 
 	random.randomize()
 	var dice_total = 0
 	for i in range(number_of_dice):
-		dice_total += random.randi_range(1, sides_of_dice)
-		print("dice rolled: %s" % dice_total)
-	print("dice total: %s" % dice_total)
+		var dice_roll = random.randi_range(1, sides_of_dice)
+		# print("dice rolled: %s" % dice_roll)
+		dice_total += dice_roll
+	# print("dice total: %s" % dice_total)
 	return dice_total
 
 func random_number_in_range(lowest, highest):

@@ -19,4 +19,4 @@ func _on_TestBtn3_pressed(): # recover
 
 func _on_TestBtn4_pressed(): # generate treasure
 	#TODO: how to select a target?
-	Enemies.generate_treasure(Enemies.ankheg)
+	Items.generate_treasure(Enemies.ankheg)

@@ -1,7 +1,7 @@
 extends Node
 
 
-#TODO: add "needs_reloaded" field
+
 var ankheg = {
 	"name" : "ankheg",
 	"organization" : "group",
@@ -12,6 +12,10 @@ var ankheg = {
 	"attack_number" : 1,
 	"attack_tag" : "",
 	"monster_tags" : [],
+	"is_charmed": false,
+	"is_entertained" : false, #TODO: funcref
+	"telepathic_bond_with_player" : false,
+	"is_invisible" : false,
 	"range_tags" : ["close", "reach"],
 	"hp" : 10,
 	"max_hp": 10,

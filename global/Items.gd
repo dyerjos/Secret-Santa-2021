@@ -1,7 +1,7 @@
 extends Node
 
 
-#TODO: add attack_tags, range_tags, etc
+#TODO: add attack_tags, range_tags, is_magical, general_tags, armor_tags, needs_reloaded,
 var spellbook = {
 	"name" : "spellbook",
 	"tags" : [],
@@ -107,7 +107,8 @@ func generate_treasure(target):
 				modifier += Utilities.roll_dice_for_total(1, 4)
 			"ancient_and_noteworthy":
 				modifier += Utilities.roll_dice_for_total(1, 4)
-	return roll_for_treasure(best_of_two, target, modifier, found_treasure)
+	var treasure = roll_for_treasure(best_of_two, target, modifier, found_treasure)
+	print("treasure: %s" % treasure)
 
 
 func roll_for_treasure(best_of_two, target, modifier, found_treasure):
@@ -174,8 +175,9 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		16:
 			#TODO: A portal or secret path (or directions to one) and roll again
-			#TODO: give player an option to go in one-time protal like a enter_random_portal() in moves
+			#TODO: give player an option to go in one-time portal like a enter_random_portal() in moves
 			print("opening portal or secret path")
+			Locations.generate_random_portal(CharacterSheet.current_location)
 			print("roll again")
 			return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		17:

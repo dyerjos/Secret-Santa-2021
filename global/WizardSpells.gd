@@ -25,8 +25,7 @@ var wizard_level_one_spells = [
 
 
 func light_fn():
-	CharacterSheet.has_a_light = true
-	#TODO: when to turn this off
+	CharacterSheet.has_a_light = not CharacterSheet.has_a_light #boolean flip
 var light = {
 	"name" : "light",
 	"level" : 0,
@@ -79,9 +78,6 @@ var contact_spirits = {
 
 func detect_magic_fn():
 	print("spell called")
-	#TODO: give items an "is_magical" field
-	#TODO: give locations an "is_magical" field
-	#TODO: give locations an "items" array
 	if CharacterSheet.current_location["is_magical"]:
 		print("This location is magical")
 	for item in CharacterSheet.player_inventory:
@@ -116,7 +112,7 @@ var  magic_missile = {
 func  charm_person_fn(target):
 	print("spell called")
 	#TODO: target must be touched
-	target["is_charmed"] = true #TODO: add is_charmed field to target
+	target["is_charmed"] = true
 var  charm_person = {
 	"name" : "charm person",
 	"level" : 1,
@@ -129,7 +125,7 @@ var  charm_person = {
 func  invisibility_fn(target):
 	print("spell called")
 	#TODO: target must be touched
-	target["is_invisible"] = true #TODO: add is_invisible field to target
+	target["is_invisible"] = true
 var  invisibility = {
 	"name" : "invisibility",
 	"level" : 1,
@@ -142,7 +138,7 @@ var  invisibility = {
 func  telepathy_fn(target):
 	print("spell called")
 	CharacterSheet.telepathic_bonds.append(target.duplicate(true))
-	target["telepathic_bond_with_player"] = true #TODO: add this new field to npc's
+	target["telepathic_bond_with_player"] = true
 var  telepathy = {
 	"name" : "telepathy",
 	"level" : 1,
@@ -155,7 +151,6 @@ var  telepathy = {
 func  alarm_fn(location):
 	print("spell called")
 	location["has_alarm_set"] = true
-	#TODO: add "has_alarm_set" field to locations
 	CharacterSheet.has_set_alarm = true
 var  alarm = {
 	"name" : "alarm",
