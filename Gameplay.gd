@@ -3,16 +3,16 @@ extends ColorRect
 onready var context_label = $CenterContainer/ContextLabel
 onready var location_label = $TabContainer/Location/Column/LocationLabel
 onready var inventory_label = $TabContainer/Inventory/Column/InventoryLabel
-onready var move_options = $TabContainer/Main/MoveCommand/MoveOption
-onready var using_label = $TabContainer/Main/MoveCommand/Using
-onready var weapon_options = $TabContainer/Main/MoveCommand/Weapon
-onready var against_label = $TabContainer/Main/MoveCommand/Against
-onready var target_options = $TabContainer/Main/MoveCommand/Target
+onready var move_options = $TabContainer/Main/VBoxContainer/MoveCommand/MoveOption
+onready var using_label = $TabContainer/Main/VBoxContainer/MoveCommand/Using
+onready var weapon_options = $TabContainer/Main/VBoxContainer/MoveCommand/Weapon
+onready var against_label = $TabContainer/Main/VBoxContainer/MoveCommand/Against
+onready var target_options = $TabContainer/Main/VBoxContainer/MoveCommand/Target
 
 var selected_move = {}
 var selected_weapon = {}
 var selected_targets = []
-
+var possible_targets = []
 
 
 func _ready():
@@ -38,6 +38,7 @@ func populate_move_options():
 func popluate_weapon_options():
 	var player_inventory = CharacterSheet.player_inventory
 	print("player_inventory size: %s" % player_inventory.size())
+	weapon_options.clear()
 	match selected_move:
 		"volley":
 			for item in player_inventory:
@@ -49,7 +50,20 @@ func popluate_weapon_options():
 					weapon_options.add_item(item["name"])
 
 func populate_target_options():
-	var targets = CharacterSheet.battle_targets + CharacterSheet.friendly_targets + ["self"] 
+		var enemies = CharacterSheet.battle_targets 
+		var friends = CharacterSheet.friendly_targets
+		var you = [{"name": "", "friend_foe": "[Self]"}]
+		possible_targets = enemies + friends + you
+		for target in possible_targets:
+			target_options.add_item(target["name"] + " " + target["friend_foe"])
+
+		#* other way:
+		# for target in enemies:
+		# 	target_options.add_item(target["name"] + " [Enemy]")
+		# for target in friends:
+		# 	target_options.add_item(target["name"] + " [Ally]")
+		# target_options.add_item("[Self]")
+
 	
 func update_context(text, battle_bool, town_bool):
 	CharacterSheet.player_in_battle = battle_bool
@@ -134,7 +148,7 @@ func _on_Weapon_item_selected(index):
 	print("selected %s" % selected_move)
 
 func _on_Target_item_selected(index):
-	pass # Replace with function body.
+	selected_targets = possible_targets[index]
 
 #* ---------- Player Tab -------------------------
 

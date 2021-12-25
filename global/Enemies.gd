@@ -4,6 +4,7 @@ extends Node
 
 var ankheg = {
 	"name" : "ankheg",
+	"friend_foe" : "[Enemy]", # "[Ally]" for friend
 	"organization" : "group",
 	"size" : "large",
 	"attack_name" : "bite",

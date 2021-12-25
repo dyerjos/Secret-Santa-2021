@@ -51,6 +51,7 @@ export var player_in_town = false
 export var has_a_light = false
 export var has_unseen_servant = false
 export var has_set_alarm = false
+export var friend_foe = "self"
 
 var ongoing_spell = {}
 
