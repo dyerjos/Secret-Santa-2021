@@ -1,5 +1,8 @@
 extends ColorRect
 
+
+#* UI references:
+#* ----- main tab var ---------
 onready var context_label = $CenterContainer/ContextLabel
 onready var location_label = $TabContainer/Location/Column/LocationLabel
 onready var inventory_label = $TabContainer/Inventory/Column/InventoryLabel
@@ -8,26 +11,49 @@ onready var using_label = $TabContainer/Main/VBoxContainer/MoveCommand/Using
 onready var weapon_options = $TabContainer/Main/VBoxContainer/MoveCommand/Weapon
 onready var against_label = $TabContainer/Main/VBoxContainer/MoveCommand/Against
 onready var target_options = $TabContainer/Main/VBoxContainer/MoveCommand/Target
+#* ----- player tab var ---------
+onready var current_hp = $TabContainer/Player/PlayerDetails/ReferenceRect/HBoxContainer/CurrentHp
+onready var max_hp = $TabContainer/Player/PlayerDetails/ReferenceRect2/HBoxContainer/MaxHp
+onready var strength = $TabContainer/Player/PlayerDetails/ReferenceRect3/HBoxContainer/Strength
+onready var constitution = $TabContainer/Player/PlayerDetails/ReferenceRect4/HBoxContainer/Constitution
+onready var dexterity = $TabContainer/Player/PlayerDetails/ReferenceRect5/HBoxContainer/Dexterity
+onready var wisdom = $TabContainer/Player/PlayerDetails/ReferenceRect6/HBoxContainer/Wisdom
+onready var intelligence = $TabContainer/Player/PlayerDetails/ReferenceRect7/HBoxContainer/Intelligence
+onready var charisma = $TabContainer/Player/PlayerDetails/ReferenceRect8/HBoxContainer/Charisma
+onready var level = $TabContainer/Player/PlayerDetails/ReferenceRect9/HBoxContainer/Level
+onready var experience = $TabContainer/Player/PlayerDetails/ReferenceRect10/HBoxContainer/Experience
+onready var armor = $TabContainer/Player/PlayerDetails/ReferenceRect11/HBoxContainer/Armor
+onready var max_load = $TabContainer/Player/PlayerDetails/ReferenceRect13/HBoxContainer/MaxLoad
+#* ----- inventory tab var ---------
+onready var inventory_list = $TabContainer/Inventory/InventoryList
+#* ----- location tab var ---------
+onready var location_name = $TabContainer/Location/LocationDetails/ReferenceRect/HBoxContainer/Name
+onready var steading = $TabContainer/Location/LocationDetails/ReferenceRect2/HBoxContainer/Steading
+onready var location_description = $TabContainer/Location/LocationDetails/HBoxContainer/Description
 
+#* Script vars:
+#* ----- main tab var ---------
 var selected_move = {}
 var selected_weapon = {}
 var selected_targets = []
 var possible_targets = []
+#* ----- player tab var ---------
+#* ----- inventory tab var ---------
+#* ----- location tab var ---------
 
-
+#* ---- Setup scripts -------
 func _ready():
 	if CharacterSheet.debug_mode == false:
 		SaveSystem.save_and_encrypt_game()
 	else:
 		CharacterSheet.current_location = Locations.starter_city
-	update_context("In Battle", true, false) #! only for testing
-	populate_move_options() #* moves in player dropdown
-	Enemies.generate_monsters(Locations.A1_S1_cave)
+		update_context("In Battle", true, false)
+		Enemies.generate_monsters(Locations.A1_S1_cave)
+	populate_move_options()
 	populate_target_options()
-
-func _process(delta):
-	location_label.text = JSON.print(CharacterSheet.current_location)
-	inventory_label.text = JSON.print(CharacterSheet.player_inventory)
+	populate_inventory_list()
+	populate_player_tab()
+	populate_location_tab()
 
 func populate_move_options():
 	var available_moves = Moves.get_valid_moves()
@@ -64,7 +90,29 @@ func populate_target_options():
 		# 	target_options.add_item(target["name"] + " [Ally]")
 		# target_options.add_item("[Self]")
 
-	
+func populate_inventory_list():
+	for item in CharacterSheet.player_inventory:
+		inventory_list.add_item(item["name"])
+
+func populate_location_tab():
+	location_name.text = CharacterSheet.current_location["name"]
+	steading.text = CharacterSheet.current_location["steading_type"]
+	location_description.text = CharacterSheet.current_location["description"]
+
+func populate_player_tab():
+	current_hp.text = String(CharacterSheet.player_hitpoints)
+	max_hp.text = String(CharacterSheet.max_hitpoints())
+	strength.text = String(CharacterSheet.player_str)
+	constitution.text = String(CharacterSheet.player_con)
+	dexterity.text = String(CharacterSheet.player_dex)
+	wisdom.text = String(CharacterSheet.player_wis)
+	intelligence.text = String(CharacterSheet.player_int)
+	charisma.text = String(CharacterSheet.player_cha)
+	level.text = String(CharacterSheet.player_level)
+	experience.text = String(CharacterSheet.player_exp)
+	armor.text = String(CharacterSheet.total_armor())
+	max_load.text = String(CharacterSheet.max_load())
+
 func update_context(text, battle_bool, town_bool):
 	CharacterSheet.player_in_battle = battle_bool
 	CharacterSheet.player_in_town = town_bool
@@ -73,8 +121,90 @@ func update_context(text, battle_bool, town_bool):
 #* ---------- Main Tab -------------------------
 
 func _on_SubmitBtn_pressed():
-	print("calling move")
-	#TODO call move
+#	var selected_move = {}
+#var selected_weapon = {}
+#var selected_targets = []
+#var possible_targets = []
+	print("calling move's funcref")
+	selected_move["execute"].call_func(selected_weapon, selected_targets)
+	match selected_move["name"]:
+		# ----common----
+		"hack and slash":
+			# targets, reckless=false, player_weapon_used=null
+			selected_move["execute"].call_func()
+		"volley":
+			# target, player_weapon_used, fail_opt
+			selected_move["execute"].call_func()
+		"defy danger":
+			selected_move["execute"].call_func()
+			# stat_choice
+		# "defend":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		# "aid or interfere":
+		# 	selected_move["execute"].call_func()
+ 		# 	#TODO: implement once bonds are setup
+		# "spout lore":
+		# 	selected_move["execute"].call_func()
+		# 	# object(item,place,npc)
+		# 	#TODO: not implemented yet
+		# "discern realities":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		# "parley":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		#----special----
+		# "last_breath":
+		# 	selected_move["execute"].call_func()
+		# "encumbrance":
+		# 	selected_move["execute"].call_func()
+		"make camp":
+			selected_move["execute"].call_func()
+			# location
+		"take watch":
+			selected_move["execute"].call_func()
+			# location
+		# "carouse":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		# "undertake perilous journey":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		"supply":
+			selected_move["execute"].call_func()
+		"recover":
+			selected_move["execute"].call_func()
+			# days
+		# "recruit":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		# "outstanding warrants":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		# "bolster":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		"level up":
+			selected_move["execute"].call_func()
+		# "end of session":
+		# 	selected_move["execute"].call_func()
+
+		#----wizard common----
+		"cast spell":
+			selected_move["execute"].call_func()
+			# spell
+		"prepare spells":
+			selected_move["execute"].call_func()
+		"add to spellbook":
+			selected_move["execute"].call_func()
+		"spell defense":
+			selected_move["execute"].call_func()
+		# "ritual":
+		# 	selected_move["execute"].call_func()
+		# 	#TODO: not implemented yet
+		_:
+        	print("move %s is not yet implemented for submit move button action." % selected_move["name"])
 
 func _on_MoveOption_item_selected(index):
 	selected_move = CharacterSheet.available_moves[index]
@@ -135,6 +265,8 @@ func _on_MoveOption_item_selected(index):
 			using_weapon_against_target_setter(false, false, false, false)
 		"ritual":
 			using_weapon_against_target_setter(false, false, false, false)
+		_:
+        	print("move %s is not yet implemented for submit move button action." % selected_move["name"])
 	popluate_weapon_options()
 
 func using_weapon_against_target_setter(using, weapon, against, target):
@@ -151,23 +283,21 @@ func _on_Target_item_selected(index):
 	selected_targets = possible_targets[index]
 
 #* ---------- Player Tab -------------------------
-
 #* ---------- Location Tab -------------------------
-
 #* ---------- Test Tab -------------------------
-
-func _on_TestBtn1_pressed(): #monster enounter
-	print("hi")
-
-
-func _on_TestBtn2_pressed(): # generate monsters
-	Enemies.generate_monsters(Locations.A1_S1_cave)
-
-
-func _on_TestBtn3_pressed(): # recover
-	Moves.recover_fn(3)
-	
-
-func _on_TestBtn4_pressed(): # generate treasure
-	#TODO: how to select a target?
-	Items.generate_treasure(Enemies.ankheg)
+#
+#func _on_TestBtn1_pressed(): #monster enounter
+#	print("hi")
+#
+#
+#func _on_TestBtn2_pressed(): # generate monsters
+#	Enemies.generate_monsters(Locations.A1_S1_cave)
+#
+#
+#func _on_TestBtn3_pressed(): # recover
+#	Moves.recover_fn(3)
+#
+#
+#func _on_TestBtn4_pressed(): # generate treasure
+#	#TODO: how to select a target?
+#	Items.generate_treasure(Enemies.ankheg)

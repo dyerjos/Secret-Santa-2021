@@ -179,7 +179,7 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			#TODO: A portal or secret path (or directions to one) and roll again
 			#TODO: give player an option to go in one-time portal like a enter_random_portal() in moves
 			print("opening portal or secret path")
-			Locations.generate_random_portal(CharacterSheet.current_location)
+			Locations.generate_random_portal()
 			print("roll again")
 			return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		17:

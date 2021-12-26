@@ -695,5 +695,7 @@ func get_valid_moves():
 				pass
 			"ritual":
 				pass #TODO: implement later
+			_:
+				print("move %s is not yet implemented for submit move button action." % move["name"])
 	print("moves: %s" % valid_moves.size())
 	return valid_moves

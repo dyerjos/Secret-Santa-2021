@@ -47,6 +47,7 @@ __meta__ = {
 }
 
 [node name="Main" type="ScrollContainer" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -137,13 +138,408 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Column" type="VBoxContainer" parent="TabContainer/Player"]
-margin_right = 330.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 330, 140 )
+[node name="PlayerDetails" type="GridContainer" parent="TabContainer/Player"]
+margin_right = 380.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 380, 160 )
+columns = 3
+
+[node name="ReferenceRect" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_right = 120.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect/HBoxContainer"]
+margin_right = 77.0
+margin_bottom = 14.0
+text = "Current HP: "
+valign = 1
+
+[node name="CurrentHp" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect/HBoxContainer"]
+margin_left = 81.0
+margin_right = 97.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect2" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_left = 124.0
+margin_right = 244.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect2"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect2/HBoxContainer"]
+margin_right = 56.0
+margin_bottom = 14.0
+text = "Max HP: "
+valign = 1
+
+[node name="MaxHp" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect2/HBoxContainer"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect3" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_left = 248.0
+margin_right = 368.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect3"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect3/HBoxContainer"]
+margin_right = 61.0
+margin_bottom = 14.0
+text = "Strength: "
+valign = 1
+
+[node name="Strength" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect3/HBoxContainer"]
+margin_left = 65.0
+margin_right = 81.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect4" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_top = 19.0
+margin_right = 120.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect4"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect4/HBoxContainer"]
+margin_right = 86.0
+margin_bottom = 14.0
+text = "Constitution: "
+valign = 1
+
+[node name="Constitution" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect4/HBoxContainer"]
+margin_left = 90.0
+margin_right = 106.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect5" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_left = 124.0
+margin_top = 19.0
+margin_right = 244.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect5"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect5/HBoxContainer"]
+margin_right = 67.0
+margin_bottom = 14.0
+text = "Dexterity: "
+valign = 1
+
+[node name="Dexterity" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect5/HBoxContainer"]
+margin_left = 71.0
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect6" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_left = 248.0
+margin_top = 19.0
+margin_right = 368.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect6"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect6/HBoxContainer"]
+margin_right = 61.0
+margin_bottom = 14.0
+text = "Wisdom: "
+valign = 1
+
+[node name="Wisdom" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect6/HBoxContainer"]
+margin_left = 65.0
+margin_right = 81.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect7" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_top = 38.0
+margin_right = 120.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect7"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect7/HBoxContainer"]
+margin_right = 84.0
+margin_bottom = 14.0
+text = "Intelligence: "
+valign = 1
+
+[node name="Intelligence" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect7/HBoxContainer"]
+margin_left = 88.0
+margin_right = 104.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect8" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_left = 124.0
+margin_top = 38.0
+margin_right = 244.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect8"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect8/HBoxContainer"]
+margin_right = 67.0
+margin_bottom = 14.0
+text = "Charisma: "
+valign = 1
+
+[node name="Charisma" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect8/HBoxContainer"]
+margin_left = 71.0
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect9" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_left = 248.0
+margin_top = 38.0
+margin_right = 368.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect9"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect9/HBoxContainer"]
+margin_right = 42.0
+margin_bottom = 14.0
+text = "Level: "
+valign = 1
+
+[node name="Level" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect9/HBoxContainer"]
+margin_left = 46.0
+margin_right = 62.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect10" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_top = 57.0
+margin_right = 120.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect10"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect10/HBoxContainer"]
+margin_right = 78.0
+margin_bottom = 14.0
+text = "Experience: "
+valign = 1
+
+[node name="Experience" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect10/HBoxContainer"]
+margin_left = 82.0
+margin_right = 98.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect11" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_left = 124.0
+margin_top = 57.0
+margin_right = 244.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect11"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect11/HBoxContainer"]
+margin_right = 48.0
+margin_bottom = 14.0
+text = "Armor: "
+valign = 1
+
+[node name="Armor" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect11/HBoxContainer"]
+margin_left = 52.0
+margin_right = 68.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect12" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_left = 248.0
+margin_top = 57.0
+margin_right = 368.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect12"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect12/HBoxContainer"]
+margin_right = 89.0
+margin_bottom = 14.0
+text = "Current Load: "
+valign = 1
+
+[node name="CurrentLoad" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect12/HBoxContainer"]
+margin_left = 93.0
+margin_right = 109.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect13" type="Panel" parent="TabContainer/Player/PlayerDetails"]
+margin_top = 76.0
+margin_right = 120.0
+margin_bottom = 91.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Player/PlayerDetails/ReferenceRect13"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect13/HBoxContainer"]
+margin_right = 68.0
+margin_bottom = 14.0
+text = "Max Load: "
+valign = 1
+
+[node name="MaxLoad" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect13/HBoxContainer"]
+margin_left = 72.0
+margin_right = 88.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
 
 [node name="Inventory" type="ScrollContainer" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -156,15 +552,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Column" type="VBoxContainer" parent="TabContainer/Inventory"]
-margin_right = 330.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 330, 140 )
-
-[node name="InventoryLabel" type="Label" parent="TabContainer/Inventory/Column"]
-visible = false
-margin_right = 330.0
-margin_bottom = 14.0
+[node name="InventoryList" type="ItemList" parent="TabContainer/Inventory"]
+margin_right = 140.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 140, 15 )
+auto_height = true
+max_columns = 2
 
 [node name="Location" type="ScrollContainer" parent="TabContainer"]
 visible = false
@@ -180,15 +573,90 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Column" type="VBoxContainer" parent="TabContainer/Location"]
-margin_right = 330.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 330, 140 )
+[node name="LocationDetails" type="GridContainer" parent="TabContainer/Location"]
+margin_right = 386.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 380, 160 )
 
-[node name="LocationLabel" type="Label" parent="TabContainer/Location/Column"]
-visible = false
-margin_right = 330.0
+[node name="ReferenceRect" type="Panel" parent="TabContainer/Location/LocationDetails"]
+margin_right = 386.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 120, 15 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Location/LocationDetails/ReferenceRect"]
+margin_right = 87.0
 margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Location/LocationDetails/ReferenceRect/HBoxContainer"]
+margin_right = 46.0
+margin_bottom = 14.0
+text = "Name: "
+valign = 1
+
+[node name="Name" type="Label" parent="TabContainer/Location/LocationDetails/ReferenceRect/HBoxContainer"]
+margin_left = 50.0
+margin_right = 66.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="ReferenceRect2" type="Panel" parent="TabContainer/Location/LocationDetails"]
+margin_top = 19.0
+margin_right = 386.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Location/LocationDetails/ReferenceRect2"]
+margin_right = 87.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 15 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Location/LocationDetails/ReferenceRect2/HBoxContainer"]
+margin_right = 38.0
+margin_bottom = 14.0
+text = "Type: "
+valign = 1
+
+[node name="Steading" type="Label" parent="TabContainer/Location/LocationDetails/ReferenceRect2/HBoxContainer"]
+margin_left = 42.0
+margin_right = 58.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 2, 2 )
+text = "12"
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Location/LocationDetails"]
+margin_top = 38.0
+margin_right = 386.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 380, 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContainer/Location/LocationDetails/HBoxContainer"]
+margin_right = 82.0
+margin_bottom = 14.0
+text = "Description: "
+valign = 1
+
+[node name="Description" type="Label" parent="TabContainer/Location/LocationDetails/HBoxContainer"]
+margin_left = 86.0
+margin_right = 386.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 300, 2 )
+text = "test test test"
 autowrap = true
 
 [node name="HiddenTabs" type="Control" parent="."]

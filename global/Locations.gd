@@ -6,6 +6,7 @@ extends Node
 var starter_city = {
 	"name" : "Nystera",
 	"entered_from" : "root",
+	"description": "Your hometown",
 	"monsters" : [],
 	"includes_food": false,
 	"has_alarm_set": false,
@@ -31,6 +32,7 @@ var starter_city = {
 var A1_S1_cave = { #* Act 1 Scene 1
 	"name" : "a small cave",
 	"entered_from" : starter_city,
+	"description": "A cold dark cave",
 	"monsters" : Enemies.cavern, # or Enemies.A1_S1_bossfight.duplicate(true) or null if a safe location
 	"includes_food" : false, #* true if this is an inn or a home that provides food for free or with cost of stay
 	"has_alarm_set" : false, #* a wizard can set an alarm spell up in a minor-location to warn of danger
