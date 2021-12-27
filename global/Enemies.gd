@@ -1,7 +1,9 @@
 extends Node
 
 
-
+func wild_monster_saw_magic_trick_fn():
+	print("monster growls in response to the magic trick")
+	#TODO: TextLog() the message to main text box
 var ankheg = {
 	"name" : "ankheg",
 	"friend_foe" : "[Enemy]", # "[Ally]" for friend
@@ -14,7 +16,6 @@ var ankheg = {
 	"attack_tag" : "",
 	"monster_tags" : [],
 	"is_charmed": false,
-	"is_entertained" : false, #TODO: funcref
 	"telepathic_bond_with_player" : false,
 	"is_invisible" : false,
 	"range_tags" : ["close", "reach"],
@@ -25,6 +26,7 @@ var ankheg = {
 	"special_treasure" : null,
 	"special_qualities" : "borrowing",
 	"instinct" : "to undermine",
+	"saw_magic_trick" : funcref(self, "wild_monster_saw_magic_trick_fn"),
 	"addtional_moves" : ["undermine the ground", "burst from the earth", "spray forth acid, eating away at metal and flesh"]
 }
 

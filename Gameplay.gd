@@ -4,8 +4,6 @@ extends ColorRect
 #* UI references:
 #* ----- main tab var ---------
 onready var context_label = $CenterContainer/ContextLabel
-onready var location_label = $TabContainer/Location/Column/LocationLabel
-onready var inventory_label = $TabContainer/Inventory/Column/InventoryLabel
 onready var move_options = $TabContainer/Main/VBoxContainer/MoveCommand/MoveOption
 onready var using_label = $TabContainer/Main/VBoxContainer/MoveCommand/Using
 onready var weapon_options = $TabContainer/Main/VBoxContainer/MoveCommand/Weapon
@@ -35,6 +33,7 @@ onready var location_description = $TabContainer/Location/LocationDetails/HBoxCo
 #* ----- main tab var ---------
 var selected_move = {}
 var selected_weapon = {}
+var selected_spell = {}
 var selected_targets = []
 var possible_targets = []
 #* ----- player tab var ---------
@@ -62,19 +61,24 @@ func populate_move_options():
 		move_options.add_item(move["name"])
 
 func popluate_weapon_options():
-	var player_inventory = CharacterSheet.player_inventory
-	print("player_inventory size: %s" % player_inventory.size())
+	print("populate_weapon_options hit")
 	weapon_options.clear()
-	match selected_move:
+	match selected_move["name"]:
 		"volley":
-			for item in player_inventory:
+			for item in CharacterSheet.player_inventory:
 				if item.has("is_weapon") and item["is_weapon"] == true and CharacterSheet.selected_weapon.has("range_tags") and CharacterSheet.selected_weapon["range_tags"].has("close") == false and CharacterSheet.selected_weapon["range_tags"].has("hand") == false:
 					weapon_options.add_item(item["name"])
 		"hack and slash":
-			for item in player_inventory:
+			for item in CharacterSheet.player_inventory:
 				if item.has("is_weapon") and item["is_weapon"] == true and CharacterSheet.selected_weapon.has("range_tags") and (CharacterSheet.selected_weapon["range_tags"].has("close") == true or CharacterSheet.selected_weapon["range_tags"].has("hand") == true):
 					weapon_options.add_item(item["name"])
-
+		"cast spell":
+			print("cast spell hit")
+			for spell in CharacterSheet.prepared_spells:
+				print("spell: %s" % spell)
+				weapon_options.add_item(spell["name"])
+		_:
+			print("unknown: selected %s" % selected_move)
 func populate_target_options():
 		var enemies = CharacterSheet.battle_targets 
 		var friends = CharacterSheet.friendly_targets
@@ -121,12 +125,7 @@ func update_context(text, battle_bool, town_bool):
 #* ---------- Main Tab -------------------------
 
 func _on_SubmitBtn_pressed():
-#	var selected_move = {}
-#var selected_weapon = {}
-#var selected_targets = []
-#var possible_targets = []
 	print("calling move's funcref")
-	selected_move["execute"].call_func(selected_weapon, selected_targets)
 	match selected_move["name"]:
 		# ----common----
 		"hack and slash":
@@ -138,16 +137,16 @@ func _on_SubmitBtn_pressed():
 		"defy danger":
 			selected_move["execute"].call_func()
 			# stat_choice
-		# "defend":
-		# 	selected_move["execute"].call_func()
-		# 	#TODO: not implemented yet
-		# "aid or interfere":
-		# 	selected_move["execute"].call_func()
- 		# 	#TODO: implement once bonds are setup
-		# "spout lore":
-		# 	selected_move["execute"].call_func()
-		# 	# object(item,place,npc)
-		# 	#TODO: not implemented yet
+			# "defend":
+			# 	selected_move["execute"].call_func()
+			# 	#TODO: not implemented yet
+			# "aid or interfere":
+			# 	selected_move["execute"].call_func()
+		# 	#TODO: implement once bonds are setup
+		"spout lore":
+			selected_move["execute"].call_func()
+			# object(item,place,npc)
+			#TODO: not implemented yet
 		# "discern realities":
 		# 	selected_move["execute"].call_func()
 		# 	#TODO: not implemented yet
@@ -192,8 +191,7 @@ func _on_SubmitBtn_pressed():
 
 		#----wizard common----
 		"cast spell":
-			selected_move["execute"].call_func()
-			# spell
+			selected_move["execute"].call_func(selected_spell, selected_targets)
 		"prepare spells":
 			selected_move["execute"].call_func()
 		"add to spellbook":
@@ -204,7 +202,7 @@ func _on_SubmitBtn_pressed():
 		# 	selected_move["execute"].call_func()
 		# 	#TODO: not implemented yet
 		_:
-        	print("move %s is not yet implemented for submit move button action." % selected_move["name"])
+			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
 
 func _on_MoveOption_item_selected(index):
 	selected_move = CharacterSheet.available_moves[index]
@@ -256,7 +254,7 @@ func _on_MoveOption_item_selected(index):
 			using_weapon_against_target_setter(false, false, false, false)
 		#----wizard common----
 		"cast spell":
-			using_weapon_against_target_setter(false, false, true, true)
+			using_weapon_against_target_setter(true, true, true, true)
 		"prepare spells":
 			using_weapon_against_target_setter(false, false, false, false)
 		"add to spellbook":
@@ -266,7 +264,7 @@ func _on_MoveOption_item_selected(index):
 		"ritual":
 			using_weapon_against_target_setter(false, false, false, false)
 		_:
-        	print("move %s is not yet implemented for submit move button action." % selected_move["name"])
+			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
 	popluate_weapon_options()
 
 func using_weapon_against_target_setter(using, weapon, against, target):
@@ -276,8 +274,13 @@ func using_weapon_against_target_setter(using, weapon, against, target):
 	target_options.visible = target
 	
 func _on_Weapon_item_selected(index):
-	selected_weapon = CharacterSheet.player_inventory[index]
-	print("selected %s" % selected_move)
+	match selected_move:
+		"volley":
+			selected_weapon = CharacterSheet.player_inventory[index]
+		"hack and slash":
+			selected_weapon = CharacterSheet.player_inventory[index]
+		"cast spell":
+			selected_weapon = CharacterSheet.prepared_spells[index]
 
 func _on_Target_item_selected(index):
 	selected_targets = possible_targets[index]

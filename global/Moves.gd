@@ -17,7 +17,7 @@ func hack_and_slash_fn(targets, reckless=false, player_weapon_used=null):
 		stat_for_attack = CharacterSheet.player_str
 	var roll_result = Utilities.roll_dice_for_success(stat_for_attack)
 	match roll_result:
-		"critical":
+		"success":
 			for target in targets:
 				print("target: %s" % target)
 				damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
@@ -48,7 +48,7 @@ func volley_fn(target, player_weapon_used, fail_opt):
 	var stat_for_attack = CharacterSheet.player_dex
 	var roll_result = Utilities.roll_dice_for_success(stat_for_attack)
 	match roll_result:
-		"critical":
+		"success":
 			print("target: %s" % target)
 			damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 		"partial":
@@ -82,7 +82,7 @@ func defy_danger_fn(stat_choice):
 	#TODO: only certain stats should be allowed based on the situation (can't use charisma to dodge a falling rock)
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
-		"critical":
+		"success":
 			CharacterSheet.player_in_danger = false
 		"partial":
 			print("you stumble, hestitate, or flinch. worse outcome, hard bargain, or ugly choice")
@@ -103,7 +103,7 @@ func defend_fn():
 	#TODO: add "is_defended" field to npc's, player, items, and locations
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_con)
 	match roll_result:
-		"critical":
+		"success":
 			CharacterSheet.player_hold = 3
 		"partial":
 			CharacterSheet.player_hold = 1
@@ -119,7 +119,7 @@ var defend = {
 func aid_or_interfere_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
-		"critical":
+		"success":
 			pass
 		"partial":
 			pass
@@ -135,7 +135,7 @@ var aid_or_interfere = {
 func spout_lore_fn(object):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_int)
 	match roll_result:
-		"critical":
+		"success":
 			print("tell player something interesting and useful about the subject relevant to your situation")
 			#TODO: maybe add a field like "useful_info" and "interesting_info" to monsters, objects, and locations
 			print("reveal object['useful_info']") # how fact is immediately useful
@@ -154,7 +154,7 @@ var spout_lore = {
 func discern_realities_fn():
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_wis)
 	match roll_result:
-		"critical":
+		"success":
 			print("ask 3 questions and take +1 forward when acting on the answers")
 			#TODO: implement questions as fields in location or target
 			#TODO: player asks a question "question1 - question6" or questions are randomly chosen
@@ -174,7 +174,7 @@ func parley_fn(target):
 	#NOTE: you don't have to actually keep your promise (maybe have an honor or reputation field for player :D )
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
 	match roll_result:
-		"critical":
+		"success":
 			print("they do what you ask if you first promise what they ask of you")
 		"partial":
 			print("they will do what you ask but need some concrete assurance of your promise right now")
@@ -192,7 +192,7 @@ var parley = {
 func last_breath_fn():
 	var roll_result = Utilities.roll_dice_for_success()
 	match roll_result:
-		"critical":
+		"success":
 			print("you cheated death and are now stabilized")
 			#TODO: add cheated_death boolean on player charactersheet
 			CharacterSheet.player_hitpoints = 0.5 #TODO: and setup code so that player can't move if hp is less than 1?
@@ -256,7 +256,7 @@ var make_camp = {
 func take_watch_fn(location):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_wis)
 	match roll_result:
-		"critical":
+		"success":
 			print("you’re able to wake the camp and prepare a response, everyone in the camp takes +1 forward")
 			Enemies.setup_random_monster_encounter(location, 1, true)
 		"partial":
@@ -276,7 +276,7 @@ var take_watch = {
 #func carouse_fn():
 #	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 #	match roll_result:
-#		"critical":
+#		"success":
 #			pass
 #		"partial":
 #			pass
@@ -292,7 +292,7 @@ var carouse = {
 func undertake_perilous_journey_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
-		"critical":
+		"success":
 			pass
 		"partial":
 			pass
@@ -312,7 +312,7 @@ func supply_fn():
 	#TODO: FUTURE
 	# var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	# match roll_result:
-	# 	"critical":
+	# 	"success":
 	# 		pass
 	# 	"partial":
 	# 		pass
@@ -345,7 +345,7 @@ var recover = {
 func recruit_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
-		"critical":
+		"success":
 			pass
 		"partial":
 			pass
@@ -361,7 +361,7 @@ var recruit = {
 func outstanding_warrants_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
-		"critical":
+		"success":
 			pass
 		"partial":
 			pass
@@ -377,7 +377,7 @@ var outstanding_warrants = {
 func bolster_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
-		"critical":
+		"success":
 			pass
 		"partial":
 			pass
@@ -411,7 +411,7 @@ var level_up = {
 func end_of_session_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
-		"critical":
+		"success":
 			pass
 		"partial":
 			pass
@@ -426,16 +426,20 @@ var end_of_session = {
 
 #* Wizard basic moves
 
-func cast_spell_fn(spell):
+func cast_spell_fn(spell, selected_targets):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_int)
+	print("roll result of spell: %s" % roll_result)
 	match roll_result:
-		"critical":
+		"success":
 			spell["execute"].call_func()
 		"partial":
 			#TODO: player chooses to draw unwelcome attention, take -1 ongoing to spells, or for spell to be forgotten
-			spell["execute"].call_func()
+			print("spell: %s" % spell)
+			spell["execute"].call_func(selected_targets)
+			print("partial success of spell")
 			CharacterSheet.ongoing_spell_modifier = -1
 		"fail":
+			print("spell failed")
 			CharacterSheet.ongoing_spell_modifier = -1
 var cast_spell = {
 	"name" : "cast spell",
@@ -486,7 +490,7 @@ var spell_defense = {
 func ritual_fn(stat_choice):
 	var roll_result = Utilities.roll_dice_for_success(stat_choice)
 	match roll_result:
-		"critical":
+		"success":
 			pass
 		"partial":
 			pass
@@ -511,7 +515,8 @@ func process_damage_to_npc(damage, target, player_weapon_used) -> void:
 	if damage["stun"] == true:
 		target["stun_points"] -= damage["net_damage"]
 	else:
-		 target["hp"] -= damage["net_damage"]
+		print("damage: %s" % damage["net_damage"])
+		target["hp"] -= damage["net_damage"]
 	if damage["messy"] == true:
 		print("do damage to building, area, or person (missing arm?)") 
 		#TODO: damage is done to person, item, or location (make global location script with fields like hp, description)
@@ -576,22 +581,23 @@ func camp_safe_check():
 		"fail":
 			return false
 
+#* Comment out a move to hide from player:
 var common_moves = [
 	hack_and_slash,
-	volley,
-	defy_danger, 
+	# volley, #TODO: implement later
+	# defy_danger, #TODO: implement later
 	# defend, #TODO: implement later
 	# aid_or_interfere, #TODO: implement once bonds are setup
-	spout_lore,
-	discern_realities,
-	parley,
-]
-
+	# spout_lore, # TODO: implement later
+	# discern_realities, #TODO: implement later
+	# parley, #TODO: implement later
+	]
+#* Comment out a move to hide from player:
 var special_moves = [
-	last_breath,
-	encumbrance,
-	make_camp,
-	take_watch,
+	# last_breath, #TODO: implement later
+	# encumbrance, #TODO: implement later
+	# make_camp, #TODO: implement later
+	# take_watch, #TODO: implement later
 	# carouse, #TODO: implement later
 	# undertake_perilous_journey, #TODO: implement later
 	supply,
@@ -599,15 +605,15 @@ var special_moves = [
 	# recruit, #TODO: implement later
 	# outstanding_warrants, #TODO: implement later
 	# bolster, #TODO: implement later
-	level_up,
+	# level_up, #TODO: implement later
 	# end_of_session, #TODO: implement later
 ]
-
+#* Comment out a move to hide from player:
 var wizard_common_moves = [
 	cast_spell,
 	prepare_spells,
-	add_to_spellbook,
-	spell_defense,
+	# add_to_spellbook, #TODO: implement later
+	# spell_defense, #TODO: implement later
 	# ritual, #TODO: implement later
 ]
 
@@ -617,18 +623,17 @@ var battle_moves = []
 var all_moves = common_moves + special_moves + wizard_common_moves
 var town_moves = []
 
-#* OR
-
-func moves_for_gamemode():
-	var game_mode = CharacterSheet.game_mode
-	var move_list = []
-	match game_mode:
-		"in_battle": 
-			move_list = battle_moves
-		"in_town":
-			move_list = town_moves
-		"traveling":
-			move_list = all_moves
+#* OR:
+# func moves_for_gamemode():
+# 	var game_mode = CharacterSheet.game_mode
+# 	var move_list = []
+# 	match game_mode:
+# 		"in_battle": 
+# 			move_list = battle_moves
+# 		"in_town":
+# 			move_list = town_moves
+# 		"traveling":
+# 			move_list = all_moves
 
 func get_valid_moves():
 	var valid_moves = []

@@ -22,9 +22,8 @@ var wizard_level_one_spells = [
 #TODO: var wizard_level_seventh_spells = []
 #TODO: var wizard_level_ninth_spells = []
 
-
-
 func light_fn():
+	print("light")
 	CharacterSheet.has_a_light = not CharacterSheet.has_a_light #boolean flip
 var light = {
 	"name" : "light",
@@ -51,7 +50,6 @@ var unseen_servant = {
 
 func prestidigitation_fn(targets):
 	print("perform crude illusion to entertain")
-	#TODO: give npc's a funcref called "saw_magic_trick" or "was_entertained". this spell calls that to illicit a dialogue response?
 	for target in targets:
 		target["saw_magic_trick"].call_func()
 var prestidigitation = {
@@ -77,7 +75,7 @@ var contact_spirits = {
 }
 
 func detect_magic_fn():
-	print("spell called")
+	print("detect magic called")
 	if CharacterSheet.current_location["is_magical"]:
 		print("This location is magical")
 	for item in CharacterSheet.player_inventory:
@@ -96,7 +94,7 @@ var detect_magic = {
 }
 
 func  magic_missile_fn(target):
-	print("spell called")
+	print("magic missile called")
 	var damage = Utilities.deal_damage(2, 4, target["armor"], 0, [])
 	Moves.process_damage_to_npc(damage, target, {})
 
@@ -110,7 +108,7 @@ var  magic_missile = {
 }
 
 func  charm_person_fn(target):
-	print("spell called")
+	print("charm called")
 	#TODO: target must be touched
 	target["is_charmed"] = true
 var  charm_person = {
@@ -123,7 +121,7 @@ var  charm_person = {
 }
 
 func  invisibility_fn(target):
-	print("spell called")
+	print("invisibility called")
 	#TODO: target must be touched
 	target["is_invisible"] = true
 var  invisibility = {
@@ -136,7 +134,7 @@ var  invisibility = {
 }
 
 func  telepathy_fn(target):
-	print("spell called")
+	print("telepathy called")
 	CharacterSheet.telepathic_bonds.append(target.duplicate(true))
 	target["telepathic_bond_with_player"] = true
 var  telepathy = {
@@ -149,7 +147,7 @@ var  telepathy = {
 }
 
 func  alarm_fn(location):
-	print("spell called")
+	print("alarm called")
 	location["has_alarm_set"] = true
 	CharacterSheet.has_set_alarm = true
 var  alarm = {

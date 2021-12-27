@@ -43,15 +43,16 @@ var healing_potion = {
 var dagger = {
 	"name" : "dagger",
 	"weapon_tags": [],
+	"range_tags": ["hand"],
 	"is_weapon": true,
-	"tags" : ["hand"],
+	"tags" : [],
 	"coin" : 2,
 	"weight": 1,
 }
 
 var staff = {
 	"name" : "staff",
-	"tags" : ["close", "two_handed"],
+	"range_tags": ["close"],
 	"is_weapon": true,
 	"coin" : 1,
 	"weight": 1,
@@ -179,7 +180,8 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			#TODO: A portal or secret path (or directions to one) and roll again
 			#TODO: give player an option to go in one-time portal like a enter_random_portal() in moves
 			print("opening portal or secret path")
-			Locations.generate_random_portal()
+			# TODO: implement later
+			# Locations.generate_random_portal()
 			print("roll again")
 			return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		17:
