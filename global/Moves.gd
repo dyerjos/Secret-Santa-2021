@@ -427,14 +427,20 @@ var end_of_session = {
 #* Wizard basic moves
 
 func cast_spell_fn(spell, selected_targets):
+	print("cast_spell_fn")
+	assert(spell != null)
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_int)
 	print("roll result of spell: %s" % roll_result)
+	print("spell funcref: %s" % spell["execute"])
+	print("original funcref: %s" % WizardSpells.magic_missile["execute"])
 	match roll_result:
 		"success":
-			spell["execute"].call_func()
+			print("spell: %s" % spell["name"])
+			spell["execute"].call_func(selected_targets)
 		"partial":
 			#TODO: player chooses to draw unwelcome attention, take -1 ongoing to spells, or for spell to be forgotten
-			print("spell: %s" % spell)
+			print("spell: %s" % spell["name"])
+			# Moves.recover_fn(3)
 			spell["execute"].call_func(selected_targets)
 			print("partial success of spell")
 			CharacterSheet.ongoing_spell_modifier = -1

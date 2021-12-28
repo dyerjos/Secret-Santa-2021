@@ -33,7 +33,7 @@ onready var location_description = $TabContainer/Location/LocationDetails/HBoxCo
 #* ----- main tab var ---------
 var selected_move = {}
 var selected_weapon = {}
-var selected_spell = {}
+#var selected_spell = {}  #using selected_weapon instead
 var selected_targets = []
 var possible_targets = []
 #* ----- player tab var ---------
@@ -42,17 +42,15 @@ var possible_targets = []
 
 #* ---- Setup scripts -------
 func _ready():
-	if CharacterSheet.debug_mode == false:
-		SaveSystem.save_and_encrypt_game()
-	else:
-		CharacterSheet.current_location = Locations.starter_city
-		update_context("In Battle", true, false)
+	if CharacterSheet.debug_mode == true:
 		Enemies.generate_monsters(Locations.A1_S1_cave)
+		update_context("In Battle", true, false)
 	populate_move_options()
 	populate_target_options()
 	populate_inventory_list()
 	populate_player_tab()
 	populate_location_tab()
+	SaveSystem.save_and_encrypt_game()
 
 func populate_move_options():
 	var available_moves = Moves.get_valid_moves()
@@ -73,14 +71,15 @@ func popluate_weapon_options():
 				if item.has("is_weapon") and item["is_weapon"] == true and CharacterSheet.selected_weapon.has("range_tags") and (CharacterSheet.selected_weapon["range_tags"].has("close") == true or CharacterSheet.selected_weapon["range_tags"].has("hand") == true):
 					weapon_options.add_item(item["name"])
 		"cast spell":
-			print("cast spell hit")
+			print("poplulating weapon options")
 			for spell in CharacterSheet.prepared_spells:
-				print("spell: %s" % spell)
 				weapon_options.add_item(spell["name"])
+				print("spell added to spell options: %s" % spell["name"])
+			print("weapon_options list size: %s" % weapon_options.get_item_count())
 		_:
 			print("unknown: selected %s" % selected_move)
 func populate_target_options():
-		var enemies = CharacterSheet.battle_targets 
+		var enemies = CharacterSheet.battle_targets
 		var friends = CharacterSheet.friendly_targets
 		var you = [{"name": "", "friend_foe": "[Self]"}]
 		possible_targets = enemies + friends + you
@@ -99,6 +98,8 @@ func populate_inventory_list():
 		inventory_list.add_item(item["name"])
 
 func populate_location_tab():
+	if CharacterSheet.current_location.empty():
+		CharacterSheet.current_location = Locations.starter_city.duplicate(true)
 	location_name.text = CharacterSheet.current_location["name"]
 	steading.text = CharacterSheet.current_location["steading_type"]
 	location_description.text = CharacterSheet.current_location["description"]
@@ -125,7 +126,7 @@ func update_context(text, battle_bool, town_bool):
 #* ---------- Main Tab -------------------------
 
 func _on_SubmitBtn_pressed():
-	print("calling move's funcref")
+	print("calling move's funcref via submitBtn_pressed")
 	match selected_move["name"]:
 		# ----common----
 		"hack and slash":
@@ -191,7 +192,11 @@ func _on_SubmitBtn_pressed():
 
 		#----wizard common----
 		"cast spell":
-			selected_move["execute"].call_func(selected_spell, selected_targets)
+			assert(selected_weapon != null)
+			assert(selected_targets != null)
+			print("selected_weapon: %s" % selected_weapon)
+			print("selected_targets: %s" % selected_targets)
+			selected_move["execute"].call_func(selected_weapon, selected_targets)
 		"prepare spells":
 			selected_move["execute"].call_func()
 		"add to spellbook":
@@ -272,15 +277,20 @@ func using_weapon_against_target_setter(using, weapon, against, target):
 	weapon_options.visible = weapon
 	against_label.visible = against
 	target_options.visible = target
-	
+
 func _on_Weapon_item_selected(index):
-	match selected_move:
+	print("selected_move: %s" % selected_move)
+	match selected_move["name"]:
 		"volley":
 			selected_weapon = CharacterSheet.player_inventory[index]
 		"hack and slash":
 			selected_weapon = CharacterSheet.player_inventory[index]
 		"cast spell":
+			print("number of prepared_spells: %s" % CharacterSheet.prepared_spells.size())
 			selected_weapon = CharacterSheet.prepared_spells[index]
+			print("I am the spell: %s" % CharacterSheet.prepared_spells[index])
+		_:
+			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
 
 func _on_Target_item_selected(index):
 	selected_targets = possible_targets[index]

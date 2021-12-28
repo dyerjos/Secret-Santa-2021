@@ -93,21 +93,20 @@ var detect_magic = {
 	"execute" : funcref(self, "detect_magic_fn")
 }
 
-func  magic_missile_fn(target):
+func magic_missile_fn(target):
 	print("magic missile called")
 	var damage = Utilities.deal_damage(2, 4, target["armor"], 0, [])
 	Moves.process_damage_to_npc(damage, target, {})
-
 var  magic_missile = {
 	"name" : "magic missile",
 	"level" : 1,
 	"description" : "Projectiles of pure magic spring from your fingers. Deal 2d4 damage to one target.",
 	"school" : "evocation",
 	"ongoing" : false,
-	"execute" : funcref(self, " magic_missile_fn")
+	"execute" : funcref(self, "magic_missile_fn")
 }
 
-func  charm_person_fn(target):
+func charm_person_fn(target):
 	print("charm called")
 	#TODO: target must be touched
 	target["is_charmed"] = true
@@ -120,7 +119,7 @@ var  charm_person = {
 	"execute" : funcref(self, " charm_person_fn")
 }
 
-func  invisibility_fn(target):
+func invisibility_fn(target):
 	print("invisibility called")
 	#TODO: target must be touched
 	target["is_invisible"] = true
@@ -133,7 +132,7 @@ var  invisibility = {
 	"execute" : funcref(self, " invisibility_fn")
 }
 
-func  telepathy_fn(target):
+func telepathy_fn(target):
 	print("telepathy called")
 	CharacterSheet.telepathic_bonds.append(target.duplicate(true))
 	target["telepathic_bond_with_player"] = true
@@ -146,7 +145,7 @@ var  telepathy = {
 	"execute" : funcref(self, " telepathy_fn")
 }
 
-func  alarm_fn(location):
+func alarm_fn(location):
 	print("alarm called")
 	location["has_alarm_set"] = true
 	CharacterSheet.has_set_alarm = true

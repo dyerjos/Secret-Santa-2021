@@ -76,7 +76,7 @@ func _on_SpellBtn2_pressed():
 func _on_SpellBtn3_pressed():
 	if CharacterSheet.spells_in_spellbook.size() < 3:
 		CharacterSheet.spells_in_spellbook.append(WizardSpells.magic_missile)
-		CharacterSheet.prepared_spells.append(WizardSpells.magic_missile.duplicate(true))
+		CharacterSheet.prepared_spells.append(WizardSpells.magic_missile)
 		SpellBtn3.disabled = true
 
 func _on_SpellBtn4_pressed():
