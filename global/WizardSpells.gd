@@ -1,6 +1,5 @@
 extends Node
 
-
 var wizard_cantrips = [
 	light,
 	unseen_servant,
@@ -103,7 +102,9 @@ var  magic_missile = {
 	"description" : "Projectiles of pure magic spring from your fingers. Deal 2d4 damage to one target.",
 	"school" : "evocation",
 	"ongoing" : false,
-	"execute" : funcref(self, "magic_missile_fn")
+	"execute" : funcref(self, "magic_missile_fn"),
+	"method" : "magic_missile_fn",
+	"script" : "WizardSpells"
 }
 
 func charm_person_fn(target):
@@ -126,7 +127,7 @@ func invisibility_fn(target):
 var  invisibility = {
 	"name" : "invisibility",
 	"level" : 1,
-	"description" : "Touch an ally: nobody can see them. They’re invisible! The spell persists until the target attacks or you dismiss the effect. While the spell is ongoing you can not cast a spell.",
+	"description" : "Touch an ally: nobody can see them. They are invisible! The spell persists until the target attacks or you dismiss the effect. While the spell is ongoing you can not cast a spell.",
 	"school" : "illusion",
 	"ongoing" : true,
 	"execute" : funcref(self, " invisibility_fn")

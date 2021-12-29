@@ -194,8 +194,6 @@ func _on_SubmitBtn_pressed():
 		"cast spell":
 			assert(selected_weapon != null)
 			assert(selected_targets != null)
-			print("selected_weapon: %s" % selected_weapon)
-			print("selected_targets: %s" % selected_targets)
 			selected_move["execute"].call_func(selected_weapon, selected_targets)
 		"prepare spells":
 			selected_move["execute"].call_func()

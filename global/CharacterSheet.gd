@@ -191,11 +191,11 @@ func max_load():
 	return player_base_load_limit + Utilities.stat_to_modifier(player_str)
 
 func current_load():
-	var _load = 0
+	var current_load = 0
 	for item in player_inventory:
 		assert(item["weight" != null])
-		_load += item["weight"]
-	return _load
+		current_load += item["weight"]
+	return current_load
 
 func ongoing_moves_modifier():
 	return ongoing_encumberance_moves_modifier + ongoing_rations_moves_modifier + ongoing_watch_bonus

@@ -62,51 +62,51 @@ func assign_cantrips_and_race():
 # func _on_SpellBtn1_pressed():
 # 	if CharacterSheet.spells_in_spellbook.size() < 3:
 # 		CharacterSheet.spells_in_spellbook.append(WizardSpells.contact_spirits)
-# 		CharacterSheet.prepared_spells.append(WizardSpells.contact_spirits.duplicate(true))
+# 		CharacterSheet.prepared_spells.append(WizardSpells.contact_spirits)
 # 		SpellBtn1.disabled = true
 # 		assert(CharacterSheet.player_inventory.size() == 0)
 
 func _on_SpellBtn2_pressed():
 	if CharacterSheet.spells_in_spellbook.size() < 3:
 		CharacterSheet.spells_in_spellbook.append(WizardSpells.detect_magic)
-		CharacterSheet.prepared_spells.append(WizardSpells.detect_magic.duplicate(true))
+		CharacterSheet.prepared_spells.append(WizardSpells.detect_magic)
 		SpellBtn2.disabled = true
 
 
 func _on_SpellBtn3_pressed():
 	if CharacterSheet.spells_in_spellbook.size() < 3:
 		CharacterSheet.spells_in_spellbook.append(WizardSpells.magic_missile)
-		CharacterSheet.prepared_spells.append(WizardSpells.magic_missile)
+		CharacterSheet.prepared_spells.append(WizardSpells.magic_missile.duplicate(true))
 		SpellBtn3.disabled = true
 
 func _on_SpellBtn4_pressed():
 	if CharacterSheet.spells_in_spellbook.size() < 3:
 		CharacterSheet.spells_in_spellbook.append(WizardSpells.charm_person)
-		CharacterSheet.prepared_spells.append(WizardSpells.charm_person.duplicate(true))
+		CharacterSheet.prepared_spells.append(WizardSpells.charm_person)
 		SpellBtn4.disabled = true
 
 func _on_SpellBtn5_pressed():
 	if CharacterSheet.spells_in_spellbook.size() < 3:
 		CharacterSheet.spells_in_spellbook.append(WizardSpells.invisibility)
-		CharacterSheet.prepared_spells.append(WizardSpells.invisibility.duplicate(true))
+		CharacterSheet.prepared_spells.append(WizardSpells.invisibility)
 		SpellBtn5.disabled = true
 
 func _on_SpellBtn6_pressed():
 	if CharacterSheet.spells_in_spellbook.size() < 3:
 		CharacterSheet.spells_in_spellbook.append(WizardSpells.telepathy)
-		CharacterSheet.prepared_spells.append(WizardSpells.telepathy.duplicate(true))
+		CharacterSheet.prepared_spells.append(WizardSpells.telepathy)
 		SpellBtn6.disabled = true
 
 func _on_SpellBtn7_pressed():
 	if CharacterSheet.spells_in_spellbook.size() < 3:
 		CharacterSheet.spells_in_spellbook.append(WizardSpells.alarm)
-		CharacterSheet.prepared_spells.append(WizardSpells.alarm.duplicate(true))
+		CharacterSheet.prepared_spells.append(WizardSpells.alarm)
 		SpellBtn7.disabled = true
 
 func _on_SpellBtn8_pressed():
 	if CharacterSheet.spells_in_spellbook.size() < 3:
 		CharacterSheet.spells_in_spellbook.append(ClericSpells.cure_light_wounds)
-		CharacterSheet.prepared_spells.append(ClericSpells.cure_light_wounds.duplicate(true))
+		CharacterSheet.prepared_spells.append(ClericSpells.cure_light_wounds)
 		SpellBtn8.disabled = true
 
 

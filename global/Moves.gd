@@ -213,12 +213,12 @@ var last_breath = {
 
 func encumbrance_fn():
 	var max_load = CharacterSheet.max_load()
-	var _load = CharacterSheet.current_load()
-	var overloaded = _load + 2
-	if _load <= max_load:
+	var current_load = CharacterSheet.current_load()
+	var overloaded = current_load + 2
+	if current_load <= max_load:
 		CharacterSheet.ongoing_encumberance_moves_modifier = 0
 		CharacterSheet.inventory_locked = false
-	elif _load <= overloaded:
+	elif current_load <= overloaded:
 		print("player takes -1 ongoing until burden is lightened")
 		CharacterSheet.ongoing_encumberance_moves_modifier = -1
 		CharacterSheet.inventory_locked = true
@@ -431,17 +431,19 @@ func cast_spell_fn(spell, selected_targets):
 	assert(spell != null)
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_int)
 	print("roll result of spell: %s" % roll_result)
-	print("spell funcref: %s" % spell["execute"])
-	print("original funcref: %s" % WizardSpells.magic_missile["execute"])
+#	print("spell funcref: %s" % spell["execute"])
+#	print("original funcref: %s" % WizardSpells.magic_missile["execute"])
+	var global = get_node("/root/" + spell["script"])
 	match roll_result:
 		"success":
 			print("spell: %s" % spell["name"])
-			spell["execute"].call_func(selected_targets)
+#			spell["execute"].call_func(selected_targets)
+			global.call(spell["method"], selected_targets)
 		"partial":
 			#TODO: player chooses to draw unwelcome attention, take -1 ongoing to spells, or for spell to be forgotten
 			print("spell: %s" % spell["name"])
-			# Moves.recover_fn(3)
-			spell["execute"].call_func(selected_targets)
+			global.call(spell["method"], selected_targets)
+#			spell["execute"].call_func(selected_targets)
 			print("partial success of spell")
 			CharacterSheet.ongoing_spell_modifier = -1
 		"fail":
@@ -523,6 +525,8 @@ func process_damage_to_npc(damage, target, player_weapon_used) -> void:
 	else:
 		print("damage: %s" % damage["net_damage"])
 		target["hp"] -= damage["net_damage"]
+#		TODO: if dead, remove from battle targets
+	# for this I might have to pass in it's index?
 	if damage["messy"] == true:
 		print("do damage to building, area, or person (missing arm?)") 
 		#TODO: damage is done to person, item, or location (make global location script with fields like hp, description)
