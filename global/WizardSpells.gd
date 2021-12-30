@@ -92,10 +92,11 @@ var detect_magic = {
 	"execute" : funcref(self, "detect_magic_fn")
 }
 
-func magic_missile_fn(target):
+func magic_missile_fn(targets):
 	print("magic missile called")
-	var damage = Utilities.deal_damage(2, 4, target["armor"], 0, [])
-	Moves.process_damage_to_npc(damage, target, {})
+	for target in targets:
+		var damage = Utilities.deal_damage(2, 4, target["armor"], 0, [])
+		Moves.process_damage_to_npc(damage, target, {})
 var  magic_missile = {
 	"name" : "magic missile",
 	"level" : 1,

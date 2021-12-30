@@ -6,9 +6,10 @@ extends Node
 #* ------COMMON MOVES------------------------------------------------
 
 #NOTE: deal_damage(number, base_damage, target_armor, damage_bonuses, attack_tag)
-func hack_and_slash_fn(targets, reckless=false, player_weapon_used=null):
-	assert(player_weapon_used["needs_reloaded"] == false)
+func hack_and_slash_fn(targets, reckless, player_weapon_used):
+#	assert(player_weapon_used["needs_reloaded"] == false)
 	#TODO: test- what happens when player_weapon_used is null?
+	assert(targets != null)
 	print("calling move!")
 	var stat_for_attack = ""
 	if "precise" in player_weapon_used["weapon_tags"]:
@@ -19,18 +20,20 @@ func hack_and_slash_fn(targets, reckless=false, player_weapon_used=null):
 	match roll_result:
 		"success":
 			for target in targets:
-				print("target: %s" % target)
 				damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 				if reckless:
 					print("reckless also")
 					damage_to_npc(1, 6, target, stat_for_attack, player_weapon_used)
 			if reckless:
+#				print("target: %s" % targets)
 				damage_to_player(targets)
 		"partial":
 			for target in targets:
 				damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
+#			print("target: %s" % targets)
 			damage_to_player(targets)
 		"fail":
+#			print("target: %s" % targets)
 			CharacterSheet.player_exp += 1
 			print("GM says what happens")
 			#TODO: add something extra here?
@@ -49,7 +52,7 @@ func volley_fn(target, player_weapon_used, fail_opt):
 	var roll_result = Utilities.roll_dice_for_success(stat_for_attack)
 	match roll_result:
 		"success":
-			print("target: %s" % target)
+#			print("target: %s" % target)
 			damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 		"partial":
 			match fail_opt:
@@ -544,6 +547,8 @@ func process_damage_to_player(damage) -> void:
 	else:
 		damage["net_damage"] -= spell_defense_fn() #TODO: this should be a player's choice and not automatic
 		CharacterSheet.player_hitpoints -= damage["net_damage"]
+		if CharacterSheet.player_hitpoints <= 0:
+			Signals.emit_signal("player_died") 
 		#TODO: notify player whenever they take damage?
 	if damage["messy"] == true:
 		print("do damage to building, area, or person (missing arm?)") 

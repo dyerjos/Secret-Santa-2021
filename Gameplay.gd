@@ -37,6 +37,7 @@ var selected_weapon = {}
 #var selected_spell = {}  #using selected_weapon instead
 var selected_targets = []
 var possible_targets = []
+var availabile_weapons = []
 var dead_list = []
 #* ----- player tab var ---------
 #* ----- inventory tab var ---------
@@ -47,18 +48,15 @@ func _ready():
 	if CharacterSheet.debug_mode == true:
 		Enemies.generate_monsters(Locations.A1_S1_cave)
 		update_context("In Battle", true, false)
-	set_defaults()
 	populate_move_options()
+	popluate_weapon_options()
 	populate_target_options()
 	populate_inventory_list()
 	populate_player_tab()
 	populate_location_tab()
-
 	connect_signals()
 	SaveSystem.save_and_encrypt_game()
 
-func set_defaults():
-	print("setting defaults")
 
 func populate_move_options():
 	var available_moves = Moves.get_valid_moves()
@@ -69,25 +67,32 @@ func populate_move_options():
 
 func popluate_weapon_options():
 	print("populate_weapon_options hit")
-	weapon_options.clear()
+	if availabile_weapons:
+		availabile_weapons.clear()
+	if weapon_options:
+		weapon_options.clear()
 	match selected_move["name"]:
 		"volley":
 			for item in CharacterSheet.player_inventory:
 				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and item["range_tags"].has("close") == false and item["range_tags"].has("hand") == false:
+					availabile_weapons.append(item)
 					weapon_options.add_item(item["name"])
 		"hack and slash":
 			for item in CharacterSheet.player_inventory:
 				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and (item["range_tags"].has("close") == true or item["range_tags"].has("hand") == true):
+					availabile_weapons.append(item)
 					weapon_options.add_item(item["name"])
 		"cast spell":
 			print("poplulating weapon options")
 			for spell in CharacterSheet.prepared_spells:
+				availabile_weapons.append(spell)
 				weapon_options.add_item(spell["name"])
 				print("spell added to spell options: %s" % spell["name"])
 			print("weapon_options list size: %s" % weapon_options.get_item_count())
 		_:
 			print("unknown: selected %s" % selected_move)
-	selected_weapon = weapon_options[0]  #* setting default
+	selected_weapon = availabile_weapons[0]
+			
 func populate_target_options():
 		var enemies = CharacterSheet.battle_targets
 		var friends = CharacterSheet.friendly_targets
@@ -95,7 +100,7 @@ func populate_target_options():
 		possible_targets = enemies + friends + you
 		for target in possible_targets:
 			target_options.add_item(target["name"] + " " + target["friend_foe"])
-		selected_targets = possible_targets[0] #* setting default
+		selected_targets = [possible_targets[0]] #* setting default
 
 		#* other way:
 		# for target in enemies:
@@ -142,7 +147,9 @@ func _on_SubmitBtn_pressed():
 		# ----common----
 		"hack and slash":
 			# targets, reckless=false, player_weapon_used=null
-			selected_move["execute"].call_func()
+			var reckless = false
+			assert(selected_targets != null)
+			selected_move["execute"].call_func(selected_targets, reckless, selected_weapon)
 		"volley":
 			# target, player_weapon_used, fail_opt
 			selected_move["execute"].call_func()
@@ -228,6 +235,9 @@ func health_check():
 func _on_target_died(target_name):
 	print("received signal that target died")
 	print(target_name)
+
+func _on_player_died(): 
+	print("received signal that player died")
 	
 func _on_MoveOption_item_selected(index):
 	selected_move = CharacterSheet.available_moves[index]
@@ -313,10 +323,11 @@ func _on_Weapon_item_selected(index):
 			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
 
 func _on_Target_item_selected(index):
-	selected_targets = possible_targets[index]
+	selected_targets = [possible_targets[index]]
 	
 func connect_signals():
 	Signals.connect("target_died", self, "_on_target_died")
+	Signals.connect("player_died", self, "_on_player_died")
 
 #* ---------- Player Tab -------------------------
 #* ---------- Location Tab -------------------------
@@ -337,3 +348,5 @@ func connect_signals():
 #func _on_TestBtn4_pressed(): # generate treasure
 #	#TODO: how to select a target?
 #	Items.generate_treasure(Enemies.ankheg)
+
+

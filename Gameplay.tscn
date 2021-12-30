@@ -84,6 +84,7 @@ margin_bottom = 164.0
 margin_right = 135.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 135, 0 )
+toggle_mode = false
 text = "move"
 clip_text = true
 

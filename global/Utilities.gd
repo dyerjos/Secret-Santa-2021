@@ -11,10 +11,13 @@ func roll_dice_for_success(stat=null):
 	var result_after_modifier = dice_result + modifier + CharacterSheet.ongoing_moves_modifier()
 	print("result after modifier: %s" % result_after_modifier)
 	if result_after_modifier >= 10:
+		print("success")
 		return "success"
-	elif result_after_modifier >= 7 or result_after_modifier <= 9:
+	elif result_after_modifier == 7 or result_after_modifier == 8 or result_after_modifier == 9:
+		print("partial")
 		return "partial"
 	else:
+		print("fail")
 		return "fail"
 
 func roll_dice_for_total(number_of_dice, sides_of_dice):
@@ -110,7 +113,9 @@ func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tag
 					
 	var total_damage = roll_dice_for_total(number, base_damage) + damage_bonuses
 	var net_damage = total_damage - target_armor + tag_damage_bonus
+	print("net_damage: %s" % net_damage)
 	if net_damage < 0:
+		print("0 damage applied due to negative value")
 		return {
 			"net_damage": 0, "stun": stun, "forceful" : forceful, "messy": messy, "needs_reloaded": needs_reloaded
 		}
