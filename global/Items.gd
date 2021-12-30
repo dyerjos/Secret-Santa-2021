@@ -74,9 +74,13 @@ var unseen_servant = {
 }
 
 #TODO: organize the items
-var magical_items = []
+var magical_items = [
+	dagger
+]
 
-var minor_magical_items = []
+var minor_magical_items = [
+	dagger
+]
 
 var holy_items = []
 
@@ -112,6 +116,8 @@ func generate_treasure(target):
 				modifier += Utilities.roll_dice_for_total(1, 4)
 	var treasure = roll_for_treasure(best_of_two, target, modifier, found_treasure)
 	print("treasure: %s" % treasure)
+	return treasure
+
 
 
 func roll_for_treasure(best_of_two, target, modifier, found_treasure):

@@ -36,9 +36,14 @@ var selected_move = {}
 var selected_weapon = {}
 #var selected_spell = {}  #using selected_weapon instead
 var selected_targets = []
+var selected_target_index = null
 var possible_targets = []
 var availabile_weapons = []
 var dead_list = []
+var loot = {
+	"coins": 0,
+	"special_items" : []
+}
 #* ----- player tab var ---------
 #* ----- inventory tab var ---------
 #* ----- location tab var ---------
@@ -46,8 +51,9 @@ var dead_list = []
 #* ---- Setup scripts -------
 func _ready():
 	if CharacterSheet.debug_mode == true:
-		Enemies.generate_monsters(Locations.A1_S1_cave)
 		update_context("In Battle", true, false)
+		if CharacterSheet.battle_targets.size() == 0:
+			Enemies.generate_monsters(Locations.A1_S1_cave)
 	populate_move_options()
 	popluate_weapon_options()
 	populate_target_options()
@@ -94,13 +100,20 @@ func popluate_weapon_options():
 	selected_weapon = availabile_weapons[0]
 			
 func populate_target_options():
+		if target_options.get_item_count() > 0:
+			target_options.clear()
 		var enemies = CharacterSheet.battle_targets
+		if enemies.size() == 0:
+			battle_ended()
 		var friends = CharacterSheet.friendly_targets
 		var you = [{"name": "", "friend_foe": "[Self]"}]
 		possible_targets = enemies + friends + you
+		var index = 1
 		for target in possible_targets:
-			target_options.add_item(target["name"] + " " + target["friend_foe"])
+			target_options.add_item(target["name"] + " " + String(index) + " " + target["friend_foe"])
+			index += 1
 		selected_targets = [possible_targets[0]] #* setting default
+		selected_target_index = 0
 
 		#* other way:
 		# for target in enemies:
@@ -232,9 +245,25 @@ func post_move_hook():
 func health_check():
 	print("checking health of player, npc's, and enemies")
 	
-func _on_target_died(target_name):
+func _on_target_died(target):
 	print("received signal that target died")
-	print(target_name)
+	print(target["name"])
+	var new_loot = Items.generate_treasure(target)
+	var coins_dropped = new_loot["coins"]
+	print("signal here? monster dropped %s coins" % coins_dropped)
+	loot["coins"] += coins_dropped
+	var items_dropped = new_loot["special_items"]
+	if items_dropped:
+		print("signal here? monster dropped %s items" % items_dropped)
+	loot["special_items"].append_array(items_dropped)
+	print("current loot now: %s" % loot)
+	print("target that died: %s" % target)
+	CharacterSheet.battle_targets.remove(selected_target_index)
+#	target_options.remove_item(selected_target_index)
+	target_options.clear()
+	populate_target_options()
+#	selected_targets = []
+#	selected_target_index = null
 
 func _on_player_died(): 
 	print("received signal that player died")
@@ -324,7 +353,13 @@ func _on_Weapon_item_selected(index):
 
 func _on_Target_item_selected(index):
 	selected_targets = [possible_targets[index]]
+	selected_target_index = index
 	
+func battle_ended():
+	print("battle ended")
+	CharacterSheet.player_in_battle = false
+	context_label.text = "No Immediate Danger"
+
 func connect_signals():
 	Signals.connect("target_died", self, "_on_target_died")
 	Signals.connect("player_died", self, "_on_player_died")

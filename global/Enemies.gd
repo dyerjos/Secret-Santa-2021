@@ -54,6 +54,7 @@ func generate_monsters(location):
 			enemy_type = duplicated[0] #converts to dict
 			assert(typeof(enemy_type) != 19) #19 is array
 		var organization = enemy_type["organization"]
+		print("organization: %s" % organization)
 		var number_of_enemies = 0
 		match organization:
 			"group":
@@ -62,8 +63,9 @@ func generate_monsters(location):
 				number_of_enemies = Utilities.random_number_in_range(6, 10)
 			"solitary":
 				number_of_enemies = 1
+		print("number of enemies: %s" % number_of_enemies)
 		assert(number_of_enemies > 0)
-		for enemy in number_of_enemies:
+		for enemy in range(number_of_enemies):
 			CharacterSheet.battle_targets.append(enemy_type.duplicate(true))
 		assert(CharacterSheet.battle_targets.size() > 0)
 	else:
