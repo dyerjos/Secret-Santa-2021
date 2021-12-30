@@ -9,6 +9,7 @@ onready var using_label = $TabContainer/Main/VBoxContainer/MoveCommand/Using
 onready var weapon_options = $TabContainer/Main/VBoxContainer/MoveCommand/Weapon
 onready var against_label = $TabContainer/Main/VBoxContainer/MoveCommand/Against
 onready var target_options = $TabContainer/Main/VBoxContainer/MoveCommand/Target
+onready var adventure_text = $TabContainer/Main/VBoxContainer/TextContainer/AdventureText
 #* ----- player tab var ---------
 onready var current_hp = $TabContainer/Player/PlayerDetails/ReferenceRect/HBoxContainer/CurrentHp
 onready var max_hp = $TabContainer/Player/PlayerDetails/ReferenceRect2/HBoxContainer/MaxHp
@@ -36,6 +37,7 @@ var selected_weapon = {}
 #var selected_spell = {}  #using selected_weapon instead
 var selected_targets = []
 var possible_targets = []
+var dead_list = []
 #* ----- player tab var ---------
 #* ----- inventory tab var ---------
 #* ----- location tab var ---------
@@ -45,18 +47,25 @@ func _ready():
 	if CharacterSheet.debug_mode == true:
 		Enemies.generate_monsters(Locations.A1_S1_cave)
 		update_context("In Battle", true, false)
+	set_defaults()
 	populate_move_options()
 	populate_target_options()
 	populate_inventory_list()
 	populate_player_tab()
 	populate_location_tab()
+
+	connect_signals()
 	SaveSystem.save_and_encrypt_game()
+
+func set_defaults():
+	print("setting defaults")
 
 func populate_move_options():
 	var available_moves = Moves.get_valid_moves()
 	CharacterSheet.available_moves = available_moves
 	for move in available_moves:
 		move_options.add_item(move["name"])
+	selected_move = CharacterSheet.available_moves[0] #* setting default
 
 func popluate_weapon_options():
 	print("populate_weapon_options hit")
@@ -64,11 +73,11 @@ func popluate_weapon_options():
 	match selected_move["name"]:
 		"volley":
 			for item in CharacterSheet.player_inventory:
-				if item.has("is_weapon") and item["is_weapon"] == true and CharacterSheet.selected_weapon.has("range_tags") and CharacterSheet.selected_weapon["range_tags"].has("close") == false and CharacterSheet.selected_weapon["range_tags"].has("hand") == false:
+				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and item["range_tags"].has("close") == false and item["range_tags"].has("hand") == false:
 					weapon_options.add_item(item["name"])
 		"hack and slash":
 			for item in CharacterSheet.player_inventory:
-				if item.has("is_weapon") and item["is_weapon"] == true and CharacterSheet.selected_weapon.has("range_tags") and (CharacterSheet.selected_weapon["range_tags"].has("close") == true or CharacterSheet.selected_weapon["range_tags"].has("hand") == true):
+				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and (item["range_tags"].has("close") == true or item["range_tags"].has("hand") == true):
 					weapon_options.add_item(item["name"])
 		"cast spell":
 			print("poplulating weapon options")
@@ -78,6 +87,7 @@ func popluate_weapon_options():
 			print("weapon_options list size: %s" % weapon_options.get_item_count())
 		_:
 			print("unknown: selected %s" % selected_move)
+	selected_weapon = weapon_options[0]  #* setting default
 func populate_target_options():
 		var enemies = CharacterSheet.battle_targets
 		var friends = CharacterSheet.friendly_targets
@@ -85,6 +95,7 @@ func populate_target_options():
 		possible_targets = enemies + friends + you
 		for target in possible_targets:
 			target_options.add_item(target["name"] + " " + target["friend_foe"])
+		selected_targets = possible_targets[0] #* setting default
 
 		#* other way:
 		# for target in enemies:
@@ -206,7 +217,18 @@ func _on_SubmitBtn_pressed():
 		# 	#TODO: not implemented yet
 		_:
 			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
+	post_move_hook()
 
+func post_move_hook():
+	health_check()
+
+func health_check():
+	print("checking health of player, npc's, and enemies")
+	
+func _on_target_died(target_name):
+	print("received signal that target died")
+	print(target_name)
+	
 func _on_MoveOption_item_selected(index):
 	selected_move = CharacterSheet.available_moves[index]
 	print("selected %s" % selected_move)
@@ -292,6 +314,9 @@ func _on_Weapon_item_selected(index):
 
 func _on_Target_item_selected(index):
 	selected_targets = possible_targets[index]
+	
+func connect_signals():
+	Signals.connect("target_died", self, "_on_target_died")
 
 #* ---------- Player Tab -------------------------
 #* ---------- Location Tab -------------------------

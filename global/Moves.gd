@@ -525,6 +525,8 @@ func process_damage_to_npc(damage, target, player_weapon_used) -> void:
 	else:
 		print("damage: %s" % damage["net_damage"])
 		target["hp"] -= damage["net_damage"]
+		if target["hp"] <= 0:
+			Signals.emit_signal("target_died", target["name"]) 
 #		TODO: if dead, remove from battle targets
 	# for this I might have to pass in it's index?
 	if damage["messy"] == true:

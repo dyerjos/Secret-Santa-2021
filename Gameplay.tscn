@@ -68,7 +68,7 @@ margin_right = 392.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 380, 140 )
 
-[node name="Text" type="Label" parent="TabContainer/Main/VBoxContainer/TextContainer"]
+[node name="AdventureText" type="Label" parent="TabContainer/Main/VBoxContainer/TextContainer"]
 margin_right = 390.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 390, 140 )

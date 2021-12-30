@@ -37,6 +37,7 @@ Moves="*res://global/Moves.gd"
 Utilities="*res://global/Utilities.gd"
 Enemies="*res://global/Enemies.gd"
 Locations="*res://global/Locations.gd"
+Signals="*res://global/Signals.gd"
 
 [display]
 
