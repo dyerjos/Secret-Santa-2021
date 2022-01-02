@@ -1,16 +1,61 @@
 extends Node
 
 
-#TODO: add attack_tags, range_tags, is_magical, general_tags, armor_tags, needs_reloaded, is_weapon
-
-var no_weapon = {
-	"name" : "no weapon",
+var template = {
+	"name" : "name",
+	"attack_tags": [],
 	"weapon_tags": [],
-	"range_tags": ["close", "hand"],
-	"is_weapon": true,
-	"tags" : [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
 	"coin" : 0,
 	"weight": 0,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
+var no_weapon = {
+	"name" : "no weapon",
+	"attack_tags": [],
+	"weapon_tags": [],
+	"range_tags": ["close", "hand"],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": true,
+	"is_ranged": false,
+	"is_melee": true,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 0,
+	"weight": 0,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
 }
 
 var spellbook = {
@@ -86,21 +131,24 @@ var unseen_servant = {
 
 #TODO: organize the items
 var magical_items = [
-	dagger #TODO: dagger only for testing
 ]
-
 var minor_magical_items = [
-	dagger #TODO: dagger only for testing
 ]
-
 var holy_items = [
-	dagger #TODO: dagger only for testing
 ]
-
 var planar_items = [
-	dagger #TODO: dagger only for testing
 ]
+var ranged_weapons = [
+]
+var melee_weapons = [
+]
+var armor = []
+var gear = []
+var poisons = []
+var gifts = []
+var property_deeds = [] #TODO: in locations script?
 
+# TODO: services in a global script
 func generate_treasure(target):
 	var modifier = 0
 	modifier += target["attack_modifier"]
