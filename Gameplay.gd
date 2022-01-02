@@ -383,18 +383,16 @@ func health_summary(target):
 	var max_hp = 0
 	var hp = 0
 	if target.has("monster_tags"):
-		max_hp = target["max_hp"]
-		hp = target["hp"]
+		max_hp = float(target["max_hp"]) 
+		hp = float(target["hp"]) 
 		print("percentage of health: %s" % (hp/max_hp))
 		print("hp left: %s" % hp)
 	else:
-		max_hp = CharacterSheet.max_hitpoints()
-		hp = CharacterSheet.hp
+		max_hp = float(CharacterSheet.max_hitpoints())
+		hp = float(CharacterSheet.hp)
 	var hp_one_to_hundred = (hp / max_hp) * 100
-	print("hp_math: %s" % hp_one_to_hundred)
 	var hp_category = String(stepify(hp_one_to_hundred, 20))
 	var hp_summary = ""
-	print("hp_category: %s" % hp_category)
 	match hp_category:
 		"0":
 			hp_summary = "Critically Wounded"
