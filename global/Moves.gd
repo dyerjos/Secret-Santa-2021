@@ -44,6 +44,12 @@ var hack_and_slash = {
 	"description" : "When you attack an enemy in melee",
 	"execute" : funcref(self, "hack_and_slash_fn")
 }
+var hack_and_slash_recklessly = {
+	"name" : "hack and slash recklessly",
+	"type" : "basic",
+	"description" : "When you recklessly attack an enemy in melee",
+	"execute" : funcref(self, "hack_and_slash_fn")
+}
 
 #TODO: have player choose what will happen if their volley does partially fail (opt=1, opt=2, opt=3)
 func volley_fn(target, player_weapon_used, fail_opt):
@@ -601,6 +607,7 @@ func camp_safe_check():
 #* Comment out a move to hide from player:
 var common_moves = [
 	hack_and_slash,
+	hack_and_slash_recklessly,
 	# volley, #TODO: implement later
 	# defy_danger, #TODO: implement later
 	# defend, #TODO: implement later
@@ -660,6 +667,8 @@ func get_valid_moves():
 		match move["name"]:
 			# ----common----
 			"hack and slash":
+				valid_moves.append(move)
+			"hack and slash recklessly":
 				valid_moves.append(move)
 			"volley":
 				valid_moves.append(move)

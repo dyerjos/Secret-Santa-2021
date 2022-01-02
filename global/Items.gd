@@ -2,6 +2,17 @@ extends Node
 
 
 #TODO: add attack_tags, range_tags, is_magical, general_tags, armor_tags, needs_reloaded, is_weapon
+
+var no_weapon = {
+	"name" : "no weapon",
+	"weapon_tags": [],
+	"range_tags": ["close", "hand"],
+	"is_weapon": true,
+	"tags" : [],
+	"coin" : 0,
+	"weight": 0,
+}
+
 var spellbook = {
 	"name" : "spellbook",
 	"tags" : [],

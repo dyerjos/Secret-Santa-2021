@@ -88,6 +88,15 @@ func popluate_weapon_options():
 				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and (item["range_tags"].has("close") == true or item["range_tags"].has("hand") == true):
 					availabile_weapons.append(item)
 					weapon_options.add_item(item["name"])
+			availabile_weapons.append(Items.no_weapon)
+			weapon_options.add_item(Items.no_weapon["name"])
+		"hack and slash recklessly":
+			for item in CharacterSheet.player_inventory:
+				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and (item["range_tags"].has("close") == true or item["range_tags"].has("hand") == true):
+					availabile_weapons.append(item)
+					weapon_options.add_item(item["name"])
+			availabile_weapons.append(Items.no_weapon)
+			weapon_options.add_item(Items.no_weapon["name"])
 		"cast spell":
 			print("poplulating weapon options")
 			for spell in CharacterSheet.prepared_spells:
@@ -161,6 +170,11 @@ func _on_SubmitBtn_pressed():
 		"hack and slash":
 			# targets, reckless=false, player_weapon_used=null
 			var reckless = false
+			assert(selected_targets != null)
+			selected_move["execute"].call_func(selected_targets, reckless, selected_weapon)
+		"hack and slash recklessly":
+			# targets, reckless=true, player_weapon_used=null
+			var reckless = true
 			assert(selected_targets != null)
 			selected_move["execute"].call_func(selected_targets, reckless, selected_weapon)
 		"volley":
@@ -275,6 +289,8 @@ func _on_MoveOption_item_selected(index):
 		# ----common----
 		"hack and slash":
 			using_weapon_against_target_setter(true, true, true, true)
+		"hack and slash recklessly":
+			using_weapon_against_target_setter(true, true, true, true)
 		"volley":
 			using_weapon_against_target_setter(true, true, true, true)
 		"defy danger":
@@ -343,6 +359,8 @@ func _on_Weapon_item_selected(index):
 		"volley":
 			selected_weapon = CharacterSheet.player_inventory[index]
 		"hack and slash":
+			selected_weapon = CharacterSheet.player_inventory[index]
+		"hack and slash recklessly":
 			selected_weapon = CharacterSheet.player_inventory[index]
 		"cast spell":
 			print("number of prepared_spells: %s" % CharacterSheet.prepared_spells.size())
