@@ -401,7 +401,7 @@ func health_summary(target):
 		"40":
 			hp_summary = "Seriously Wounded"
 		"60":
-			hp_summary = "Moderately Wounds"
+			hp_summary = "Moderately Wounded"
 		"80":
 			hp_summary = "Slighly Wounded"
 		"100":
