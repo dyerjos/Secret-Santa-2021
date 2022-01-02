@@ -204,11 +204,11 @@ func last_breath_fn():
 		"success":
 			print("you cheated death and are now stabilized")
 			#TODO: add cheated_death boolean on player charactersheet
-			CharacterSheet.player_hitpoints = 0.5 #TODO: and setup code so that player can't move if hp is less than 1?
+			CharacterSheet.hp = 0.5 #TODO: and setup code so that player can't move if hp is less than 1?
 		"partial":
 			print("death offers a bargain or refuse and die")
 			#TODO: add deal_with_death boolean on player charactersheet
-			CharacterSheet.player_hitpoints = 0.5
+			CharacterSheet.hp = 0.5
 		"fail":
 			print("player dies. Normally you would create a new character")
 			#TODO: being a solo game, maybe npc can ressurect the player 1 time, it costs money, or offer to load game at a checkpoint, OR death comes slowly
@@ -338,12 +338,12 @@ func recover_fn(days=0):
 	if days >= 3:
 		#TODO: cure a debility of choice instead of all
 		CharacterSheet.player_debilities.clear()
-		CharacterSheet.player_hitpoints = CharacterSheet.max_hitpoints()
+		CharacterSheet.hp = CharacterSheet.max_hitpoints()
 	elif days >= 1:
-		CharacterSheet.player_hitpoints = CharacterSheet.max_hitpoints()
+		CharacterSheet.hp = CharacterSheet.max_hitpoints()
 	else:
 		var half_health = CharacterSheet.max_hitpoints() / 2
-		CharacterSheet.player_hitpoints = clamp((CharacterSheet.player_hitpoints + half_health), 0, CharacterSheet.max_hitpoints())
+		CharacterSheet.hp = clamp((CharacterSheet.hp + half_health), 0, CharacterSheet.max_hitpoints())
 var recover = {
 	"name" : "recover",
 	"type" : "special",
@@ -552,8 +552,8 @@ func process_damage_to_player(damage) -> void:
 		#TODO: does this stun player?
 	else:
 		damage["net_damage"] -= spell_defense_fn() #TODO: this should be a player's choice and not automatic
-		CharacterSheet.player_hitpoints -= damage["net_damage"]
-		if CharacterSheet.player_hitpoints <= 0:
+		CharacterSheet.hp -= damage["net_damage"]
+		if CharacterSheet.hp <= 0:
 			Signals.emit_signal("player_died") 
 		#TODO: notify player whenever they take damage?
 	if damage["messy"] == true:

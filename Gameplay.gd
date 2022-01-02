@@ -109,27 +109,29 @@ func popluate_weapon_options():
 	selected_weapon = availabile_weapons[0]
 			
 func populate_target_options():
-		if target_options.get_item_count() > 0:
-			target_options.clear()
-		var enemies = CharacterSheet.battle_targets
-		if enemies.size() == 0:
-			battle_ended()
-		var friends = CharacterSheet.friendly_targets
-		var you = [{"name": "", "friend_foe": "[Self]"}]
-		possible_targets = enemies + friends + you
-		var index = 1
-		for target in possible_targets:
-			target_options.add_item(target["name"] + " " + String(index) + " " + target["friend_foe"])
-			index += 1
-		selected_targets = [possible_targets[0]] #* setting default
-		selected_target_index = 0
+	print("populating targets")
+	if target_options.get_item_count() > 0:
+		target_options.clear()
+	var enemies = CharacterSheet.battle_targets
+	if enemies.size() == 0:
+		battle_ended()
+	var friends = CharacterSheet.friendly_targets
+	var you = [{"name": CharacterSheet.player_name, "friend_foe": "[Self]"}]
+	possible_targets = enemies + friends + you
+	var index = 1
+	for target in possible_targets:
+		var target_info = target["name"] + "-" + String(index) + " "  + target["friend_foe"] + " " + health_summary(target)
+		target_options.add_item(target_info)
+		index += 1
+	selected_targets = [possible_targets[0]] #* setting default
+	selected_target_index = 0
 
-		#* other way:
-		# for target in enemies:
-		# 	target_options.add_item(target["name"] + " [Enemy]")
-		# for target in friends:
-		# 	target_options.add_item(target["name"] + " [Ally]")
-		# target_options.add_item("[Self]")
+	#* other way:
+	# for target in enemies:
+	# 	target_options.add_item(target["name"] + " [Enemy]")
+	# for target in friends:
+	# 	target_options.add_item(target["name"] + " [Ally]")
+	# target_options.add_item("[Self]")
 
 func populate_inventory_list():
 	for item in CharacterSheet.player_inventory:
@@ -143,7 +145,7 @@ func populate_location_tab():
 	location_description.text = CharacterSheet.current_location["description"]
 
 func populate_player_tab():
-	current_hp.text = String(CharacterSheet.player_hitpoints)
+	current_hp.text = String(CharacterSheet.hp)
 	max_hp.text = String(CharacterSheet.max_hitpoints())
 	strength.text = String(CharacterSheet.player_str)
 	constitution.text = String(CharacterSheet.player_con)
@@ -254,10 +256,11 @@ func _on_SubmitBtn_pressed():
 	post_move_hook()
 
 func post_move_hook():
-	health_check()
+	refresh_targets()
 
-func health_check():
-	print("checking health of player, npc's, and enemies")
+func refresh_targets():
+	target_options.clear()
+	populate_target_options()
 	
 func _on_target_died(target):
 	print("received signal that target died")
@@ -273,11 +276,9 @@ func _on_target_died(target):
 	print("current loot now: %s" % loot)
 	print("target that died: %s" % target)
 	CharacterSheet.battle_targets.remove(selected_target_index)
-#	target_options.remove_item(selected_target_index)
-	target_options.clear()
-	populate_target_options()
-#	selected_targets = []
-#	selected_target_index = null
+	# target_options.clear()
+	# populate_target_options()
+
 
 func _on_player_died(): 
 	print("received signal that player died")
@@ -377,6 +378,39 @@ func battle_ended():
 	print("battle ended")
 	CharacterSheet.player_in_battle = false
 	context_label.text = "No Immediate Danger"
+
+func health_summary(target):
+	var max_hp = 0
+	var hp = 0
+	if target.has("monster_tags"):
+		max_hp = target["max_hp"]
+		hp = target["hp"]
+		print("percentage of health: %s" % (hp/max_hp))
+		print("hp left: %s" % hp)
+	else:
+		max_hp = CharacterSheet.max_hitpoints()
+		hp = CharacterSheet.hp
+	var hp_one_to_hundred = (hp / max_hp) * 100
+	print("hp_math: %s" % hp_one_to_hundred)
+	var hp_category = String(stepify(hp_one_to_hundred, 20))
+	var hp_summary = ""
+	print("hp_category: %s" % hp_category)
+	match hp_category:
+		"0":
+			hp_summary = "Critically Wounded"
+		"20":
+			hp_summary = "Severely Wounded"
+		"40":
+			hp_summary = "Seriously Wounded"
+		"60":
+			hp_summary = "Moderately Wounds"
+		"80":
+			hp_summary = "Slighly Wounded"
+		"100":
+			hp_summary = ""
+		_:
+			assert("this value shouldn't exist" == "_")
+	return hp_summary
 
 func connect_signals():
 	Signals.connect("target_died", self, "_on_target_died")

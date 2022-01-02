@@ -91,9 +91,9 @@ func remove_item_at_index(index):
 	ChaOptBtn.remove_item(index)
 	
 func set_player_hitpoints_and_next_scene():
-	CharacterSheet.player_hitpoints = CharacterSheet.player_con + CharacterSheet.class_base_hitpoints
+	CharacterSheet.hp = CharacterSheet.player_con + CharacterSheet.class_base_hitpoints
 	#! done_btn_checker() errors if we don't jump to next scene
-	assert(typeof(CharacterSheet.player_hitpoints) == 2) #* TYPE_INT = 2
+	assert(typeof(CharacterSheet.hp) == 2) #* TYPE_INT = 2
 	Scene.change("ClassMovesPicker")
 	
 func done_btn_checker():

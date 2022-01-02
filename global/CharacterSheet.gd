@@ -17,8 +17,8 @@ export var player_int = ""
 export var player_wis = ""
 export var player_cha = ""
 
-export var player_hitpoints = ""
-export var class_base_hitpoints = ""
+export var hp = 0
+export var class_base_hitpoints = 0
 export var player_stunpoints = 0
 
 export var class_base_damage = 4 #TODO: hardcoded wizard stat - have character creation set this in future
@@ -88,7 +88,7 @@ func save_dict():
 		"player_wis" : player_wis,
 		"player_cha" : player_cha,
 		"class_base_hitpoints" : class_base_hitpoints,
-		"player_hitpoints" : player_hitpoints,
+		"hp" : hp,
 		"spells_in_spellbook" : spells_in_spellbook,
 		"known_cantrips" : known_cantrips,
 		"player_level" : player_level,
@@ -143,7 +143,7 @@ func load(dict):
 	player_wis = dict["player_wis"]
 	player_cha = dict["player_cha"]
 	class_base_hitpoints = dict["class_base_hitpoints"]
-	player_hitpoints = dict["player_hitpoints"]
+	hp = dict["hp"]
 	spells_in_spellbook = dict["spells_in_spellbook"]
 	known_cantrips = dict["known_cantrips"]
 	player_level = dict["player_level"]

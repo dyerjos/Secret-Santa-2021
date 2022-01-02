@@ -13,7 +13,7 @@ func  cure_light_wounds_fn(target):
 	else:
 		print("healing a player")
 		assert(target["instinct"] == null) # make sure not a player
-		CharacterSheet.player_hitpoints = clamp((CharacterSheet.player_hitpoints + heal_amount), 0, CharacterSheet.max_hitpoints())
+		CharacterSheet.hp = clamp((CharacterSheet.hp + heal_amount), 0, CharacterSheet.max_hitpoints())
 var  cure_light_wounds = {
 	"name" : "cure light wounds",
 	"level" : 1,

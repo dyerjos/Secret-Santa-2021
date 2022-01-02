@@ -86,16 +86,20 @@ var unseen_servant = {
 
 #TODO: organize the items
 var magical_items = [
-	dagger
+	dagger #TODO: dagger only for testing
 ]
 
 var minor_magical_items = [
-	dagger
+	dagger #TODO: dagger only for testing
 ]
 
-var holy_items = []
+var holy_items = [
+	dagger #TODO: dagger only for testing
+]
 
-var planar_items = []
+var planar_items = [
+	dagger #TODO: dagger only for testing
+]
 
 func generate_treasure(target):
 	var modifier = 0
