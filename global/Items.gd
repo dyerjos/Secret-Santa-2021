@@ -2,7 +2,6 @@ extends Node
 
 var template = { 
 	"name" : "name",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -34,7 +33,6 @@ var template = {
 
 var no_weapon = {
 	"name" : "no weapon",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": ["close", "hand"],
 	"general_tags": [],
@@ -64,7 +62,6 @@ var no_weapon = {
 
 var spellbook = { 
 	"name" : "spellbook",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -95,7 +92,6 @@ var spellbook = {
 #TODO: make unseen servant an npc instead of an item in the future
 var unseen_servant = { 
 	"name" : "unseen servant",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -126,7 +122,6 @@ var unseen_servant = {
 #---------Ranged Weapons----------------
 var crossbow = { 
 	"name" : "crossbow",
-	"attack_tags": [],
 	"weapon_tags": ["+1 damage", "reload"],
 	"range_tags": ["near"],
 	"general_tags": [],
@@ -155,7 +150,6 @@ var crossbow = {
 }
 var fine_bow = { 
 	"name" : "fine bow",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": ["near", "far"],
 	"general_tags": [],
@@ -184,7 +178,6 @@ var fine_bow = {
 }
 var hunters_bow = { 
 	"name" : "hunters bow",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": ["near", "far"],
 	"general_tags": [],
@@ -213,7 +206,6 @@ var hunters_bow = {
 }
 var ragged_bow = { 
 	"name" : "ragged bow",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": ["near"],
 	"general_tags": [],
@@ -242,7 +234,6 @@ var ragged_bow = {
 }
 var bundle_of_arrows = { 
 	"name" : "bundle of arrows",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -269,10 +260,8 @@ var bundle_of_arrows = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var elven_arrows = { 
 	"name" : "elven arrows",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -290,9 +279,9 @@ var elven_arrows = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
-	"uses": null,
+	"coin" : 20,
+	"weight": 1,
+	"uses": 4,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
 	"future_item_field_3": "",
@@ -300,19 +289,17 @@ var elven_arrows = {
 	"future_item_field_5": "",
 }
 #---------Melee Weapons----------------
-#TODO: Finish
 var club = { 
 	"name" : "club",
-	"attack_tags": [],
 	"weapon_tags": [],
-	"range_tags": [],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -321,8 +308,8 @@ var club = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 1,
+	"weight": 2,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -330,19 +317,17 @@ var club = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var dagger = { 
 	"name" : "dagger",
-	"attack_tags": [],
 	"weapon_tags": [],
-	"range_tags": [],
+	"range_tags": ["hand"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -351,8 +336,8 @@ var dagger = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 2,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -360,19 +345,17 @@ var dagger = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var dueling_rapier = { 
 	"name" : "dueling rapier",
-	"attack_tags": [],
-	"weapon_tags": [],
-	"range_tags": [],
+	"weapon_tags": ["+1 piercing", "precise"],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -381,8 +364,8 @@ var dueling_rapier = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 50,
+	"weight": 2,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -390,19 +373,17 @@ var dueling_rapier = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var halberd = { 
 	"name" : "halberd",
-	"attack_tags": [],
-	"weapon_tags": [],
-	"range_tags": [],
-	"general_tags": [],
+	"weapon_tags": ["+1 damage"],
+	"range_tags": ["reach"],
+	"general_tags": ["2-handed"],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -411,8 +392,8 @@ var halberd = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 9,
+	"weight": 2,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -420,19 +401,17 @@ var halberd = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var long_sword = { 
 	"name" : "long sword",
-	"attack_tags": [],
-	"weapon_tags": [],
-	"range_tags": [],
+	"weapon_tags": ["+1 damage"],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -441,8 +420,8 @@ var long_sword = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 15,
+	"weight": 2,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -450,19 +429,17 @@ var long_sword = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var battle_axe = { 
 	"name" : "battle axe",
-	"attack_tags": [],
-	"weapon_tags": [],
-	"range_tags": [],
+	"weapon_tags": ["+1 damage"],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -471,8 +448,8 @@ var battle_axe = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 15,
+	"weight": 2,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -480,19 +457,17 @@ var battle_axe = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var flail = { 
 	"name" : "flail",
-	"attack_tags": [],
-	"weapon_tags": [],
-	"range_tags": [],
+	"weapon_tags": ["+1 damage"],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -501,8 +476,8 @@ var flail = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 15,
+	"weight": 2,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -510,19 +485,17 @@ var flail = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var rapier = { 
 	"name" : "rapier",
-	"attack_tags": [],
-	"weapon_tags": [],
-	"range_tags": [],
+	"weapon_tags": ["precise"],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -531,8 +504,8 @@ var rapier = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 25,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -540,19 +513,17 @@ var rapier = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var short_sword = { 
 	"name" : "short sword",
-	"attack_tags": [],
 	"weapon_tags": [],
-	"range_tags": [],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -561,8 +532,8 @@ var short_sword = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 8,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -570,19 +541,17 @@ var short_sword = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var axe = { 
 	"name" : "axe",
-	"attack_tags": [],
 	"weapon_tags": [],
-	"range_tags": [],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -591,8 +560,8 @@ var axe = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 8,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -600,19 +569,17 @@ var axe = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var warhammer = { 
 	"name" : "warhammer",
-	"attack_tags": [],
 	"weapon_tags": [],
-	"range_tags": [],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -621,8 +588,8 @@ var warhammer = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 8,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -630,19 +597,17 @@ var warhammer = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var mace = { 
 	"name" : "mace",
-	"attack_tags": [],
 	"weapon_tags": [],
-	"range_tags": [],
+	"range_tags": ["close"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -651,8 +616,8 @@ var mace = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 8,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -660,19 +625,17 @@ var mace = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var spear = { 
 	"name" : "spear",
-	"attack_tags": [],
-	"weapon_tags": [],
-	"range_tags": [],
+	"weapon_tags": ["thrown"],
+	"range_tags": ["reach", "near"], # near when thrown
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
-	"is_ranged": false,
-	"is_melee": false,
+	"is_weapon": true,
+	"is_ranged": true,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -681,8 +644,8 @@ var spear = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 5,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -690,19 +653,17 @@ var spear = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var staff = { 
 	"name" : "staff",
-	"attack_tags": [],
 	"weapon_tags": [],
-	"range_tags": [],
-	"general_tags": [],
+	"range_tags": ["close"],
+	"general_tags": ["2-handed"],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
+	"is_weapon": true,
 	"is_ranged": false,
-	"is_melee": false,
+	"is_melee": true,
 	"is_armor": false,
 	"is_gear": false,
 	"is_poison": false,
@@ -711,8 +672,8 @@ var staff = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 1,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -720,18 +681,16 @@ var staff = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var throwing_dagger = { 
 	"name" : "throwing dagger",
-	"attack_tags": [],
-	"weapon_tags": [],
-	"range_tags": [],
+	"weapon_tags": ["thrown"],
+	"range_tags": ["near"],
 	"general_tags": [],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
-	"is_weapon": false,
-	"is_ranged": false,
+	"is_weapon": true,
+	"is_ranged": true,
 	"is_melee": false,
 	"is_armor": false,
 	"is_gear": false,
@@ -741,7 +700,7 @@ var throwing_dagger = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
+	"coin" : 1,
 	"weight": 0,
 	"uses": null,
 	"future_item_field_1": "",
@@ -752,20 +711,18 @@ var throwing_dagger = {
 }
 
 #---------Armor----------------
-#TODO: Finish
 var leather_armor = { 
 	"name" : "leather armor",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
-	"general_tags": [],
-	"armor_tags": [],
+	"general_tags": ["worn"],
+	"armor_tags": ["1 armor"],
 	"needs_repaired": false,
 	"needs_reloaded": false,
 	"is_weapon": false,
 	"is_ranged": false,
 	"is_melee": false,
-	"is_armor": false,
+	"is_armor": true,
 	"is_gear": false,
 	"is_poison": false,
 	"is_gift": false,
@@ -773,8 +730,8 @@ var leather_armor = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 10,
+	"weight": 1,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -782,20 +739,18 @@ var leather_armor = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var plate_armor = { 
 	"name" : "plate armor",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
-	"general_tags": [],
-	"armor_tags": [],
+	"general_tags": ["worn"],
+	"armor_tags": ["3 armor", "clumsy"],
 	"needs_repaired": false,
 	"needs_reloaded": false,
 	"is_weapon": false,
 	"is_ranged": false,
 	"is_melee": false,
-	"is_armor": false,
+	"is_armor": true,
 	"is_gear": false,
 	"is_poison": false,
 	"is_gift": false,
@@ -803,8 +758,8 @@ var plate_armor = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 350,
+	"weight": 4,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -812,20 +767,18 @@ var plate_armor = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var scale_mail = { 
 	"name" : "scale mail",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
-	"general_tags": [],
-	"armor_tags": [],
+	"general_tags": ["worn"],
+	"armor_tags": ["2 armor", "clumsy"],
 	"needs_repaired": false,
 	"needs_reloaded": false,
 	"is_weapon": false,
 	"is_ranged": false,
 	"is_melee": false,
-	"is_armor": false,
+	"is_armor": true,
 	"is_gear": false,
 	"is_poison": false,
 	"is_gift": false,
@@ -833,8 +786,8 @@ var scale_mail = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 50,
+	"weight": 3,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -842,20 +795,18 @@ var scale_mail = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var shield = { 
 	"name" : "shield",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
-	"armor_tags": [],
+	"armor_tags": ["+1 armor"],
 	"needs_repaired": false,
 	"needs_reloaded": false,
 	"is_weapon": false,
 	"is_ranged": false,
 	"is_melee": false,
-	"is_armor": false,
+	"is_armor": true,
 	"is_gear": false,
 	"is_poison": false,
 	"is_gift": false,
@@ -863,8 +814,8 @@ var shield = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 15,
+	"weight": 2,
 	"uses": null,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -873,10 +824,8 @@ var shield = {
 	"future_item_field_5": "",
 }
 #---------Gear----------------
-#TODO: Finish
 var adventuring_gear = { 
 	"name" : "adventuring gear",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -887,15 +836,15 @@ var adventuring_gear = {
 	"is_ranged": false,
 	"is_melee": false,
 	"is_armor": false,
-	"is_gear": false,
+	"is_gear": true,
 	"is_poison": false,
 	"is_gift": false,
 	"is_certificate": false,
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 20,
+	"weight": 1,
 	"uses": 5,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -903,10 +852,8 @@ var adventuring_gear = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var antitoxin = { 
 	"name" : "antitoxin",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -917,26 +864,24 @@ var antitoxin = {
 	"is_ranged": false,
 	"is_melee": false,
 	"is_armor": false,
-	"is_gear": false,
+	"is_gear": true,
 	"is_poison": false,
 	"is_gift": false,
 	"is_certificate": false,
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
+	"coin" : 10,
 	"weight": 0,
-	"uses": 5,
+	"uses": 1,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
 	"future_item_field_3": "",
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var bag_of_books = { 
 	"name" : "bag of books",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -947,15 +892,15 @@ var bag_of_books = {
 	"is_ranged": false,
 	"is_melee": false,
 	"is_armor": false,
-	"is_gear": false,
+	"is_gear": true,
 	"is_poison": false,
 	"is_gift": false,
 	"is_certificate": false,
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 10,
+	"weight": 2,
 	"uses": 5,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -963,13 +908,11 @@ var bag_of_books = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var bandages = { 
 	"name" : "bandages",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
-	"general_tags": [],
+	"general_tags": ["slow"],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
@@ -977,29 +920,27 @@ var bandages = {
 	"is_ranged": false,
 	"is_melee": false,
 	"is_armor": false,
-	"is_gear": false,
+	"is_gear": true,
 	"is_poison": false,
 	"is_gift": false,
 	"is_certificate": false,
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
+	"coin" : 5,
 	"weight": 0,
-	"uses": 5,
+	"uses": 3,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
 	"future_item_field_3": "",
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var dungeon_rations = { 
 	"name" : "dungeon_rations",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
-	"general_tags": [],
+	"general_tags": ["ration"],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
@@ -1007,15 +948,15 @@ var dungeon_rations = {
 	"is_ranged": false,
 	"is_melee": false,
 	"is_armor": false,
-	"is_gear": false,
+	"is_gear": true,
 	"is_poison": false,
 	"is_gift": false,
 	"is_certificate": false,
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
+	"coin" : 3,
+	"weight": 1,
 	"uses": 5,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
@@ -1023,13 +964,11 @@ var dungeon_rations = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
-#TODO: Finish
 var dwarven_hardtack = { 
 	"name" : "dwarven hardtack",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
-	"general_tags": [],
+	"general_tags": ["dwarf", "ration"],
 	"armor_tags": [],
 	"needs_repaired": false,
 	"needs_reloaded": false,
@@ -1037,16 +976,16 @@ var dwarven_hardtack = {
 	"is_ranged": false,
 	"is_melee": false,
 	"is_armor": false,
-	"is_gear": false,
+	"is_gear": true,
 	"is_poison": false,
 	"is_gift": false,
 	"is_certificate": false,
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 0,
-	"weight": 0,
-	"uses": 5,
+	"coin" : 3,
+	"weight": 1,
+	"uses": 7,
 	"future_item_field_1": "",
 	"future_item_field_2": "",
 	"future_item_field_3": "",
@@ -1056,7 +995,6 @@ var dwarven_hardtack = {
 #TODO: Finish
 var elven_bread = { 
 	"name" : "elven bread",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1086,7 +1024,6 @@ var elven_bread = {
 #TODO: Finish
 var halfling_pipeleaf = { 
 	"name" : "halfling pipeleaf",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1116,7 +1053,6 @@ var halfling_pipeleaf = {
 #TODO: Finish
 var healing_potion = { 
 	"name" : "healing potion",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1146,7 +1082,6 @@ var healing_potion = {
 #TODO: Finish
 var keg_of_dwarven_stout = { 
 	"name" : "keg of dwarven stout",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1176,7 +1111,6 @@ var keg_of_dwarven_stout = {
 #TODO: Finish
 var personal_feast = { 
 	"name" : "personal feast",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1206,7 +1140,6 @@ var personal_feast = {
 #TODO: Finish
 var poultices_and_herbs = { 
 	"name" : "poultices and herbs",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1237,7 +1170,6 @@ var poultices_and_herbs = {
 #TODO: Finish
 var oil_of_tagit = { 
 	"name" : "oil of tagit",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1267,7 +1199,6 @@ var oil_of_tagit = {
 #TODO: Finish
 var bloodweed = { 
 	"name" : "bloodweed",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1297,7 +1228,6 @@ var bloodweed = {
 #TODO: Finish
 var goldenroot = { 
 	"name" : "goldenroot",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1327,7 +1257,6 @@ var goldenroot = {
 #TODO: Finish
 var serpents_tears = { 
 	"name" : "serpents tears",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1359,7 +1288,6 @@ var serpents_tears = {
 #TODO: Finish
 var peasant_gift = { 
 	"name" : "peasant gift",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1389,7 +1317,6 @@ var peasant_gift = {
 #TODO: Finish
 var fine_gift = { 
 	"name" : "fine gift",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1419,7 +1346,6 @@ var fine_gift = {
 #TODO: Finish
 var noble_gift = { 
 	"name" : "noble gift",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1449,7 +1375,6 @@ var noble_gift = {
 #TODO: Finish
 var gold_ring = { 
 	"name" : "gold ring",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1479,7 +1404,6 @@ var gold_ring = {
 #TODO: Finish
 var finery = { 
 	"name" : "finery",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1509,7 +1433,6 @@ var finery = {
 #TODO: Finish
 var fine_tapestry = { 
 	"name" : "fine tapestry",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1539,7 +1462,6 @@ var fine_tapestry = {
 #TODO: Finish
 var kings_crown = { 
 	"name" : "kings_crown",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1570,7 +1492,6 @@ var kings_crown = {
 #TODO: Finish
 var hovel_deed = { 
 	"name" : "hovel deed",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1600,7 +1521,6 @@ var hovel_deed = {
 #TODO: Finish
 var cottage_deed = { 
 	"name" : "cottage deed",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1630,7 +1550,6 @@ var cottage_deed = {
 #TODO: Finish
 var house_deed = { 
 	"name" : "house deed",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1660,7 +1579,6 @@ var house_deed = {
 #TODO: Finish
 var mansion_deed = { 
 	"name" : "mansion deed",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1690,7 +1608,6 @@ var mansion_deed = {
 #TODO: Finish
 var keep_deed = { 
 	"name" : "keep deed",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1720,7 +1637,6 @@ var keep_deed = {
 #TODO: Finish
 var castle_deed = { 
 	"name" : "castle deed",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1750,7 +1666,6 @@ var castle_deed = {
 #TODO: Finish
 var grand_castle_deed = { 
 	"name" : "grand castle deed",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1781,7 +1696,6 @@ var grand_castle_deed = {
 #TODO: Finish
 var argo-thaan_holy_avenger = { 
 	"name" : "argo-thaan, holy avenger",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1811,7 +1725,6 @@ var argo-thaan_holy_avenger = {
 #TODO: Finish
 var arrows_of_acheron = { 
 	"name" : "arrows of acheron",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1841,7 +1754,6 @@ var arrows_of_acheron = {
 #TODO: Finish
 var axe_of_the_conqueror-king = { 
 	"name" : "axe of the conqueror-king",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1871,7 +1783,6 @@ var axe_of_the_conqueror-king = {
 #TODO: Finish
 var barb_of_the_black_gate = { 
 	"name" : "barb of the black_gate",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1901,7 +1812,6 @@ var barb_of_the_black_gate = {
 #TODO: Finish
 var bag_of_holding = { 
 	"name" : "bag of holding",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1931,7 +1841,6 @@ var bag_of_holding = {
 #TODO: Finish
 var burning_wheel = { 
 	"name" : "burning wheel",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1961,7 +1870,6 @@ var burning_wheel = {
 #TODO: Finish
 var captain_blighs_cornucopia = { 
 	"name" : "captain bligh's cornucopia",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1991,7 +1899,6 @@ var captain_blighs_cornucopia = {
 #TODO: Finish
 var carcosan_spire = { 
 	"name" : "carcosan spire",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2021,7 +1928,6 @@ var carcosan_spire = {
 #TODO: Finish
 var cloak_of_silent_stars = { 
 	"name" : "cloak of silent stars",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2051,7 +1957,6 @@ var cloak_of_silent_stars = {
 #TODO: Finish
 var coin_of_remembering = { 
 	"name" : "coin of remembering",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2081,7 +1986,6 @@ var coin_of_remembering = {
 #TODO: Finish
 var common_scroll = { 
 	"name" : "common scroll",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2111,7 +2015,6 @@ var common_scroll = {
 #TODO: Finish
 var devilsbane_oil = { 
 	"name" : "devilsbane oil",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2141,7 +2044,6 @@ var devilsbane_oil = {
 #TODO: Finish
 var earworm_wax = { 
 	"name" : "earworm wax",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2171,7 +2073,6 @@ var earworm_wax = {
 #TODO: Finish
 var the_echo = { 
 	"name" : "the echo",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2201,7 +2102,6 @@ var the_echo = {
 #TODO: Finish
 var the_epoch_lens = { 
 	"name" : "the epoch lens",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2231,7 +2131,6 @@ var the_epoch_lens = {
 #TODO: Finish
 var farsight_stone = { 
 	"name" : "farsight stone",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2261,7 +2160,6 @@ var farsight_stone = {
 #TODO: Finish
 var the_fiasco_codex = { 
 	"name" : "the fiasco codex",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2291,7 +2189,6 @@ var the_fiasco_codex = {
 #TODO: Finish
 var flask_of_breath = { 
 	"name" : "flask of breath",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2321,7 +2218,6 @@ var flask_of_breath = {
 #TODO: Finish
 var the_wax_wings = { 
 	"name" : "the wax wings",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2351,7 +2247,6 @@ var the_wax_wings = {
 #TODO: Finish
 var immovable_rod = { 
 	"name" : "immovable rod",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2381,7 +2276,6 @@ var immovable_rod = {
 #TODO: Finish
 var infinite_book = { 
 	"name" : "infinite book",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2411,7 +2305,6 @@ var infinite_book = {
 #TODO: Finish
 var inspectacles = { 
 	"name" : "inspectacles",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2441,7 +2334,6 @@ var inspectacles = {
 #TODO: Finish
 var the_kumeh_maneuver = { 
 	"name" : "the ku'meh maneuver",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2471,7 +2363,6 @@ var the_kumeh_maneuver = {
 #TODO: Finish
 var lamented_memento = { 
 	"name" : "lamented memento",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2501,7 +2392,6 @@ var lamented_memento = {
 #TODO: Finish
 var lodestone_shield = { 
 	"name" : "lodestone shield",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2531,7 +2421,6 @@ var lodestone_shield = {
 #TODO: Finish
 var map_of_the_last_patrol = { 
 	"name" : "map of the last patrol",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2561,7 +2450,6 @@ var map_of_the_last_patrol = {
 #TODO: Finish
 var neds_head = { 
 	"name" : "ned's head",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2591,7 +2479,6 @@ var neds_head = {
 #TODO: Finish
 var nightsiders_key = { 
 	"name" : "nightsider's key",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2621,7 +2508,6 @@ var nightsiders_key = {
 #TODO: Finish
 var sacred_herbs = { 
 	"name" : "sacred herbs",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2651,7 +2537,6 @@ var sacred_herbs = {
 #TODO: Finish
 var the_sartar_duck = { 
 	"name" : "the sartar duck",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2681,7 +2566,6 @@ var the_sartar_duck = {
 #TODO: Finish
 var tears_of_annalise = { 
 	"name" : "tears of annalise",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2711,7 +2595,6 @@ var tears_of_annalise = {
 #TODO: Finish
 var teleportation_room = { 
 	"name" : "teleportation room",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2741,7 +2624,6 @@ var teleportation_room = {
 #TODO: Finish
 var timunns_armor = { 
 	"name" : "timunn's armor",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2771,7 +2653,6 @@ var timunns_armor = {
 #TODO: Finish
 var titus_truthful_tallow = { 
 	"name" : "titus truthful tallow",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2801,7 +2682,6 @@ var titus_truthful_tallow = {
 #TODO: Finish
 var tricksy_rope = { 
 	"name" : "tricksy rope",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2831,7 +2711,6 @@ var tricksy_rope = {
 #TODO: Finish
 var the_sterling_hand = { 
 	"name" : "the sterling hand",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2861,7 +2740,6 @@ var the_sterling_hand = {
 #TODO: Finish
 var veliuss_gauntlets = { 
 	"name" : "velius's gauntlets",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2891,7 +2769,6 @@ var veliuss_gauntlets = {
 #TODO: Finish
 var violation_glaive = { 
 	"name" : "violation glaive",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -2921,7 +2798,6 @@ var violation_glaive = {
 #TODO: Finish
 var vorpal_sword = { 
 	"name" : "vorpal sword",
-	"attack_tags": [],
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
