@@ -74,7 +74,7 @@ var custom_item_at_blacksmith = {
 	"name" : "custom item at blacksmith",
 	"type" : "general_service",
 	"charisma_discount": false,
-	"cost": 50,
+	"cost": "Base Item value + 50 coins",
 	"description" : "A custom item from a blacksmith",
 	"execute" : funcref(self, "custom_item_at_blacksmith_fn")
 }
@@ -195,192 +195,192 @@ var feast_for_one = {
 
 
 #* ------- Transport -------------
-func template_fn():
+func cart_and_donkey_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var cart_and_donkey = {
+	"name" : "cart and donkey",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 50,
+	"description" : "Cart and Donkey",
+	"execute" : funcref(self, "cart_and_donkey_fn")
 }
-func template_fn():
+func horse_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var horse = {
+	"name" : "horse transport",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 75,
+	"description" : "Horse",
+	"execute" : funcref(self, "horse_fn")
 }
-func template_fn():
+func warhorse_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var warhorse = {
+	"name" : "warhorse transport",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 400,
+	"description" : "Warhorse",
+	"execute" : funcref(self, "warhorse_fn")
 }
-func template_fn():
+func wagon_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var wagon = {
+	"name" : "wagon",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 150,
+	"description" : "Wagon",
+	"execute" : funcref(self, "wagon_fn")
 }
-func template_fn():
+func Barge_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var Barge = {
+	"name" : "Barge",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 50,
+	"description" : "Barge",
+	"execute" : funcref(self, "Barge_fn")
 }
-func template_fn():
+func river_boat_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var river_boat = {
+	"name" : "river boat",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 150,
+	"description" : "River boat",
+	"execute" : funcref(self, "river_boat_fn")
 }
-func template_fn():
+func merchant_ship_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var merchant_ship = {
+	"name" : "merchant ship",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 5-000,
+	"description" : "Merchant ship",
+	"execute" : funcref(self, "merchant_ship_fn")
 }
-func template_fn():
+func war_ship_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var war_ship = {
+	"name" : "war ship",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 20-000,
+	"description" : "War ship",
+	"execute" : funcref(self, "war_ship_fn")
 }
-func template_fn():
+func passage_on_a_safe_route_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var passage_on_a_safe_route = {
+	"name" : "passage on a safe route",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 1,
+	"description" : "Passage on a safe route",
+	"execute" : funcref(self, "passage_on_a_safe_route_fn")
 }
-func template_fn():
+func passage_on_a_tough_route_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var passage_on_a_tough_route = {
+	"name" : "passage on a tough route",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 10,
+	"description" : "Passage on a tough route",
+	"execute" : funcref(self, "passage_on_a_tough_route_fn")
 }
-func template_fn():
+func passage_on_a_dangerous_route_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var passage_on_a_dangerous_route = {
+	"name" : "passage on a dangerous route",
+	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": 100,
+	"description" : "Passage on a dangerous route",
+	"execute" : funcref(self, "passage_on_a_dangerous_route_fn")
 }
 
 
 
 #* ------- Upkeep -------------
-func template_fn():
+func repair_a_mundane_item_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var repair_a_mundane_item = {
+	"name" : "repair a mundane item",
+	"type" : "upkeep",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": "25% of the item's cost",
+	"description" : "Repairs to a mundane item",
+	"execute" : funcref(self, "repair_a_mundane_item_fn")
 }
-func template_fn():
+func a_months_upkeep_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
+var a_months_upkeep = {
+	"name" : "a_months_upkeep",
+	"type" : "upkeep",
 	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+	"cost": "1% of cost",
+	"description" : "A month's upkeep",
+	"execute" : funcref(self, "a_months_upkeep_fn")
 }
 
 
 
 #* ------- Bribes -------------
-func template_fn():
+func a_peasant_dowry_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
-	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+var a_peasant_dowry = {
+	"name" : "a peasant dowry",
+	"type" : "bribes",
+	"charisma_discount": true,
+	"cost": 20,
+	"description" : "A peasant dowry",
+	"execute" : funcref(self, "a_peasant_dowry_fn")
 }
-func template_fn():
+func protection_for_a_small_business_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
-	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+var protection_for_a_small_business = {
+	"name" : "protection for a small business",
+	"type" : "bribes",
+	"charisma_discount": true,
+	"cost": 100,
+	"description" : "'Proection' for a small business",
+	"execute" : funcref(self, "protection_for_a_small_business_fn")
 }
-func template_fn():
+func a_compelling_bribe_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
-	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+var a_compelling_bribe = {
+	"name" : "a_compelling_bribe",
+	"type" : "bribes",
+	"charisma_discount": true,
+	"cost": 80,
+	"description" : "A compelling bribe",
+	"execute" : funcref(self, "a_compelling_bribe_fn")
 }
-func template_fn():
+func a_government_bribe_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
-	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+var a_government_bribe = {
+	"name" : "a government bribe",
+	"type" : "bribes",
+	"charisma_discount": true,
+	"cost": 50,
+	"description" : "A government bribe",
+	"execute" : funcref(self, "a_government_bribe_fn")
 }
-func template_fn():
+func an_offer_you_cant_refuse_fn():
 	print("calling service method")
-var template = {
-	"name" : "template",
-	"type" : "general_service",
-	"charisma_discount": false,
-	"cost": 999,
-	"description" : "When you you have leverage on a GM character and manipulate them",
-	"execute" : funcref(self, "template_fn")
+var an_offer_you_cant_refuse = {
+	"name" : "an offer you cant refuse",
+	"type" : "bribes",
+	"charisma_discount": true,
+	"cost": 500,
+	"description" : "An offer you can't refuse",
+	"execute" : funcref(self, "an_offer_you_cant_refuse_fn")
 }
 
