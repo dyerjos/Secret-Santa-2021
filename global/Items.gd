@@ -1670,7 +1670,7 @@ var grand_castle_deed = {
 }
 #---------Magic Items----------------
 #TODO: Finish
-var argo-thaan_holy_avenger = { 
+var argo_thaan_holy_avenger = { 
 	"name" : "argo-thaan, holy avenger",
 	"weapon_tags": [],
 	"range_tags": ["close"],
@@ -1728,7 +1728,7 @@ var arrows_of_acheron = {
 	"future_item_field_5": "",
 }
 #TODO: Finish
-var axe_of_the_conqueror-king = { 
+var axe_of_the_conqueror_king = { 
 	"name" : "axe of the conqueror-king",
 	"weapon_tags": [],
 	"range_tags": ["close"],

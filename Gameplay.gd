@@ -51,7 +51,8 @@ var loot = {
 #* ---- Setup scripts -------
 func _ready():
 	if CharacterSheet.debug_mode == true:
-		update_context("In Battle", true, false)
+#		update_context("In Battle", true, false)
+		update_context("In Town", false, true)
 		if CharacterSheet.battle_targets.size() == 0:
 			Enemies.generate_monsters(Locations.A1_S1_cave)
 	populate_move_options()
@@ -290,14 +291,18 @@ func _on_MoveOption_item_selected(index):
 		# ----common----
 		"hack and slash":
 			using_weapon_against_target_setter(true, true, true, true)
+			popluate_weapon_options()
 		"hack and slash recklessly":
 			using_weapon_against_target_setter(true, true, true, true)
+			popluate_weapon_options()
 		"volley":
 			using_weapon_against_target_setter(true, true, true, true)
+			popluate_weapon_options()
 		"defy danger":
 			using_weapon_against_target_setter(false, false, false, false)
 		"defend":
 			using_weapon_against_target_setter(false, false, true, true)
+			popluate_weapon_options()
 		"aid or interfere":
 			pass #TODO: implement once bonds are setup
 		"spout lore":
@@ -336,6 +341,7 @@ func _on_MoveOption_item_selected(index):
 		#----wizard common----
 		"cast spell":
 			using_weapon_against_target_setter(true, true, true, true)
+			popluate_weapon_options()
 		"prepare spells":
 			using_weapon_against_target_setter(false, false, false, false)
 		"add to spellbook":
@@ -346,7 +352,6 @@ func _on_MoveOption_item_selected(index):
 			using_weapon_against_target_setter(false, false, false, false)
 		_:
 			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
-	popluate_weapon_options()
 
 func using_weapon_against_target_setter(using, weapon, against, target):
 	using_label.visible = using

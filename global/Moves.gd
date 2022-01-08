@@ -192,7 +192,7 @@ func parley_fn(target):
 var parley = {
 	"name" : "parley",
 	"type" : "basic",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "When you you have leverage on a GM character and manipulate them"
 	"execute" : funcref(self, "parley_fn")
 }
 
@@ -277,7 +277,7 @@ func take_watch_fn(location):
 var take_watch = {
 	"name" : "take watch",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "take_watch_fn")
 	}
 
@@ -294,7 +294,7 @@ var take_watch = {
 var carouse = {
 	"name" : "carouse",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "carouse_fn")
 	}
 
@@ -310,27 +310,32 @@ func undertake_perilous_journey_fn(stat_choice):
 var undertake_perilous_journey = {
 	"name" : "undertake perilous journey",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "undertake_perilous_journey_fn")
 	}
 
 func supply_fn():
-	var rations = CharacterSheet.player_inventory["dungeon_rations"]
-	rations.uses = 5
+	# var rations = CharacterSheet.player_inventory["dungeon_rations"]
+	# rations.uses = 5
 
+	print("supply hit")
+	print("show player items and services they can buy")
+	print("maybe this is a different scene entirely")
+
+	print("roll if it's an item that's special")
 	#TODO: FUTURE
-	# var roll_result = Utilities.roll_dice_for_success(stat_choice)
-	# match roll_result:
-	# 	"success":
-	# 		pass
-	# 	"partial":
-	# 		pass
-	# 	"fail":
-	# 		pass
+	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
+	match roll_result:
+		"success":
+			print("you get this item at fair price")
+		"partial":
+			print("item is found in the city but it's 20% more in cost?")
+		"fail":
+			print("item is not found")
 var supply = {
 	"name" : "supply",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "When you go to buy something with gold on hand, if it's something readily available in the settlement you're in, you can buy it at market price.",
 	"execute" : funcref(self, "supply_fn")
 	}
 
@@ -347,7 +352,7 @@ func recover_fn(days=0):
 var recover = {
 	"name" : "recover",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "recover_fn")
 	}
 
@@ -363,7 +368,7 @@ func recruit_fn(stat_choice):
 var recruit = {
 	"name" : "recruit",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "recruit_fn")
 	}
 	
@@ -379,7 +384,7 @@ func outstanding_warrants_fn(stat_choice):
 var outstanding_warrants = {
 	"name" : "outstanding warrants",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "outstanding_warrants_fn")
 	}
 
@@ -395,7 +400,7 @@ func bolster_fn(stat_choice):
 var bolster = {
 	"name" : "bolster",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "bolster_fn")
 	}
 
@@ -413,7 +418,7 @@ func level_up_fn():
 var level_up = {
 	"name" : "level up",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "level_up_fn")
 	}
 
@@ -429,7 +434,7 @@ func end_of_session_fn(stat_choice):
 var end_of_session = {
 	"name" : "end of session",
 	"type" : "special",
-	"description" : "When you you have leverage on a GM character and manipulate them",
+	"description" : "", #TODO: needs description
 	"execute" : funcref(self, "end_of_session_fn")
 	}
 
