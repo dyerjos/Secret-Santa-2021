@@ -348,6 +348,19 @@ var shop_for_an_item = {
 	"execute" : funcref(self, "shop_for_an_item_fn")
 	}
 
+func sell_an_item_fn(item_selected):
+	print("item value: %s" % item_selected["coin"])
+	CharacterSheet.player_coins += item_selected["coin"]
+	var inventory_size = CharacterSheet.player_inventory.size()
+	CharacterSheet.player_inventory.erase(item_selected)
+	assert(inventory_size > CharacterSheet.player_inventory.size())
+var sell_an_item = {
+	"name" : "sell an item",
+	"type" : "special",
+	"description" : "Sell an item at market price.",
+	"execute" : funcref(self, "sell_an_item_fn")
+	}
+
 func shop_for_a_service_fn(service_selected):
 	if CharacterSheet.player_coins < service_selected["coin"]:
 		print("You don't have enough coin for this item!")
@@ -677,6 +690,7 @@ var special_moves = [
 	# undertake_perilous_journey, #TODO: implement later
 	shop_for_an_item,
 	shop_for_a_service,
+	sell_an_item,
 	recover,
 	# recruit, #TODO: implement later
 	# outstanding_warrants, #TODO: implement later
@@ -759,6 +773,9 @@ func get_valid_moves():
 				if CharacterSheet.player_in_battle == false and CharacterSheet.player_in_town == true:
 					valid_moves.append(move)
 			"shop for a service":
+				if CharacterSheet.player_in_battle == false and CharacterSheet.player_in_town == true:
+					valid_moves.append(move)
+			"sell an item":
 				if CharacterSheet.player_in_battle == false and CharacterSheet.player_in_town == true:
 					valid_moves.append(move)
 			"recover":

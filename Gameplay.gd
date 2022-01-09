@@ -110,13 +110,20 @@ func popluate_weapon_options():
 			for item in Items.master_list:
 				available_weapons.append(item)
 				var cost = item["coin"] if item["coin"] else ""
-				weapon_options.add_item(item["name"] + "-" + String(cost))
+				weapon_options.add_item(item["name"] + " - " + String(cost))
 		"shop for a service":
 			print("selecting a service to buy")
 			for service in Services.master_service_list:
 				available_weapons.append(service)
 				var cost = service["coin"] if service["coin"] else ""
-				weapon_options.add_item(service["name"] + "-" + String(cost))
+				weapon_options.add_item(service["name"] + " - " + String(cost))
+		"sell an item":
+			print("selecting an item to sell")
+			for item in CharacterSheet.player_inventory:
+				if item["coin"]:
+					available_weapons.append(item)
+					var cost = item["coin"] if item["coin"] else ""
+					weapon_options.add_item(item["name"] + " - " + String(cost))
 		_:
 			print("unknown: selected %s" % selected_move)
 	selected_item = available_weapons[0]
@@ -147,6 +154,8 @@ func populate_target_options():
 	# target_options.add_item("[Self]")
 
 func populate_inventory_list():
+	if inventory_list.get_item_count() > 0:
+		inventory_list.clear()	
 	for item in CharacterSheet.player_inventory:
 		inventory_list.add_item(item["name"])
 
@@ -233,8 +242,14 @@ func _on_SubmitBtn_pressed():
 		# 	#TODO: not implemented yet
 		"shop for an item":
 			selected_move["execute"].call_func(selected_item)
+			populate_inventory_list()
 		"shop for a service":
 			selected_move["execute"].call_func(selected_item)
+			populate_inventory_list()
+		"sell an item":
+			selected_move["execute"].call_func(selected_item)
+			popluate_weapon_options()
+			populate_inventory_list()
 		"recover":
 			selected_move["execute"].call_func()
 			# days
@@ -343,6 +358,9 @@ func _on_MoveOption_item_selected(index):
 		"shop for a service":
 			using_weapon_against_target_setter(false, true, false, false)
 			popluate_weapon_options()
+		"sell an item":
+			using_weapon_against_target_setter(false, true, false, false)
+			popluate_weapon_options()
 		"recover":
 			using_weapon_against_target_setter(false, false, false, false)
 		"recruit":
@@ -395,6 +413,10 @@ func _on_Weapon_item_selected(index):
 		"shop for a service":
 			print("selecting a service at the given index for 'shop for a service'")
 			selected_item = Services.master_service_list[index]
+			print("selected: %s" % selected_item["name"])
+		"sell an item":
+			print("selecting an item to sell")
+			selected_item = CharacterSheet.player_inventory[index]
 			print("selected: %s" % selected_item["name"])
 		_:
 			print("move %s is not yet implemented for weapon item selected action." % selected_move["name"])

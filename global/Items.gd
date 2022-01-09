@@ -3228,7 +3228,7 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			treasure["coins"] +=  Utilities.roll_dice_for_total(5, 400)
 		15:
 			print("learning new spell")
-			if add_to_spellbook in Moves.wizard_common_moves:
+			if "add_to_spellbook" in Moves.wizard_common_moves.keys():
 				Moves.add_to_spellbook_fn()
 			else:
 				print("add_to_spellbook not enabled so roll again")
@@ -3244,8 +3244,8 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 		17:
 			print("found a missing item if there is a missing item")	
 			if CharacterSheet.missing_items.size() > 0:
-				print("found missing item: %s" % missing_item)
 				var missing_item = CharacterSheet.missing_items.duplicate(true).shuffle().pop_back()
+				print("found missing item: %s" % missing_item)
 				assert(missing_item != null)
 				treasure["special_items"].append(CharacterSheet.missing_items.duplicate(true).shuffle().pop_back())
 			else:
