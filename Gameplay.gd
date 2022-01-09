@@ -51,8 +51,9 @@ var loot = {
 #* ---- Setup scripts -------
 func _ready():
 	if CharacterSheet.debug_mode == true:
-#		update_context("In Battle", true, false)
+		# update_context("In Battle", true, false)
 		update_context("In Town", false, true)
+		CharacterSheet.player_coins += 9999
 		if CharacterSheet.battle_targets.size() == 0:
 			Enemies.generate_monsters(Locations.A1_S1_cave)
 	populate_move_options()
@@ -104,12 +105,18 @@ func popluate_weapon_options():
 				weapon_options.add_item(spell["name"])
 				print("spell added to spell options: %s" % spell["name"])
 			print("weapon_options list size: %s" % weapon_options.get_item_count())
-		"supply":
+		"shop for an item":
 			print("selecting an item to buy")
 			for item in Items.master_list:
 				available_weapons.append(item)
 				var cost = item["coin"] if item["coin"] else ""
 				weapon_options.add_item(item["name"] + "-" + String(cost))
+		"shop for a service":
+			print("selecting a service to buy")
+			for service in Services.master_service_list:
+				available_weapons.append(service)
+				var cost = service["coin"] if service["coin"] else ""
+				weapon_options.add_item(service["name"] + "-" + String(cost))
 		_:
 			print("unknown: selected %s" % selected_move)
 	selected_item = available_weapons[0]
@@ -208,7 +215,7 @@ func _on_SubmitBtn_pressed():
 		# 	selected_move["execute"].call_func()
 		# 	#TODO: not implemented yet
 		#----special----
-		# "last_breath":
+		# "last breath":
 		# 	selected_move["execute"].call_func()
 		# "encumbrance":
 		# 	selected_move["execute"].call_func()
@@ -224,7 +231,9 @@ func _on_SubmitBtn_pressed():
 		# "undertake perilous journey":
 		# 	selected_move["execute"].call_func()
 		# 	#TODO: not implemented yet
-		"supply":
+		"shop for an item":
+			selected_move["execute"].call_func(selected_item)
+		"shop for a service":
 			selected_move["execute"].call_func(selected_item)
 		"recover":
 			selected_move["execute"].call_func()
@@ -258,7 +267,7 @@ func _on_SubmitBtn_pressed():
 		# 	selected_move["execute"].call_func()
 		# 	#TODO: not implemented yet
 		_:
-			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
+			print("move %s is not yet implemented for submitBtn." % selected_move["name"])
 	post_move_hook()
 
 func post_move_hook():
@@ -291,7 +300,6 @@ func _on_player_died():
 	
 func _on_MoveOption_item_selected(index):
 	selected_move = CharacterSheet.available_moves[index]
-	print("selected %s" % selected_move)
 	match selected_move["name"]:
 		# ----common----
 		"hack and slash":
@@ -317,7 +325,7 @@ func _on_MoveOption_item_selected(index):
 		"parley":
 			using_weapon_against_target_setter(false, false, true, true)
 		#----special----
-		"last_breath":
+		"last breath":
 			pass
 		"encumbrance":
 			pass
@@ -329,7 +337,10 @@ func _on_MoveOption_item_selected(index):
 			using_weapon_against_target_setter(false, false, false, false)
 		"undertake perilous journey":
 			using_weapon_against_target_setter(false, false, false, false)
-		"supply":
+		"shop for an item":
+			using_weapon_against_target_setter(false, true, false, false)
+			popluate_weapon_options()
+		"shop for a service":
 			using_weapon_against_target_setter(false, true, false, false)
 			popluate_weapon_options()
 		"recover":
@@ -357,7 +368,7 @@ func _on_MoveOption_item_selected(index):
 		"ritual":
 			using_weapon_against_target_setter(false, false, false, false)
 		_:
-			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
+			print("move %s is not yet implemented for move option item selected" % selected_move["name"])
 
 func using_weapon_against_target_setter(using, weapon, against, target):
 	using_label.visible = using
@@ -366,7 +377,6 @@ func using_weapon_against_target_setter(using, weapon, against, target):
 	target_options.visible = target
 
 func _on_Weapon_item_selected(index):
-	print("selected_move: %s" % selected_move)
 	match selected_move["name"]:
 		"volley":
 			selected_item = CharacterSheet.player_inventory[index]
@@ -378,8 +388,16 @@ func _on_Weapon_item_selected(index):
 			print("number of prepared_spells: %s" % CharacterSheet.prepared_spells.size())
 			selected_item = CharacterSheet.prepared_spells[index]
 			print("I am the spell: %s" % CharacterSheet.prepared_spells[index])
+		"shop for an item":
+			print("selecting an item at the given index for 'shop for an item'")
+			selected_item = Items.master_list[index]
+			print("selected: %s" % selected_item["name"])
+		"shop for a service":
+			print("selecting a service at the given index for 'shop for a service'")
+			selected_item = Services.master_service_list[index]
+			print("selected: %s" % selected_item["name"])
 		_:
-			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
+			print("move %s is not yet implemented for weapon item selected action." % selected_move["name"])
 
 func _on_Target_item_selected(index):
 	selected_targets = [possible_targets[index]]

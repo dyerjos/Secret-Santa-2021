@@ -1,25 +1,6 @@
 extends Node
 
-var wizard_cantrips = [
-	light,
-	unseen_servant,
-	prestidigitation,
-]
 
-var wizard_level_one_spells = [
-	contact_spirits,
-	detect_magic,
-	magic_missile,
-	charm_person,
-	invisibility,
-	telepathy,
-	alarm,
-]
-
-#TODO: var wizard_level_third_spells = []
-#TODO: var wizard_level_fifth_spells = []
-#TODO: var wizard_level_seventh_spells = []
-#TODO: var wizard_level_ninth_spells = []
 
 func light_fn():
 	print("light")
@@ -161,3 +142,26 @@ var  alarm = {
 }
 
 
+#* ----- Disable or Enable ------------:
+var wizard_cantrips = [
+	light,
+	unseen_servant,
+	prestidigitation,
+]
+
+var wizard_level_one_spells = [
+	contact_spirits,
+	detect_magic,
+	magic_missile,
+	charm_person,
+	invisibility,
+	telepathy,
+	alarm,
+]
+
+#TODO: var wizard_level_third_spells = []
+#TODO: var wizard_level_fifth_spells = []
+#TODO: var wizard_level_seventh_spells = []
+#TODO: var wizard_level_ninth_spells = []
+
+#* ------------------end of Disable/Enable ---------------------:

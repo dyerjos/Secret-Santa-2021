@@ -1,5 +1,6 @@
 extends Node
 
+
 var template = { 
 	"name" : "name",
 	"weapon_tags": [],
@@ -1471,6 +1472,231 @@ var kings_crown = {
 	"future_item_field_4": "",
 	"future_item_field_5": "",
 }
+#--------- Transport ----------------
+var cart_and_donkey = { 
+	"name" : "cart and donkey",
+	"weapon_tags": [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 50,
+	"weight": -20,
+	"uses": null,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
+var horse = { 
+	"name" : "horse",
+	"weapon_tags": [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 75,
+	"weight": -10,
+	"uses": null,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
+var warhorse = { 
+	"name" : "warhorse",
+	"weapon_tags": [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 400,
+	"weight": -12,
+	"uses": null,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
+var wagon = { 
+	"name" : "wagon",
+	"weapon_tags": [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 150,
+	"weight": -40,
+	"uses": null,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
+var barge = { 
+	"name" : "barge",
+	"weapon_tags": [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 50,
+	"weight": -15,
+	"uses": null,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
+var river_boat = { 
+	"name" : "river boat",
+	"weapon_tags": [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 150,
+	"weight": -20,
+	"uses": null,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
+var merchant_ship = { 
+	"name" : "merchant ship",
+	"weapon_tags": [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 5_000,
+	"weight": -200,
+	"uses": null,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
+var war_ship = { 
+	"name" : "war ship",
+	"weapon_tags": [],
+	"range_tags": [],
+	"general_tags": [],
+	"armor_tags": [],
+	"needs_repaired": false,
+	"needs_reloaded": false,
+	"is_weapon": false,
+	"is_ranged": false,
+	"is_melee": false,
+	"is_armor": false,
+	"is_gear": false,
+	"is_poison": false,
+	"is_gift": false,
+	"is_certificate": false,
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"coin" : 20_000,
+	"weight": -100,
+	"uses": null,
+	"future_item_field_1": "",
+	"future_item_field_2": "",
+	"future_item_field_3": "",
+	"future_item_field_4": "",
+	"future_item_field_5": "",
+}
 #---------Property Deeds / Keys----------------
 var hovel_deed = { 
 	"name" : "hovel deed",
@@ -2801,9 +3027,9 @@ var vorpal_sword = {
 	"future_item_field_5": "",
 }
 
+#* ------------------ Disable or Enable ---------------------:
 
-
-#*----- treasure drops---------------
+#* treasure drops:
 var magical_items = [
 	bag_of_holding,
 ]
@@ -2816,7 +3042,7 @@ var holy_items = [
 var planar_items = [
 	bag_of_holding
 ]
-#*----- store items -----------------
+#* store items:
 var ranged_weapons = [
 	crossbow,
 	fine_bow,
@@ -2877,6 +3103,16 @@ var gifts = [
 	fine_tapestry,
 	kings_crown,
 ]
+var transport = [
+	cart_and_donkey,
+	horse,
+	warhorse,
+	wagon,
+	barge,
+	river_boat,
+	merchant_ship,
+	war_ship
+]
 var property_deeds = [
 	hovel_deed,
 	cottage_deed,
@@ -2886,9 +3122,10 @@ var property_deeds = [
 	castle_deed,
 	grand_castle_deed,
 ]
-var master_list = ranged_weapons + melee_weapons + armor + gear + poisons + gifts + property_deeds
+var master_list = ranged_weapons + melee_weapons + armor + gear + poisons + gifts + transport + property_deeds
 
-# TODO: services in a global script
+#* ------------------end of Disable/Enable ---------------------:
+
 func generate_treasure(target):
 	var modifier = 0
 	modifier += target["attack_modifier"]

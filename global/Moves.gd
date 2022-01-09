@@ -2,7 +2,6 @@ extends Node
 
 
 
-
 #* ------COMMON MOVES------------------------------------------------
 
 #NOTE: deal_damage(number, base_damage, target_armor, damage_bonuses, attack_tag)
@@ -314,14 +313,13 @@ var undertake_perilous_journey = {
 	"execute" : funcref(self, "undertake_perilous_journey_fn")
 	}
 
-func supply_fn(item_selected):
-	# var rations = CharacterSheet.player_inventory["dungeon_rations"]
-	# rations.uses = 5
+func shop_for_an_item_fn(item_selected):
 	if CharacterSheet.player_coins < item_selected["coin"]:
 		print("You don't have enough coin for this item!")
 	var roll_result = null
+	print("item cost: %s" % item_selected["coin"])
 	if item_selected["coin"] > 50:
-		print("special item (over 50 coin)")
+		print("special item (over 50 coin) so rolling charisma")
 		roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
 	else:
 		roll_result = "success"
@@ -330,18 +328,61 @@ func supply_fn(item_selected):
 			print("you get this item at fair price")
 			CharacterSheet.player_coins -= item_selected["coin"]
 			CharacterSheet.player_inventory.append(item_selected.duplicate(true))
+			print("item now aquired")
 		"partial":
 			print("item is found in the city but it's 20% more in cost?")
-			print("final price is %s" % ceil(item_selected["coin"] * 1.20))
-			CharacterSheet.player_coins -= ceil(item_selected["coin"] * 1.20)
-			CharacterSheet.player_inventory.append(item_selected.duplicate(true))
+			var higher_price = ceil(item_selected["coin"] * 1.20)
+			print("final price is %s" % higher_price)
+			if CharacterSheet.player_coins < higher_price:
+				print("You don't have enough coin for this item at the 20% markup!")
+			else:
+				CharacterSheet.player_coins -= higher_price
+				CharacterSheet.player_inventory.append(item_selected.duplicate(true))
+				print("item now aquired")
 		"fail":
 			print("item is not found")
-var supply = {
-	"name" : "supply",
+var shop_for_an_item = {
+	"name" : "shop for an item",
 	"type" : "special",
 	"description" : "When you go to buy something with gold on hand, if it's something readily available in the settlement you're in, you can buy it at market price.",
-	"execute" : funcref(self, "supply_fn")
+	"execute" : funcref(self, "shop_for_an_item_fn")
+	}
+
+func shop_for_a_service_fn(service_selected):
+	if CharacterSheet.player_coins < service_selected["coin"]:
+		print("You don't have enough coin for this item!")
+	var roll_result = null
+	print("service cost: %s" % service_selected["coin"])
+	if service_selected["coin"] > 50:
+		print("special service (over 50 coin) so rolling charisma")
+		roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
+	else:
+		roll_result = "success"
+	match roll_result:
+		"success":
+			print("you get this service at fair price")
+			CharacterSheet.player_coins -= service_selected["coin"]
+			# CharacterSheet.player_inventory.append(service_selected.duplicate(true))
+			print("service now aquired")
+			#TODO: add service to a service list or immediatly activate it?
+		"partial":
+			print("service is found in the city but it's 20% more in cost?")
+			var higher_price = ceil(service_selected["coin"] * 1.20)
+			print("final price is %s" % higher_price)
+			if CharacterSheet.player_coins < higher_price:
+				print("You don't have enough coin for this service at the 20% markup!")
+			else:
+				CharacterSheet.player_coins -= higher_price
+				# CharacterSheet.player_inventory.append(service_selected.duplicate(true))
+				#TODO: add service to a service list or immediatly activate it?
+				print("service now aquired")
+		"fail":
+			print("service is not found")
+var shop_for_a_service = {
+	"name" : "shop for a service",
+	"type" : "special",
+	"description" : "When you go to buy something with gold on hand, if it's something readily available in the settlement you're in, you can buy it at market price.",
+	"execute" : funcref(self, "shop_for_a_service_fn")
 	}
 
 func recover_fn(days=0):
@@ -614,7 +655,7 @@ func camp_safe_check():
 		"fail":
 			return false
 
-#* Comment out a move to hide from player:
+			#* ----- Disable or Enable ------------:
 var common_moves = [
 	hack_and_slash,
 	hack_and_slash_recklessly,
@@ -625,7 +666,7 @@ var common_moves = [
 	# spout_lore, # TODO: implement later
 	# discern_realities, #TODO: implement later
 	# parley, #TODO: implement later
-	]
+]
 #* Comment out a move to hide from player:
 var special_moves = [
 	# last_breath, #TODO: implement later
@@ -634,7 +675,8 @@ var special_moves = [
 	# take_watch, #TODO: implement later
 	# carouse, #TODO: implement later
 	# undertake_perilous_journey, #TODO: implement later
-	supply,
+	shop_for_an_item,
+	shop_for_a_service,
 	recover,
 	# recruit, #TODO: implement later
 	# outstanding_warrants, #TODO: implement later
@@ -650,8 +692,6 @@ var wizard_common_moves = [
 	# spell_defense, #TODO: implement later
 	# ritual, #TODO: implement later
 ]
-
-#* --------organized moves by game mode ----------
 
 var battle_moves = []
 var all_moves = common_moves + special_moves + wizard_common_moves
@@ -669,10 +709,12 @@ var town_moves = []
 # 		"traveling":
 # 			move_list = all_moves
 
+#* ------------------end of Disable/Enable ---------------------:
+
 func get_valid_moves():
 	var valid_moves = []
-	var move_list = all_moves
-	for move in move_list:
+	# REMINDER: add new moves to all_moves list
+	for move in all_moves:
 		match move["name"]:
 			# ----common----
 			"hack and slash":
@@ -681,48 +723,56 @@ func get_valid_moves():
 				valid_moves.append(move)
 			"volley":
 				valid_moves.append(move)
+				#TODO: add move to all_moves list to enable
 			"defy danger":
 				if CharacterSheet.player_in_danger:
 					valid_moves.append(move)
+				#TODO: add move to all_moves list to enable
 			"defend":
-				pass #TODO: implement later
+				pass #TODO: add move to all_moves list to enable
 			"aid or interfere":
-				pass #TODO: implement once bonds are setup
+				pass #TODO: add move to all_moves list to enable
 			"spout lore":
 				valid_moves.append(move)
+				#TODO: add move to all_moves list to enable
 			"discern realities":
 				if CharacterSheet.player_in_battle == false:
 					valid_moves.append(move)
+				#TODO: add move to all_moves list to enable
 			"parley":
 				valid_moves.append(move)
+				#TODO: add move to all_moves list to enable
 			#----special----
 			"last_breath":
-				pass
+				pass #TODO: add move to all_moves list to enable
 			"encumbrance":
-				pass
+				pass #TODO: add move to all_moves list to enable
 			"make camp":
-				pass
+				pass #TODO: add move to all_moves list to enable
 			"take watch":
-				pass
+				pass #TODO: add move to all_moves list to enable
 			"carouse":
-				pass #TODO: implement later
+				pass #TODO: add move to all_moves list to enable
 			"undertake perilous journey":
-				pass #TODO: implement later
-			"supply":
+				pass #TODO: add move to all_moves list to enable
+			"shop for an item":
+				if CharacterSheet.player_in_battle == false and CharacterSheet.player_in_town == true:
+					valid_moves.append(move)
+			"shop for a service":
 				if CharacterSheet.player_in_battle == false and CharacterSheet.player_in_town == true:
 					valid_moves.append(move)
 			"recover":
 				pass
 			"recruit":
-				pass #TODO: implement later
+				pass #TODO: add move to all_moves list to enable
 			"outstanding warrants":
-				pass #TODO: implement later
+				pass #TODO: add move to all_moves list to enable
 			"bolster":
-				pass #TODO: implement later
+				pass #TODO: add move to all_moves list to enable
 			"level up":
-				pass
+				pass #TODO: add move to all_moves list to enable
 			"end of session":
-				pass #TODO: implement later
+				pass #TODO: add move to all_moves list to enable
 			#----wizard common----
 			"cast spell":
 				valid_moves.append(move)
@@ -730,11 +780,11 @@ func get_valid_moves():
 				if CharacterSheet.player_in_battle == false:
 					valid_moves.append(move)
 			"add to spellbook":
-				pass
+				pass #TODO: add move to all_moves list to enable
 			"spell defense":
-				pass
+				pass #TODO: add move to all_moves list to enable
 			"ritual":
-				pass #TODO: implement later
+				pass #TODO: add move to all_moves list to enable
 			_:
-				print("move %s is not yet implemented for submit move button action." % move["name"])
+				print("move %s is not yet implemented for get_valid_move action." % move["name"])
 	return valid_moves

@@ -23,3 +23,8 @@ var cure_light_wounds = {
 	"method" : "cure_light_wounds_fn",
 	"script" : "ClericSpells"
 }
+
+#* ----- Disable or Enable ------------:
+#TODO: organize cleric spells by spell level like WizardSpells.gd
+#* ------------------end of Disable/Enable ---------------------:
+
