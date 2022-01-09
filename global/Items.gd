@@ -3031,16 +3031,16 @@ var vorpal_sword = {
 
 #* treasure drops:
 var magical_items = [
-	bag_of_holding,
+	# bag_of_holding,
 ]
 var minor_magical_items = [
-	common_scroll,
+	# common_scroll,
 ]
 var holy_items = [
-	devilsbane_oil,
+	# devilsbane_oil,
 ]
 var planar_items = [
-	bag_of_holding
+	# bag_of_holding
 ]
 #* store items:
 var ranged_weapons = [
@@ -3187,7 +3187,11 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 		5:
 			# Some minor magical trinket
 			print("Some minor magical trinket")
-			treasure["special_items"].append(generate_special_item(minor_magical_items))
+			if minor_magical_items.size() > 0:
+				treasure["special_items"].append(generate_special_item(minor_magical_items))
+			else:
+				print("roll again")
+				return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		6:
 			# Useful information (in the form of clues, notes, etc.)
 			print("Useful information (in the form of clues, notes, etc.)")
@@ -3204,7 +3208,12 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			treasure["coins"] +=  Utilities.roll_dice_for_total(3, 600)
 		10:
 			# A magical item or magical effect
-			treasure["special_items"].append(generate_special_item(magical_items))
+			print("found a magical item or magical effect")
+			if magical_items.size() > 0:
+				treasure["special_items"].append(generate_special_item(magical_items))
+			else:
+				print("roll again")
+				return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		11:
 			# Many bags of coins for a total of 2d4×100 or so
 			treasure["coins"] +=  Utilities.roll_dice_for_total(2, 400)
@@ -3219,9 +3228,11 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			treasure["coins"] +=  Utilities.roll_dice_for_total(5, 400)
 		15:
 			print("learning new spell")
-			Moves.add_to_spellbook_fn()
-			print("roll again")
-			return roll_for_treasure(best_of_two, target, modifier, found_treasure)
+			if add_to_spellbook in Moves.wizard_common_moves:
+				Moves.add_to_spellbook_fn()
+			else:
+				print("add_to_spellbook not enabled so roll again")
+				return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		16:
 			#TODO: A portal or secret path (or directions to one) and roll again
 			#TODO: give player an option to go in one-time portal like a enter_random_portal() in moves
@@ -3231,13 +3242,15 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			print("roll again")
 			return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		17:
-			print("found a missing item")
-			print("roll again")
-			var missing_item = CharacterSheet.missing_items.duplicate(true).shuffle().pop_back()
-			print("found missing item: %s" % missing_item)
-			assert(missing_item != null)
-			treasure["special_items"].append(CharacterSheet.missing_items.duplicate(true).shuffle().pop_back())
-			return roll_for_treasure(best_of_two, target, modifier, found_treasure)
+			print("found a missing item if there is a missing item")	
+			if CharacterSheet.missing_items.size() > 0:
+				print("found missing item: %s" % missing_item)
+				var missing_item = CharacterSheet.missing_items.duplicate(true).shuffle().pop_back()
+				assert(missing_item != null)
+				treasure["special_items"].append(CharacterSheet.missing_items.duplicate(true).shuffle().pop_back())
+			else:
+				print("roll again because there is no missing item")
+				return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		18:
 			# A hoard: 1d10×1000 coins and 1d10×10 gems worth 2d6×100 each
 			treasure["coins"] +=  Utilities.roll_dice_for_total(1, 100) * Utilities.roll_dice_for_total(2, 600)
