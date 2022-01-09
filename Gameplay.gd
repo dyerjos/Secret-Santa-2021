@@ -3,7 +3,7 @@ extends ColorRect
 
 #* UI references:
 #* ----- main tab var ---------
-onready var context_label = $CenterContainer/ContextLabel
+onready var context_label = $HeaderRow/CenterContainer/ContextLabel
 onready var move_options = $TabContainer/Main/VBoxContainer/MoveCommand/MoveOption
 onready var using_label = $TabContainer/Main/VBoxContainer/MoveCommand/Using
 onready var weapon_options = $TabContainer/Main/VBoxContainer/MoveCommand/Weapon
