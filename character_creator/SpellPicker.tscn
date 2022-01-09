@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://character_creator/SpellPicker.gd" type="Script" id=1]
 [ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://theme_with_font.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -11,6 +12,7 @@ font_data = ExtResource( 2 )
 [node name="SpellPicker" type="ColorRect"]
 margin_right = 400.0
 margin_bottom = 240.0
+theme = ExtResource( 3 )
 color = Color( 0.133333, 0.137255, 0.137255, 1 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -60,17 +62,17 @@ __meta__ = {
 
 [node name="Column" type="VBoxContainer" parent="TabContainer/Class"]
 margin_right = 330.0
-margin_bottom = 1403.0
+margin_bottom = 1301.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="Row" type="HBoxContainer" parent="TabContainer/Class/Column"]
 margin_right = 330.0
-margin_bottom = 149.0
+margin_bottom = 132.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row"]
 margin_right = 330.0
-margin_bottom = 149.0
+margin_bottom = 132.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row/SpellPanel"]
@@ -83,31 +85,31 @@ autowrap = true
 [node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row/SpellPanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 117.0
+margin_bottom = 100.0
 text = "An item you touch glows with arcane light, about as bright as a torch. It gives off no heat or sound and requires no fuel, but it is otherwise like a mundane torch. You have complete control of the color of the flame. The spell lasts as long as it is in your presence."
 autowrap = true
 
 [node name="SelectBtn" type="Button" parent="TabContainer/Class/Column/Row/SpellPanel"]
-margin_top = 121.0
+margin_top = 104.0
 margin_right = 330.0
-margin_bottom = 141.0
+margin_bottom = 124.0
 disabled = true
 text = "You always have this prepared"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row/SpellPanel"]
-margin_top = 145.0
+margin_top = 128.0
 margin_right = 330.0
-margin_bottom = 149.0
+margin_bottom = 132.0
 
 [node name="Row2" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 153.0
+margin_top = 136.0
 margin_right = 330.0
-margin_bottom = 353.0
+margin_bottom = 319.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row2"]
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 183.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row2/SpellPanel"]
@@ -120,31 +122,31 @@ autowrap = true
 [node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row2/SpellPanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 168.0
+margin_bottom = 151.0
 text = "You conjure a simple invisible construct that can do nothing but carry items. It has Load 3 and carries anything you hand to it. It cannot pick up items on its own and can only carry those you give to it. Items carried by an unseen servant appear to float in the air a few paces behind you. An unseen servant that takes damage or leaves your presence is immediately dispelled, dropping any items it carried."
 autowrap = true
 
 [node name="SelectBtn" type="Button" parent="TabContainer/Class/Column/Row2/SpellPanel"]
-margin_top = 172.0
+margin_top = 155.0
 margin_right = 330.0
-margin_bottom = 192.0
+margin_bottom = 175.0
 disabled = true
 text = "You always have this prepared"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row2/SpellPanel"]
-margin_top = 196.0
+margin_top = 179.0
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 183.0
 
 [node name="Row3" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 357.0
+margin_top = 323.0
 margin_right = 330.0
-margin_bottom = 557.0
+margin_bottom = 489.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row3"]
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 166.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row3/SpellPanel"]
@@ -157,21 +159,21 @@ autowrap = true
 [node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row3/SpellPanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 168.0
+margin_bottom = 134.0
 text = "You perform minor tricks of true magic. If you touch an item as part of the casting you can make cosmetic changes to it: clean it, soil it, cool it, warm it, flavor it, or change its color. If you cast the spell without touching an item you can instead create minor illusions no bigger than yourself. Prestidigitation illusions are crude and clearly illusions -- they won’t fool anyone, but they might entertain them."
 autowrap = true
 
 [node name="SelectBtn" type="Button" parent="TabContainer/Class/Column/Row3/SpellPanel"]
-margin_top = 172.0
+margin_top = 138.0
 margin_right = 330.0
-margin_bottom = 192.0
+margin_bottom = 158.0
 disabled = true
 text = "You always have this prepared"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row3/SpellPanel"]
-margin_top = 196.0
+margin_top = 162.0
 margin_right = 330.0
-margin_bottom = 200.0
+margin_bottom = 166.0
 
 [node name="Row4" type="HBoxContainer" parent="TabContainer/Class/Column"]
 visible = false
@@ -211,9 +213,9 @@ margin_right = 330.0
 margin_bottom = 115.0
 
 [node name="Row5" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 561.0
+margin_top = 493.0
 margin_right = 330.0
-margin_bottom = 661.0
+margin_bottom = 593.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row5"]
@@ -247,9 +249,9 @@ margin_right = 330.0
 margin_bottom = 81.0
 
 [node name="Row6" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 665.0
+margin_top = 597.0
 margin_right = 330.0
-margin_bottom = 765.0
+margin_bottom = 697.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row6"]
@@ -283,9 +285,9 @@ margin_right = 330.0
 margin_bottom = 81.0
 
 [node name="Row7" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 769.0
+margin_top = 701.0
 margin_right = 330.0
-margin_bottom = 884.0
+margin_bottom = 816.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row7"]
@@ -320,14 +322,14 @@ margin_right = 330.0
 margin_bottom = 115.0
 
 [node name="Row8" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 888.0
+margin_top = 820.0
 margin_right = 330.0
-margin_bottom = 1020.0
+margin_bottom = 935.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row8"]
 margin_right = 330.0
-margin_bottom = 132.0
+margin_bottom = 115.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row8/SpellPanel"]
@@ -340,31 +342,31 @@ autowrap = true
 [node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row8/SpellPanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 100.0
+margin_bottom = 83.0
 text = "Touch an ally: nobody can see them. They are invisible! The spell persists until the target attacks or you dismiss the effect. While the spell is ongoing you can’t
 cast a spell."
 autowrap = true
 
 [node name="SpellBtn5" type="Button" parent="TabContainer/Class/Column/Row8/SpellPanel"]
-margin_top = 104.0
+margin_top = 87.0
 margin_right = 330.0
-margin_bottom = 124.0
+margin_bottom = 107.0
 text = "Inscribe this spell in my spellbook"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row8/SpellPanel"]
-margin_top = 128.0
+margin_top = 111.0
 margin_right = 330.0
-margin_bottom = 132.0
+margin_bottom = 115.0
 
 [node name="Row9" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 1024.0
+margin_top = 939.0
 margin_right = 330.0
-margin_bottom = 1156.0
+margin_bottom = 1054.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row9"]
 margin_right = 330.0
-margin_bottom = 132.0
+margin_bottom = 115.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="SpellTitle" type="Label" parent="TabContainer/Class/Column/Row9/SpellPanel"]
@@ -377,26 +379,26 @@ autowrap = true
 [node name="SpellDescription" type="Label" parent="TabContainer/Class/Column/Row9/SpellPanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 100.0
+margin_bottom = 83.0
 text = "You form a telepathic bond with a single person you touch, enabling you to converse with that person through your thoughts. You can only have one telepathic bond
 at a time."
 autowrap = true
 
 [node name="SpellBtn6" type="Button" parent="TabContainer/Class/Column/Row9/SpellPanel"]
-margin_top = 104.0
+margin_top = 87.0
 margin_right = 330.0
-margin_bottom = 124.0
+margin_bottom = 107.0
 text = "Inscribe this spell in my spellbook"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row9/SpellPanel"]
-margin_top = 128.0
+margin_top = 111.0
 margin_right = 330.0
-margin_bottom = 132.0
+margin_bottom = 115.0
 
 [node name="Row10" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 1160.0
+margin_top = 1058.0
 margin_right = 330.0
-margin_bottom = 1275.0
+margin_bottom = 1173.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row10"]
@@ -430,9 +432,9 @@ margin_right = 330.0
 margin_bottom = 115.0
 
 [node name="Row11" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 1279.0
+margin_top = 1177.0
 margin_right = 330.0
-margin_bottom = 1379.0
+margin_bottom = 1277.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="SpellPanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row11"]
@@ -466,25 +468,25 @@ margin_right = 330.0
 margin_bottom = 81.0
 
 [node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/Column"]
-margin_top = 1383.0
+margin_top = 1281.0
 margin_right = 330.0
-margin_bottom = 1403.0
+margin_bottom = 1301.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/Column/CenterContainer3"]
-margin_left = 76.0
-margin_right = 253.0
+margin_left = 89.0
+margin_right = 241.0
 margin_bottom = 20.0
 
 [node name="DoneBtn" type="Button" parent="TabContainer/Class/Column/CenterContainer3/HBoxContainer"]
-margin_right = 113.0
+margin_right = 88.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 60, 0 )
 text = "Close spellbook"
 
 [node name="ResetBtn" type="Button" parent="TabContainer/Class/Column/CenterContainer3/HBoxContainer"]
-margin_left = 117.0
-margin_right = 177.0
+margin_left = 92.0
+margin_right = 152.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 60, 0 )
 text = "Reset"

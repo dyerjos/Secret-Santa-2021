@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://character_creator/ClassMovesPicker.gd" type="Script" id=1]
 [ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://theme_with_font.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -11,6 +12,7 @@ font_data = ExtResource( 2 )
 [node name="ClassMovesPicker" type="ColorRect"]
 margin_right = 400.0
 margin_bottom = 240.0
+theme = ExtResource( 3 )
 color = Color( 0.133333, 0.137255, 0.137255, 1 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -60,17 +62,17 @@ __meta__ = {
 
 [node name="Column" type="VBoxContainer" parent="TabContainer/Class"]
 margin_right = 330.0
-margin_bottom = 649.0
+margin_bottom = 581.0
 rect_min_size = Vector2( 330, 140 )
 
 [node name="Row" type="HBoxContainer" parent="TabContainer/Class/Column"]
 margin_right = 330.0
-margin_bottom = 142.0
+margin_bottom = 108.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="MovePanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row"]
 margin_right = 330.0
-margin_bottom = 142.0
+margin_bottom = 108.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="MoveTitle" type="Label" parent="TabContainer/Class/Column/Row/MovePanel"]
@@ -83,24 +85,24 @@ autowrap = true
 [node name="MoveDescription" type="Label" parent="TabContainer/Class/Column/Row/MovePanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 134.0
+margin_bottom = 100.0
 text = "Release a spell you've prepared. If your spell is successful, you may cast the spell again later. If your spell fails, you possibly will draw unwelcomed attention, the failed spell could make it more difficult to cast other spells, or the failed spell might not be castable again until spells are prepared again."
 autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row/MovePanel"]
-margin_top = 138.0
+margin_top = 104.0
 margin_right = 330.0
-margin_bottom = 142.0
+margin_bottom = 108.0
 
 [node name="Row2" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 146.0
+margin_top = 112.0
 margin_right = 330.0
-margin_bottom = 271.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="MovePanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row2"]
 margin_right = 330.0
-margin_bottom = 125.0
+margin_bottom = 108.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="MoveTitle" type="Label" parent="TabContainer/Class/Column/Row2/MovePanel"]
@@ -113,19 +115,19 @@ autowrap = true
 [node name="MoveDescription" type="Label" parent="TabContainer/Class/Column/Row2/MovePanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 117.0
+margin_bottom = 100.0
 text = "When you spend uninterrupted time (at least an hour) in quiet contemplation of your spellbook, you lose spells you already prepared, you prepare new spells chosen from your spellbook, and you can prepare your cantrips (which don't count towards your spell limit)"
 autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row2/MovePanel"]
-margin_top = 121.0
+margin_top = 104.0
 margin_right = 330.0
-margin_bottom = 125.0
+margin_bottom = 108.0
 
 [node name="Row3" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 275.0
+margin_top = 224.0
 margin_right = 330.0
-margin_bottom = 375.0
+margin_bottom = 324.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="MovePanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row3"]
@@ -143,19 +145,19 @@ autowrap = true
 [node name="MoveDescription" type="Label" parent="TabContainer/Class/Column/Row3/MovePanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 83.0
+margin_bottom = 66.0
 text = "Spells you master are written in your spellbook. You start out with a few spells and all your cantrips. You can write new spells into your spellbook as you get more experience."
 autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row3/MovePanel"]
-margin_top = 87.0
+margin_top = 70.0
 margin_right = 330.0
-margin_bottom = 91.0
+margin_bottom = 74.0
 
 [node name="Row4" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 379.0
+margin_top = 328.0
 margin_right = 330.0
-margin_bottom = 479.0
+margin_bottom = 428.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="MovePanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row4"]
@@ -173,24 +175,24 @@ autowrap = true
 [node name="MoveDescription" type="Label" parent="TabContainer/Class/Column/Row4/MovePanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 83.0
+margin_bottom = 66.0
 text = "You may end any ongoing spell immediately and use the energy of its dissipation to deflect an oncoming attack. The spell ends and you subract its level from the damage done to you"
 autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row4/MovePanel"]
-margin_top = 87.0
+margin_top = 70.0
 margin_right = 330.0
-margin_bottom = 91.0
+margin_bottom = 74.0
 
 [node name="Row5" type="HBoxContainer" parent="TabContainer/Class/Column"]
-margin_top = 483.0
+margin_top = 432.0
 margin_right = 330.0
-margin_bottom = 625.0
+margin_bottom = 557.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="MovePanel" type="VBoxContainer" parent="TabContainer/Class/Column/Row5"]
 margin_right = 330.0
-margin_bottom = 142.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 330, 0 )
 
 [node name="MoveTitle" type="Label" parent="TabContainer/Class/Column/Row5/MovePanel"]
@@ -203,28 +205,28 @@ autowrap = true
 [node name="MoveDescription" type="Label" parent="TabContainer/Class/Column/Row5/MovePanel"]
 margin_top = 18.0
 margin_right = 330.0
-margin_bottom = 134.0
+margin_bottom = 117.0
 text = "When you draw on a place of power to create a magical effect. Ritual effects are always possible but there will be conditions. It may  can take much time, require help, require materials, come with the risk of danger, or possibly you can only do a lesser version of a ritual that is more unreliable and limited."
 autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Class/Column/Row5/MovePanel"]
-margin_top = 138.0
+margin_top = 121.0
 margin_right = 330.0
-margin_bottom = 142.0
+margin_bottom = 125.0
 
 [node name="CenterContainer3" type="CenterContainer" parent="TabContainer/Class/Column"]
-margin_top = 629.0
+margin_top = 561.0
 margin_right = 330.0
-margin_bottom = 649.0
+margin_bottom = 581.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/Column/CenterContainer3"]
-margin_left = 96.0
-margin_right = 233.0
+margin_left = 113.0
+margin_right = 216.0
 margin_bottom = 20.0
 
 [node name="DoneBtn" type="Button" parent="TabContainer/Class/Column/CenterContainer3/HBoxContainer"]
-margin_right = 137.0
+margin_right = 103.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 60, 0 )
 text = "Open my spellbook"

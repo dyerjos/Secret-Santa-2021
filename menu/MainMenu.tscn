@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://theme_with_font.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -15,6 +16,7 @@ font_data = ExtResource( 2 )
 [node name="MainMenu" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 color = Color( 0.133333, 0.137255, 0.137255, 1 )
 script = ExtResource( 1 )
 __meta__ = {

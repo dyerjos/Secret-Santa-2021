@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://character_creator/StatsPicker.gd" type="Script" id=1]
 [ext_resource path="res://fonts/MinimalFont5x7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://theme_with_font.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -11,6 +12,7 @@ font_data = ExtResource( 2 )
 [node name="StatsPicker" type="ColorRect"]
 margin_right = 400.0
 margin_bottom = 240.0
+theme = ExtResource( 3 )
 color = Color( 0.133333, 0.137255, 0.137255, 1 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -204,8 +206,8 @@ margin_right = 330.0
 margin_bottom = 164.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Class/VBoxContainer/CenterContainer3"]
-margin_left = 29.0
-margin_right = 301.0
+margin_left = 43.0
+margin_right = 286.0
 margin_bottom = 20.0
 
 [node name="DoneBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
@@ -217,13 +219,13 @@ text = "Done"
 
 [node name="HelpBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
 margin_left = 64.0
-margin_right = 208.0
+margin_right = 179.0
 margin_bottom = 20.0
 text = "Recommended Stats"
 
 [node name="ResetBtn" type="Button" parent="TabContainer/Class/VBoxContainer/CenterContainer3/HBoxContainer"]
-margin_left = 212.0
-margin_right = 272.0
+margin_left = 183.0
+margin_right = 243.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 60, 0 )
 text = "Reset"
