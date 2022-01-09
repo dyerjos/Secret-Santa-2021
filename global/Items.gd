@@ -3128,7 +3128,6 @@ var master_list = ranged_weapons + melee_weapons + armor + gear + poisons + gift
 
 func generate_treasure(target):
 	var modifier = 0
-	modifier += target["attack_modifier"]
 	var best_of_two = false
 	var found_treasure = {
 		"coins": 0,

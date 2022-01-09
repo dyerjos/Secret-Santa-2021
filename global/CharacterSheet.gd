@@ -187,7 +187,29 @@ func damage_bonuses(ability_modifier=0):
 	return move_damage_bonus + effect_damage_bonus + ability_modifier
 
 func total_armor():
-	return player_circumstantial_armor + player_equipped_armor + player_move_armor
+	return player_circumstantial_armor + equipped_armor() + player_move_armor
+
+func equipped_armor():
+	var armor = 0
+	for item in player_inventory:
+		if item["is_armor"] == false:
+			break
+		for tag in item["armor_tags"]:
+			match tag:
+				"1 armor":
+					armor = 1
+				"2 armor":
+					armor = 2
+				"3 armor":
+					armor = 3
+				"+1 armor":
+					armor += 1
+				_:
+					print("tag %s is not yet implemented" % tag)
+	assert(armor < 5)
+	print("armor: %s" % armor)
+	return armor
+
 
 func max_load():
 	return player_base_load_limit + Utilities.stat_to_modifier(player_str)

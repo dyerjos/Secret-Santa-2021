@@ -145,7 +145,6 @@ func spout_lore_fn(object):
 	match roll_result:
 		"success":
 			print("tell player something interesting and useful about the subject relevant to your situation")
-			#TODO: maybe add a field like "useful_info" and "interesting_info" to monsters, objects, and locations
 			print("reveal object['useful_info']") # how fact is immediately useful
 		"partial":
 			print("reveal object['interesting_info']") # fact but not how it's useful
@@ -631,7 +630,7 @@ func damage_to_player(targets):
 	var best_damage = 0
 	var best_damage_dict = {}
 	for target in targets:
-		var damage = Utilities.deal_damage(target["attack_number"], target["attack_base_damage"], CharacterSheet.total_armor(), target["attack_modifier"], target["attack_tag"])
+		var damage = Utilities.deal_damage(target["attack_number"], target["attack_base_damage"], CharacterSheet.total_armor(), target["attack_tag"])
 		if damage["net_damage"] > best_damage:
 			best_damage = damage["net_damage"]
 			best_damage_dict = damage

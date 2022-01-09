@@ -150,7 +150,7 @@ var wizard_cantrips = [
 ]
 
 var wizard_level_one_spells = [
-	contact_spirits,
+	# contact_spirits,
 	detect_magic,
 	magic_missile,
 	charm_person,
