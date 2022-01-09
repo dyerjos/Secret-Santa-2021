@@ -101,7 +101,6 @@ margin_right = 257.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 80, 0 )
 text = "weapon"
-clip_text = true
 
 [node name="Against" type="Label" parent="TabContainer/Main/VBoxContainer/MoveCommand"]
 margin_left = 261.0

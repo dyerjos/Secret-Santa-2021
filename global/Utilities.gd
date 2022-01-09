@@ -37,7 +37,6 @@ func random_number_in_range(lowest, highest):
 	return random.randi_range(lowest, highest)
 		
 func stat_to_modifier(stat=null):
-	print("stat: %s" % stat)
 	if stat == null:
 		return 0
 	assert(stat >= 1)

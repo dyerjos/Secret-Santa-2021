@@ -937,7 +937,7 @@ var bandages = {
 	"future_item_field_5": "",
 }
 var dungeon_rations = { 
-	"name" : "dungeon_rations",
+	"name" : "dungeon rations",
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": ["ration"],
@@ -1444,7 +1444,7 @@ var fine_tapestry = {
 	"future_item_field_5": "",
 }
 var kings_crown = { 
-	"name" : "kings_crown",
+	"name" : "kings crown",
 	"weapon_tags": [],
 	"range_tags": [],
 	"general_tags": [],
@@ -1575,7 +1575,7 @@ var mansion_deed = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 50-000,
+	"coin" : 50_000,
 	"weight": 0,
 	"uses": null,
 	"future_item_field_1": "",
@@ -1603,7 +1603,7 @@ var keep_deed = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 75-000,
+	"coin" : 75_000,
 	"weight": 0,
 	"uses": null,
 	"future_item_field_1": "",
@@ -1631,7 +1631,7 @@ var castle_deed = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 250-000,
+	"coin" : 250_000,
 	"weight": 0,
 	"uses": null,
 	"future_item_field_1": "",
@@ -1659,7 +1659,7 @@ var grand_castle_deed = {
 	"is_magical": false,
 	"useful_info": "",
 	"interesting_info": "",
-	"coin" : 1-000-000,
+	"coin" : 1_000_000,
 	"weight": 0,
 	"uses": null,
 	"future_item_field_1": "",
@@ -2886,6 +2886,7 @@ var property_deeds = [
 	castle_deed,
 	grand_castle_deed,
 ]
+var master_list = ranged_weapons + melee_weapons + armor + gear + poisons + gifts + property_deeds
 
 # TODO: services in a global script
 func generate_treasure(target):

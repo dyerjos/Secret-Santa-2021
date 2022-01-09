@@ -192,7 +192,7 @@ func parley_fn(target):
 var parley = {
 	"name" : "parley",
 	"type" : "basic",
-	"description" : "When you you have leverage on a GM character and manipulate them"
+	"description" : "When you you have leverage on a GM character and manipulate them",
 	"execute" : funcref(self, "parley_fn")
 }
 
@@ -314,22 +314,27 @@ var undertake_perilous_journey = {
 	"execute" : funcref(self, "undertake_perilous_journey_fn")
 	}
 
-func supply_fn():
+func supply_fn(item_selected):
 	# var rations = CharacterSheet.player_inventory["dungeon_rations"]
 	# rations.uses = 5
-
-	print("supply hit")
-	print("show player items and services they can buy")
-	print("maybe this is a different scene entirely")
-
-	print("roll if it's an item that's special")
-	#TODO: FUTURE
-	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
+	if CharacterSheet.player_coins < item_selected["coin"]:
+		print("You don't have enough coin for this item!")
+	var roll_result = null
+	if item_selected["coin"] > 50:
+		print("special item (over 50 coin)")
+		roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
+	else:
+		roll_result = "success"
 	match roll_result:
 		"success":
 			print("you get this item at fair price")
+			CharacterSheet.player_coins -= item_selected["coin"]
+			CharacterSheet.player_inventory.append(item_selected.duplicate(true))
 		"partial":
 			print("item is found in the city but it's 20% more in cost?")
+			print("final price is %s" % ceil(item_selected["coin"] * 1.20))
+			CharacterSheet.player_coins -= ceil(item_selected["coin"] * 1.20)
+			CharacterSheet.player_inventory.append(item_selected.duplicate(true))
 		"fail":
 			print("item is not found")
 var supply = {
@@ -667,7 +672,6 @@ var town_moves = []
 func get_valid_moves():
 	var valid_moves = []
 	var move_list = all_moves
-	print("move_list size: %s" % move_list.size())
 	for move in move_list:
 		match move["name"]:
 			# ----common----
@@ -733,5 +737,4 @@ func get_valid_moves():
 				pass #TODO: implement later
 			_:
 				print("move %s is not yet implemented for submit move button action." % move["name"])
-	print("moves: %s" % valid_moves.size())
 	return valid_moves

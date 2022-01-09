@@ -33,12 +33,12 @@ onready var location_description = $TabContainer/Location/LocationDetails/HBoxCo
 #* Script vars:
 #* ----- main tab var ---------
 var selected_move = {}
-var selected_weapon = {}
-#var selected_spell = {}  #using selected_weapon instead
+var selected_item = {}
+#var selected_spell = {}  #using selected_item instead
 var selected_targets = []
 var selected_target_index = null
 var possible_targets = []
-var availabile_weapons = []
+var available_weapons = []
 var dead_list = []
 var loot = {
 	"coins": 0,
@@ -74,40 +74,45 @@ func populate_move_options():
 
 func popluate_weapon_options():
 	print("populate_weapon_options hit")
-	if availabile_weapons:
-		availabile_weapons.clear()
+	if available_weapons:
+		available_weapons.clear()
 	if weapon_options:
 		weapon_options.clear()
 	match selected_move["name"]:
 		"volley":
 			for item in CharacterSheet.player_inventory:
 				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and item["range_tags"].has("close") == false and item["range_tags"].has("hand") == false:
-					availabile_weapons.append(item)
+					available_weapons.append(item)
 					weapon_options.add_item(item["name"])
 		"hack and slash":
 			for item in CharacterSheet.player_inventory:
 				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and (item["range_tags"].has("close") == true or item["range_tags"].has("hand") == true):
-					availabile_weapons.append(item)
+					available_weapons.append(item)
 					weapon_options.add_item(item["name"])
-			availabile_weapons.append(Items.no_weapon)
+			available_weapons.append(Items.no_weapon)
 			weapon_options.add_item(Items.no_weapon["name"])
 		"hack and slash recklessly":
 			for item in CharacterSheet.player_inventory:
 				if item.has("is_weapon") and item["is_weapon"] == true and item.has("range_tags") and (item["range_tags"].has("close") == true or item["range_tags"].has("hand") == true):
-					availabile_weapons.append(item)
+					available_weapons.append(item)
 					weapon_options.add_item(item["name"])
-			availabile_weapons.append(Items.no_weapon)
+			available_weapons.append(Items.no_weapon)
 			weapon_options.add_item(Items.no_weapon["name"])
 		"cast spell":
-			print("poplulating weapon options")
 			for spell in CharacterSheet.prepared_spells:
-				availabile_weapons.append(spell)
+				available_weapons.append(spell)
 				weapon_options.add_item(spell["name"])
 				print("spell added to spell options: %s" % spell["name"])
 			print("weapon_options list size: %s" % weapon_options.get_item_count())
+		"supply":
+			print("selecting an item to buy")
+			for item in Items.master_list:
+				available_weapons.append(item)
+				var cost = item["coin"] if item["coin"] else ""
+				weapon_options.add_item(item["name"] + "-" + String(cost))
 		_:
 			print("unknown: selected %s" % selected_move)
-	selected_weapon = availabile_weapons[0]
+	selected_item = available_weapons[0]
 			
 func populate_target_options():
 	print("populating targets")
@@ -174,12 +179,12 @@ func _on_SubmitBtn_pressed():
 			# targets, reckless=false, player_weapon_used=null
 			var reckless = false
 			assert(selected_targets != null)
-			selected_move["execute"].call_func(selected_targets, reckless, selected_weapon)
+			selected_move["execute"].call_func(selected_targets, reckless, selected_item)
 		"hack and slash recklessly":
 			# targets, reckless=true, player_weapon_used=null
 			var reckless = true
 			assert(selected_targets != null)
-			selected_move["execute"].call_func(selected_targets, reckless, selected_weapon)
+			selected_move["execute"].call_func(selected_targets, reckless, selected_item)
 		"volley":
 			# target, player_weapon_used, fail_opt
 			selected_move["execute"].call_func()
@@ -220,7 +225,7 @@ func _on_SubmitBtn_pressed():
 		# 	selected_move["execute"].call_func()
 		# 	#TODO: not implemented yet
 		"supply":
-			selected_move["execute"].call_func()
+			selected_move["execute"].call_func(selected_item)
 		"recover":
 			selected_move["execute"].call_func()
 			# days
@@ -240,9 +245,9 @@ func _on_SubmitBtn_pressed():
 
 		#----wizard common----
 		"cast spell":
-			assert(selected_weapon != null)
+			assert(selected_item != null)
 			assert(selected_targets != null)
-			selected_move["execute"].call_func(selected_weapon, selected_targets)
+			selected_move["execute"].call_func(selected_item, selected_targets)
 		"prepare spells":
 			selected_move["execute"].call_func()
 		"add to spellbook":
@@ -325,7 +330,8 @@ func _on_MoveOption_item_selected(index):
 		"undertake perilous journey":
 			using_weapon_against_target_setter(false, false, false, false)
 		"supply":
-			using_weapon_against_target_setter(false, false, false, false)
+			using_weapon_against_target_setter(false, true, false, false)
+			popluate_weapon_options()
 		"recover":
 			using_weapon_against_target_setter(false, false, false, false)
 		"recruit":
@@ -363,14 +369,14 @@ func _on_Weapon_item_selected(index):
 	print("selected_move: %s" % selected_move)
 	match selected_move["name"]:
 		"volley":
-			selected_weapon = CharacterSheet.player_inventory[index]
+			selected_item = CharacterSheet.player_inventory[index]
 		"hack and slash":
-			selected_weapon = CharacterSheet.player_inventory[index]
+			selected_item = CharacterSheet.player_inventory[index]
 		"hack and slash recklessly":
-			selected_weapon = CharacterSheet.player_inventory[index]
+			selected_item = CharacterSheet.player_inventory[index]
 		"cast spell":
 			print("number of prepared_spells: %s" % CharacterSheet.prepared_spells.size())
-			selected_weapon = CharacterSheet.prepared_spells[index]
+			selected_item = CharacterSheet.prepared_spells[index]
 			print("I am the spell: %s" % CharacterSheet.prepared_spells[index])
 		_:
 			print("move %s is not yet implemented for submit move button action." % selected_move["name"])
@@ -390,8 +396,6 @@ func health_summary(target):
 	if target.has("monster_tags"):
 		max_hp = float(target["max_hp"]) 
 		hp = float(target["hp"]) 
-		print("percentage of health: %s" % (hp/max_hp))
-		print("hp left: %s" % hp)
 	else:
 		max_hp = float(CharacterSheet.max_hitpoints())
 		hp = float(CharacterSheet.hp)

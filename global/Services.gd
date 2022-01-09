@@ -261,7 +261,7 @@ var merchant_ship = {
 	"name" : "merchant ship",
 	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 5-000,
+	"cost": 5_000,
 	"description" : "Merchant ship",
 	"execute" : funcref(self, "merchant_ship_fn")
 }
@@ -271,7 +271,7 @@ var war_ship = {
 	"name" : "war ship",
 	"type" : "transport",
 	"charisma_discount": false,
-	"cost": 20-000,
+	"cost": 20_000,
 	"description" : "War ship",
 	"execute" : funcref(self, "war_ship_fn")
 }
