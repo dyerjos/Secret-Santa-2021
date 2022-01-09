@@ -73,6 +73,18 @@ func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tag
 				tag_damage_bonus += 1
 			"+2 damage":
 				tag_damage_bonus += 2
+			"+3 damage":
+				tag_damage_bonus += 3
+			"+4 damage":
+				tag_damage_bonus += 4
+			"+5 damage":
+				tag_damage_bonus += 5
+			"+6 damage":
+				tag_damage_bonus += 6
+			"+7 damage":
+				tag_damage_bonus += 7
+			"+8 damage":
+				tag_damage_bonus += 8
 			"ignores armor":
 				tag_damage_bonus += target_armor
 			"messy":
