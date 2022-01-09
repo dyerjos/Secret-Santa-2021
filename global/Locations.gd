@@ -3,6 +3,32 @@ extends Node
 
 #* monster settings: swamp, undead, woods, hordes, experiments, underdark, planar
 
+var template = {
+	"name" : "template",
+	"entered_from" : "starter_city",
+	"description": "template",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_information": null,
+	"has_market": false,
+	"has_services" : false,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : starter_city, "distance_in_rations": 0},
+	],
+	"steading_type" : "building",
+	"popluation_tag": null,
+	"poplualation_trend" : null, # 3 is steady
+	"prosperity_tag": null,
+	"prosperity_trend" : null, # 3 is moderate
+	"defenses": null,
+	"defense_trend": null, # 4 is guard
+	"misc_tags": ["safe"]
+}
+
 var starter_city = {
 	"name" : "Nystera",
 	"entered_from" : "root",
@@ -26,6 +52,182 @@ var starter_city = {
 	"prosperity_trend" : 3, # 3 is moderate
 	"defenses": "guard",
 	"defense_trend": 4, # 4 is guard
+	"misc_tags": ["safe"]
+}
+
+var hovel = {
+	"name" : "hovel",
+	"entered_from" : "starter_city",
+	"description": "your hovel",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_information": null,
+	"has_market": false,
+	"has_services" : false,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : starter_city, "distance_in_rations": 0},
+	],
+	"steading_type" : "building",
+	"popluation_tag": null,
+	"poplualation_trend" : null, # 3 is steady
+	"prosperity_tag": null,
+	"prosperity_trend" : null, # 3 is moderate
+	"defenses": null,
+	"defense_trend": null, # 4 is guard
+	"misc_tags": ["safe"]
+}
+var cottage = {
+	"name" : "cottage",
+	"entered_from" : "starter_city",
+	"description": "your cottage",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_information": null,
+	"has_market": false,
+	"has_services" : false,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : starter_city, "distance_in_rations": 0},
+	],
+	"steading_type" : "building",
+	"popluation_tag": null,
+	"poplualation_trend" : null, # 3 is steady
+	"prosperity_tag": null,
+	"prosperity_trend" : null, # 3 is moderate
+	"defenses": null,
+	"defense_trend": null, # 4 is guard
+	"misc_tags": ["safe"]
+}
+var house = {
+	"name" : "house",
+	"entered_from" : "starter_city",
+	"description": "your house",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_information": null,
+	"has_market": false,
+	"has_services" : false,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : starter_city, "distance_in_rations": 0},
+	],
+	"steading_type" : "building",
+	"popluation_tag": null,
+	"poplualation_trend" : null, # 3 is steady
+	"prosperity_tag": null,
+	"prosperity_trend" : null, # 3 is moderate
+	"defenses": null,
+	"defense_trend": null, # 4 is guard
+	"misc_tags": ["safe"]
+}
+var mansion = {
+	"name" : "mansion",
+	"entered_from" : "starter_city",
+	"description": "your mansion",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_information": null,
+	"has_market": false,
+	"has_services" : false,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : starter_city, "distance_in_rations": 0},
+	],
+	"steading_type" : "building",
+	"popluation_tag": null,
+	"poplualation_trend" : null, # 3 is steady
+	"prosperity_tag": null,
+	"prosperity_trend" : null, # 3 is moderate
+	"defenses": null,
+	"defense_trend": null, # 4 is guard
+	"misc_tags": ["safe"]
+}
+var keep = {
+	"name" : "keep",
+	"entered_from" : "starter_city",
+	"description": "your keep",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_information": null,
+	"has_market": false,
+	"has_services" : false,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : starter_city, "distance_in_rations": 0},
+	],
+	"steading_type" : "building",
+	"popluation_tag": null,
+	"poplualation_trend" : null, # 3 is steady
+	"prosperity_tag": null,
+	"prosperity_trend" : null, # 3 is moderate
+	"defenses": null,
+	"defense_trend": null, # 4 is guard
+	"misc_tags": ["safe"]
+}
+var castle = {
+	"name" : "castle",
+	"entered_from" : "starter_city",
+	"description": "your castle",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_information": null,
+	"has_market": false,
+	"has_services" : false,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : starter_city, "distance_in_rations": 0},
+	],
+	"steading_type" : "building",
+	"popluation_tag": null,
+	"poplualation_trend" : null, # 3 is steady
+	"prosperity_tag": null,
+	"prosperity_trend" : null, # 3 is moderate
+	"defenses": null,
+	"defense_trend": null, # 4 is guard
+	"misc_tags": ["safe"]
+}
+var grand_castle = {
+	"name" : "grand_castle",
+	"entered_from" : "starter_city",
+	"description": "your grand castle",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_information": null,
+	"has_market": false,
+	"has_services" : false,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : starter_city, "distance_in_rations": 0},
+	],
+	"steading_type" : "building",
+	"popluation_tag": null,
+	"poplualation_trend" : null, # 3 is steady
+	"prosperity_tag": null,
+	"prosperity_trend" : null, # 3 is moderate
+	"defenses": null,
+	"defense_trend": null, # 4 is guard
 	"misc_tags": ["safe"]
 }
 

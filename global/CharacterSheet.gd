@@ -68,6 +68,7 @@ var battle_targets = []
 var friendly_targets = []
 var player_debilities = []
 var telepathic_bonds = []
+var player_estates = []
 
 
 
@@ -124,6 +125,7 @@ func save_dict():
 		"player_base_load_limit" : player_base_load_limit,
 		"player_in_town" : player_in_town,
 		"friendly_targets" : friendly_targets,
+		"player_estates" : player_estates,
 	}
 
 	
@@ -179,7 +181,7 @@ func load(dict):
 	player_base_load_limit = dict["player_base_load_limit"]
 	player_in_town = dict["player_in_town"]
 	friendly_targets = dict["friendly_targets"]
-	
+	player_estates = dict["player_estates"]
 
 func damage_bonuses(ability_modifier=0):
 	return move_damage_bonus + effect_damage_bonus + ability_modifier
