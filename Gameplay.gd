@@ -4,6 +4,9 @@ extends ColorRect
 #* UI references:
 #* ----- main tab var ---------
 onready var context_label = $HeaderRow/CenterContainer/ContextLabel
+onready var aside_one = $HeaderRow/HeaderAside1/ContextLabel
+onready var aside_two = $HeaderRow/HeaderAside2/ContextLabel
+
 onready var move_options = $TabContainer/Main/VBoxContainer/MoveCommand/MoveOption
 onready var using_label = $TabContainer/Main/VBoxContainer/MoveCommand/Using
 onready var weapon_options = $TabContainer/Main/VBoxContainer/MoveCommand/Weapon
@@ -34,7 +37,6 @@ onready var location_description = $TabContainer/Location/LocationDetails/HBoxCo
 #* ----- main tab var ---------
 var selected_move = {}
 var selected_item = {}
-#var selected_spell = {}  #using selected_item instead
 var selected_targets = []
 var selected_target_index = null
 var possible_targets = []
@@ -62,6 +64,8 @@ func _ready():
 	populate_inventory_list()
 	populate_player_tab()
 	populate_location_tab()
+	update_aside_one()
+	update_aside_two()
 	connect_signals()
 	SaveSystem.save_and_encrypt_game()
 
@@ -185,6 +189,14 @@ func update_context(text, battle_bool, town_bool):
 	CharacterSheet.player_in_town = town_bool
 	context_label.text = text
 
+func update_aside_one():
+	var new_text = "HP: " + String(CharacterSheet.hp)
+	aside_one.text = new_text
+	
+func update_aside_two():
+	var new_text = "Coins: " + String(CharacterSheet.player_coins)
+	aside_two.text = new_text
+
 #* ---------- Main Tab -------------------------
 
 func _on_SubmitBtn_pressed():
@@ -287,6 +299,8 @@ func _on_SubmitBtn_pressed():
 
 func post_move_hook():
 	refresh_targets()
+	update_aside_one()
+	update_aside_two()
 
 func refresh_targets():
 	target_options.clear()
