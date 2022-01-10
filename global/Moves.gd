@@ -509,17 +509,23 @@ func cast_spell_fn(spell, selected_targets):
 	match roll_result:
 		"success":
 			print("spell: %s" % spell["name"])
+			var log_text = "You cast %s" % spell["name"]
+			Signals.emit_signal("add_to_adventure_log", log_text)
 #			spell["execute"].call_func(selected_targets)
 			global.call(spell["method"], selected_targets)
 		"partial":
 			#TODO: player chooses to draw unwelcome attention, take -1 ongoing to spells, or for spell to be forgotten
 			print("spell: %s" % spell["name"])
+			var log_text = "You cast %s but something went wrong" % spell["name"]
+			Signals.emit_signal("add_to_adventure_log", log_text)
 			global.call(spell["method"], selected_targets)
 #			spell["execute"].call_func(selected_targets)
 			print("partial success of spell")
 			CharacterSheet.ongoing_spell_modifier = -1
 		"fail":
 			print("spell failed")
+			var log_text = "Your spell failed"
+			Signals.emit_signal("add_to_adventure_log", log_text)
 			CharacterSheet.ongoing_spell_modifier = -1
 var cast_spell = {
 	"name" : "cast spell",
@@ -597,6 +603,8 @@ func process_damage_to_npc(damage, target, player_weapon_used) -> void:
 	else:
 		print("damage: %s" % damage["net_damage"])
 		target["hp"] -= damage["net_damage"]
+		var log_text = "You did " + String(damage["net_damage"]) + " damage to the " + target["name"]
+		Signals.emit_signal("add_to_adventure_log", log_text)
 		if target["hp"] <= 0:
 			Signals.emit_signal("target_died", target) 
 #		TODO: if dead, remove from battle targets

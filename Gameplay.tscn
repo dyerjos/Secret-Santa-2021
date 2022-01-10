@@ -136,17 +136,23 @@ __meta__ = {
 margin_right = 390.0
 margin_bottom = 164.0
 
-[node name="TextContainer" type="HBoxContainer" parent="TabContainer/Main/VBoxContainer"]
+[node name="LogContainer" type="HBoxContainer" parent="TabContainer/Main/VBoxContainer"]
 margin_right = 390.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 380, 140 )
 
-[node name="AdventureText" type="Label" parent="TabContainer/Main/VBoxContainer/TextContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Main/VBoxContainer/LogContainer"]
 margin_right = 390.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 390, 140 )
-autowrap = true
-clip_text = true
+
+[node name="AdventureLog" type="ItemList" parent="TabContainer/Main/VBoxContainer/LogContainer/ScrollContainer"]
+margin_right = 390.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 390, 140 )
+rect_clip_content = false
+max_text_lines = 2
+fixed_column_width = 390
 
 [node name="MoveCommand" type="HBoxContainer" parent="TabContainer/Main/VBoxContainer"]
 margin_top = 144.0
@@ -240,14 +246,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect/HBoxContainer"]
-margin_right = 77.0
+margin_right = 67.0
 margin_bottom = 14.0
 text = "Current HP: "
 valign = 1
 
 [node name="CurrentHp" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect/HBoxContainer"]
-margin_left = 81.0
-margin_right = 97.0
+margin_left = 71.0
+margin_right = 83.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -270,14 +276,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect2/HBoxContainer"]
-margin_right = 56.0
+margin_right = 42.0
 margin_bottom = 14.0
 text = "Max HP: "
 valign = 1
 
 [node name="MaxHp" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect2/HBoxContainer"]
-margin_left = 60.0
-margin_right = 76.0
+margin_left = 46.0
+margin_right = 58.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -300,14 +306,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect3/HBoxContainer"]
-margin_right = 61.0
+margin_right = 57.0
 margin_bottom = 14.0
 text = "Strength: "
 valign = 1
 
 [node name="Strength" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect3/HBoxContainer"]
-margin_left = 65.0
-margin_right = 81.0
+margin_left = 61.0
+margin_right = 73.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -330,14 +336,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect4/HBoxContainer"]
-margin_right = 86.0
+margin_right = 74.0
 margin_bottom = 14.0
 text = "Constitution: "
 valign = 1
 
 [node name="Constitution" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect4/HBoxContainer"]
-margin_left = 90.0
-margin_right = 106.0
+margin_left = 78.0
+margin_right = 90.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -361,14 +367,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect5/HBoxContainer"]
-margin_right = 67.0
+margin_right = 59.0
 margin_bottom = 14.0
 text = "Dexterity: "
 valign = 1
 
 [node name="Dexterity" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect5/HBoxContainer"]
-margin_left = 71.0
-margin_right = 87.0
+margin_left = 63.0
+margin_right = 75.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -392,14 +398,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect6/HBoxContainer"]
-margin_right = 61.0
+margin_right = 39.0
 margin_bottom = 14.0
 text = "Wisdom: "
 valign = 1
 
 [node name="Wisdom" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect6/HBoxContainer"]
-margin_left = 65.0
-margin_right = 81.0
+margin_left = 43.0
+margin_right = 55.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -422,14 +428,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect7/HBoxContainer"]
-margin_right = 84.0
+margin_right = 68.0
 margin_bottom = 14.0
 text = "Intelligence: "
 valign = 1
 
 [node name="Intelligence" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect7/HBoxContainer"]
-margin_left = 88.0
-margin_right = 104.0
+margin_left = 72.0
+margin_right = 84.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -453,14 +459,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect8/HBoxContainer"]
-margin_right = 67.0
+margin_right = 51.0
 margin_bottom = 14.0
 text = "Charisma: "
 valign = 1
 
 [node name="Charisma" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect8/HBoxContainer"]
-margin_left = 71.0
-margin_right = 87.0
+margin_left = 55.0
+margin_right = 67.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -484,14 +490,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect9/HBoxContainer"]
-margin_right = 42.0
+margin_right = 33.0
 margin_bottom = 14.0
 text = "Level: "
 valign = 1
 
 [node name="Level" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect9/HBoxContainer"]
-margin_left = 46.0
-margin_right = 62.0
+margin_left = 37.0
+margin_right = 49.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -514,14 +520,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect10/HBoxContainer"]
-margin_right = 78.0
+margin_right = 63.0
 margin_bottom = 14.0
 text = "Experience: "
 valign = 1
 
 [node name="Experience" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect10/HBoxContainer"]
-margin_left = 82.0
-margin_right = 98.0
+margin_left = 67.0
+margin_right = 79.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -545,14 +551,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect11/HBoxContainer"]
-margin_right = 48.0
+margin_right = 37.0
 margin_bottom = 14.0
 text = "Armor: "
 valign = 1
 
 [node name="Armor" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect11/HBoxContainer"]
-margin_left = 52.0
-margin_right = 68.0
+margin_left = 41.0
+margin_right = 53.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -576,14 +582,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect12/HBoxContainer"]
-margin_right = 89.0
+margin_right = 79.0
 margin_bottom = 14.0
 text = "Current Load: "
 valign = 1
 
 [node name="CurrentLoad" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect12/HBoxContainer"]
-margin_left = 93.0
-margin_right = 109.0
+margin_left = 83.0
+margin_right = 95.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -606,14 +612,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect13/HBoxContainer"]
-margin_right = 68.0
+margin_right = 54.0
 margin_bottom = 14.0
 text = "Max Load: "
 valign = 1
 
 [node name="MaxLoad" type="Label" parent="TabContainer/Player/PlayerDetails/ReferenceRect13/HBoxContainer"]
-margin_left = 72.0
-margin_right = 88.0
+margin_left = 58.0
+margin_right = 70.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"

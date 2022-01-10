@@ -6,6 +6,7 @@ extends ColorRect
 onready var context_label = $HeaderRow/CenterContainer/ContextLabel
 onready var aside_one = $HeaderRow/HeaderAside1/ContextLabel
 onready var aside_two = $HeaderRow/HeaderAside2/ContextLabel
+onready var adventure_log = $TabContainer/Main/VBoxContainer/LogContainer/ScrollContainer/AdventureLog
 
 onready var move_options = $TabContainer/Main/VBoxContainer/MoveCommand/MoveOption
 onready var using_label = $TabContainer/Main/VBoxContainer/MoveCommand/Using
@@ -51,13 +52,15 @@ var loot = {
 #* ----- location tab var ---------
 
 #* ---- Setup scripts -------
-func _ready():
+func state_override():
 	if CharacterSheet.debug_mode == true:
-		# update_context("In Battle", true, false)
-		update_context("In Town", false, true)
+#		update_context("In Battle", true, false) #battle
+		update_context("In Town", false, true) #town
 		CharacterSheet.player_coins += 9999
 		if CharacterSheet.battle_targets.size() == 0:
 			Enemies.generate_monsters(Locations.A1_S1_cave)
+
+func load_the_ui():
 	populate_move_options()
 	popluate_weapon_options()
 	populate_target_options()
@@ -67,8 +70,12 @@ func _ready():
 	update_aside_one()
 	update_aside_two()
 	connect_signals()
-	SaveSystem.save_and_encrypt_game()
+	welcome_player()
 
+func _ready():
+	state_override()
+	load_the_ui()
+	SaveSystem.save_and_encrypt_game()
 
 func populate_move_options():
 	var available_moves = Moves.get_valid_moves()
@@ -326,6 +333,11 @@ func _on_target_died(target):
 
 func _on_player_died(): 
 	print("received signal that player died")
+
+func _on_add_to_adventure_log(text):
+	print("received signal that there is something to add to adventure log")
+	print(text)
+	adventure_log.add_item(text)
 	
 func _on_MoveOption_item_selected(index):
 	selected_move = CharacterSheet.available_moves[index]
@@ -476,7 +488,11 @@ func health_summary(target):
 func connect_signals():
 	Signals.connect("target_died", self, "_on_target_died")
 	Signals.connect("player_died", self, "_on_player_died")
+	Signals.connect("add_to_adventure_log", self, "_on_add_to_adventure_log")
 
+func welcome_player():
+	var text = "welcome back!"
+	Signals.emit_signal("add_to_adventure_log", text)
 #* ---------- Player Tab -------------------------
 #* ---------- Location Tab -------------------------
 #* ---------- Test Tab -------------------------

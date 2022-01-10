@@ -69,6 +69,10 @@ func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tag
 			"forceful":
 				print("chance to knock back target")
 				forceful = true
+			"-1 damage":
+				tag_damage_bonus -= 1
+			"-2 damage":
+				tag_damage_bonus -= 2
 			"+1 damage":
 				tag_damage_bonus += 1
 			"+2 damage":
@@ -121,7 +125,8 @@ func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tag
 			"stun":
 				print("stun damage instead of normal damage")
 				stun = true
-					
+	tag_damage_bonus = clamp(tag_damage_bonus, 0, 15)
+	assert(tag_damage_bonus < 15)
 	var total_damage = roll_dice_for_total(number, base_damage) + damage_bonuses
 	var net_damage = total_damage - target_armor + tag_damage_bonus
 	print("net_damage: %s" % net_damage)
