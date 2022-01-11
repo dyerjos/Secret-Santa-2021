@@ -70,7 +70,8 @@ func load_the_ui():
 	update_aside_one()
 	update_aside_two()
 	connect_signals()
-	welcome_player()
+	Signals.log("Welcome Back!")
+
 
 func _ready():
 	state_override()
@@ -85,7 +86,6 @@ func populate_move_options():
 	selected_move = CharacterSheet.available_moves[0] #* setting default
 
 func popluate_weapon_options():
-	print("populate_weapon_options hit")
 	if available_weapons:
 		available_weapons.clear()
 	if weapon_options:
@@ -114,33 +114,27 @@ func popluate_weapon_options():
 			for spell in CharacterSheet.prepared_spells:
 				available_weapons.append(spell)
 				weapon_options.add_item(spell["name"])
-				print("spell added to spell options: %s" % spell["name"])
-			print("weapon_options list size: %s" % weapon_options.get_item_count())
 		"shop for an item":
-			print("selecting an item to buy")
 			for item in Items.master_list:
 				available_weapons.append(item)
 				var cost = item["coin"] if item["coin"] else ""
 				weapon_options.add_item(item["name"] + " - " + String(cost))
 		"shop for a service":
-			print("selecting a service to buy")
 			for service in Services.master_service_list:
 				available_weapons.append(service)
 				var cost = service["coin"] if service["coin"] else ""
 				weapon_options.add_item(service["name"] + " - " + String(cost))
 		"sell an item":
-			print("selecting an item to sell")
 			for item in CharacterSheet.player_inventory:
 				if item["coin"]:
 					available_weapons.append(item)
 					var cost = item["coin"] if item["coin"] else ""
 					weapon_options.add_item(item["name"] + " - " + String(cost))
 		_:
-			print("unknown: selected %s" % selected_move)
+			assert("unknown: selected" == selected_move) # add unknown move
 	selected_item = available_weapons[0]
 			
 func populate_target_options():
-	print("populating targets")
 	if target_options.get_item_count() > 0:
 		target_options.clear()
 	var enemies = CharacterSheet.battle_targets
@@ -156,13 +150,6 @@ func populate_target_options():
 		index += 1
 	selected_targets = [possible_targets[0]] #* setting default
 	selected_target_index = 0
-
-	#* other way:
-	# for target in enemies:
-	# 	target_options.add_item(target["name"] + " [Enemy]")
-	# for target in friends:
-	# 	target_options.add_item(target["name"] + " [Ally]")
-	# target_options.add_item("[Self]")
 
 func populate_inventory_list():
 	if inventory_list.get_item_count() > 0:
@@ -207,7 +194,6 @@ func update_aside_two():
 #* ---------- Main Tab -------------------------
 
 func _on_SubmitBtn_pressed():
-	print("calling move's funcref via submitBtn_pressed")
 	match selected_move["name"]:
 		# ----common----
 		"hack and slash":
@@ -490,9 +476,6 @@ func connect_signals():
 	Signals.connect("player_died", self, "_on_player_died")
 	Signals.connect("add_to_adventure_log", self, "_on_add_to_adventure_log")
 
-func welcome_player():
-	var text = "welcome back!"
-	Signals.emit_signal("add_to_adventure_log", text)
 #* ---------- Player Tab -------------------------
 #* ---------- Location Tab -------------------------
 #* ---------- Test Tab -------------------------
