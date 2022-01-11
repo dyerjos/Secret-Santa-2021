@@ -150,9 +150,6 @@ rect_min_size = Vector2( 390, 140 )
 margin_right = 390.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 390, 140 )
-rect_clip_content = false
-max_text_lines = 2
-fixed_column_width = 390
 
 [node name="MoveCommand" type="HBoxContainer" parent="TabContainer/Main/VBoxContainer"]
 margin_top = 144.0
