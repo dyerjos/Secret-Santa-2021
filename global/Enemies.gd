@@ -606,9 +606,9 @@ func generate_monsters(location):
 		var duplicated = potential_enemies.duplicate(true) 
 		var enemy_type = null
 		if duplicated.size() > 1:
-			var shuffled = duplicated.shuffle()
-			assert(shuffled.size() > 0)
-			enemy_type = shuffled.pop_back()
+			duplicated.shuffle()
+			assert(duplicated.size() > 0)
+			enemy_type = duplicated.pop_back()
 		else:
 			enemy_type = duplicated[0] #converts to dict
 			assert(typeof(enemy_type) != 19) #19 is array

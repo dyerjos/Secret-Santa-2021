@@ -30,7 +30,7 @@ func load_and_unencrypt_game():
 		load_globals(master_save_list)
 		game_loaded = true
 	else:
-		assert("error: save file not found!" == 0)
+		assert("error: save file not found!" == "kjklj")
 
 #* --------Config methods ------------------------------------------
 
@@ -75,6 +75,7 @@ func prep_persistant_nodes(master_save_list):
 	return master_save_list
 
 func load_persistant_nodes(master_save_list):
+	assert(1==1)
 	#TODO: load persistant nodes") # load_persistant_nodes()
 
 func prep_globals(master_save_list):

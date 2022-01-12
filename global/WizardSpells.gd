@@ -40,6 +40,7 @@ var prestidigitation = {
 
 
 func contact_spirits_fn():
+	assert(1==1)
 	#TODO: this would require a lot more dialogue and would not be polished enough to be useful yet
 var contact_spirits = {
 	"name" : "contact spirits",

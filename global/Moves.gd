@@ -4,7 +4,7 @@ extends Node
 
 #* ------COMMON MOVES------------------------------------------------
 
-#NOTE: deal_damage(number, base_damage, target_armor, damage_bonuses, attack_tag)
+#NOTE: deal_damage(number, base_damage, target_armor, damage_bonuses, attack_tags)
 func hack_and_slash_fn(targets, reckless, player_weapon_used):
 #	assert(player_weapon_used["needs_reloaded"] == false)
 	#TODO: test- what happens when player_weapon_used is null?
@@ -17,7 +17,6 @@ func hack_and_slash_fn(targets, reckless, player_weapon_used):
 	var roll_result = Utilities.roll_dice_for_success(stat_for_attack)
 	match roll_result:
 		"success":
-		Signals.log("Welcome Back!")
 			for target in targets:
 				damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 				if reckless:
@@ -86,10 +85,12 @@ func defy_danger_fn(stat_choice):
 		"success":
 			CharacterSheet.player_in_danger = false
 		"partial":
+			assert(1==1)
 			#"you stumble, hestitate, or flinch. worse outcome, hard bargain, or ugly choice")
 			#"still in danger or are in greater danger")
 			#TODO: implement levels of danger (low, medium, severe?)
 		"fail":
+			assert(1==1)
 			#"imminent threat happens to you now at the current danger level")
 			#TODO: maybe defy_danger_fn() returns a true or false to indicate that code should proceed to execute the threat
 var defy_danger = {
@@ -137,11 +138,14 @@ func spout_lore_fn(object):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_int)
 	match roll_result:
 		"success":
+			assert(1==1)
 			#("tell player something interesting and useful about the subject relevant to your situation")
 			#("reveal object['useful_info']") # how fact is immediately useful
 		"partial":
+			assert(1==1)
 			#("reveal object['interesting_info']") # fact but not how it's useful
 		"fail":
+			assert(1==1)
 			#("you don't know anything about this object")
 			#("reveal an unwelcome truth (goblin moved around behind you) / instead of having an advantage to situation you are at a disadvantage")
 var spout_lore = {
@@ -155,11 +159,13 @@ func discern_realities_fn():
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_wis)
 	match roll_result:
 		"success":
+			assert(1==1)
 			#("ask 3 questions and take +1 forward when acting on the answers")
 			#TODO: implement questions as fields in location or target
 			#TODO: player asks a question "question1 - question6" or questions are randomly chosen
 			#TODO: sometimes question reveals nothing
 		"partial":
+			assert(1==1)
 			#("ask 1 questions and take +1 forward when acting on the answers")
 		"fail":
 			pass
@@ -175,10 +181,13 @@ func parley_fn(target):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
 	match roll_result:
 		"success":
+			assert(1==1)
 			#("they do what you ask if you first promise what they ask of you")
 		"partial":
+			assert(1==1)
 			#("they will do what you ask but need some concrete assurance of your promise right now")
 		"fail":
+			assert(1==1)
 			#("they don't do what you ask them")
 var parley = {
 	"name" : "parley",
@@ -201,6 +210,7 @@ func last_breath_fn():
 			#TODO: add deal_with_death boolean on player charactersheet
 			CharacterSheet.hp = 0.5
 		"fail":
+			assert(1==1)
 			#("player dies. Normally you would create a new character")
 			#TODO: being a solo game, maybe npc can ressurect the player 1 time, it costs money, or offer to load game at a checkpoint, OR death comes slowly
 			#TODO: add marked_for_death boolean on player charactersheet so that player dies in dramatic way after final boss
@@ -360,7 +370,7 @@ func shop_for_a_service_fn(service_selected):
 		roll_result = "success"
 	match roll_result:
 		"success":
-		Signals.log("you get this service at fair price")
+			Signals.log("you get this service at fair price")
 			CharacterSheet.player_coins -= service_selected["coin"]
 			Signals.log("service now aquired")
 			#TODO: add service to a service list or immediatly activate it?
@@ -455,6 +465,7 @@ func level_up_fn():
 		CharacterSheet.player_exp -= exp_for_next_level
 		CharacterSheet.player_level += 1
 		if CharacterSheet.player_class == "wizard":
+			assert(1==1)
 			#("add a new spell to your spellbook")
 			#TODO: add spell on level up
 		#("choose a stat and increase it by 1")
@@ -524,6 +535,7 @@ var prepare_spells = {
 
 
 func add_to_spellbook_fn():
+	assert(1==1)
 	#("add one additional spell to your spellbook")
 var add_to_spellbook = {
 	"name" : "add to spellbook",
@@ -579,8 +591,7 @@ func process_damage_to_npc(damage, target, player_weapon_used) -> void:
 		var log_text = "You did " + String(damage["net_damage"]) + " damage to the " + target["name"]
 		Signals.log(log_text)
 		if target["hp"] <= 0:
-			Signals.emit_signal("target_died", target) 
-	# for this I might have to pass in it's index?
+			Signals.emit_signal("target_died", target)
 	if damage["messy"] == true:
 		Signals.log("Your attack damaged some of the surrounding area") 
 		#TODO: damage is done to person, item, or location (make global location script with fields like hp, description)
@@ -608,8 +619,9 @@ func process_damage_to_player(damage) -> void:
 func damage_to_player(targets):
 	var best_damage = 0
 	var best_damage_dict = {}
+	var damage_bonus = 0
 	for target in targets:
-		var damage = Utilities.deal_damage(target["attack_number"], target["attack_base_damage"], CharacterSheet.total_armor(), target["attack_tag"])
+		var damage = Utilities.deal_damage(target["attack_number"], target["attack_base_damage"], CharacterSheet.total_armor(), damage_bonus,target["attack_tags"])
 		if damage["net_damage"] > best_damage:
 			best_damage = damage["net_damage"]
 			best_damage_dict = damage

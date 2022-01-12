@@ -56,7 +56,7 @@ func state_override():
 	if CharacterSheet.debug_mode == true:
 #		update_context("In Battle", true, false) #battle
 		update_context("In Town", false, true) #town
-		CharacterSheet.player_coins += 9999
+		CharacterSheet.player_coins += 0
 		if CharacterSheet.battle_targets.size() == 0:
 			Enemies.generate_monsters(Locations.A1_S1_cave)
 
@@ -194,6 +194,7 @@ func update_aside_two():
 #* ---------- Main Tab -------------------------
 
 func _on_SubmitBtn_pressed():
+	pre_move_hook()
 	match selected_move["name"]:
 		# ----common----
 		"hack and slash":
@@ -201,11 +202,15 @@ func _on_SubmitBtn_pressed():
 			var reckless = false
 			assert(selected_targets != null)
 			selected_move["execute"].call_func(selected_targets, reckless, selected_item)
+			for target in selected_targets:
+				Signals.log("%s is %s" % [target["name"], health_summary(target)])
 		"hack and slash recklessly":
 			# targets, reckless=true, player_weapon_used=null
 			var reckless = true
 			assert(selected_targets != null)
 			selected_move["execute"].call_func(selected_targets, reckless, selected_item)
+			for target in selected_targets:
+				Signals.log("%s is %s" % [target["name"], health_summary(target)])
 		"volley":
 			# target, player_weapon_used, fail_opt
 			selected_move["execute"].call_func()
@@ -277,6 +282,9 @@ func _on_SubmitBtn_pressed():
 			assert(selected_item != null)
 			assert(selected_targets != null)
 			selected_move["execute"].call_func(selected_item, selected_targets)
+			for target in selected_targets:
+				if target["hp"] > 0:
+					Signals.log("%s is %s" % [target["name"], health_summary(target)])
 		"prepare spells":
 			selected_move["execute"].call_func()
 		"add to spellbook":
@@ -290,6 +298,9 @@ func _on_SubmitBtn_pressed():
 			assert("move not yet implemented for submitBn" == selected_move["name"])
 	post_move_hook()
 
+func pre_move_hook():
+	adventure_log.unselect_all()
+	
 func post_move_hook():
 	refresh_targets()
 	update_aside_one()
@@ -307,9 +318,9 @@ func _on_target_died(target):
 	var items_dropped = new_loot["special_items"]
 	loot["special_items"].append_array(items_dropped)
 	CharacterSheet.battle_targets.remove(selected_target_index)
-	if CharacterSheet.battle_targets.count() = 0:
+	if CharacterSheet.battle_targets.size() == 0:
 		Signals.log("%s coins were found" % loot["coins"])
-	if loot["special_items"].count() > 0:
+	if loot["special_items"].size() > 0:
 		for item in loot["special_items"]:
 			Signals.log("%s was found" % item["name"])
 
@@ -318,6 +329,10 @@ func _on_player_died():
 
 func _on_add_to_adventure_log(text):
 	adventure_log.add_item(text)
+	print(adventure_log.get_item_count())
+	var last_index = adventure_log.get_item_count() - 1
+	adventure_log.move_item(last_index, 0)
+	adventure_log.select(0, false)
 	
 func _on_MoveOption_item_selected(index):
 	selected_move = CharacterSheet.available_moves[index]
@@ -442,19 +457,20 @@ func health_summary(target):
 	var hp_summary = ""
 	match hp_category:
 		"0":
-			hp_summary = "Critically Wounded"
+			hp_summary = "critically wounded"
 		"20":
-			hp_summary = "Severely Wounded"
+			hp_summary = "severely wounded"
 		"40":
-			hp_summary = "Seriously Wounded"
+			hp_summary = "seriously wounded"
 		"60":
-			hp_summary = "Moderately Wounded"
+			hp_summary = "moderately wounded"
 		"80":
-			hp_summary = "Slighly Wounded"
+			hp_summary = "slightly wounded"
 		"100":
-			hp_summary = ""
+			hp_summary = "not wounded"
 		_:
-			assert("this value shouldn't exist" == "_")
+			hp_summary = "dead"
+#			assert("this value shouldn't exist" == "_")
 	return hp_summary
 
 func connect_signals():

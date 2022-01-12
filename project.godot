@@ -22,6 +22,7 @@ Display=8
 [application]
 
 config/name="Secret Santa 2021"
+config/description="By Joshua Dyer"
 run/main_scene="res://menu/MainMenu.tscn"
 config/icon="res://icon.png"
 
