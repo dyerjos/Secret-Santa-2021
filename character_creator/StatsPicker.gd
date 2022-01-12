@@ -38,7 +38,7 @@ func _on_HelpBtn_pressed():
 		CharacterSheet.player_cha = 13
 		set_player_hitpoints_and_next_scene()
 	else:
-		print("This class needs work for this button")
+		assert("add new class to helpbtn pressed in statspicker" == CharacterSheet.player_class)
 	
 func _on_ResetBtn_pressed():
 	clear_stats()

@@ -3,7 +3,7 @@ extends Node
 
 
 func template_fn():
-	print("calling service method")
+	#("calling service method")
 var template = {
 	"name" : "template",
 	"type" : "general_service",
@@ -15,7 +15,7 @@ var template = {
 	
 #* ------- General Services -------------
 func week_at_peasant_inn_fn():
-	print("calling service method")
+	#("calling service method")
 var week_at_peasant_inn = {
 	"name" : "week at peasant inn",
 	"type" : "general_service",
@@ -25,7 +25,7 @@ var week_at_peasant_inn = {
 	"execute" : funcref(self, "week_at_peasant_inn_fn")
 }
 func week_at_civilized_inn_fn():
-	print("calling service method")
+	#("calling service method")
 var week_at_civilized_inn = {
 	"name" : "week at civilized inn",
 	"type" : "general_service",
@@ -35,7 +35,7 @@ var week_at_civilized_inn = {
 	"execute" : funcref(self, "week_at_civilized_inn_fn")
 }
 func week_at_fanciest_inn_fn():
-	print("calling service method")
+	#("calling service method")
 var week_at_fanciest_inn = {
 	"name" : "week at fanciest inn",
 	"type" : "general_service",
@@ -45,7 +45,7 @@ var week_at_fanciest_inn = {
 	"execute" : funcref(self, "week_at_fanciest_inn_fn")
 }
 func week_of_unskilled_mundane_labor_fn():
-	print("calling service method")
+	#("calling service method")
 var week_of_unskilled_mundane_labor = {
 	"name" : "week of unskilled mundane labor",
 	"type" : "general_service",
@@ -55,7 +55,7 @@ var week_of_unskilled_mundane_labor = {
 	"execute" : funcref(self, "week_of_unskilled_mundane_labor_fn")
 }
 func month_enlistment_in_army_fn():
-	print("calling service method")
+	#("calling service method")
 var month_enlistment_in_army = {
 	"name" : "month enlistment in army",
 	"type" : "general_service",
@@ -65,7 +65,7 @@ var month_enlistment_in_army = {
 	"execute" : funcref(self, "month_enlistment_in_army_fn")
 }
 func custom_item_at_blacksmith_fn():
-	print("calling service method")
+	#("calling service method")
 var custom_item_at_blacksmith = {
 	"name" : "custom item at blacksmith",
 	"type" : "general_service",
@@ -75,7 +75,7 @@ var custom_item_at_blacksmith = {
 	"execute" : funcref(self, "custom_item_at_blacksmith_fn")
 }
 func night_of_companionship_fn():
-	print("calling service method")
+	#("calling service method")
 var night_of_companionship = {
 	"name" : "night of companionship",
 	"type" : "general_service",
@@ -85,7 +85,7 @@ var night_of_companionship = {
 	"execute" : funcref(self, "night_of_companionship_fn")
 }
 func evening_of_song_and_dance_fn():
-	print("calling service method")
+	#("calling service method")
 var evening_of_song_and_dance = {
 	"name" : "evening of song and dance",
 	"type" : "general_service",
@@ -95,7 +95,7 @@ var evening_of_song_and_dance = {
 	"execute" : funcref(self, "evening_of_song_and_dance_fn")
 }
 func escort_for_day_along_dangerous_road_fn():
-	print("calling service method")
+	#("calling service method")
 var escort_for_day_along_dangerous_road = {
 	"name" : "escort for day along dangerous road",
 	"type" : "general_service",
@@ -105,7 +105,7 @@ var escort_for_day_along_dangerous_road = {
 	"execute" : funcref(self, "escort_for_day_along_dangerous_road_fn")
 }
 func escort_for_day_along_very_dangerous_road_fn():
-	print("calling service method")
+	#("calling service method")
 var escort_for_day_along_very_dangerous_road = {
 	"name" : "escort for day along very dangerous road",
 	"type" : "general_service",
@@ -115,7 +115,7 @@ var escort_for_day_along_very_dangerous_road = {
 	"execute" : funcref(self, "escort_for_day_along_very_dangerous_road_fn")
 }
 func run_of_the_mill_killing_fn():
-	print("calling service method")
+	#("calling service method")
 var run_of_the_mill_killing = {
 	"name" : "run-of-the-mill killing",
 	"type" : "general_service",
@@ -125,7 +125,7 @@ var run_of_the_mill_killing = {
 	"execute" : funcref(self, "run_of_the_mill_killing_fn")
 }
 func assassination_fn():
-	print("calling service method")
+	#("calling service method")
 var assassination = {
 	"name" : "assassination",
 	"type" : "general_service",
@@ -135,7 +135,7 @@ var assassination = {
 	"execute" : funcref(self, "assassination_fn")
 }
 func healing_from_a_doctor_fn():
-	print("calling service method")
+	#("calling service method")
 var healing_from_a_doctor = {
 	"name" : "healing from a doctor",
 	"type" : "general_service",
@@ -145,7 +145,7 @@ var healing_from_a_doctor = {
 	"execute" : funcref(self, "healing_from_a_doctor_fn")
 }
 func months_prayer_for_the_departed_fn():
-	print("calling service method")
+	#("calling service method")
 var months_prayer_for_the_departed = {
 	"name" : "months prayer for the departed",
 	"type" : "general_service",
@@ -158,7 +158,7 @@ var months_prayer_for_the_departed = {
 
 #* ------- Meals -------------
 func hearty_meal_for_one_fn():
-	print("calling service method")
+	#("calling service method")
 var hearty_meal_for_one = {
 	"name" : "hearty meal for one",
 	"type" : "general_service",
@@ -168,7 +168,7 @@ var hearty_meal_for_one = {
 	"execute" : funcref(self, "hearty_meal_for_one_fn")
 }
 func poor_meal_for_a_family_fn():
-	print("calling service method")
+	#("calling service method")
 var poor_meal_for_a_family = {
 	"name" : "poor meal for a family",
 	"type" : "general_service",
@@ -178,7 +178,7 @@ var poor_meal_for_a_family = {
 	"execute" : funcref(self, "poor_meal_for_a_family_fn")
 }
 func feast_for_one_fn():
-	print("calling service method")
+	#("calling service method")
 var feast_for_one = {
 	"name" : "feast for one",
 	"type" : "general_service",
@@ -192,7 +192,7 @@ var feast_for_one = {
 
 #* ------- Transport -------------
 func passage_on_a_safe_route_fn():
-	print("calling service method")
+	#("calling service method")
 var passage_on_a_safe_route = {
 	"name" : "passage on a safe route",
 	"type" : "transport",
@@ -202,7 +202,7 @@ var passage_on_a_safe_route = {
 	"execute" : funcref(self, "passage_on_a_safe_route_fn")
 }
 func passage_on_a_tough_route_fn():
-	print("calling service method")
+	#("calling service method")
 var passage_on_a_tough_route = {
 	"name" : "passage on a tough route",
 	"type" : "transport",
@@ -212,7 +212,7 @@ var passage_on_a_tough_route = {
 	"execute" : funcref(self, "passage_on_a_tough_route_fn")
 }
 func passage_on_a_dangerous_route_fn():
-	print("calling service method")
+	#("calling service method")
 var passage_on_a_dangerous_route = {
 	"name" : "passage on a dangerous route",
 	"type" : "transport",
@@ -226,7 +226,7 @@ var passage_on_a_dangerous_route = {
 
 #* ------- Upkeep -------------
 func repair_a_mundane_item_fn():
-	print("calling service method")
+	#("calling service method")
 var repair_a_mundane_item = {
 	"name" : "repair a mundane item",
 	"type" : "upkeep",
@@ -236,7 +236,7 @@ var repair_a_mundane_item = {
 	"execute" : funcref(self, "repair_a_mundane_item_fn")
 }
 func a_months_upkeep_fn():
-	print("calling service method")
+	#("calling service method")
 var a_months_upkeep = {
 	"name" : "a months upkeep",
 	"type" : "upkeep",
@@ -250,7 +250,7 @@ var a_months_upkeep = {
 
 #* ------- Bribes -------------
 func a_peasant_dowry_fn():
-	print("calling service method")
+	#("calling service method")
 var a_peasant_dowry = {
 	"name" : "a peasant dowry",
 	"type" : "bribes",
@@ -260,7 +260,7 @@ var a_peasant_dowry = {
 	"execute" : funcref(self, "a_peasant_dowry_fn")
 }
 func protection_for_a_small_business_fn():
-	print("calling service method")
+	#("calling service method")
 var protection_for_a_small_business = {
 	"name" : "protection for a small business",
 	"type" : "bribes",
@@ -270,7 +270,7 @@ var protection_for_a_small_business = {
 	"execute" : funcref(self, "protection_for_a_small_business_fn")
 }
 func a_compelling_bribe_fn():
-	print("calling service method")
+	#("calling service method")
 var a_compelling_bribe = {
 	"name" : "a compelling bribe",
 	"type" : "bribes",
@@ -280,7 +280,7 @@ var a_compelling_bribe = {
 	"execute" : funcref(self, "a_compelling_bribe_fn")
 }
 func a_government_bribe_fn():
-	print("calling service method")
+	#("calling service method")
 var a_government_bribe = {
 	"name" : "a government bribe",
 	"type" : "bribes",
@@ -290,7 +290,7 @@ var a_government_bribe = {
 	"execute" : funcref(self, "a_government_bribe_fn")
 }
 func an_offer_you_cant_refuse_fn():
-	print("calling service method")
+	#("calling service method")
 var an_offer_you_cant_refuse = {
 	"name" : "an offer you cant refuse",
 	"type" : "bribes",

@@ -26,7 +26,7 @@ var scenes := {
 
 func change(scene_name: String):
 	if not scenes.has(scene_name):
-		print("cannot change to scene %s" % scene_name)
+		assert("cannot change to scene" == scene_name)
 		return
 # warning-ignore:return_value_discarded
 	CharacterSheet.current_scene = scenes[scene_name]

@@ -269,7 +269,7 @@ var secret_locations = [
 
 
 func change_location(new_location):
-	print("now in %s" % new_location["name"])
+	Signals.log("now at %s" % new_location["name"])
 	CharacterSheet.current_location = new_location.duplicate(true)
 
 func generate_random_portal():
@@ -277,6 +277,5 @@ func generate_random_portal():
 		"location" : secret_locations.duplicate(true).shuffle().pop_back(),
 		"distance_in_rations": 0
 		}
-	print("portal generated: %s" % destination)
 	CharacterSheet.current_location["next_destinations"].append(destination)
-	#TODO: alert player that there is a portal opened
+	Signals.log("A portal appeared!")

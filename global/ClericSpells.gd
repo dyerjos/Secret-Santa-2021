@@ -3,16 +3,17 @@ extends Node
 
 
 func cure_light_wounds_fn(target):
-	print("now healing")
 	#TODO: must touch to heal
-	var heal_amount = Utilities.roll_dice_for_total(1, 8)
-	print("heal amount %s" % heal_amount)
+	Signals.log("cure light wounds spell has been cast")
+	var base_heal_amount = Utilities.roll_dice_for_total(1, 8)
 	if target.has("hp"):
-		print("healing an npc or monster")
-		target["hp"] = clamp((target["hp"] + heal_amount), 0, target["max_hp"])
+		var new_hp = clamp((target["hp"] + base_heal_amount), 0, target["max_hp"])
+		target["hp"] = new_hp
+		Signals.log("health is now %s" % new_hp)
 	else:
-		print("healing a player")
-		CharacterSheet.hp = clamp((CharacterSheet.hp + heal_amount), 0, CharacterSheet.max_hitpoints())
+		var new_hp = clamp((CharacterSheet.hp + base_heal_amount), 0, CharacterSheet.max_hitpoints())
+		CharacterSheet.hp = new_hp
+		Signals.log("Your health is now %s" % new_hp)
 var cure_light_wounds = {
 	"name" : "cure light wounds",
 	"level" : 1,

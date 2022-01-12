@@ -8,7 +8,6 @@ var save_path = "user://savegame.save"
 
 func save_and_encrypt_game():
 	if game_loaded == true:
-		print("game was recently loaded so skipping save")
 		return
 	var save_game = File.new()
 #	save_game.open(save_path, File.WRITE) #! non-encrypteed way
@@ -16,7 +15,6 @@ func save_and_encrypt_game():
 	var master_save_list = []
 	prep_persistant_nodes(master_save_list)
 	prep_globals(master_save_list)
-	print("master_save_list length: %s" % len(master_save_list))
 	assert(typeof(master_save_list) == TYPE_ARRAY)
 	save_game.store_var(master_save_list, true)
 	save_game.close()
@@ -32,7 +30,7 @@ func load_and_unencrypt_game():
 		load_globals(master_save_list)
 		game_loaded = true
 	else:
-		print("error: save file not found!")
+		assert("error: save file not found!" == 0)
 
 #* --------Config methods ------------------------------------------
 
@@ -53,7 +51,7 @@ func load_and_unencrypt_config():
 	var config = ConfigFile.new()
 	var err = config.load_encrypted_pass("user://character_sheets.cfg", "PA$$word99!")
 	if err != OK:
-		print("error: %s" % err)
+		assert("error" == err)
 		return
 	for section in config.get_sections():
 		# example of loading individual values
@@ -66,11 +64,9 @@ func prep_persistant_nodes(master_save_list):
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
 		if node.filename.empty():
-			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
 			continue
 		# Check the node has a save function.
 		if !node.has_method("save"):
-			print("persistent node '%s' is missing a save() function, skipped" % node.name)
 			continue
 		# Call the node's save function.
 		var node_dict = node.call("save")
@@ -79,7 +75,7 @@ func prep_persistant_nodes(master_save_list):
 	return master_save_list
 
 func load_persistant_nodes(master_save_list):
-	print("TODO: load persistant nodes") # load_persistant_nodes()
+	#TODO: load persistant nodes") # load_persistant_nodes()
 
 func prep_globals(master_save_list):
 	master_save_list.append(CharacterSheet.save_dict())
@@ -90,4 +86,3 @@ func load_globals(master_save_list):
 	for dict in master_save_list:
 		if "player_name" in dict:
 			CharacterSheet.load(dict)
-	print("loaded globals")

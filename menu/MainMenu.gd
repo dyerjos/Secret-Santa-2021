@@ -13,7 +13,6 @@ func _on_Exit_pressed():
 
 
 func _on_Load_pressed():
-	print("Loading previous game save!")
 	# SaveSystem.load_and_unencrypt_config()
 	SaveSystem.load_and_unencrypt_game()
 	get_tree().change_scene(CharacterSheet.current_scene)

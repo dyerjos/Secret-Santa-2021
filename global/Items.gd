@@ -3141,20 +3141,16 @@ func generate_treasure(target):
 				var rations = CharacterSheet.player_inventory["dungeon_rations"]
 				rations.uses += 2
 			"magical":
-				print("player finds a magical item")
 				found_treasure["special_items"].append(generate_special_item(magical_items))
 			"divine" :
-				print("player finds a holy item")
 				found_treasure["special_items"].append(generate_special_item(holy_items))
 			"planar" :
-				print("player finds a planar item")
 				found_treasure["special_items"].append(generate_special_item(planar_items))
 			"lord_over_others":
 				modifier += Utilities.roll_dice_for_total(1, 4)
 			"ancient_and_noteworthy":
 				modifier += Utilities.roll_dice_for_total(1, 4)
 	var treasure = roll_for_treasure(best_of_two, target, modifier, found_treasure)
-	print("treasure: %s" % treasure)
 	return treasure
 
 
@@ -3173,7 +3169,6 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			treasure["coins"] += Utilities.roll_dice_for_total(2, 8)
 		2: 
 			# An item useful to the current situation
-			print("An item useful to the current situation")
 			#TODO: FUTURE - make this more story based
 			treasure["special_items"].append(healing_potion)
 		3: 
@@ -3185,15 +3180,12 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			treasure["coins"] +=  Utilities.roll_dice_for_total(2, 100)
 		5:
 			# Some minor magical trinket
-			print("Some minor magical trinket")
 			if minor_magical_items.size() > 0:
 				treasure["special_items"].append(generate_special_item(minor_magical_items))
 			else:
-				print("roll again")
 				return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		6:
 			# Useful information (in the form of clues, notes, etc.)
-			print("Useful information (in the form of clues, notes, etc.)")
 			treasure["special_items"].append(generate_special_item(CharacterSheet.current_location["useful_information"]))
 		7:
 			# A bag of coins, 1d4×100 or thereabouts. 1 weight per 100.
@@ -3207,11 +3199,9 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			treasure["coins"] +=  Utilities.roll_dice_for_total(3, 600)
 		10:
 			# A magical item or magical effect
-			print("found a magical item or magical effect")
 			if magical_items.size() > 0:
 				treasure["special_items"].append(generate_special_item(magical_items))
 			else:
-				print("roll again")
 				return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		11:
 			# Many bags of coins for a total of 2d4×100 or so
@@ -3226,34 +3216,27 @@ func roll_for_treasure(best_of_two, target, modifier, found_treasure):
 			# A unique item worth at least 5d4×100 coins
 			treasure["coins"] +=  Utilities.roll_dice_for_total(5, 400)
 		15:
-			print("learning new spell")
 			if "add_to_spellbook" in Moves.wizard_common_moves.keys():
 				Moves.add_to_spellbook_fn()
 			else:
-				print("add_to_spellbook not enabled so roll again")
+				#TODO: add_to_spellbook not enabled so roll again
 				return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		16:
 			#TODO: A portal or secret path (or directions to one) and roll again
 			#TODO: give player an option to go in one-time portal like a enter_random_portal() in moves
-			print("opening portal or secret path")
 			# TODO: implement later
 			# Locations.generate_random_portal()
-			print("roll again")
 			return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		17:
-			print("found a missing item if there is a missing item")	
 			if CharacterSheet.missing_items.size() > 0:
 				var missing_item = CharacterSheet.missing_items.duplicate(true).shuffle().pop_back()
-				print("found missing item: %s" % missing_item)
 				assert(missing_item != null)
 				treasure["special_items"].append(CharacterSheet.missing_items.duplicate(true).shuffle().pop_back())
 			else:
-				print("roll again because there is no missing item")
 				return roll_for_treasure(best_of_two, target, modifier, found_treasure)
 		18:
 			# A hoard: 1d10×1000 coins and 1d10×10 gems worth 2d6×100 each
 			treasure["coins"] +=  Utilities.roll_dice_for_total(1, 100) * Utilities.roll_dice_for_total(2, 600)
-	print("total treasure: %s" % treasure)
 	return treasure
 
 func generate_special_item(item_type):

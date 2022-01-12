@@ -9,7 +9,6 @@ func hack_and_slash_fn(targets, reckless, player_weapon_used):
 #	assert(player_weapon_used["needs_reloaded"] == false)
 	#TODO: test- what happens when player_weapon_used is null?
 	assert(targets != null)
-	print("calling move!")
 	var stat_for_attack = ""
 	if "precise" in player_weapon_used["weapon_tags"]:
 		stat_for_attack = CharacterSheet.player_dex
@@ -18,23 +17,20 @@ func hack_and_slash_fn(targets, reckless, player_weapon_used):
 	var roll_result = Utilities.roll_dice_for_success(stat_for_attack)
 	match roll_result:
 		"success":
+		Signals.log("Welcome Back!")
 			for target in targets:
 				damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 				if reckless:
-					print("reckless also")
 					damage_to_npc(1, 6, target, stat_for_attack, player_weapon_used)
 			if reckless:
-#				print("target: %s" % targets)
 				damage_to_player(targets)
 		"partial":
 			for target in targets:
 				damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
-#			print("target: %s" % targets)
 			damage_to_player(targets)
 		"fail":
-#			print("target: %s" % targets)
+			Signals.log("Hack and slash missed the target")
 			CharacterSheet.player_exp += 1
-			print("GM says what happens")
 			#TODO: add something extra here?
 			damage_to_player(targets)
 var hack_and_slash = {
@@ -52,12 +48,10 @@ var hack_and_slash_recklessly = {
 
 #TODO: have player choose what will happen if their volley does partially fail (opt=1, opt=2, opt=3)
 func volley_fn(target, player_weapon_used, fail_opt):
-	print("volley")
 	var stat_for_attack = CharacterSheet.player_dex
 	var roll_result = Utilities.roll_dice_for_success(stat_for_attack)
 	match roll_result:
 		"success":
-#			print("target: %s" % target)
 			damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 		"partial":
 			match fail_opt:
@@ -73,9 +67,8 @@ func volley_fn(target, player_weapon_used, fail_opt):
 					damage_to_npc(1, CharacterSheet.class_base_damage, target, stat_for_attack, player_weapon_used)
 		"fail":
 			CharacterSheet.player_exp += 1
-			print("GM says what happens")
+			Signals.log("The volley missed and the target is now closer!")
 			#TODO: add something extra here? player in danager OR lose ammo?
-			print("danger increases or player now in danger")
 			CharacterSheet.player_in_danger = true
 			#TODO: or "bad footing" meaning player loses a turn
 			player_weapon_used["ammo_count"] -= 1
@@ -93,11 +86,11 @@ func defy_danger_fn(stat_choice):
 		"success":
 			CharacterSheet.player_in_danger = false
 		"partial":
-			print("you stumble, hestitate, or flinch. worse outcome, hard bargain, or ugly choice")
-			print("still in danger or are in greater danger")
+			#"you stumble, hestitate, or flinch. worse outcome, hard bargain, or ugly choice")
+			#"still in danger or are in greater danger")
 			#TODO: implement levels of danger (low, medium, severe?)
 		"fail":
-			print("imminent threat happens to you now at the current danger level")
+			#"imminent threat happens to you now at the current danger level")
 			#TODO: maybe defy_danger_fn() returns a true or false to indicate that code should proceed to execute the threat
 var defy_danger = {
 	"name" : "defy danger",
@@ -144,13 +137,13 @@ func spout_lore_fn(object):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_int)
 	match roll_result:
 		"success":
-			print("tell player something interesting and useful about the subject relevant to your situation")
-			print("reveal object['useful_info']") # how fact is immediately useful
+			#("tell player something interesting and useful about the subject relevant to your situation")
+			#("reveal object['useful_info']") # how fact is immediately useful
 		"partial":
-			print("reveal object['interesting_info']") # fact but not how it's useful
+			#("reveal object['interesting_info']") # fact but not how it's useful
 		"fail":
-			print("you don't know anything about this object")
-			print("reveal an unwelcome truth (goblin moved around behind you) / instead of having an advantage to situation you are at a disadvantage")
+			#("you don't know anything about this object")
+			#("reveal an unwelcome truth (goblin moved around behind you) / instead of having an advantage to situation you are at a disadvantage")
 var spout_lore = {
 	"name" : "spout lore",
 	"type" : "basic",
@@ -162,12 +155,12 @@ func discern_realities_fn():
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_wis)
 	match roll_result:
 		"success":
-			print("ask 3 questions and take +1 forward when acting on the answers")
+			#("ask 3 questions and take +1 forward when acting on the answers")
 			#TODO: implement questions as fields in location or target
 			#TODO: player asks a question "question1 - question6" or questions are randomly chosen
 			#TODO: sometimes question reveals nothing
 		"partial":
-			print("ask 1 questions and take +1 forward when acting on the answers")
+			#("ask 1 questions and take +1 forward when acting on the answers")
 		"fail":
 			pass
 var discern_realities = {
@@ -182,11 +175,11 @@ func parley_fn(target):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
 	match roll_result:
 		"success":
-			print("they do what you ask if you first promise what they ask of you")
+			#("they do what you ask if you first promise what they ask of you")
 		"partial":
-			print("they will do what you ask but need some concrete assurance of your promise right now")
+			#("they will do what you ask but need some concrete assurance of your promise right now")
 		"fail":
-			print("they don't do what you ask them")
+			#("they don't do what you ask them")
 var parley = {
 	"name" : "parley",
 	"type" : "basic",
@@ -200,15 +193,15 @@ func last_breath_fn():
 	var roll_result = Utilities.roll_dice_for_success()
 	match roll_result:
 		"success":
-			print("you cheated death and are now stabilized")
+			#("you cheated death and are now stabilized")
 			#TODO: add cheated_death boolean on player charactersheet
 			CharacterSheet.hp = 0.5 #TODO: and setup code so that player can't move if hp is less than 1?
 		"partial":
-			print("death offers a bargain or refuse and die")
+			#("death offers a bargain or refuse and die")
 			#TODO: add deal_with_death boolean on player charactersheet
 			CharacterSheet.hp = 0.5
 		"fail":
-			print("player dies. Normally you would create a new character")
+			#("player dies. Normally you would create a new character")
 			#TODO: being a solo game, maybe npc can ressurect the player 1 time, it costs money, or offer to load game at a checkpoint, OR death comes slowly
 			#TODO: add marked_for_death boolean on player charactersheet so that player dies in dramatic way after final boss
 var last_breath = {
@@ -226,11 +219,11 @@ func encumbrance_fn():
 		CharacterSheet.ongoing_encumberance_moves_modifier = 0
 		CharacterSheet.inventory_locked = false
 	elif current_load <= overloaded:
-		print("player takes -1 ongoing until burden is lightened")
+		#("player takes -1 ongoing until burden is lightened")
 		CharacterSheet.ongoing_encumberance_moves_modifier = -1
 		CharacterSheet.inventory_locked = true
 	else:
-		print("drop at least 1 weight and roll at -1 or automatically fall")
+		#("drop at least 1 weight and roll at -1 or automatically fall")
 		#TODO: drop weight and penalty or don't let player add item to inventory in this case...
 		CharacterSheet.ongoing_encumberance_moves_modifier = -2
 		CharacterSheet.inventory_locked = true
@@ -264,13 +257,13 @@ func take_watch_fn(location):
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_wis)
 	match roll_result:
 		"success":
-			print("you’re able to wake the camp and prepare a response, everyone in the camp takes +1 forward")
+			#("you’re able to wake the camp and prepare a response, everyone in the camp takes +1 forward")
 			Enemies.setup_random_monster_encounter(location, 1, true)
 		"partial":
-			print("no time to prepare and now battle")
+			#("no time to prepare and now battle")
 			Enemies.setup_random_monster_encounter(location, 0 , true )
 		"fail":
-			print("battle and monster gets first attack")
+			#("battle and monster gets first attack")
 			Enemies.setup_random_monster_encounter(location, 0, false)
 var take_watch = {
 	"name" : "take watch",
@@ -314,32 +307,30 @@ var undertake_perilous_journey = {
 
 func shop_for_an_item_fn(item_selected):
 	if CharacterSheet.player_coins < item_selected["coin"]:
-		print("You don't have enough coin for this item!")
+		Signals.log("You don't have enough coin for this item!")
 	var roll_result = null
-	print("item cost: %s" % item_selected["coin"])
 	if item_selected["coin"] > 50:
-		print("special item (over 50 coin) so rolling charisma")
 		roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
 	else:
 		roll_result = "success"
 	match roll_result:
 		"success":
-			print("you get this item at fair price")
+			Signals.log("you get this item at fair price")
 			CharacterSheet.player_coins -= item_selected["coin"]
 			CharacterSheet.player_inventory.append(item_selected.duplicate(true))
-			print("item now aquired")
+			Signals.log("item now aquired")
 		"partial":
-			print("item is found in the city but it's 20% more in cost?")
+			Signals.log("item is found in the city but it's 20% more expensive")
 			var higher_price = ceil(item_selected["coin"] * 1.20)
-			print("final price is %s" % higher_price)
+			Signals.log("final price is %s" % higher_price)
 			if CharacterSheet.player_coins < higher_price:
-				print("You don't have enough coin for this item at the 20% markup!")
+				Signals.log("You don't have enough coin for this item at the 20% markup!")
 			else:
 				CharacterSheet.player_coins -= higher_price
 				CharacterSheet.player_inventory.append(item_selected.duplicate(true))
-				print("item now aquired")
+				Signals.log("item now aquired")
 		"fail":
-			print("item is not found")
+			Signals.log("item is not found")
 var shop_for_an_item = {
 	"name" : "shop for an item",
 	"type" : "special",
@@ -348,7 +339,6 @@ var shop_for_an_item = {
 	}
 
 func sell_an_item_fn(item_selected):
-	print("item value: %s" % item_selected["coin"])
 	CharacterSheet.player_coins += item_selected["coin"]
 	var inventory_size = CharacterSheet.player_inventory.size()
 	CharacterSheet.player_inventory.erase(item_selected)
@@ -362,34 +352,30 @@ var sell_an_item = {
 
 func shop_for_a_service_fn(service_selected):
 	if CharacterSheet.player_coins < service_selected["coin"]:
-		print("You don't have enough coin for this item!")
+		Signals.log("You don't have enough coin for this service!")
 	var roll_result = null
-	print("service cost: %s" % service_selected["coin"])
 	if service_selected["coin"] > 50:
-		print("special service (over 50 coin) so rolling charisma")
 		roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_cha)
 	else:
 		roll_result = "success"
 	match roll_result:
 		"success":
-			print("you get this service at fair price")
+		Signals.log("you get this service at fair price")
 			CharacterSheet.player_coins -= service_selected["coin"]
-			# CharacterSheet.player_inventory.append(service_selected.duplicate(true))
-			print("service now aquired")
+			Signals.log("service now aquired")
 			#TODO: add service to a service list or immediatly activate it?
 		"partial":
-			print("service is found in the city but it's 20% more in cost?")
+			Signals.log("service is found in the city but it's 20% more in cost?")
 			var higher_price = ceil(service_selected["coin"] * 1.20)
-			print("final price is %s" % higher_price)
+			Signals.log("final price is %s" % higher_price)
 			if CharacterSheet.player_coins < higher_price:
-				print("You don't have enough coin for this service at the 20% markup!")
+				Signals.log("You don't have enough coin for this service at the 20% markup!")
 			else:
 				CharacterSheet.player_coins -= higher_price
-				# CharacterSheet.player_inventory.append(service_selected.duplicate(true))
 				#TODO: add service to a service list or immediatly activate it?
-				print("service now aquired")
+				Signals.log("service now aquired")
 		"fail":
-			print("service is not found")
+			Signals.log("service is not found")
 var shop_for_a_service = {
 	"name" : "shop for a service",
 	"type" : "special",
@@ -400,6 +386,7 @@ var shop_for_a_service = {
 func recover_fn(days=0):
 	if days >= 3:
 		#TODO: cure a debility of choice instead of all
+		Signals.log("you have recovered all of your hitpoints")
 		CharacterSheet.player_debilities.clear()
 		CharacterSheet.hp = CharacterSheet.max_hitpoints()
 	elif days >= 1:
@@ -468,9 +455,9 @@ func level_up_fn():
 		CharacterSheet.player_exp -= exp_for_next_level
 		CharacterSheet.player_level += 1
 		if CharacterSheet.player_class == "wizard":
-			print("add a new spell to your spellbook")
+			#("add a new spell to your spellbook")
 			#TODO: add spell on level up
-		print("choose a stat and increase it by 1")
+		#("choose a stat and increase it by 1")
 		#TODO: stat increase screen needed (could be as simple as a button for each stat and you click one)
 		#TODO: if player_con increases, make sure to increase current hp by the increase in hp
 var level_up = {
@@ -499,33 +486,20 @@ var end_of_session = {
 #* Wizard basic moves
 
 func cast_spell_fn(spell, selected_targets):
-	print("cast_spell_fn")
 	assert(spell != null)
 	var roll_result = Utilities.roll_dice_for_success(CharacterSheet.player_int)
-	print("roll result of spell: %s" % roll_result)
-#	print("spell funcref: %s" % spell["execute"])
-#	print("original funcref: %s" % WizardSpells.magic_missile["execute"])
 	var global = get_node("/root/" + spell["script"])
+	Signals.log("You cast %s" % spell["name"])
 	match roll_result:
 		"success":
-			print("spell: %s" % spell["name"])
-			var log_text = "You cast %s" % spell["name"]
-			Signals.emit_signal("add_to_adventure_log", log_text)
-#			spell["execute"].call_func(selected_targets)
 			global.call(spell["method"], selected_targets)
 		"partial":
 			#TODO: player chooses to draw unwelcome attention, take -1 ongoing to spells, or for spell to be forgotten
-			print("spell: %s" % spell["name"])
-			var log_text = "You cast %s but something went wrong" % spell["name"]
-			Signals.emit_signal("add_to_adventure_log", log_text)
+			Signals.log("spell was cast but something also went wrong")
 			global.call(spell["method"], selected_targets)
-#			spell["execute"].call_func(selected_targets)
-			print("partial success of spell")
 			CharacterSheet.ongoing_spell_modifier = -1
 		"fail":
-			print("spell failed")
-			var log_text = "Your spell failed"
-			Signals.emit_signal("add_to_adventure_log", log_text)
+			Signals.log("Your spell failed")
 			CharacterSheet.ongoing_spell_modifier = -1
 var cast_spell = {
 	"name" : "cast spell",
@@ -535,11 +509,11 @@ var cast_spell = {
 	}
 
 func prepare_spells_fn():
-	print("ongoing spell modifier back to 0")
+	#("ongoing spell modifier back to 0")
 	CharacterSheet.ongoing_spell_modifier = 0
 	CharacterSheet.has_a_light = false
 	# CharacterSheet.prepared_spells.clear() #! don't clear spells if there is no time to make spell picker scene
-	print("prepares spells in your spellbook")
+	#("prepares spells in your spellbook")
 	#TODO: need UI for choosing spells again
 var prepare_spells = {
 	"name" : "prepare spells",
@@ -550,7 +524,7 @@ var prepare_spells = {
 
 
 func add_to_spellbook_fn():
-	print("add one additional spell to your spellbook")
+	#("add one additional spell to your spellbook")
 var add_to_spellbook = {
 	"name" : "add to spellbook",
 	"type" : "special",
@@ -601,19 +575,17 @@ func process_damage_to_npc(damage, target, player_weapon_used) -> void:
 	if damage["stun"] == true:
 		target["stun_points"] -= damage["net_damage"]
 	else:
-		print("damage: %s" % damage["net_damage"])
 		target["hp"] -= damage["net_damage"]
 		var log_text = "You did " + String(damage["net_damage"]) + " damage to the " + target["name"]
-		Signals.emit_signal("add_to_adventure_log", log_text)
+		Signals.log(log_text)
 		if target["hp"] <= 0:
 			Signals.emit_signal("target_died", target) 
-#		TODO: if dead, remove from battle targets
 	# for this I might have to pass in it's index?
 	if damage["messy"] == true:
-		print("do damage to building, area, or person (missing arm?)") 
+		Signals.log("Your attack damaged some of the surrounding area") 
 		#TODO: damage is done to person, item, or location (make global location script with fields like hp, description)
 	if damage["forceful"] == true:
-		print("chance to knock down or knock target back")
+		Signals.log("Your attack knocked the target back!")
 	if damage["needs_reloaded"] == true:
 		player_weapon_used["needs_reloaded"] = true
 
@@ -623,16 +595,15 @@ func process_damage_to_player(damage) -> void:
 		#TODO: does this stun player?
 	else:
 		damage["net_damage"] -= spell_defense_fn() #TODO: this should be a player's choice and not automatic
+		Signals.log("You took %s damage" % damage["net_damage"])
 		CharacterSheet.hp -= damage["net_damage"]
 		if CharacterSheet.hp <= 0:
 			Signals.emit_signal("player_died") 
-		#TODO: notify player whenever they take damage?
 	if damage["messy"] == true:
-		print("do damage to building, area, or person (missing arm?)") 
+		Signals.log("The enemey caused some damage to the surrounding area")
 		#TODO: damage is done to person, item, or location (make global location script with fields like hp, description)
 	if damage["forceful"] == true:
-		print("chance to knock down or knock target back")
-
+		Signals.log("The enemy knocked you back")
 
 func damage_to_player(targets):
 	var best_damage = 0
@@ -653,7 +624,7 @@ func consume_rations(distance=null, trailblazer_bonus=0):
 	var rations = CharacterSheet.player_inventory["dungeon_rations"]
 	if rations["uses"] == 0 or rations == null:
 		CharacterSheet.ongoing_rations_moves_modifier = -1
-		print("tell player they are hungry and they need to go to nearest town")
+		#("tell player they are hungry and they need to go to nearest town")
 		return
 	if distance == null:
 		rations.uses -= 1
@@ -667,10 +638,10 @@ func camp_safe_check():
 	var result = Utilities.roll_dice_for_success(CharacterSheet.player_str)
 	match result:
 		"success":
-			print("no monsters")
+			#("no monsters")
 			return true
 		"partial":
-			print("no monsters")
+			#("no monsters")
 			return true
 		"fail":
 			return false
@@ -810,5 +781,5 @@ func get_valid_moves():
 			"ritual":
 				pass #TODO: add move to all_moves list to enable
 			_:
-				print("move %s is not yet implemented for get_valid_move action." % move["name"])
+				assert("move not implemented for get_valid_move action" == move["name"])
 	return valid_moves

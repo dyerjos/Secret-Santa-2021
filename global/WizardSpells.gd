@@ -3,7 +3,6 @@ extends Node
 
 
 func light_fn():
-	print("light")
 	CharacterSheet.has_a_light = not CharacterSheet.has_a_light #boolean flip
 var light = {
 	"name" : "light",
@@ -15,7 +14,6 @@ var light = {
 }
 
 func unseen_servant_fn():
-	print("unseen servant called")
 	#TODO: setup unseen servant as a destructable npc that holds inventory for you
 	CharacterSheet.player_inventory.append(Items.get("unseen_servant").duplicate(true)) #* this is a shortcut
 	CharacterSheet.has_unseen_servant = true
@@ -29,7 +27,6 @@ var unseen_servant = {
 }
 
 func prestidigitation_fn(targets):
-	print("perform crude illusion to entertain")
 	for target in targets:
 		target["saw_magic_trick"].call_func()
 var prestidigitation = {
@@ -43,7 +40,6 @@ var prestidigitation = {
 
 
 func contact_spirits_fn():
-	print("contact spirits called")
 	#TODO: this would require a lot more dialogue and would not be polished enough to be useful yet
 var contact_spirits = {
 	"name" : "contact spirits",
@@ -55,15 +51,14 @@ var contact_spirits = {
 }
 
 func detect_magic_fn():
-	print("detect magic called")
 	if CharacterSheet.current_location["is_magical"]:
-		print("This location is magical")
+		Signals.log("This location is magical")
 	for item in CharacterSheet.player_inventory:
 		if item["is_magical"]:
-			print("you sense that the item['name'] is magical!")
+			Signals.log("you sense that the %s is magical!" % item["name"])
 	for item in  CharacterSheet.current_location["items"]:
 		if item["is_magical"]:
-			print("you found an item in the room that is magical! item['name'] ")
+			Signals.log("you found an item in the room that is magical! %s" % item['name'])
 var detect_magic = {
 	"name" : "detect magic",
 	"level" : 1,
@@ -74,7 +69,6 @@ var detect_magic = {
 }
 
 func magic_missile_fn(targets):
-	print("magic missile called")
 	for target in targets:
 		var damage = Utilities.deal_damage(2, 4, target["armor"], 0, [])
 		Moves.process_damage_to_npc(damage, target, {})
@@ -90,7 +84,6 @@ var  magic_missile = {
 }
 
 func charm_person_fn(target):
-	print("charm called")
 	#TODO: target must be touched
 	target["is_charmed"] = true
 var  charm_person = {
@@ -103,7 +96,6 @@ var  charm_person = {
 }
 
 func invisibility_fn(target):
-	print("invisibility called")
 	#TODO: target must be touched
 	target["is_invisible"] = true
 var  invisibility = {
@@ -116,7 +108,6 @@ var  invisibility = {
 }
 
 func telepathy_fn(target):
-	print("telepathy called")
 	CharacterSheet.telepathic_bonds.append(target.duplicate(true))
 	target["telepathic_bond_with_player"] = true
 var  telepathy = {
@@ -129,7 +120,6 @@ var  telepathy = {
 }
 
 func alarm_fn(location):
-	print("alarm called")
 	location["has_alarm_set"] = true
 	CharacterSheet.has_set_alarm = true
 var  alarm = {

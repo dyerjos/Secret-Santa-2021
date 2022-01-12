@@ -287,7 +287,7 @@ func _on_SubmitBtn_pressed():
 		# 	selected_move["execute"].call_func()
 		# 	#TODO: not implemented yet
 		_:
-			print("move %s is not yet implemented for submitBtn." % selected_move["name"])
+			assert("move not yet implemented for submitBn" == selected_move["name"])
 	post_move_hook()
 
 func post_move_hook():
@@ -300,29 +300,23 @@ func refresh_targets():
 	populate_target_options()
 	
 func _on_target_died(target):
-	print("received signal that target died")
-	print(target["name"])
+	Signals.log("%s has been killed" % target["name"])
 	var new_loot = Items.generate_treasure(target)
 	var coins_dropped = new_loot["coins"]
-	print("signal here? monster dropped %s coins" % coins_dropped)
 	loot["coins"] += coins_dropped
 	var items_dropped = new_loot["special_items"]
-	if items_dropped:
-		print("signal here? monster dropped %s items" % items_dropped)
 	loot["special_items"].append_array(items_dropped)
-	print("current loot now: %s" % loot)
-	print("target that died: %s" % target)
 	CharacterSheet.battle_targets.remove(selected_target_index)
-	# target_options.clear()
-	# populate_target_options()
-
+	if CharacterSheet.battle_targets.count() = 0:
+		Signals.log("%s coins were found" % loot["coins"])
+	if loot["special_items"].count() > 0:
+		for item in loot["special_items"]:
+			Signals.log("%s was found" % item["name"])
 
 func _on_player_died(): 
-	print("received signal that player died")
+	Signals.log("You died! Thanks for trying the Alpha release of the game") #TODO: what happens when player dies?
 
 func _on_add_to_adventure_log(text):
-	print("received signal that there is something to add to adventure log")
-	print(text)
 	adventure_log.add_item(text)
 	
 func _on_MoveOption_item_selected(index):
@@ -398,7 +392,7 @@ func _on_MoveOption_item_selected(index):
 		"ritual":
 			using_weapon_against_target_setter(false, false, false, false)
 		_:
-			print("move %s is not yet implemented for move option item selected" % selected_move["name"])
+			assert("move is not yet implemented for move option" == selected_move["name"])
 
 func using_weapon_against_target_setter(using, weapon, against, target):
 	using_label.visible = using
@@ -415,30 +409,22 @@ func _on_Weapon_item_selected(index):
 		"hack and slash recklessly":
 			selected_item = CharacterSheet.player_inventory[index]
 		"cast spell":
-			print("number of prepared_spells: %s" % CharacterSheet.prepared_spells.size())
 			selected_item = CharacterSheet.prepared_spells[index]
-			print("I am the spell: %s" % CharacterSheet.prepared_spells[index])
 		"shop for an item":
-			print("selecting an item at the given index for 'shop for an item'")
 			selected_item = Items.master_list[index]
-			print("selected: %s" % selected_item["name"])
 		"shop for a service":
-			print("selecting a service at the given index for 'shop for a service'")
 			selected_item = Services.master_service_list[index]
-			print("selected: %s" % selected_item["name"])
 		"sell an item":
-			print("selecting an item to sell")
 			selected_item = CharacterSheet.player_inventory[index]
-			print("selected: %s" % selected_item["name"])
 		_:
-			print("move %s is not yet implemented for weapon item selected action." % selected_move["name"])
+			assert("move not implemented for weapon item select" == selected_move["name"])
 
 func _on_Target_item_selected(index):
 	selected_targets = [possible_targets[index]]
 	selected_target_index = index
 	
 func battle_ended():
-	print("battle ended")
+	Signals.log("Battle is now over. You now look for loot")
 	CharacterSheet.player_in_battle = false
 	context_label.text = "No Immediate Danger"
 
@@ -481,19 +467,14 @@ func connect_signals():
 #* ---------- Test Tab -------------------------
 #
 #func _on_TestBtn1_pressed(): #monster enounter
-#	print("hi")
-#
 #
 #func _on_TestBtn2_pressed(): # generate monsters
 #	Enemies.generate_monsters(Locations.A1_S1_cave)
 #
-#
 #func _on_TestBtn3_pressed(): # recover
 #	Moves.recover_fn(3)
 #
-#
 #func _on_TestBtn4_pressed(): # generate treasure
-#	#TODO: how to select a target?
 #	Items.generate_treasure(Enemies.ankheg)
 
 

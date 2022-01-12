@@ -205,9 +205,8 @@ func equipped_armor():
 				"+1 armor":
 					armor += 1
 				_:
-					print("tag %s is not yet implemented" % tag)
+					assert("armor tag not yet implemented" == tag)
 	assert(armor < 5)
-	print("armor: %s" % armor)
 	return armor
 
 

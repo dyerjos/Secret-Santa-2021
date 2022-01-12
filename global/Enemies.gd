@@ -2,8 +2,7 @@ extends Node
 
 
 func wild_monster_saw_magic_trick_fn():
-	print("monster growls in response to the magic trick")
-	#TODO: TextLog() the message to main text box
+	Signals.log("monster growls in response to the magic trick")
 
 var template = {
 	"name" : "template",
@@ -595,11 +594,9 @@ var troglodyte = {
 
 func setup_random_monster_encounter(location, watch_bonus, players_attack_first):
 	CharacterSheet.ongoing_watch_bonus = watch_bonus
-	print("generating monsters from location")
 	generate_monsters(location)
-	print("player now in battle")
+	Signals.log("You are now in a battle!")
 	CharacterSheet.player_in_battle = true
-	print("trigger UI changes for battle here")
 
 
 func generate_monsters(location):
@@ -616,7 +613,6 @@ func generate_monsters(location):
 			enemy_type = duplicated[0] #converts to dict
 			assert(typeof(enemy_type) != 19) #19 is array
 		var organization = enemy_type["organization"]
-		print("organization: %s" % organization)
 		var number_of_enemies = 0
 		match organization:
 			"group":
@@ -625,15 +621,14 @@ func generate_monsters(location):
 				number_of_enemies = Utilities.random_number_in_range(6, 10)
 			"solitary":
 				number_of_enemies = 1
-		print("number of enemies: %s" % number_of_enemies)
+		Signals.log("%s enemies appeared" % number_of_enemies)
 		assert(number_of_enemies > 0)
 		for enemy in range(number_of_enemies):
 			CharacterSheet.battle_targets.append(enemy_type.duplicate(true))
 		assert(CharacterSheet.battle_targets.size() > 0)
 	else:
-		print("this location has no monsters")
+		Signals.log("this location has no monsters")
 		assert(CharacterSheet.battle_targets.size() == 0)
-
 
 
 var cavern = [

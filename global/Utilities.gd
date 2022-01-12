@@ -9,15 +9,11 @@ func roll_dice_for_success(stat=null):
 	var dice_result = random.randi_range(2, 12)
 	var modifier = stat_to_modifier(stat) #returns 0 if stat is null or ""
 	var result_after_modifier = dice_result + modifier + CharacterSheet.ongoing_moves_modifier()
-	print("dice result after modifier: %s" % result_after_modifier)
 	if result_after_modifier >= 10:
-		print("success")
 		return "success"
 	elif result_after_modifier == 7 or result_after_modifier == 8 or result_after_modifier == 9:
-		print("partial")
 		return "partial"
 	else:
-		print("fail")
 		return "fail"
 
 func roll_dice_for_total(number_of_dice, sides_of_dice):
@@ -26,9 +22,7 @@ func roll_dice_for_total(number_of_dice, sides_of_dice):
 	var dice_total = 0
 	for i in range(number_of_dice):
 		var dice_roll = random.randi_range(1, sides_of_dice)
-		# print("dice rolled: %s" % dice_roll)
 		dice_total += dice_roll
-	# print("dice total: %s" % dice_total)
 	return dice_total
 
 func random_number_in_range(lowest, highest):
@@ -56,7 +50,7 @@ func stat_to_modifier(stat=null):
 	elif stat == 18:
 		return 3
 	else:
-		print("stat shouldn't be %s" % stat)
+		assert("stat shouldn't be" == stat)
 
 func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tags=[]):
 	var tag_damage_bonus = 0
@@ -67,7 +61,6 @@ func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tag
 	for tag in weapon_tags:
 		match tag:
 			"forceful":
-				print("chance to knock back target")
 				forceful = true
 			"-1 damage":
 				tag_damage_bonus -= 1
@@ -92,8 +85,6 @@ func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tag
 			"ignores armor":
 				tag_damage_bonus += target_armor
 			"messy":
-				print("destructive attack, ripping people and things apart")
-				print("effect scales with damage?")
 				messy = true
 			"+1 piercing":
 				var pierce_damage = target_armor - 1
@@ -120,18 +111,15 @@ func deal_damage(number, base_damage, target_armor, damage_bonuses=0, weapon_tag
 				else:
 					tag_damage_bonus += pierce_damage
 			"reload":
-				print("weapon can't be used until a reload action")
+				Signals.log("weapon needs reloaded")
 				needs_reloaded = true
 			"stun":
-				print("stun damage instead of normal damage")
 				stun = true
 	tag_damage_bonus = clamp(tag_damage_bonus, 0, 15)
 	assert(tag_damage_bonus < 15)
 	var total_damage = roll_dice_for_total(number, base_damage) + damage_bonuses
 	var net_damage = total_damage - target_armor + tag_damage_bonus
-	print("net_damage: %s" % net_damage)
 	if net_damage < 0:
-		print("0 damage applied due to negative value")
 		return {
 			"net_damage": 0, "stun": stun, "forceful" : forceful, "messy": messy, "needs_reloaded": needs_reloaded
 		}
