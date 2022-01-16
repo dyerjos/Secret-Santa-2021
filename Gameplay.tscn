@@ -120,6 +120,7 @@ __meta__ = {
 }
 
 [node name="Main" type="ScrollContainer" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -645,7 +646,6 @@ auto_height = true
 max_columns = 2
 
 [node name="Location" type="ScrollContainer" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -664,7 +664,7 @@ margin_bottom = 160.0
 rect_min_size = Vector2( 380, 160 )
 
 [node name="ReferenceRect" type="Panel" parent="TabContainer/Location/LocationDetails"]
-margin_right = 386.0
+margin_right = 380.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 120, 15 )
 
@@ -678,14 +678,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Location/LocationDetails/ReferenceRect/HBoxContainer"]
-margin_right = 46.0
+margin_right = 31.0
 margin_bottom = 14.0
 text = "Name: "
 valign = 1
 
 [node name="Name" type="Label" parent="TabContainer/Location/LocationDetails/ReferenceRect/HBoxContainer"]
-margin_left = 50.0
-margin_right = 66.0
+margin_left = 35.0
+margin_right = 47.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -693,7 +693,7 @@ valign = 1
 
 [node name="ReferenceRect2" type="Panel" parent="TabContainer/Location/LocationDetails"]
 margin_top = 19.0
-margin_right = 386.0
+margin_right = 380.0
 margin_bottom = 34.0
 rect_min_size = Vector2( 120, 15 )
 rect_clip_content = true
@@ -708,14 +708,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Location/LocationDetails/ReferenceRect2/HBoxContainer"]
-margin_right = 38.0
+margin_right = 31.0
 margin_bottom = 14.0
 text = "Type: "
 valign = 1
 
 [node name="Steading" type="Label" parent="TabContainer/Location/LocationDetails/ReferenceRect2/HBoxContainer"]
-margin_left = 42.0
-margin_right = 58.0
+margin_left = 35.0
+margin_right = 47.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "12"
@@ -723,7 +723,7 @@ valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Location/LocationDetails"]
 margin_top = 38.0
-margin_right = 386.0
+margin_right = 380.0
 margin_bottom = 53.0
 rect_min_size = Vector2( 380, 15 )
 __meta__ = {
@@ -731,18 +731,25 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Location/LocationDetails/HBoxContainer"]
-margin_right = 82.0
+margin_right = 66.0
 margin_bottom = 14.0
 text = "Description: "
 valign = 1
 
 [node name="Description" type="Label" parent="TabContainer/Location/LocationDetails/HBoxContainer"]
-margin_left = 86.0
-margin_right = 386.0
+margin_left = 70.0
+margin_right = 370.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 300, 2 )
 text = "test test test"
 autowrap = true
+
+[node name="Tree" type="Tree" parent="TabContainer/Location/LocationDetails"]
+margin_top = 57.0
+margin_right = 380.0
+margin_bottom = 157.0
+rect_min_size = Vector2( 0, 100 )
+columns = 3
 
 [node name="HiddenTabs" type="Control" parent="."]
 visible = false

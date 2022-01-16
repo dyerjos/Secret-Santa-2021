@@ -33,6 +33,7 @@ onready var inventory_list = $TabContainer/Inventory/InventoryList
 onready var location_name = $TabContainer/Location/LocationDetails/ReferenceRect/HBoxContainer/Name
 onready var steading = $TabContainer/Location/LocationDetails/ReferenceRect2/HBoxContainer/Steading
 onready var location_description = $TabContainer/Location/LocationDetails/HBoxContainer/Description
+onready var location_tree = $TabContainer/Location/LocationDetails/Tree
 
 #* Script vars:
 #* ----- main tab var ---------
@@ -163,6 +164,24 @@ func populate_location_tab():
 	location_name.text = CharacterSheet.current_location["name"]
 	steading.text = CharacterSheet.current_location["steading_type"]
 	location_description.text = CharacterSheet.current_location["description"]
+	#* First create giant dictionary of known locations
+	#* Then use that dictionary to populate the locations tree
+	#* For performance reasons, all locations are "visible" but are labeled "Unkown".
+	#* Use set_text() on a treeitem to change text from "Unkown" to it's actual name.
+	var world = location_tree.create_item()
+	world.set_text(0, "world")
+	var region1 = location_tree.create_item(world)
+	region1.set_text(0, "region 1")
+	var region2 = location_tree.create_item(world)
+	region2.set_text(0, "region 2")
+	var area1 = location_tree.create_item(region1)
+	area1.set_text(0, "area 1")
+	var steading1 = location_tree.create_item(area1)
+	steading1.set_text(0, "steading 1")
+	var site1 = location_tree.create_item(steading1)
+	site1.set_text(0, "site 1")
+	var site2 = location_tree.create_item(area1)
+	site2.set_text(0, "site 2")
 
 func populate_player_tab():
 	current_hp.text = String(CharacterSheet.hp)
