@@ -120,7 +120,6 @@ __meta__ = {
 }
 
 [node name="Main" type="ScrollContainer" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -646,6 +645,7 @@ auto_height = true
 max_columns = 2
 
 [node name="Location" type="ScrollContainer" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -749,7 +749,6 @@ margin_top = 57.0
 margin_right = 380.0
 margin_bottom = 157.0
 rect_min_size = Vector2( 0, 100 )
-columns = 3
 
 [node name="HiddenTabs" type="Control" parent="."]
 visible = false

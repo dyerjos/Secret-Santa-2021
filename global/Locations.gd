@@ -30,32 +30,6 @@ var template = {
 	"misc_tags": ["safe"]
 }
 
-var starter_city = {
-	"name" : "Nystera",
-	"entered_from" : "root",
-	"description": "Your hometown",
-	"monsters" : [],
-	"includes_food": false,
-	"has_alarm_set": false,
-	"items" : [],
-	"is_magical": false,
-	"useful_info": "",
-	"interesting_info": "",
-	"has_market": true,
-	"has_services" : true,
-	"places_of_interest" : [],
-	"next_destinations": [
-		{"location" : A1_S1_cave, "distance_in_rations": 2},
-	],
-	"steading_type" : "city",
-	"popluation_tag": "steady",
-	"poplualation_trend" : 3, # 3 is steady
-	"prosperity_tag": "moderate",
-	"prosperity_trend" : 3, # 3 is moderate
-	"defenses": "guard",
-	"defense_trend": 4, # 4 is guard
-	"misc_tags": ["safe"]
-}
 
 var hovel = {
 	"name" : "hovel",
@@ -240,7 +214,44 @@ var grand_castle = {
 	"misc_tags": ["safe"]
 }
 
-var A1_S1_cave = { #* Act 1 Scene 1
+#* -------- The Hard-Coded World ---------------------------------
+var world = {
+	"name" : "world",
+	"description": "",
+	"parent": null,
+	"children": [], #TODO: world regions here
+	"is_known": true,
+}
+
+var starter_city = {
+	"name" : "Nystera",
+	"parent": ""
+	"entered_from" : "root",
+	"description": "Your hometown",
+	"monsters" : [],
+	"includes_food": false,
+	"has_alarm_set": false,
+	"items" : [],
+	"is_magical": false,
+	"useful_info": "",
+	"interesting_info": "",
+	"has_market": true,
+	"has_services" : true,
+	"places_of_interest" : [],
+	"next_destinations": [
+		{"location" : a1_s1_cave, "distance_in_rations": 2},
+	],
+	"steading_type" : "city",
+	"popluation_tag": "steady",
+	"poplualation_trend" : 3, # 3 is steady
+	"prosperity_tag": "moderate",
+	"prosperity_trend" : 3, # 3 is moderate
+	"defenses": "guard",
+	"defense_trend": 4, # 4 is guard
+	"misc_tags": ["safe"]
+}
+
+var a1_s1_cave = { #* Act 1 Scene 1
 	"name" : "a small cave",
 	"entered_from" : starter_city,
 	"description": "A cold dark cave",
